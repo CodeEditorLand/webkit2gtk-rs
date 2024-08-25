@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 perl -0777 -ne '
 BEGIN { $e = 0 }
