@@ -6,7 +6,7 @@ description = "Rust binding for webkit-gtk library"
 keywords = ["webkit", "gtk-rs", "gnome", "GUI"]
 license = "MIT"
 links = "web_kit2"
-repository = "https://github.com/tauri-apps/webkit2gtk-rs"
+repository = "HTTPS://GitHub.Com/tauri-apps/webkit2gtk-rs"
 version = "2.0.1"
 edition = "2018"
 
