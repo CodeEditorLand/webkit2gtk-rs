@@ -5,14 +5,14 @@
 use crate::PermissionRequest;
 
 glib::wrapper! {
-    #[doc(alias = "WebKitNotificationPermissionRequest")]
-    pub struct NotificationPermissionRequest(Object<ffi::WebKitNotificationPermissionRequest, ffi::WebKitNotificationPermissionRequestClass>) @implements PermissionRequest;
+	#[doc(alias = "WebKitNotificationPermissionRequest")]
+	pub struct NotificationPermissionRequest(Object<ffi::WebKitNotificationPermissionRequest, ffi::WebKitNotificationPermissionRequestClass>) @implements PermissionRequest;
 
-    match fn {
-        type_ => || ffi::webkit_notification_permission_request_get_type(),
-    }
+	match fn {
+		type_ => || ffi::webkit_notification_permission_request_get_type(),
+	}
 }
 
 impl NotificationPermissionRequest {
-  pub const NONE: Option<&'static NotificationPermissionRequest> = None;
+	pub const NONE: Option<&'static NotificationPermissionRequest> = None;
 }

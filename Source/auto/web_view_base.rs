@@ -3,14 +3,14 @@
 // DO NOT EDIT
 
 glib::wrapper! {
-    #[doc(alias = "WebKitWebViewBase")]
-    pub struct WebViewBase(Object<ffi::WebKitWebViewBase, ffi::WebKitWebViewBaseClass>) @extends gtk::Container, gtk::Widget, @implements gtk::Buildable;
+	#[doc(alias = "WebKitWebViewBase")]
+	pub struct WebViewBase(Object<ffi::WebKitWebViewBase, ffi::WebKitWebViewBaseClass>) @extends gtk::Container, gtk::Widget, @implements gtk::Buildable;
 
-    match fn {
-        type_ => || ffi::webkit_web_view_base_get_type(),
-    }
+	match fn {
+		type_ => || ffi::webkit_web_view_base_get_type(),
+	}
 }
 
 impl WebViewBase {
-  pub const NONE: Option<&'static WebViewBase> = None;
+	pub const NONE: Option<&'static WebViewBase> = None;
 }

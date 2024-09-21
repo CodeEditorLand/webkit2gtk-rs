@@ -5,14 +5,14 @@
 use crate::PermissionRequest;
 
 glib::wrapper! {
-    #[doc(alias = "WebKitGeolocationPermissionRequest")]
-    pub struct GeolocationPermissionRequest(Object<ffi::WebKitGeolocationPermissionRequest, ffi::WebKitGeolocationPermissionRequestClass>) @implements PermissionRequest;
+	#[doc(alias = "WebKitGeolocationPermissionRequest")]
+	pub struct GeolocationPermissionRequest(Object<ffi::WebKitGeolocationPermissionRequest, ffi::WebKitGeolocationPermissionRequestClass>) @implements PermissionRequest;
 
-    match fn {
-        type_ => || ffi::webkit_geolocation_permission_request_get_type(),
-    }
+	match fn {
+		type_ => || ffi::webkit_geolocation_permission_request_get_type(),
+	}
 }
 
 impl GeolocationPermissionRequest {
-  pub const NONE: Option<&'static GeolocationPermissionRequest> = None;
+	pub const NONE: Option<&'static GeolocationPermissionRequest> = None;
 }

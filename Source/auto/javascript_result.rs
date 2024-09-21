@@ -7,26 +7,22 @@
 use glib::translate::*;
 
 glib::wrapper! {
-    #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
-    pub struct JavascriptResult(Shared<ffi::WebKitJavascriptResult>);
+	#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+	pub struct JavascriptResult(Shared<ffi::WebKitJavascriptResult>);
 
-    match fn {
-        ref => |ptr| ffi::webkit_javascript_result_ref(ptr),
-        unref => |ptr| ffi::webkit_javascript_result_unref(ptr),
-        type_ => || ffi::webkit_javascript_result_get_type(),
-    }
+	match fn {
+		ref => |ptr| ffi::webkit_javascript_result_ref(ptr),
+		unref => |ptr| ffi::webkit_javascript_result_unref(ptr),
+		type_ => || ffi::webkit_javascript_result_get_type(),
+	}
 }
 
 impl JavascriptResult {
-  #[cfg(feature = "v2_22")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
-  #[doc(alias = "webkit_javascript_result_get_js_value")]
-  #[doc(alias = "get_js_value")]
-  pub fn js_value(&self) -> Option<java_script_core::Value> {
-    unsafe {
-      from_glib_none(ffi::webkit_javascript_result_get_js_value(
-        self.to_glib_none().0,
-      ))
-    }
-  }
+	#[cfg(feature = "v2_22")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
+	#[doc(alias = "webkit_javascript_result_get_js_value")]
+	#[doc(alias = "get_js_value")]
+	pub fn js_value(&self) -> Option<java_script_core::Value> {
+		unsafe { from_glib_none(ffi::webkit_javascript_result_get_js_value(self.to_glib_none().0)) }
+	}
 }

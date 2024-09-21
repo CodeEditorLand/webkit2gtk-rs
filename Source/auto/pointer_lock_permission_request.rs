@@ -5,14 +5,14 @@
 use crate::PermissionRequest;
 
 glib::wrapper! {
-    #[doc(alias = "WebKitPointerLockPermissionRequest")]
-    pub struct PointerLockPermissionRequest(Object<ffi::WebKitPointerLockPermissionRequest, ffi::WebKitPointerLockPermissionRequestClass>) @implements PermissionRequest;
+	#[doc(alias = "WebKitPointerLockPermissionRequest")]
+	pub struct PointerLockPermissionRequest(Object<ffi::WebKitPointerLockPermissionRequest, ffi::WebKitPointerLockPermissionRequestClass>) @implements PermissionRequest;
 
-    match fn {
-        type_ => || ffi::webkit_pointer_lock_permission_request_get_type(),
-    }
+	match fn {
+		type_ => || ffi::webkit_pointer_lock_permission_request_get_type(),
+	}
 }
 
 impl PointerLockPermissionRequest {
-  pub const NONE: Option<&'static PointerLockPermissionRequest> = None;
+	pub const NONE: Option<&'static PointerLockPermissionRequest> = None;
 }

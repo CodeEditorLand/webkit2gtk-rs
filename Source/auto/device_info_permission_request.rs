@@ -5,14 +5,14 @@
 use crate::PermissionRequest;
 
 glib::wrapper! {
-    #[doc(alias = "WebKitDeviceInfoPermissionRequest")]
-    pub struct DeviceInfoPermissionRequest(Object<ffi::WebKitDeviceInfoPermissionRequest, ffi::WebKitDeviceInfoPermissionRequestClass>) @implements PermissionRequest;
+	#[doc(alias = "WebKitDeviceInfoPermissionRequest")]
+	pub struct DeviceInfoPermissionRequest(Object<ffi::WebKitDeviceInfoPermissionRequest, ffi::WebKitDeviceInfoPermissionRequestClass>) @implements PermissionRequest;
 
-    match fn {
-        type_ => || ffi::webkit_device_info_permission_request_get_type(),
-    }
+	match fn {
+		type_ => || ffi::webkit_device_info_permission_request_get_type(),
+	}
 }
 
 impl DeviceInfoPermissionRequest {
-  pub const NONE: Option<&'static DeviceInfoPermissionRequest> = None;
+	pub const NONE: Option<&'static DeviceInfoPermissionRequest> = None;
 }

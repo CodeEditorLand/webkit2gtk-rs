@@ -354,46 +354,25 @@ pub use self::enums::AutomationBrowsingContextPresentation;
 #[cfg(feature = "v2_30")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 pub use self::enums::AutoplayPolicy;
-pub use self::enums::CacheModel;
-pub use self::enums::ContextMenuAction;
-pub use self::enums::CookieAcceptPolicy;
-pub use self::enums::CookiePersistentStorage;
 #[cfg(feature = "v2_2")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 pub use self::enums::CredentialPersistence;
-pub use self::enums::DownloadError;
-pub use self::enums::FaviconDatabaseError;
 #[cfg(feature = "v2_16")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 pub use self::enums::HardwareAccelerationPolicy;
 #[cfg(feature = "v2_28")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 pub use self::enums::InputPurpose;
-pub use self::enums::InsecureContentEvent;
-pub use self::enums::JavascriptError;
-pub use self::enums::LoadEvent;
 #[cfg(feature = "v2_34")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 pub use self::enums::MediaCaptureState;
-pub use self::enums::NavigationType;
-pub use self::enums::NetworkError;
 #[cfg(feature = "v2_16")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 pub use self::enums::NetworkProxyMode;
-pub use self::enums::PluginError;
-pub use self::enums::PolicyDecisionType;
-pub use self::enums::PolicyError;
-pub use self::enums::PrintError;
-pub use self::enums::PrintOperationResponse;
 #[cfg(feature = "v2_4")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
 #[allow(deprecated)]
 pub use self::enums::ProcessModel;
-pub use self::enums::SaveMode;
-pub use self::enums::ScriptDialogType;
-pub use self::enums::SnapshotError;
-pub use self::enums::SnapshotRegion;
-pub use self::enums::TLSErrorsPolicy;
 #[cfg(feature = "v2_24")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 pub use self::enums::UserContentFilterError;
@@ -412,124 +391,113 @@ pub use self::enums::UserStyleLevel;
 #[cfg(feature = "v2_20")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 pub use self::enums::WebProcessTerminationReason;
+pub use self::enums::{
+	CacheModel, ContextMenuAction, CookieAcceptPolicy, CookiePersistentStorage, DownloadError,
+	FaviconDatabaseError, InsecureContentEvent, JavascriptError, LoadEvent, NavigationType,
+	NetworkError, PluginError, PolicyDecisionType, PolicyError, PrintError, PrintOperationResponse,
+	SaveMode, ScriptDialogType, SnapshotError, SnapshotRegion, TLSErrorsPolicy,
+};
 
 mod flags;
 #[cfg(feature = "v2_10")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 pub use self::flags::EditorTypingAttributes;
-pub use self::flags::FindOptions;
-pub use self::flags::HitTestResultContext;
 #[cfg(feature = "v2_28")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 pub use self::flags::InputHints;
-pub use self::flags::SnapshotOptions;
 #[cfg(feature = "v2_16")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 pub use self::flags::WebsiteDataTypes;
+pub use self::flags::{FindOptions, HitTestResultContext, SnapshotOptions};
 
 pub(crate) mod traits {
-  pub use super::authentication_request::AuthenticationRequestExt;
-  #[cfg(feature = "v2_18")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
-  pub use super::automation_session::AutomationSessionExt;
-  pub use super::back_forward_list::BackForwardListExt;
-  pub use super::back_forward_list_item::BackForwardListItemExt;
-  pub use super::color_chooser_request::ColorChooserRequestExt;
-  pub use super::context_menu::ContextMenuExt;
-  pub use super::context_menu_item::ContextMenuItemExt;
-  pub use super::cookie_manager::CookieManagerExt;
-  pub use super::download::DownloadExt;
-  #[cfg(feature = "v2_10")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
-  pub use super::editor_state::EditorStateExt;
-  pub use super::favicon_database::FaviconDatabaseExt;
-  pub use super::file_chooser_request::FileChooserRequestExt;
-  pub use super::find_controller::FindControllerExt;
-  pub use super::form_submission_request::FormSubmissionRequestExt;
-  #[cfg(feature = "v2_26")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
-  pub use super::geolocation_manager::GeolocationManagerExt;
-  pub use super::hit_test_result::HitTestResultExt;
-  #[cfg(feature = "v2_28")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
-  pub use super::input_method_context::InputMethodContextExt;
-  #[cfg(feature = "v2_10")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
-  #[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
-  pub use super::install_missing_media_plugins_permission_request::InstallMissingMediaPluginsPermissionRequestExt;
-  pub use super::navigation_policy_decision::NavigationPolicyDecisionExt;
-  #[cfg(feature = "v2_8")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-  pub use super::notification::NotificationExt;
-  #[cfg(feature = "v2_18")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
-  pub use super::option_menu::OptionMenuExt;
-  pub use super::permission_request::PermissionRequestExt;
-  #[cfg_attr(feature = "v2_32", deprecated = "Since 2.32")]
-  pub use super::plugin::PluginExt;
-  pub use super::policy_decision::PolicyDecisionExt;
-  #[cfg(feature = "v2_16")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
-  #[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
-  pub use super::print_custom_widget::PrintCustomWidgetExt;
-  pub use super::print_operation::PrintOperationExt;
-  pub use super::response_policy_decision::ResponsePolicyDecisionExt;
-  pub use super::security_manager::SecurityManagerExt;
-  pub use super::settings::SettingsExt;
-  pub use super::uri_request::URIRequestExt;
-  pub use super::uri_response::URIResponseExt;
-  pub use super::uri_scheme_request::URISchemeRequestExt;
-  pub use super::uri_scheme_response::URISchemeResponseExt;
-  #[cfg(feature = "v2_6")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
-  pub use super::user_content_manager::UserContentManagerExt;
-  #[cfg(feature = "v2_8")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-  pub use super::user_media_permission_request::UserMediaPermissionRequestExt;
-  #[cfg(feature = "v2_28")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
-  pub use super::user_message::UserMessageExt;
-  pub use super::web_context::WebContextExt;
-  pub use super::web_inspector::WebInspectorExt;
-  pub use super::web_resource::WebResourceExt;
-  pub use super::web_view::WebViewExt;
-  #[cfg(feature = "v2_30")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-  pub use super::website_data_access_permission_request::WebsiteDataAccessPermissionRequestExt;
-  #[cfg(feature = "v2_10")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
-  pub use super::website_data_manager::WebsiteDataManagerExt;
-  #[cfg(feature = "v2_30")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-  pub use super::website_policies::WebsitePoliciesExt;
-  pub use super::window_properties::WindowPropertiesExt;
+	#[cfg(feature = "v2_18")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
+	pub use super::automation_session::AutomationSessionExt;
+	#[cfg(feature = "v2_10")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
+	pub use super::editor_state::EditorStateExt;
+	#[cfg(feature = "v2_26")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
+	pub use super::geolocation_manager::GeolocationManagerExt;
+	#[cfg(feature = "v2_28")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
+	pub use super::input_method_context::InputMethodContextExt;
+	#[cfg(feature = "v2_10")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
+	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
+	pub use super::install_missing_media_plugins_permission_request::InstallMissingMediaPluginsPermissionRequestExt;
+	#[cfg(feature = "v2_8")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
+	pub use super::notification::NotificationExt;
+	#[cfg(feature = "v2_18")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
+	pub use super::option_menu::OptionMenuExt;
+	#[cfg_attr(feature = "v2_32", deprecated = "Since 2.32")]
+	pub use super::plugin::PluginExt;
+	#[cfg(feature = "v2_16")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
+	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
+	pub use super::print_custom_widget::PrintCustomWidgetExt;
+	#[cfg(feature = "v2_6")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
+	pub use super::user_content_manager::UserContentManagerExt;
+	#[cfg(feature = "v2_8")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
+	pub use super::user_media_permission_request::UserMediaPermissionRequestExt;
+	#[cfg(feature = "v2_28")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
+	pub use super::user_message::UserMessageExt;
+	#[cfg(feature = "v2_30")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
+	pub use super::website_data_access_permission_request::WebsiteDataAccessPermissionRequestExt;
+	#[cfg(feature = "v2_10")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
+	pub use super::website_data_manager::WebsiteDataManagerExt;
+	#[cfg(feature = "v2_30")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
+	pub use super::website_policies::WebsitePoliciesExt;
+	pub use super::{
+		authentication_request::AuthenticationRequestExt, back_forward_list::BackForwardListExt,
+		back_forward_list_item::BackForwardListItemExt,
+		color_chooser_request::ColorChooserRequestExt, context_menu::ContextMenuExt,
+		context_menu_item::ContextMenuItemExt, cookie_manager::CookieManagerExt,
+		download::DownloadExt, favicon_database::FaviconDatabaseExt,
+		file_chooser_request::FileChooserRequestExt, find_controller::FindControllerExt,
+		form_submission_request::FormSubmissionRequestExt, hit_test_result::HitTestResultExt,
+		navigation_policy_decision::NavigationPolicyDecisionExt,
+		permission_request::PermissionRequestExt, policy_decision::PolicyDecisionExt,
+		print_operation::PrintOperationExt, response_policy_decision::ResponsePolicyDecisionExt,
+		security_manager::SecurityManagerExt, settings::SettingsExt, uri_request::URIRequestExt,
+		uri_response::URIResponseExt, uri_scheme_request::URISchemeRequestExt,
+		uri_scheme_response::URISchemeResponseExt, web_context::WebContextExt,
+		web_inspector::WebInspectorExt, web_resource::WebResourceExt, web_view::WebViewExt,
+		window_properties::WindowPropertiesExt,
+	};
 }
 pub(crate) mod builders {
-  #[cfg(feature = "v2_18")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
-  pub use super::automation_session::AutomationSessionBuilder;
-  pub use super::color_chooser_request::ColorChooserRequestBuilder;
-  pub use super::download::DownloadBuilder;
-  pub use super::find_controller::FindControllerBuilder;
-  pub use super::hit_test_result::HitTestResultBuilder;
-  #[cfg(feature = "v2_16")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
-  #[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
-  pub use super::print_custom_widget::PrintCustomWidgetBuilder;
-  pub use super::print_operation::PrintOperationBuilder;
-  pub use super::settings::SettingsBuilder;
-  pub use super::uri_request::URIRequestBuilder;
-  pub use super::uri_scheme_response::URISchemeResponseBuilder;
-  #[cfg(feature = "v2_28")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
-  pub use super::user_message::UserMessageBuilder;
-  pub use super::web_context::WebContextBuilder;
-  pub use super::web_view::WebViewBuilder;
-  #[cfg(feature = "v2_10")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
-  pub use super::website_data_manager::WebsiteDataManagerBuilder;
-  #[cfg(feature = "v2_30")]
-  #[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-  pub use super::website_policies::WebsitePoliciesBuilder;
-  pub use super::window_properties::WindowPropertiesBuilder;
+	#[cfg(feature = "v2_18")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
+	pub use super::automation_session::AutomationSessionBuilder;
+	#[cfg(feature = "v2_16")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
+	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
+	pub use super::print_custom_widget::PrintCustomWidgetBuilder;
+	#[cfg(feature = "v2_28")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
+	pub use super::user_message::UserMessageBuilder;
+	#[cfg(feature = "v2_10")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
+	pub use super::website_data_manager::WebsiteDataManagerBuilder;
+	#[cfg(feature = "v2_30")]
+	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
+	pub use super::website_policies::WebsitePoliciesBuilder;
+	pub use super::{
+		color_chooser_request::ColorChooserRequestBuilder, download::DownloadBuilder,
+		find_controller::FindControllerBuilder, hit_test_result::HitTestResultBuilder,
+		print_operation::PrintOperationBuilder, settings::SettingsBuilder,
+		uri_request::URIRequestBuilder, uri_scheme_response::URISchemeResponseBuilder,
+		web_context::WebContextBuilder, web_view::WebViewBuilder,
+		window_properties::WindowPropertiesBuilder,
+	};
 }

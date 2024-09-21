@@ -5,14 +5,14 @@
 use crate::PermissionRequest;
 
 glib::wrapper! {
-    #[doc(alias = "WebKitMediaKeySystemPermissionRequest")]
-    pub struct MediaKeySystemPermissionRequest(Object<ffi::WebKitMediaKeySystemPermissionRequest, ffi::WebKitMediaKeySystemPermissionRequestClass>) @implements PermissionRequest;
+	#[doc(alias = "WebKitMediaKeySystemPermissionRequest")]
+	pub struct MediaKeySystemPermissionRequest(Object<ffi::WebKitMediaKeySystemPermissionRequest, ffi::WebKitMediaKeySystemPermissionRequestClass>) @implements PermissionRequest;
 
-    match fn {
-        type_ => || ffi::webkit_media_key_system_permission_request_get_type(),
-    }
+	match fn {
+		type_ => || ffi::webkit_media_key_system_permission_request_get_type(),
+	}
 }
 
 impl MediaKeySystemPermissionRequest {
-  pub const NONE: Option<&'static MediaKeySystemPermissionRequest> = None;
+	pub const NONE: Option<&'static MediaKeySystemPermissionRequest> = None;
 }
