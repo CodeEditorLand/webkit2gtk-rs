@@ -1,6 +1,6 @@
 [submodule "gir"]
 	path = gir
-	url = https://github.com/CodeEditorLand/gir.git
+	url = ssh://git@github.com/CodeEditorLand/gir.git
 [submodule "gir-files"]
 	path = gir-files
 	url = ssh://git@github.com/CodeEditorLand/gir-files
