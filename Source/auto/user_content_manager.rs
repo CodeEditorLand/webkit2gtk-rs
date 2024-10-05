@@ -4,15 +4,17 @@
 
 #[cfg(feature = "v2_8")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-use crate::JavascriptResult;
-use crate::{UserScript, UserStyleSheet};
+use std::boxed::Box as Box_;
+
 #[cfg(feature = "v2_8")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 use glib::signal::{connect_raw, SignalHandlerId};
 use glib::{prelude::*, translate::*};
+
 #[cfg(feature = "v2_8")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-use std::boxed::Box as Box_;
+use crate::JavascriptResult;
+use crate::{UserScript, UserStyleSheet};
 
 glib::wrapper! {
 	#[doc(alias = "WebKitUserContentManager")]
@@ -24,7 +26,7 @@ glib::wrapper! {
 }
 
 impl UserContentManager {
-	pub const NONE: Option<&'static UserContentManager> = None;
+	pub const NONE:Option<&'static UserContentManager> = None;
 
 	#[doc(alias = "webkit_user_content_manager_new")]
 	pub fn new() -> UserContentManager {
@@ -36,26 +38,25 @@ impl UserContentManager {
 #[cfg(feature = "v2_6")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl Default for UserContentManager {
-	fn default() -> Self {
-		Self::new()
-	}
+	fn default() -> Self { Self::new() }
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::UserContentManager>> Sealed for T {}
+	impl<T:super::IsA<super::UserContentManager>> Sealed for T {}
 }
 
-pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'static {
+pub trait UserContentManagerExt:
+	IsA<UserContentManager> + sealed::Sealed + 'static {
 	//#[cfg(feature = "v2_24")]
 	//#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 	//#[doc(alias = "webkit_user_content_manager_add_filter")]
-	//fn add_filter(&self, filter: /*Ignored*/&UserContentFilter) {
+	// fn add_filter(&self, filter: /*Ignored*/&UserContentFilter) {
 	//    unsafe { TODO: call ffi:webkit_user_content_manager_add_filter() }
 	//}
 
 	#[doc(alias = "webkit_user_content_manager_add_script")]
-	fn add_script(&self, script: &UserScript) {
+	fn add_script(&self, script:&UserScript) {
 		unsafe {
 			ffi::webkit_user_content_manager_add_script(
 				self.as_ref().to_glib_none().0,
@@ -65,7 +66,7 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	}
 
 	#[doc(alias = "webkit_user_content_manager_add_style_sheet")]
-	fn add_style_sheet(&self, stylesheet: &UserStyleSheet) {
+	fn add_style_sheet(&self, stylesheet:&UserStyleSheet) {
 		unsafe {
 			ffi::webkit_user_content_manager_add_style_sheet(
 				self.as_ref().to_glib_none().0,
@@ -76,8 +77,10 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-	#[doc(alias = "webkit_user_content_manager_register_script_message_handler")]
-	fn register_script_message_handler(&self, name: &str) -> bool {
+	#[doc(
+		alias = "webkit_user_content_manager_register_script_message_handler"
+	)]
+	fn register_script_message_handler(&self, name:&str) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_user_content_manager_register_script_message_handler(
 				self.as_ref().to_glib_none().0,
@@ -88,8 +91,14 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 
 	#[cfg(feature = "v2_22")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
-	#[doc(alias = "webkit_user_content_manager_register_script_message_handler_in_world")]
-	fn register_script_message_handler_in_world(&self, name: &str, world_name: &str) -> bool {
+	#[doc(
+		alias = "webkit_user_content_manager_register_script_message_handler_in_world"
+	)]
+	fn register_script_message_handler_in_world(
+		&self,
+		name:&str,
+		world_name:&str,
+	) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_user_content_manager_register_script_message_handler_in_world(
 				self.as_ref().to_glib_none().0,
@@ -101,8 +110,14 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
-	#[doc(alias = "webkit_user_content_manager_register_script_message_handler_with_reply")]
-	fn register_script_message_handler_with_reply(&self, name: &str, world_name: &str) -> bool {
+	#[doc(
+		alias = "webkit_user_content_manager_register_script_message_handler_with_reply"
+	)]
+	fn register_script_message_handler_with_reply(
+		&self,
+		name:&str,
+		world_name:&str,
+	) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_user_content_manager_register_script_message_handler_with_reply(
 				self.as_ref().to_glib_none().0,
@@ -117,14 +132,18 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	#[doc(alias = "webkit_user_content_manager_remove_all_filters")]
 	fn remove_all_filters(&self) {
 		unsafe {
-			ffi::webkit_user_content_manager_remove_all_filters(self.as_ref().to_glib_none().0);
+			ffi::webkit_user_content_manager_remove_all_filters(
+				self.as_ref().to_glib_none().0,
+			);
 		}
 	}
 
 	#[doc(alias = "webkit_user_content_manager_remove_all_scripts")]
 	fn remove_all_scripts(&self) {
 		unsafe {
-			ffi::webkit_user_content_manager_remove_all_scripts(self.as_ref().to_glib_none().0);
+			ffi::webkit_user_content_manager_remove_all_scripts(
+				self.as_ref().to_glib_none().0,
+			);
 		}
 	}
 
@@ -140,14 +159,14 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	//#[cfg(feature = "v2_24")]
 	//#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 	//#[doc(alias = "webkit_user_content_manager_remove_filter")]
-	//fn remove_filter(&self, filter: /*Ignored*/&UserContentFilter) {
+	// fn remove_filter(&self, filter: /*Ignored*/&UserContentFilter) {
 	//    unsafe { TODO: call ffi:webkit_user_content_manager_remove_filter() }
 	//}
 
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	#[doc(alias = "webkit_user_content_manager_remove_filter_by_id")]
-	fn remove_filter_by_id(&self, filter_id: &str) {
+	fn remove_filter_by_id(&self, filter_id:&str) {
 		unsafe {
 			ffi::webkit_user_content_manager_remove_filter_by_id(
 				self.as_ref().to_glib_none().0,
@@ -159,7 +178,7 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	#[cfg(feature = "v2_32")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_32")))]
 	#[doc(alias = "webkit_user_content_manager_remove_script")]
-	fn remove_script(&self, script: &UserScript) {
+	fn remove_script(&self, script:&UserScript) {
 		unsafe {
 			ffi::webkit_user_content_manager_remove_script(
 				self.as_ref().to_glib_none().0,
@@ -171,7 +190,7 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	#[cfg(feature = "v2_32")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_32")))]
 	#[doc(alias = "webkit_user_content_manager_remove_style_sheet")]
-	fn remove_style_sheet(&self, stylesheet: &UserStyleSheet) {
+	fn remove_style_sheet(&self, stylesheet:&UserStyleSheet) {
 		unsafe {
 			ffi::webkit_user_content_manager_remove_style_sheet(
 				self.as_ref().to_glib_none().0,
@@ -182,8 +201,10 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-	#[doc(alias = "webkit_user_content_manager_unregister_script_message_handler")]
-	fn unregister_script_message_handler(&self, name: &str) {
+	#[doc(
+		alias = "webkit_user_content_manager_unregister_script_message_handler"
+	)]
+	fn unregister_script_message_handler(&self, name:&str) {
 		unsafe {
 			ffi::webkit_user_content_manager_unregister_script_message_handler(
 				self.as_ref().to_glib_none().0,
@@ -194,8 +215,14 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 
 	#[cfg(feature = "v2_22")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
-	#[doc(alias = "webkit_user_content_manager_unregister_script_message_handler_in_world")]
-	fn unregister_script_message_handler_in_world(&self, name: &str, world_name: &str) {
+	#[doc(
+		alias = "webkit_user_content_manager_unregister_script_message_handler_in_world"
+	)]
+	fn unregister_script_message_handler_in_world(
+		&self,
+		name:&str,
+		world_name:&str,
+	) {
 		unsafe {
 			ffi::webkit_user_content_manager_unregister_script_message_handler_in_world(
 				self.as_ref().to_glib_none().0,
@@ -208,30 +235,32 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "script-message-received")]
-	fn connect_script_message_received<F: Fn(&Self, &JavascriptResult) + 'static>(
+	fn connect_script_message_received<
+		F:Fn(&Self, &JavascriptResult) + 'static,
+	>(
 		&self,
-		detail: Option<&str>,
-		f: F,
+		detail:Option<&str>,
+		f:F,
 	) -> SignalHandlerId {
 		unsafe extern fn script_message_received_trampoline<
-			P: IsA<UserContentManager>,
-			F: Fn(&P, &JavascriptResult) + 'static,
+			P:IsA<UserContentManager>,
+			F:Fn(&P, &JavascriptResult) + 'static,
 		>(
-			this: *mut ffi::WebKitUserContentManager,
-			value: *mut ffi::WebKitJavascriptResult,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitUserContentManager,
+			value:*mut ffi::WebKitJavascriptResult,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
+			let f:&F = &*(f as *const F);
 			f(
 				UserContentManager::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(value),
 			)
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			let detailed_signal_name =
 				detail.map(|name| format!("script-message-received::{name}\0"));
-			let signal_name: &[u8] = detailed_signal_name
+			let signal_name:&[u8] = detailed_signal_name
 				.as_ref()
 				.map_or(&b"script-message-received\0"[..], |n| n.as_bytes());
 			connect_raw(
@@ -248,9 +277,10 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 	//#[cfg(feature = "v2_40")]
 	//#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
 	//#[doc(alias = "script-message-with-reply-received")]
-	//fn connect_script_message_with_reply_received<Unsupported or ignored types>(&self, detail: Option<&str>, f: F) -> SignalHandlerId {
+	// fn connect_script_message_with_reply_received<Unsupported or ignored
+	// types>(&self, detail: Option<&str>, f: F) -> SignalHandlerId {
 	//    Ignored reply: WebKit2.ScriptMessageReply
 	//}
 }
 
-impl<O: IsA<UserContentManager>> UserContentManagerExt for O {}
+impl<O:IsA<UserContentManager>> UserContentManagerExt for O {}

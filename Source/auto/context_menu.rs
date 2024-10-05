@@ -2,8 +2,9 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::ContextMenuItem;
 use glib::{prelude::*, translate::*};
+
+use crate::ContextMenuItem;
 
 glib::wrapper! {
 	#[doc(alias = "WebKitContextMenu")]
@@ -15,7 +16,7 @@ glib::wrapper! {
 }
 
 impl ContextMenu {
-	pub const NONE: Option<&'static ContextMenu> = None;
+	pub const NONE:Option<&'static ContextMenu> = None;
 
 	#[doc(alias = "webkit_context_menu_new")]
 	pub fn new() -> ContextMenu {
@@ -25,26 +26,28 @@ impl ContextMenu {
 
 	#[doc(alias = "webkit_context_menu_new_with_items")]
 	#[doc(alias = "new_with_items")]
-	pub fn with_items(items: &[ContextMenuItem]) -> ContextMenu {
+	pub fn with_items(items:&[ContextMenuItem]) -> ContextMenu {
 		assert_initialized_main_thread!();
-		unsafe { from_glib_full(ffi::webkit_context_menu_new_with_items(items.to_glib_none().0)) }
+		unsafe {
+			from_glib_full(ffi::webkit_context_menu_new_with_items(
+				items.to_glib_none().0,
+			))
+		}
 	}
 }
 
 impl Default for ContextMenu {
-	fn default() -> Self {
-		Self::new()
-	}
+	fn default() -> Self { Self::new() }
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::ContextMenu>> Sealed for T {}
+	impl<T:super::IsA<super::ContextMenu>> Sealed for T {}
 }
 
 pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_context_menu_append")]
-	fn append(&self, item: &impl IsA<ContextMenuItem>) {
+	fn append(&self, item:&impl IsA<ContextMenuItem>) {
 		unsafe {
 			ffi::webkit_context_menu_append(
 				self.as_ref().to_glib_none().0,
@@ -55,7 +58,11 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 
 	#[doc(alias = "webkit_context_menu_first")]
 	fn first(&self) -> Option<ContextMenuItem> {
-		unsafe { from_glib_none(ffi::webkit_context_menu_first(self.as_ref().to_glib_none().0)) }
+		unsafe {
+			from_glib_none(ffi::webkit_context_menu_first(
+				self.as_ref().to_glib_none().0,
+			))
+		}
 	}
 
 	#[cfg(feature = "v2_40")]
@@ -64,13 +71,15 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "get_event")]
 	fn event(&self) -> Option<gdk::Event> {
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_get_event(self.as_ref().to_glib_none().0))
+			from_glib_none(ffi::webkit_context_menu_get_event(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_get_item_at_position")]
 	#[doc(alias = "get_item_at_position")]
-	fn item_at_position(&self, position: u32) -> Option<ContextMenuItem> {
+	fn item_at_position(&self, position:u32) -> Option<ContextMenuItem> {
 		unsafe {
 			from_glib_none(ffi::webkit_context_menu_get_item_at_position(
 				self.as_ref().to_glib_none().0,
@@ -83,16 +92,20 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "get_items")]
 	fn items(&self) -> Vec<ContextMenuItem> {
 		unsafe {
-			FromGlibPtrContainer::from_glib_none(ffi::webkit_context_menu_get_items(
-				self.as_ref().to_glib_none().0,
-			))
+			FromGlibPtrContainer::from_glib_none(
+				ffi::webkit_context_menu_get_items(
+					self.as_ref().to_glib_none().0,
+				),
+			)
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_get_n_items")]
 	#[doc(alias = "get_n_items")]
 	fn n_items(&self) -> u32 {
-		unsafe { ffi::webkit_context_menu_get_n_items(self.as_ref().to_glib_none().0) }
+		unsafe {
+			ffi::webkit_context_menu_get_n_items(self.as_ref().to_glib_none().0)
+		}
 	}
 
 	#[cfg(feature = "v2_8")]
@@ -101,12 +114,14 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "get_user_data")]
 	fn user_data(&self) -> Option<glib::Variant> {
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_get_user_data(self.as_ref().to_glib_none().0))
+			from_glib_none(ffi::webkit_context_menu_get_user_data(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_insert")]
-	fn insert(&self, item: &impl IsA<ContextMenuItem>, position: i32) {
+	fn insert(&self, item:&impl IsA<ContextMenuItem>, position:i32) {
 		unsafe {
 			ffi::webkit_context_menu_insert(
 				self.as_ref().to_glib_none().0,
@@ -118,11 +133,15 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 
 	#[doc(alias = "webkit_context_menu_last")]
 	fn last(&self) -> Option<ContextMenuItem> {
-		unsafe { from_glib_none(ffi::webkit_context_menu_last(self.as_ref().to_glib_none().0)) }
+		unsafe {
+			from_glib_none(ffi::webkit_context_menu_last(
+				self.as_ref().to_glib_none().0,
+			))
+		}
 	}
 
 	#[doc(alias = "webkit_context_menu_move_item")]
-	fn move_item(&self, item: &impl IsA<ContextMenuItem>, position: i32) {
+	fn move_item(&self, item:&impl IsA<ContextMenuItem>, position:i32) {
 		unsafe {
 			ffi::webkit_context_menu_move_item(
 				self.as_ref().to_glib_none().0,
@@ -133,7 +152,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "webkit_context_menu_prepend")]
-	fn prepend(&self, item: &impl IsA<ContextMenuItem>) {
+	fn prepend(&self, item:&impl IsA<ContextMenuItem>) {
 		unsafe {
 			ffi::webkit_context_menu_prepend(
 				self.as_ref().to_glib_none().0,
@@ -143,7 +162,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "webkit_context_menu_remove")]
-	fn remove(&self, item: &impl IsA<ContextMenuItem>) {
+	fn remove(&self, item:&impl IsA<ContextMenuItem>) {
 		unsafe {
 			ffi::webkit_context_menu_remove(
 				self.as_ref().to_glib_none().0,
@@ -162,7 +181,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "webkit_context_menu_set_user_data")]
-	fn set_user_data(&self, user_data: &glib::Variant) {
+	fn set_user_data(&self, user_data:&glib::Variant) {
 		unsafe {
 			ffi::webkit_context_menu_set_user_data(
 				self.as_ref().to_glib_none().0,
@@ -172,4 +191,4 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	}
 }
 
-impl<O: IsA<ContextMenu>> ContextMenuExt for O {}
+impl<O:IsA<ContextMenu>> ContextMenuExt for O {}

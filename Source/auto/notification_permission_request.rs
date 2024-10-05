@@ -14,5 +14,5 @@ glib::wrapper! {
 }
 
 impl NotificationPermissionRequest {
-	pub const NONE: Option<&'static NotificationPermissionRequest> = None;
+	pub const NONE:Option<&'static NotificationPermissionRequest> = None;
 }

@@ -2,13 +2,15 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::{ApplicationInfo, WebView};
+use std::boxed::Box as Box_;
+
 use glib::{
 	prelude::*,
 	signal::{connect_raw, SignalHandlerId},
 	translate::*,
 };
-use std::boxed::Box as Box_;
+
+use crate::{ApplicationInfo, WebView};
 
 glib::wrapper! {
 	#[doc(alias = "WebKitAutomationSession")]
@@ -20,12 +22,15 @@ glib::wrapper! {
 }
 
 impl AutomationSession {
-	pub const NONE: Option<&'static AutomationSession> = None;
+	pub const NONE:Option<&'static AutomationSession> = None;
 
 	// rustdoc-stripper-ignore-next
-	/// Creates a new builder-pattern struct instance to construct [`AutomationSession`] objects.
+	/// Creates a new builder-pattern struct instance to construct
+	/// [`AutomationSession`] objects.
 	///
-	/// This method returns an instance of [`AutomationSessionBuilder`](crate::builders::AutomationSessionBuilder) which can be used to create [`AutomationSession`] objects.
+	/// This method returns an instance of
+	/// [`AutomationSessionBuilder`](crate::builders::AutomationSessionBuilder)
+	/// which can be used to create [`AutomationSession`] objects.
 	pub fn builder() -> AutomationSessionBuilder {
 		AutomationSessionBuilder::new()
 	}
@@ -37,34 +42,32 @@ impl AutomationSession {
 /// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
 #[must_use = "The builder must be built to be used"]
 pub struct AutomationSessionBuilder {
-	builder: glib::object::ObjectBuilder<'static, AutomationSession>,
+	builder:glib::object::ObjectBuilder<'static, AutomationSession>,
 }
 
 impl AutomationSessionBuilder {
-	fn new() -> Self {
-		Self { builder: glib::object::Object::builder() }
-	}
+	fn new() -> Self { Self { builder:glib::object::Object::builder() } }
 
 	#[cfg(feature = "v2_18")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
-	pub fn id(self, id: impl Into<glib::GString>) -> Self {
-		Self { builder: self.builder.property("id", id.into()) }
+	pub fn id(self, id:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("id", id.into()) }
 	}
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`AutomationSession`].
-	#[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
-	pub fn build(self) -> AutomationSession {
-		self.builder.build()
-	}
+	#[must_use = "Building the object from the builder is usually expensive \
+	              and is not expected to have side effects"]
+	pub fn build(self) -> AutomationSession { self.builder.build() }
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::AutomationSession>> Sealed for T {}
+	impl<T:super::IsA<super::AutomationSession>> Sealed for T {}
 }
 
-pub trait AutomationSessionExt: IsA<AutomationSession> + sealed::Sealed + 'static {
+pub trait AutomationSessionExt:
+	IsA<AutomationSession> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_automation_session_get_application_info")]
 	#[doc(alias = "get_application_info")]
 	fn application_info(&self) -> Option<ApplicationInfo> {
@@ -79,12 +82,14 @@ pub trait AutomationSessionExt: IsA<AutomationSession> + sealed::Sealed + 'stati
 	#[doc(alias = "get_id")]
 	fn id(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_automation_session_get_id(self.as_ref().to_glib_none().0))
+			from_glib_none(ffi::webkit_automation_session_get_id(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_automation_session_set_application_info")]
-	fn set_application_info(&self, info: &ApplicationInfo) {
+	fn set_application_info(&self, info:&ApplicationInfo) {
 		unsafe {
 			ffi::webkit_automation_session_set_application_info(
 				self.as_ref().to_glib_none().0,
@@ -96,28 +101,30 @@ pub trait AutomationSessionExt: IsA<AutomationSession> + sealed::Sealed + 'stati
 	#[cfg(feature = "v2_18")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
 	#[doc(alias = "create-web-view")]
-	fn connect_create_web_view<F: Fn(&Self) -> WebView + 'static>(
+	fn connect_create_web_view<F:Fn(&Self) -> WebView + 'static>(
 		&self,
-		detail: Option<&str>,
-		f: F,
+		detail:Option<&str>,
+		f:F,
 	) -> SignalHandlerId {
 		unsafe extern fn create_web_view_trampoline<
-			P: IsA<AutomationSession>,
-			F: Fn(&P) -> WebView + 'static,
+			P:IsA<AutomationSession>,
+			F:Fn(&P) -> WebView + 'static,
 		>(
-			this: *mut ffi::WebKitAutomationSession,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitAutomationSession,
+			f:glib::ffi::gpointer,
 		) -> *mut ffi::WebKitWebView {
-			let f: &F = &*(f as *const F);
-			f(AutomationSession::from_glib_borrow(this).unsafe_cast_ref()) /*Not checked*/
+			let f:&F = &*(f as *const F);
+			f(AutomationSession::from_glib_borrow(this).unsafe_cast_ref()) // Not checked
 				.to_glib_none()
 				.0
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
-			let detailed_signal_name = detail.map(|name| format!("create-web-view::{name}\0"));
-			let signal_name: &[u8] =
-				detailed_signal_name.as_ref().map_or(&b"create-web-view\0"[..], |n| n.as_bytes());
+			let f:Box_<F> = Box_::new(f);
+			let detailed_signal_name =
+				detail.map(|name| format!("create-web-view::{name}\0"));
+			let signal_name:&[u8] = detailed_signal_name
+				.as_ref()
+				.map_or(&b"create-web-view\0"[..], |n| n.as_bytes());
 			connect_raw(
 				self.as_ptr() as *mut _,
 				signal_name.as_ptr() as *const _,
@@ -130,4 +137,4 @@ pub trait AutomationSessionExt: IsA<AutomationSession> + sealed::Sealed + 'stati
 	}
 }
 
-impl<O: IsA<AutomationSession>> AutomationSessionExt for O {}
+impl<O:IsA<AutomationSession>> AutomationSessionExt for O {}

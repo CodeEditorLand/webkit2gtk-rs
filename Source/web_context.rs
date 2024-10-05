@@ -1,12 +1,12 @@
 // Take a look at the license at the top of the repository in the LICENSE file.
 
-#[cfg(feature = "v2_16")]
-use super::{NetworkProxyMode, NetworkProxySettings};
 #[cfg(feature = "v2_6")]
 use glib::translate::{FromGlibPtrNone, IntoGlib, ToGlibPtr, ToGlibPtrMut};
 use glib::IsA;
 
 use super::WebContext;
+#[cfg(feature = "v2_16")]
+use super::{NetworkProxyMode, NetworkProxySettings};
 
 pub trait WebContextExtManual {
 	#[cfg(any(feature = "v2_16", docsrs))]
@@ -14,8 +14,8 @@ pub trait WebContextExtManual {
 	#[doc(alias = "webkit_web_context_set_network_proxy_settings")]
 	fn set_network_proxy_settings(
 		&self,
-		proxy_mode: NetworkProxyMode,
-		proxy_settings: Option<&mut NetworkProxySettings>,
+		proxy_mode:NetworkProxyMode,
+		proxy_settings:Option<&mut NetworkProxySettings>,
 	);
 }
 
@@ -27,8 +27,8 @@ where
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	fn set_network_proxy_settings(
 		&self,
-		proxy_mode: NetworkProxyMode,
-		mut proxy_settings: Option<&mut NetworkProxySettings>,
+		proxy_mode:NetworkProxyMode,
+		mut proxy_settings:Option<&mut NetworkProxySettings>,
 	) {
 		unsafe {
 			ffi::webkit_web_context_set_network_proxy_settings(

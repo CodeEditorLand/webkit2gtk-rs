@@ -2,13 +2,15 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::PermissionRequest;
+use std::boxed::Box as Box_;
+
 use glib::{
 	prelude::*,
 	signal::{connect_raw, SignalHandlerId},
 	translate::*,
 };
-use std::boxed::Box as Box_;
+
+use crate::PermissionRequest;
 
 glib::wrapper! {
 	#[doc(alias = "WebKitUserMediaPermissionRequest")]
@@ -20,17 +22,16 @@ glib::wrapper! {
 }
 
 impl UserMediaPermissionRequest {
-	pub const NONE: Option<&'static UserMediaPermissionRequest> = None;
+	pub const NONE:Option<&'static UserMediaPermissionRequest> = None;
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::UserMediaPermissionRequest>> Sealed for T {}
+	impl<T:super::IsA<super::UserMediaPermissionRequest>> Sealed for T {}
 }
 
 pub trait UserMediaPermissionRequestExt:
-	IsA<UserMediaPermissionRequest> + sealed::Sealed + 'static
-{
+	IsA<UserMediaPermissionRequest> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "is-for-audio-device")]
@@ -48,25 +49,30 @@ pub trait UserMediaPermissionRequestExt:
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "is-for-audio-device")]
-	fn connect_is_for_audio_device_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+	fn connect_is_for_audio_device_notify<F:Fn(&Self) + 'static>(
+		&self,
+		f:F,
+	) -> SignalHandlerId {
 		unsafe extern fn notify_is_for_audio_device_trampoline<
-			P: IsA<UserMediaPermissionRequest>,
-			F: Fn(&P) + 'static,
+			P:IsA<UserMediaPermissionRequest>,
+			F:Fn(&P) + 'static,
 		>(
-			this: *mut ffi::WebKitUserMediaPermissionRequest,
-			_param_spec: glib::ffi::gpointer,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitUserMediaPermissionRequest,
+			_param_spec:glib::ffi::gpointer,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
-			f(UserMediaPermissionRequest::from_glib_borrow(this).unsafe_cast_ref())
+			let f:&F = &*(f as *const F);
+			f(UserMediaPermissionRequest::from_glib_borrow(this)
+				.unsafe_cast_ref())
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-for-audio-device\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_is_for_audio_device_trampoline::<Self, F> as *const (),
+					notify_is_for_audio_device_trampoline::<Self, F>
+						as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -76,25 +82,30 @@ pub trait UserMediaPermissionRequestExt:
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "is-for-video-device")]
-	fn connect_is_for_video_device_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+	fn connect_is_for_video_device_notify<F:Fn(&Self) + 'static>(
+		&self,
+		f:F,
+	) -> SignalHandlerId {
 		unsafe extern fn notify_is_for_video_device_trampoline<
-			P: IsA<UserMediaPermissionRequest>,
-			F: Fn(&P) + 'static,
+			P:IsA<UserMediaPermissionRequest>,
+			F:Fn(&P) + 'static,
 		>(
-			this: *mut ffi::WebKitUserMediaPermissionRequest,
-			_param_spec: glib::ffi::gpointer,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitUserMediaPermissionRequest,
+			_param_spec:glib::ffi::gpointer,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
-			f(UserMediaPermissionRequest::from_glib_borrow(this).unsafe_cast_ref())
+			let f:&F = &*(f as *const F);
+			f(UserMediaPermissionRequest::from_glib_borrow(this)
+				.unsafe_cast_ref())
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-for-video-device\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_is_for_video_device_trampoline::<Self, F> as *const (),
+					notify_is_for_video_device_trampoline::<Self, F>
+						as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -102,4 +113,4 @@ pub trait UserMediaPermissionRequestExt:
 	}
 }
 
-impl<O: IsA<UserMediaPermissionRequest>> UserMediaPermissionRequestExt for O {}
+impl<O:IsA<UserMediaPermissionRequest>> UserMediaPermissionRequestExt for O {}

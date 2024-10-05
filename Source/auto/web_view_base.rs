@@ -12,5 +12,5 @@ glib::wrapper! {
 }
 
 impl WebViewBase {
-	pub const NONE: Option<&'static WebViewBase> = None;
+	pub const NONE:Option<&'static WebViewBase> = None;
 }

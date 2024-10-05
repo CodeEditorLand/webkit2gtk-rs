@@ -3,8 +3,9 @@
 // DO NOT EDIT
 #![allow(deprecated)]
 
-use crate::{ContextMenu, ContextMenuAction};
 use glib::{prelude::*, translate::*};
+
+use crate::{ContextMenu, ContextMenuAction};
 
 glib::wrapper! {
 	#[doc(alias = "WebKitContextMenuItem")]
@@ -16,12 +17,12 @@ glib::wrapper! {
 }
 
 impl ContextMenuItem {
-	pub const NONE: Option<&'static ContextMenuItem> = None;
+	pub const NONE:Option<&'static ContextMenuItem> = None;
 
 	//#[cfg_attr(feature = "v2_18", deprecated = "Since 2.18")]
 	//#[allow(deprecated)]
 	//#[doc(alias = "webkit_context_menu_item_new")]
-	//pub fn new(action: /*Ignored*/&gtk::Action) -> ContextMenuItem {
+	// pub fn new(action: /*Ignored*/&gtk::Action) -> ContextMenuItem {
 	//    unsafe { TODO: call ffi:webkit_context_menu_item_new() }
 	//}
 
@@ -30,9 +31,9 @@ impl ContextMenuItem {
 	#[doc(alias = "webkit_context_menu_item_new_from_gaction")]
 	#[doc(alias = "new_from_gaction")]
 	pub fn from_gaction(
-		action: &impl IsA<gio::Action>,
-		label: &str,
-		target: Option<&glib::Variant>,
+		action:&impl IsA<gio::Action>,
+		label:&str,
+		target:Option<&glib::Variant>,
 	) -> ContextMenuItem {
 		assert_initialized_main_thread!();
 		unsafe {
@@ -46,22 +47,29 @@ impl ContextMenuItem {
 
 	#[doc(alias = "webkit_context_menu_item_new_from_stock_action")]
 	#[doc(alias = "new_from_stock_action")]
-	pub fn from_stock_action(action: ContextMenuAction) -> ContextMenuItem {
+	pub fn from_stock_action(action:ContextMenuAction) -> ContextMenuItem {
 		assert_initialized_main_thread!();
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_item_new_from_stock_action(action.into_glib()))
+			from_glib_none(ffi::webkit_context_menu_item_new_from_stock_action(
+				action.into_glib(),
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_item_new_from_stock_action_with_label")]
 	#[doc(alias = "new_from_stock_action_with_label")]
-	pub fn from_stock_action_with_label(action: ContextMenuAction, label: &str) -> ContextMenuItem {
+	pub fn from_stock_action_with_label(
+		action:ContextMenuAction,
+		label:&str,
+	) -> ContextMenuItem {
 		assert_initialized_main_thread!();
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_item_new_from_stock_action_with_label(
-				action.into_glib(),
-				label.to_glib_none().0,
-			))
+			from_glib_none(
+				ffi::webkit_context_menu_item_new_from_stock_action_with_label(
+					action.into_glib(),
+					label.to_glib_none().0,
+				),
+			)
 		}
 	}
 
@@ -73,7 +81,10 @@ impl ContextMenuItem {
 
 	#[doc(alias = "webkit_context_menu_item_new_with_submenu")]
 	#[doc(alias = "new_with_submenu")]
-	pub fn with_submenu(label: &str, submenu: &impl IsA<ContextMenu>) -> ContextMenuItem {
+	pub fn with_submenu(
+		label:&str,
+		submenu:&impl IsA<ContextMenu>,
+	) -> ContextMenuItem {
 		skip_assert_initialized!();
 		unsafe {
 			from_glib_none(ffi::webkit_context_menu_item_new_with_submenu(
@@ -86,15 +97,16 @@ impl ContextMenuItem {
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::ContextMenuItem>> Sealed for T {}
+	impl<T:super::IsA<super::ContextMenuItem>> Sealed for T {}
 }
 
-pub trait ContextMenuItemExt: IsA<ContextMenuItem> + sealed::Sealed + 'static {
+pub trait ContextMenuItemExt:
+	IsA<ContextMenuItem> + sealed::Sealed + 'static {
 	//#[cfg_attr(feature = "v2_18", deprecated = "Since 2.18")]
 	//#[allow(deprecated)]
 	//#[doc(alias = "webkit_context_menu_item_get_action")]
 	//#[doc(alias = "get_action")]
-	//fn action(&self) -> /*Ignored*/Option<gtk::Action> {
+	// fn action(&self) -> /*Ignored*/Option<gtk::Action> {
 	//    unsafe { TODO: call ffi:webkit_context_menu_item_get_action() }
 	//}
 
@@ -133,12 +145,14 @@ pub trait ContextMenuItemExt: IsA<ContextMenuItem> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_context_menu_item_is_separator")]
 	fn is_separator(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_context_menu_item_is_separator(self.as_ref().to_glib_none().0))
+			from_glib(ffi::webkit_context_menu_item_is_separator(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_item_set_submenu")]
-	fn set_submenu(&self, submenu: Option<&impl IsA<ContextMenu>>) {
+	fn set_submenu(&self, submenu:Option<&impl IsA<ContextMenu>>) {
 		unsafe {
 			ffi::webkit_context_menu_item_set_submenu(
 				self.as_ref().to_glib_none().0,
@@ -148,4 +162,4 @@ pub trait ContextMenuItemExt: IsA<ContextMenuItem> + sealed::Sealed + 'static {
 	}
 }
 
-impl<O: IsA<ContextMenuItem>> ContextMenuItemExt for O {}
+impl<O:IsA<ContextMenuItem>> ContextMenuItemExt for O {}

@@ -2,8 +2,9 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::{UserContentInjectedFrames, UserStyleLevel};
 use glib::translate::*;
+
+use crate::{UserContentInjectedFrames, UserStyleLevel};
 
 glib::wrapper! {
 	#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -19,11 +20,11 @@ glib::wrapper! {
 impl UserStyleSheet {
 	#[doc(alias = "webkit_user_style_sheet_new")]
 	pub fn new(
-		source: &str,
-		injected_frames: UserContentInjectedFrames,
-		level: UserStyleLevel,
-		allow_list: &[&str],
-		block_list: &[&str],
+		source:&str,
+		injected_frames:UserContentInjectedFrames,
+		level:UserStyleLevel,
+		allow_list:&[&str],
+		block_list:&[&str],
 	) -> UserStyleSheet {
 		assert_initialized_main_thread!();
 		unsafe {
@@ -42,12 +43,12 @@ impl UserStyleSheet {
 	#[doc(alias = "webkit_user_style_sheet_new_for_world")]
 	#[doc(alias = "new_for_world")]
 	pub fn for_world(
-		source: &str,
-		injected_frames: UserContentInjectedFrames,
-		level: UserStyleLevel,
-		world_name: &str,
-		allow_list: &[&str],
-		block_list: &[&str],
+		source:&str,
+		injected_frames:UserContentInjectedFrames,
+		level:UserStyleLevel,
+		world_name:&str,
+		allow_list:&[&str],
+		block_list:&[&str],
 	) -> UserStyleSheet {
 		assert_initialized_main_thread!();
 		unsafe {

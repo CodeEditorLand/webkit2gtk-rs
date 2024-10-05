@@ -2,8 +2,9 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::{UserContentInjectedFrames, UserScriptInjectionTime};
 use glib::translate::*;
+
+use crate::{UserContentInjectedFrames, UserScriptInjectionTime};
 
 glib::wrapper! {
 	#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -19,11 +20,11 @@ glib::wrapper! {
 impl UserScript {
 	#[doc(alias = "webkit_user_script_new")]
 	pub fn new(
-		source: &str,
-		injected_frames: UserContentInjectedFrames,
-		injection_time: UserScriptInjectionTime,
-		allow_list: &[&str],
-		block_list: &[&str],
+		source:&str,
+		injected_frames:UserContentInjectedFrames,
+		injection_time:UserScriptInjectionTime,
+		allow_list:&[&str],
+		block_list:&[&str],
 	) -> UserScript {
 		assert_initialized_main_thread!();
 		unsafe {
@@ -42,12 +43,12 @@ impl UserScript {
 	#[doc(alias = "webkit_user_script_new_for_world")]
 	#[doc(alias = "new_for_world")]
 	pub fn for_world(
-		source: &str,
-		injected_frames: UserContentInjectedFrames,
-		injection_time: UserScriptInjectionTime,
-		world_name: &str,
-		allow_list: &[&str],
-		block_list: &[&str],
+		source:&str,
+		injected_frames:UserContentInjectedFrames,
+		injection_time:UserScriptInjectionTime,
+		world_name:&str,
+		allow_list:&[&str],
+		block_list:&[&str],
 	) -> UserScript {
 		assert_initialized_main_thread!();
 		unsafe {

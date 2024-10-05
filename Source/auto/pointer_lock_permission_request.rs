@@ -14,5 +14,5 @@ glib::wrapper! {
 }
 
 impl PointerLockPermissionRequest {
-	pub const NONE: Option<&'static PointerLockPermissionRequest> = None;
+	pub const NONE:Option<&'static PointerLockPermissionRequest> = None;
 }

@@ -2,6 +2,10 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
+#[cfg(feature = "v2_8")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
+use std::boxed::Box as Box_;
+
 use glib::prelude::*;
 #[cfg(feature = "v2_8")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
@@ -9,9 +13,6 @@ use glib::{
 	signal::{connect_raw, SignalHandlerId},
 	translate::*,
 };
-#[cfg(feature = "v2_8")]
-#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-use std::boxed::Box as Box_;
 
 glib::wrapper! {
 	#[doc(alias = "WebKitColorChooserRequest")]
@@ -23,12 +24,15 @@ glib::wrapper! {
 }
 
 impl ColorChooserRequest {
-	pub const NONE: Option<&'static ColorChooserRequest> = None;
+	pub const NONE:Option<&'static ColorChooserRequest> = None;
 
 	// rustdoc-stripper-ignore-next
-	/// Creates a new builder-pattern struct instance to construct [`ColorChooserRequest`] objects.
+	/// Creates a new builder-pattern struct instance to construct
+	/// [`ColorChooserRequest`] objects.
 	///
-	/// This method returns an instance of [`ColorChooserRequestBuilder`](crate::builders::ColorChooserRequestBuilder) which can be used to create [`ColorChooserRequest`] objects.
+	/// This method returns an instance of
+	/// [`ColorChooserRequestBuilder`](crate::builders::ColorChooserRequestBuilder)
+	/// which can be used to create [`ColorChooserRequest`] objects.
 	pub fn builder() -> ColorChooserRequestBuilder {
 		ColorChooserRequestBuilder::new()
 	}
@@ -40,40 +44,40 @@ impl ColorChooserRequest {
 /// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
 #[must_use = "The builder must be built to be used"]
 pub struct ColorChooserRequestBuilder {
-	builder: glib::object::ObjectBuilder<'static, ColorChooserRequest>,
+	builder:glib::object::ObjectBuilder<'static, ColorChooserRequest>,
 }
 
 impl ColorChooserRequestBuilder {
-	fn new() -> Self {
-		Self { builder: glib::object::Object::builder() }
-	}
+	fn new() -> Self { Self { builder:glib::object::Object::builder() } }
 
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-	pub fn rgba(self, rgba: &gdk::RGBA) -> Self {
-		Self { builder: self.builder.property("rgba", rgba) }
+	pub fn rgba(self, rgba:&gdk::RGBA) -> Self {
+		Self { builder:self.builder.property("rgba", rgba) }
 	}
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`ColorChooserRequest`].
-	#[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
-	pub fn build(self) -> ColorChooserRequest {
-		self.builder.build()
-	}
+	#[must_use = "Building the object from the builder is usually expensive \
+	              and is not expected to have side effects"]
+	pub fn build(self) -> ColorChooserRequest { self.builder.build() }
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::ColorChooserRequest>> Sealed for T {}
+	impl<T:super::IsA<super::ColorChooserRequest>> Sealed for T {}
 }
 
-pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 'static {
+pub trait ColorChooserRequestExt:
+	IsA<ColorChooserRequest> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "webkit_color_chooser_request_cancel")]
 	fn cancel(&self) {
 		unsafe {
-			ffi::webkit_color_chooser_request_cancel(self.as_ref().to_glib_none().0);
+			ffi::webkit_color_chooser_request_cancel(
+				self.as_ref().to_glib_none().0,
+			);
 		}
 	}
 
@@ -82,7 +86,9 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	#[doc(alias = "webkit_color_chooser_request_finish")]
 	fn finish(&self) {
 		unsafe {
-			ffi::webkit_color_chooser_request_finish(self.as_ref().to_glib_none().0);
+			ffi::webkit_color_chooser_request_finish(
+				self.as_ref().to_glib_none().0,
+			);
 		}
 	}
 
@@ -119,7 +125,7 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "webkit_color_chooser_request_set_rgba")]
-	fn set_rgba(&self, rgba: &gdk::RGBA) {
+	fn set_rgba(&self, rgba:&gdk::RGBA) {
 		unsafe {
 			ffi::webkit_color_chooser_request_set_rgba(
 				self.as_ref().to_glib_none().0,
@@ -131,16 +137,19 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "finished")]
-	fn connect_finished<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
-		unsafe extern fn finished_trampoline<P: IsA<ColorChooserRequest>, F: Fn(&P) + 'static>(
-			this: *mut ffi::WebKitColorChooserRequest,
-			f: glib::ffi::gpointer,
+	fn connect_finished<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn finished_trampoline<
+			P:IsA<ColorChooserRequest>,
+			F:Fn(&P) + 'static,
+		>(
+			this:*mut ffi::WebKitColorChooserRequest,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
+			let f:&F = &*(f as *const F);
 			f(ColorChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"finished\0".as_ptr() as *const _,
@@ -155,20 +164,23 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "rgba")]
-	fn connect_rgba_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+	fn connect_rgba_notify<F:Fn(&Self) + 'static>(
+		&self,
+		f:F,
+	) -> SignalHandlerId {
 		unsafe extern fn notify_rgba_trampoline<
-			P: IsA<ColorChooserRequest>,
-			F: Fn(&P) + 'static,
+			P:IsA<ColorChooserRequest>,
+			F:Fn(&P) + 'static,
 		>(
-			this: *mut ffi::WebKitColorChooserRequest,
-			_param_spec: glib::ffi::gpointer,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitColorChooserRequest,
+			_param_spec:glib::ffi::gpointer,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
+			let f:&F = &*(f as *const F);
 			f(ColorChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::rgba\0".as_ptr() as *const _,
@@ -181,4 +193,4 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	}
 }
 
-impl<O: IsA<ColorChooserRequest>> ColorChooserRequestExt for O {}
+impl<O:IsA<ColorChooserRequest>> ColorChooserRequestExt for O {}

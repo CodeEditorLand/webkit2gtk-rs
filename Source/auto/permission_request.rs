@@ -14,19 +14,22 @@ glib::wrapper! {
 }
 
 impl PermissionRequest {
-	pub const NONE: Option<&'static PermissionRequest> = None;
+	pub const NONE:Option<&'static PermissionRequest> = None;
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::PermissionRequest>> Sealed for T {}
+	impl<T:super::IsA<super::PermissionRequest>> Sealed for T {}
 }
 
-pub trait PermissionRequestExt: IsA<PermissionRequest> + sealed::Sealed + 'static {
+pub trait PermissionRequestExt:
+	IsA<PermissionRequest> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_permission_request_allow")]
 	fn allow(&self) {
 		unsafe {
-			ffi::webkit_permission_request_allow(self.as_ref().to_glib_none().0);
+			ffi::webkit_permission_request_allow(
+				self.as_ref().to_glib_none().0,
+			);
 		}
 	}
 
@@ -38,4 +41,4 @@ pub trait PermissionRequestExt: IsA<PermissionRequest> + sealed::Sealed + 'stati
 	}
 }
 
-impl<O: IsA<PermissionRequest>> PermissionRequestExt for O {}
+impl<O:IsA<PermissionRequest>> PermissionRequestExt for O {}

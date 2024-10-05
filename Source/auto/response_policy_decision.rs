@@ -2,13 +2,15 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::{PolicyDecision, URIRequest, URIResponse};
+use std::boxed::Box as Box_;
+
 use glib::{
 	prelude::*,
 	signal::{connect_raw, SignalHandlerId},
 	translate::*,
 };
-use std::boxed::Box as Box_;
+
+use crate::{PolicyDecision, URIRequest, URIResponse};
 
 glib::wrapper! {
 	#[doc(alias = "WebKitResponsePolicyDecision")]
@@ -20,17 +22,16 @@ glib::wrapper! {
 }
 
 impl ResponsePolicyDecision {
-	pub const NONE: Option<&'static ResponsePolicyDecision> = None;
+	pub const NONE:Option<&'static ResponsePolicyDecision> = None;
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::ResponsePolicyDecision>> Sealed for T {}
+	impl<T:super::IsA<super::ResponsePolicyDecision>> Sealed for T {}
 }
 
 pub trait ResponsePolicyDecisionExt:
-	IsA<ResponsePolicyDecision> + sealed::Sealed + 'static
-{
+	IsA<ResponsePolicyDecision> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_response_policy_decision_get_request")]
 	#[doc(alias = "get_request")]
 	fn request(&self) -> Option<URIRequest> {
@@ -53,7 +54,9 @@ pub trait ResponsePolicyDecisionExt:
 
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
-	#[doc(alias = "webkit_response_policy_decision_is_main_frame_main_resource")]
+	#[doc(
+		alias = "webkit_response_policy_decision_is_main_frame_main_resource"
+	)]
 	fn is_main_frame_main_resource(&self) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_response_policy_decision_is_main_frame_main_resource(
@@ -67,27 +70,32 @@ pub trait ResponsePolicyDecisionExt:
 	#[doc(alias = "webkit_response_policy_decision_is_mime_type_supported")]
 	fn is_mime_type_supported(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_response_policy_decision_is_mime_type_supported(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(
+				ffi::webkit_response_policy_decision_is_mime_type_supported(
+					self.as_ref().to_glib_none().0,
+				),
+			)
 		}
 	}
 
 	#[doc(alias = "request")]
-	fn connect_request_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+	fn connect_request_notify<F:Fn(&Self) + 'static>(
+		&self,
+		f:F,
+	) -> SignalHandlerId {
 		unsafe extern fn notify_request_trampoline<
-			P: IsA<ResponsePolicyDecision>,
-			F: Fn(&P) + 'static,
+			P:IsA<ResponsePolicyDecision>,
+			F:Fn(&P) + 'static,
 		>(
-			this: *mut ffi::WebKitResponsePolicyDecision,
-			_param_spec: glib::ffi::gpointer,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitResponsePolicyDecision,
+			_param_spec:glib::ffi::gpointer,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
+			let f:&F = &*(f as *const F);
 			f(ResponsePolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::request\0".as_ptr() as *const _,
@@ -100,20 +108,23 @@ pub trait ResponsePolicyDecisionExt:
 	}
 
 	#[doc(alias = "response")]
-	fn connect_response_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+	fn connect_response_notify<F:Fn(&Self) + 'static>(
+		&self,
+		f:F,
+	) -> SignalHandlerId {
 		unsafe extern fn notify_response_trampoline<
-			P: IsA<ResponsePolicyDecision>,
-			F: Fn(&P) + 'static,
+			P:IsA<ResponsePolicyDecision>,
+			F:Fn(&P) + 'static,
 		>(
-			this: *mut ffi::WebKitResponsePolicyDecision,
-			_param_spec: glib::ffi::gpointer,
-			f: glib::ffi::gpointer,
+			this:*mut ffi::WebKitResponsePolicyDecision,
+			_param_spec:glib::ffi::gpointer,
+			f:glib::ffi::gpointer,
 		) {
-			let f: &F = &*(f as *const F);
+			let f:&F = &*(f as *const F);
 			f(ResponsePolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
 		unsafe {
-			let f: Box_<F> = Box_::new(f);
+			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::response\0".as_ptr() as *const _,
@@ -126,4 +137,4 @@ pub trait ResponsePolicyDecisionExt:
 	}
 }
 
-impl<O: IsA<ResponsePolicyDecision>> ResponsePolicyDecisionExt for O {}
+impl<O:IsA<ResponsePolicyDecision>> ResponsePolicyDecisionExt for O {}

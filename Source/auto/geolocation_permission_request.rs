@@ -14,5 +14,5 @@ glib::wrapper! {
 }
 
 impl GeolocationPermissionRequest {
-	pub const NONE: Option<&'static GeolocationPermissionRequest> = None;
+	pub const NONE:Option<&'static GeolocationPermissionRequest> = None;
 }

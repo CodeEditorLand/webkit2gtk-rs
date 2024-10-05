@@ -2,8 +2,9 @@
 // from gir-files (https://github.com/tauri-apps/gir-files)
 // DO NOT EDIT
 
-use crate::PermissionRequest;
 use glib::{prelude::*, translate::*};
+
+use crate::PermissionRequest;
 
 glib::wrapper! {
 	#[doc(alias = "WebKitWebsiteDataAccessPermissionRequest")]
@@ -15,18 +16,19 @@ glib::wrapper! {
 }
 
 impl WebsiteDataAccessPermissionRequest {
-	pub const NONE: Option<&'static WebsiteDataAccessPermissionRequest> = None;
+	pub const NONE:Option<&'static WebsiteDataAccessPermissionRequest> = None;
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::WebsiteDataAccessPermissionRequest>> Sealed for T {}
+	impl<T:super::IsA<super::WebsiteDataAccessPermissionRequest>> Sealed for T {}
 }
 
 pub trait WebsiteDataAccessPermissionRequestExt:
-	IsA<WebsiteDataAccessPermissionRequest> + sealed::Sealed + 'static
-{
-	#[doc(alias = "webkit_website_data_access_permission_request_get_current_domain")]
+	IsA<WebsiteDataAccessPermissionRequest> + sealed::Sealed + 'static {
+	#[doc(
+		alias = "webkit_website_data_access_permission_request_get_current_domain"
+	)]
 	#[doc(alias = "get_current_domain")]
 	fn current_domain(&self) -> Option<glib::GString> {
 		unsafe {
@@ -36,7 +38,9 @@ pub trait WebsiteDataAccessPermissionRequestExt:
 		}
 	}
 
-	#[doc(alias = "webkit_website_data_access_permission_request_get_requesting_domain")]
+	#[doc(
+		alias = "webkit_website_data_access_permission_request_get_requesting_domain"
+	)]
 	#[doc(alias = "get_requesting_domain")]
 	fn requesting_domain(&self) -> Option<glib::GString> {
 		unsafe {
@@ -49,4 +53,7 @@ pub trait WebsiteDataAccessPermissionRequestExt:
 	}
 }
 
-impl<O: IsA<WebsiteDataAccessPermissionRequest>> WebsiteDataAccessPermissionRequestExt for O {}
+impl<O:IsA<WebsiteDataAccessPermissionRequest>>
+	WebsiteDataAccessPermissionRequestExt for O
+{
+}

@@ -14,15 +14,16 @@ glib::wrapper! {
 }
 
 impl HitTestResult {
-	pub const NONE: Option<&'static HitTestResult> = None;
+	pub const NONE:Option<&'static HitTestResult> = None;
 
 	// rustdoc-stripper-ignore-next
-	/// Creates a new builder-pattern struct instance to construct [`HitTestResult`] objects.
+	/// Creates a new builder-pattern struct instance to construct
+	/// [`HitTestResult`] objects.
 	///
-	/// This method returns an instance of [`HitTestResultBuilder`](crate::builders::HitTestResultBuilder) which can be used to create [`HitTestResult`] objects.
-	pub fn builder() -> HitTestResultBuilder {
-		HitTestResultBuilder::new()
-	}
+	/// This method returns an instance of
+	/// [`HitTestResultBuilder`](crate::builders::HitTestResultBuilder) which
+	/// can be used to create [`HitTestResult`] objects.
+	pub fn builder() -> HitTestResultBuilder { HitTestResultBuilder::new() }
 }
 
 // rustdoc-stripper-ignore-next
@@ -31,52 +32,50 @@ impl HitTestResult {
 /// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
 #[must_use = "The builder must be built to be used"]
 pub struct HitTestResultBuilder {
-	builder: glib::object::ObjectBuilder<'static, HitTestResult>,
+	builder:glib::object::ObjectBuilder<'static, HitTestResult>,
 }
 
 impl HitTestResultBuilder {
-	fn new() -> Self {
-		Self { builder: glib::object::Object::builder() }
+	fn new() -> Self { Self { builder:glib::object::Object::builder() } }
+
+	pub fn context(self, context:u32) -> Self {
+		Self { builder:self.builder.property("context", context) }
 	}
 
-	pub fn context(self, context: u32) -> Self {
-		Self { builder: self.builder.property("context", context) }
+	pub fn image_uri(self, image_uri:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("image-uri", image_uri.into()) }
 	}
 
-	pub fn image_uri(self, image_uri: impl Into<glib::GString>) -> Self {
-		Self { builder: self.builder.property("image-uri", image_uri.into()) }
+	pub fn link_label(self, link_label:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("link-label", link_label.into()) }
 	}
 
-	pub fn link_label(self, link_label: impl Into<glib::GString>) -> Self {
-		Self { builder: self.builder.property("link-label", link_label.into()) }
+	pub fn link_title(self, link_title:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("link-title", link_title.into()) }
 	}
 
-	pub fn link_title(self, link_title: impl Into<glib::GString>) -> Self {
-		Self { builder: self.builder.property("link-title", link_title.into()) }
+	pub fn link_uri(self, link_uri:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("link-uri", link_uri.into()) }
 	}
 
-	pub fn link_uri(self, link_uri: impl Into<glib::GString>) -> Self {
-		Self { builder: self.builder.property("link-uri", link_uri.into()) }
-	}
-
-	pub fn media_uri(self, media_uri: impl Into<glib::GString>) -> Self {
-		Self { builder: self.builder.property("media-uri", media_uri.into()) }
+	pub fn media_uri(self, media_uri:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("media-uri", media_uri.into()) }
 	}
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`HitTestResult`].
-	#[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
-	pub fn build(self) -> HitTestResult {
-		self.builder.build()
-	}
+	#[must_use = "Building the object from the builder is usually expensive \
+	              and is not expected to have side effects"]
+	pub fn build(self) -> HitTestResult { self.builder.build() }
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T: super::IsA<super::HitTestResult>> Sealed for T {}
+	impl<T:super::IsA<super::HitTestResult>> Sealed for T {}
 }
 
-pub trait HitTestResultExt: IsA<HitTestResult> + sealed::Sealed + 'static {
+pub trait HitTestResultExt:
+	IsA<HitTestResult> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_hit_test_result_context_is_editable")]
 	fn context_is_editable(&self) -> bool {
 		unsafe {
@@ -89,21 +88,27 @@ pub trait HitTestResultExt: IsA<HitTestResult> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_hit_test_result_context_is_image")]
 	fn context_is_image(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_hit_test_result_context_is_image(self.as_ref().to_glib_none().0))
+			from_glib(ffi::webkit_hit_test_result_context_is_image(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_hit_test_result_context_is_link")]
 	fn context_is_link(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_hit_test_result_context_is_link(self.as_ref().to_glib_none().0))
+			from_glib(ffi::webkit_hit_test_result_context_is_link(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_hit_test_result_context_is_media")]
 	fn context_is_media(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_hit_test_result_context_is_media(self.as_ref().to_glib_none().0))
+			from_glib(ffi::webkit_hit_test_result_context_is_media(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -130,7 +135,11 @@ pub trait HitTestResultExt: IsA<HitTestResult> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_hit_test_result_get_context")]
 	#[doc(alias = "get_context")]
 	fn context(&self) -> u32 {
-		unsafe { ffi::webkit_hit_test_result_get_context(self.as_ref().to_glib_none().0) }
+		unsafe {
+			ffi::webkit_hit_test_result_get_context(
+				self.as_ref().to_glib_none().0,
+			)
+		}
 	}
 
 	#[doc(alias = "webkit_hit_test_result_get_image_uri")]
@@ -167,7 +176,9 @@ pub trait HitTestResultExt: IsA<HitTestResult> + sealed::Sealed + 'static {
 	#[doc(alias = "get_link_uri")]
 	fn link_uri(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_hit_test_result_get_link_uri(self.as_ref().to_glib_none().0))
+			from_glib_none(ffi::webkit_hit_test_result_get_link_uri(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -182,4 +193,4 @@ pub trait HitTestResultExt: IsA<HitTestResult> + sealed::Sealed + 'static {
 	}
 }
 
-impl<O: IsA<HitTestResult>> HitTestResultExt for O {}
+impl<O:IsA<HitTestResult>> HitTestResultExt for O {}
