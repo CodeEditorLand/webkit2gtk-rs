@@ -37,14 +37,10 @@ fn main() {
 	let context = WebContext::default().unwrap();
 	#[cfg(feature = "v2_4")]
 	context.set_web_extensions_initialization_user_data(&"webkit".to_variant());
-	context.set_web_extensions_directory(
-		"../webkit2gtk-webextension-rs/example/target/debug/",
-	);
+	context.set_web_extensions_directory("../webkit2gtk-webextension-rs/example/target/debug/");
 	#[cfg(feature = "v2_6")]
-	let webview = WebView::new_with_context_and_user_content_manager(
-		&context,
-		&UserContentManager::new(),
-	);
+	let webview =
+		WebView::new_with_context_and_user_content_manager(&context, &UserContentManager::new());
 	#[cfg(not(feature = "v2_6"))]
 	let webview = WebView::with_context(&context);
 	webview.load_uri("https://crates.io/");
@@ -58,11 +54,7 @@ fn main() {
 
 	window.show_all();
 
-	webview.run_javascript(
-		"alert('Hello');",
-		None::<&gio::Cancellable>,
-		|_result| {},
-	);
+	webview.run_javascript("alert('Hello');", None::<&gio::Cancellable>, |_result| {});
 	#[cfg(feature = "v2_22")]
 	webview.run_javascript("42", None::<&gio::Cancellable>, |result| {
 		match result {

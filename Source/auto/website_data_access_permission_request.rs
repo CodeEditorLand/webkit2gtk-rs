@@ -26,9 +26,7 @@ mod sealed {
 
 pub trait WebsiteDataAccessPermissionRequestExt:
 	IsA<WebsiteDataAccessPermissionRequest> + sealed::Sealed + 'static {
-	#[doc(
-		alias = "webkit_website_data_access_permission_request_get_current_domain"
-	)]
+	#[doc(alias = "webkit_website_data_access_permission_request_get_current_domain")]
 	#[doc(alias = "get_current_domain")]
 	fn current_domain(&self) -> Option<glib::GString> {
 		unsafe {
@@ -38,9 +36,7 @@ pub trait WebsiteDataAccessPermissionRequestExt:
 		}
 	}
 
-	#[doc(
-		alias = "webkit_website_data_access_permission_request_get_requesting_domain"
-	)]
+	#[doc(alias = "webkit_website_data_access_permission_request_get_requesting_domain")]
 	#[doc(alias = "get_requesting_domain")]
 	fn requesting_domain(&self) -> Option<glib::GString> {
 		unsafe {
@@ -53,7 +49,4 @@ pub trait WebsiteDataAccessPermissionRequestExt:
 	}
 }
 
-impl<O:IsA<WebsiteDataAccessPermissionRequest>>
-	WebsiteDataAccessPermissionRequestExt for O
-{
-}
+impl<O:IsA<WebsiteDataAccessPermissionRequest>> WebsiteDataAccessPermissionRequestExt for O {}

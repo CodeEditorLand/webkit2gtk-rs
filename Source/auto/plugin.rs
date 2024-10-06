@@ -32,9 +32,7 @@ pub trait PluginExt: IsA<Plugin> + sealed::Sealed + 'static {
 	#[doc(alias = "get_description")]
 	fn description(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_plugin_get_description(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_plugin_get_description(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -44,11 +42,9 @@ pub trait PluginExt: IsA<Plugin> + sealed::Sealed + 'static {
 	#[doc(alias = "get_mime_info_list")]
 	fn mime_info_list(&self) -> Vec<MimeInfo> {
 		unsafe {
-			FromGlibPtrContainer::from_glib_none(
-				ffi::webkit_plugin_get_mime_info_list(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			FromGlibPtrContainer::from_glib_none(ffi::webkit_plugin_get_mime_info_list(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -57,11 +53,7 @@ pub trait PluginExt: IsA<Plugin> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_plugin_get_name")]
 	#[doc(alias = "get_name")]
 	fn name(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_plugin_get_name(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_plugin_get_name(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg_attr(feature = "v2_32", deprecated = "Since 2.32")]
@@ -69,11 +61,7 @@ pub trait PluginExt: IsA<Plugin> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_plugin_get_path")]
 	#[doc(alias = "get_path")]
 	fn path(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_plugin_get_path(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_plugin_get_path(self.as_ref().to_glib_none().0)) }
 	}
 }
 

@@ -54,9 +54,7 @@ pub trait ResponsePolicyDecisionExt:
 
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
-	#[doc(
-		alias = "webkit_response_policy_decision_is_main_frame_main_resource"
-	)]
+	#[doc(alias = "webkit_response_policy_decision_is_main_frame_main_resource")]
 	fn is_main_frame_main_resource(&self) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_response_policy_decision_is_main_frame_main_resource(
@@ -70,19 +68,14 @@ pub trait ResponsePolicyDecisionExt:
 	#[doc(alias = "webkit_response_policy_decision_is_mime_type_supported")]
 	fn is_mime_type_supported(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_response_policy_decision_is_mime_type_supported(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_response_policy_decision_is_mime_type_supported(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "request")]
-	fn connect_request_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_request_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_request_trampoline<
 			P:IsA<ResponsePolicyDecision>,
 			F:Fn(&P) + 'static,
@@ -108,10 +101,7 @@ pub trait ResponsePolicyDecisionExt:
 	}
 
 	#[doc(alias = "response")]
-	fn connect_response_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_response_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_response_trampoline<
 			P:IsA<ResponsePolicyDecision>,
 			F:Fn(&P) + 'static,

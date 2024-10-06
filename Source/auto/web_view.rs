@@ -40,11 +40,7 @@ use crate::WebsiteDataManager;
 use crate::WebsitePolicies;
 #[cfg(feature = "v2_28")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
-use crate::{
-	AutomationBrowsingContextPresentation,
-	InputMethodContext,
-	UserMessage,
-};
+use crate::{AutomationBrowsingContextPresentation, InputMethodContext, UserMessage};
 use crate::{
 	BackForwardList,
 	BackForwardListItem,
@@ -94,10 +90,7 @@ impl WebView {
 	#[doc(alias = "webkit_web_view_new")]
 	pub fn new() -> WebView {
 		assert_initialized_main_thread!();
-		unsafe {
-			gtk::Widget::from_glib_none(ffi::webkit_web_view_new())
-				.unsafe_cast()
-		}
+		unsafe { gtk::Widget::from_glib_none(ffi::webkit_web_view_new()).unsafe_cast() }
 	}
 
 	#[doc(alias = "webkit_web_view_new_with_context")]
@@ -119,11 +112,9 @@ impl WebView {
 	pub fn with_related_view(web_view:&impl IsA<WebView>) -> WebView {
 		skip_assert_initialized!();
 		unsafe {
-			gtk::Widget::from_glib_full(
-				ffi::webkit_web_view_new_with_related_view(
-					web_view.as_ref().to_glib_none().0,
-				),
-			)
+			gtk::Widget::from_glib_full(ffi::webkit_web_view_new_with_related_view(
+				web_view.as_ref().to_glib_none().0,
+			))
 			.unsafe_cast()
 		}
 	}
@@ -151,11 +142,9 @@ impl WebView {
 	) -> WebView {
 		skip_assert_initialized!();
 		unsafe {
-			gtk::Widget::from_glib_none(
-				ffi::webkit_web_view_new_with_user_content_manager(
-					user_content_manager.as_ref().to_glib_none().0,
-				),
-			)
+			gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_user_content_manager(
+				user_content_manager.as_ref().to_glib_none().0,
+			))
 			.unsafe_cast()
 		}
 	}
@@ -193,24 +182,16 @@ impl WebViewBuilder {
 		automation_presentation_type:AutomationBrowsingContextPresentation,
 	) -> Self {
 		Self {
-			builder:self.builder.property(
-				"automation-presentation-type",
-				automation_presentation_type,
-			),
+			builder:self
+				.builder
+				.property("automation-presentation-type", automation_presentation_type),
 		}
 	}
 
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
-	pub fn camera_capture_state(
-		self,
-		camera_capture_state:MediaCaptureState,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("camera-capture-state", camera_capture_state),
-		}
+	pub fn camera_capture_state(self, camera_capture_state:MediaCaptureState) -> Self {
+		Self { builder:self.builder.property("camera-capture-state", camera_capture_state) }
 	}
 
 	#[cfg(feature = "v2_38")]
@@ -229,15 +210,8 @@ impl WebViewBuilder {
 
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
-	pub fn display_capture_state(
-		self,
-		display_capture_state:MediaCaptureState,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("display-capture-state", display_capture_state),
-		}
+	pub fn display_capture_state(self, display_capture_state:MediaCaptureState) -> Self {
+		Self { builder:self.builder.property("display-capture-state", display_capture_state) }
 	}
 
 	#[cfg(feature = "v2_8")]
@@ -248,15 +222,11 @@ impl WebViewBuilder {
 
 	#[cfg(feature = "v2_18")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
-	pub fn is_controlled_by_automation(
-		self,
-		is_controlled_by_automation:bool,
-	) -> Self {
+	pub fn is_controlled_by_automation(self, is_controlled_by_automation:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"is-controlled-by-automation",
-				is_controlled_by_automation,
-			),
+			builder:self
+				.builder
+				.property("is-controlled-by-automation", is_controlled_by_automation),
 		}
 	}
 
@@ -274,57 +244,36 @@ impl WebViewBuilder {
 
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
-	pub fn microphone_capture_state(
-		self,
-		microphone_capture_state:MediaCaptureState,
-	) -> Self {
+	pub fn microphone_capture_state(self, microphone_capture_state:MediaCaptureState) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("microphone-capture-state", microphone_capture_state),
+			builder:self.builder.property("microphone-capture-state", microphone_capture_state),
 		}
 	}
 
 	#[cfg(feature = "v2_4")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
 	pub fn related_view(self, related_view:&impl IsA<WebView>) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("related-view", related_view.clone().upcast()),
-		}
+		Self { builder:self.builder.property("related-view", related_view.clone().upcast()) }
 	}
 
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	pub fn settings(self, settings:&impl IsA<Settings>) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("settings", settings.clone().upcast()),
-		}
+		Self { builder:self.builder.property("settings", settings.clone().upcast()) }
 	}
 
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
-	pub fn user_content_manager(
-		self,
-		user_content_manager:&impl IsA<UserContentManager>,
-	) -> Self {
+	pub fn user_content_manager(self, user_content_manager:&impl IsA<UserContentManager>) -> Self {
 		Self {
-			builder:self.builder.property(
-				"user-content-manager",
-				user_content_manager.clone().upcast(),
-			),
+			builder:self
+				.builder
+				.property("user-content-manager", user_content_manager.clone().upcast()),
 		}
 	}
 
 	pub fn web_context(self, web_context:&impl IsA<WebContext>) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("web-context", web_context.clone().upcast()),
-		}
+		Self { builder:self.builder.property("web-context", web_context.clone().upcast()) }
 	}
 
 	//    #[cfg(feature = "v2_38")]
@@ -335,15 +284,9 @@ impl WebViewBuilder {
 	//}
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-	pub fn website_policies(
-		self,
-		website_policies:&impl IsA<WebsitePolicies>,
-	) -> Self {
+	pub fn website_policies(self, website_policies:&impl IsA<WebsitePolicies>) -> Self {
 		Self {
-			builder:self.builder.property(
-				"website-policies",
-				website_policies.clone().upcast(),
-			),
+			builder:self.builder.property("website-policies", website_policies.clone().upcast()),
 		}
 	}
 
@@ -380,9 +323,7 @@ impl WebViewBuilder {
 	#[cfg_attr(docsrs, doc(cfg(feature = "gtk_v2_18")))]
 	#[cfg_attr(feature = "v3_14", deprecated = "Since 3.14")]
 	pub fn double_buffered(self, double_buffered:bool) -> Self {
-		Self {
-			builder:self.builder.property("double-buffered", double_buffered),
-		}
+		Self { builder:self.builder.property("double-buffered", double_buffered) }
 	}
 
 	// pub fn events(self, events: /*Ignored*/gdk::EventMask) -> Self {
@@ -500,15 +441,11 @@ impl WebViewBuilder {
 	}
 
 	pub fn parent(self, parent:&impl IsA<gtk::Container>) -> Self {
-		Self {
-			builder:self.builder.property("parent", parent.clone().upcast()),
-		}
+		Self { builder:self.builder.property("parent", parent.clone().upcast()) }
 	}
 
 	pub fn receives_default(self, receives_default:bool) -> Self {
-		Self {
-			builder:self.builder.property("receives-default", receives_default),
-		}
+		Self { builder:self.builder.property("receives-default", receives_default) }
 	}
 
 	pub fn sensitive(self, sensitive:bool) -> Self {
@@ -522,23 +459,14 @@ impl WebViewBuilder {
 
 	#[cfg(feature = "gtk_v2_12")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "gtk_v2_12")))]
-	pub fn tooltip_markup(
-		self,
-		tooltip_markup:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("tooltip-markup", tooltip_markup.into()),
-		}
+	pub fn tooltip_markup(self, tooltip_markup:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("tooltip-markup", tooltip_markup.into()) }
 	}
 
 	#[cfg(feature = "gtk_v2_12")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "gtk_v2_12")))]
 	pub fn tooltip_text(self, tooltip_text:impl Into<glib::GString>) -> Self {
-		Self {
-			builder:self.builder.property("tooltip-text", tooltip_text.into()),
-		}
+		Self { builder:self.builder.property("tooltip-text", tooltip_text.into()) }
 	}
 
 	//    #[cfg(feature = "gtk_v3")]
@@ -568,8 +496,8 @@ impl WebViewBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`WebView`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> WebView { self.builder.build() }
 }
 
@@ -597,13 +525,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -616,12 +542,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
-			let ret =
-				ffi::webkit_web_view_call_async_javascript_function_finish(
-					_source_object as *mut _,
-					res,
-					&mut error,
-				);
+			let ret = ffi::webkit_web_view_call_async_javascript_function_finish(
+				_source_object as *mut _,
+				res,
+				&mut error,
+			);
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
@@ -658,9 +583,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		source_uri:Option<&str>,
 	) -> Pin<
 		Box_<
-			dyn std::future::Future<
-					Output = Result<java_script_core::Value, glib::Error>,
-				> + 'static,
+			dyn std::future::Future<Output = Result<java_script_core::Value, glib::Error>>
+				+ 'static,
 		>,
 	> {
 		let body = String::from(body);
@@ -682,9 +606,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "webkit_web_view_can_execute_editing_command")]
-	fn can_execute_editing_command<
-		P:FnOnce(Result<(), glib::Error>) + 'static,
-	>(
+	fn can_execute_editing_command<P:FnOnce(Result<(), glib::Error>) + 'static>(
 		&self,
 		command:&str,
 		cancellable:Option<&impl IsA<gio::Cancellable>>,
@@ -692,13 +614,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -716,11 +636,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				res,
 				&mut error,
 			);
-			let result = if error.is_null() {
-				Ok(())
-			} else {
-				Err(from_glib_full(error))
-			};
+			let result = if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) };
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
 			let callback:P = callback.into_inner();
@@ -741,39 +657,23 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn can_execute_editing_command_future(
 		&self,
 		command:&str,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<Output = Result<(), glib::Error>> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>> {
 		let command = String::from(command);
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
-			obj.can_execute_editing_command(
-				&command,
-				Some(cancellable),
-				move |res| {
-					send.resolve(res);
-				},
-			);
+			obj.can_execute_editing_command(&command, Some(cancellable), move |res| {
+				send.resolve(res);
+			});
 		}))
 	}
 
 	#[doc(alias = "webkit_web_view_can_go_back")]
 	fn can_go_back(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_can_go_back(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_can_go_back(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_can_go_forward")]
 	fn can_go_forward(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_can_go_forward(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_can_go_forward(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_can_show_mime_type")]
@@ -799,9 +699,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
 	#[doc(alias = "webkit_web_view_evaluate_javascript")]
-	fn evaluate_javascript<
-		P:FnOnce(Result<java_script_core::Value, glib::Error>) + 'static,
-	>(
+	fn evaluate_javascript<P:FnOnce(Result<java_script_core::Value, glib::Error>) + 'static>(
 		&self,
 		script:&str,
 		world_name:Option<&str>,
@@ -813,13 +711,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -871,9 +767,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		source_uri:Option<&str>,
 	) -> Pin<
 		Box_<
-			dyn std::future::Future<
-					Output = Result<java_script_core::Value, glib::Error>,
-				> + 'static,
+			dyn std::future::Future<Output = Result<java_script_core::Value, glib::Error>>
+				+ 'static,
 		>,
 	> {
 		let script = String::from(script);
@@ -905,11 +800,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_10")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 	#[doc(alias = "webkit_web_view_execute_editing_command_with_argument")]
-	fn execute_editing_command_with_argument(
-		&self,
-		command:&str,
-		argument:&str,
-	) {
+	fn execute_editing_command_with_argument(&self, command:&str, argument:&str) {
 		unsafe {
 			ffi::webkit_web_view_execute_editing_command_with_argument(
 				self.as_ref().to_glib_none().0,
@@ -923,9 +814,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "webkit_web_view_get_automation_presentation_type")]
 	#[doc(alias = "get_automation_presentation_type")]
-	fn automation_presentation_type(
-		&self,
-	) -> AutomationBrowsingContextPresentation {
+	fn automation_presentation_type(&self) -> AutomationBrowsingContextPresentation {
 		unsafe {
 			from_glib(ffi::webkit_web_view_get_automation_presentation_type(
 				self.as_ref().to_glib_none().0,
@@ -964,29 +853,21 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "get_camera_capture_state")]
 	fn camera_capture_state(&self) -> MediaCaptureState {
 		unsafe {
-			from_glib(ffi::webkit_web_view_get_camera_capture_state(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_web_view_get_camera_capture_state(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_web_view_get_context")]
 	#[doc(alias = "get_context")]
 	fn context(&self) -> Option<WebContext> {
-		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_context(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_web_view_get_context(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_get_custom_charset")]
 	#[doc(alias = "get_custom_charset")]
 	fn custom_charset(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_custom_charset(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_web_view_get_custom_charset(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -996,11 +877,9 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "get_default_content_security_policy")]
 	fn default_content_security_policy(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(
-				ffi::webkit_web_view_get_default_content_security_policy(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib_none(ffi::webkit_web_view_get_default_content_security_policy(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -1022,39 +901,27 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "get_editor_state")]
 	fn editor_state(&self) -> Option<EditorState> {
 		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_editor_state(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_web_view_get_editor_state(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_web_view_get_estimated_load_progress")]
 	#[doc(alias = "get_estimated_load_progress")]
 	fn estimated_load_progress(&self) -> f64 {
-		unsafe {
-			ffi::webkit_web_view_get_estimated_load_progress(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_web_view_get_estimated_load_progress(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_web_view_get_favicon")]
 	#[doc(alias = "get_favicon")]
 	fn favicon(&self) -> Option<cairo::Surface> {
-		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_favicon(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_web_view_get_favicon(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_get_find_controller")]
 	#[doc(alias = "get_find_controller")]
 	fn find_controller(&self) -> Option<FindController> {
 		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_find_controller(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_web_view_get_find_controller(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1074,9 +941,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "get_inspector")]
 	fn inspector(&self) -> Option<WebInspector> {
 		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_inspector(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_web_view_get_inspector(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1085,11 +950,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_get_is_muted")]
 	#[doc(alias = "get_is_muted")]
 	fn is_muted(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_get_is_muted(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_get_is_muted(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_34")]
@@ -1108,9 +969,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "get_main_resource")]
 	fn main_resource(&self) -> Option<WebResource> {
 		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_main_resource(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_web_view_get_main_resource(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1129,9 +988,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_get_page_id")]
 	#[doc(alias = "get_page_id")]
 	fn page_id(&self) -> u64 {
-		unsafe {
-			ffi::webkit_web_view_get_page_id(self.as_ref().to_glib_none().0)
-		}
+		unsafe { ffi::webkit_web_view_get_page_id(self.as_ref().to_glib_none().0) }
 	}
 
 	#[cfg(feature = "v2_12")]
@@ -1140,20 +997,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "get_session_state")]
 	fn session_state(&self) -> Option<WebViewSessionState> {
 		unsafe {
-			from_glib_full(ffi::webkit_web_view_get_session_state(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_full(ffi::webkit_web_view_get_session_state(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_web_view_get_settings")]
 	#[doc(alias = "get_settings")]
 	fn settings(&self) -> Option<Settings> {
-		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_settings(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_web_view_get_settings(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_get_snapshot")]
@@ -1167,13 +1018,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -1186,11 +1035,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
-			let ret = ffi::webkit_web_view_get_snapshot_finish(
-				_source_object as *mut _,
-				res,
-				&mut error,
-			);
+			let ret =
+				ffi::webkit_web_view_get_snapshot_finish(_source_object as *mut _, res, &mut error);
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
@@ -1218,13 +1064,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		&self,
 		region:SnapshotRegion,
 		options:SnapshotOptions,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<
-					Output = Result<cairo::Surface, glib::Error>,
-				> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<cairo::Surface, glib::Error>> + 'static>>
+	{
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.snapshot(region, options, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1235,18 +1076,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_get_title")]
 	#[doc(alias = "get_title")]
 	fn title(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_title(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_web_view_get_title(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_get_tls_info")]
 	#[doc(alias = "get_tls_info")]
-	fn tls_info(
-		&self,
-	) -> Option<(gio::TlsCertificate, gio::TlsCertificateFlags)> {
+	fn tls_info(&self) -> Option<(gio::TlsCertificate, gio::TlsCertificateFlags)> {
 		unsafe {
 			let mut certificate = std::ptr::null_mut();
 			let mut errors = std::mem::MaybeUninit::uninit();
@@ -1256,10 +1091,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				errors.as_mut_ptr(),
 			));
 			if ret {
-				Some((
-					from_glib_none(certificate),
-					from_glib(errors.assume_init()),
-				))
+				Some((from_glib_none(certificate), from_glib(errors.assume_init())))
 			} else {
 				None
 			}
@@ -1269,11 +1101,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_get_uri")]
 	#[doc(alias = "get_uri")]
 	fn uri(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_web_view_get_uri(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_web_view_get_uri(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_6")]
@@ -1333,9 +1161,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_get_zoom_level")]
 	#[doc(alias = "get_zoom_level")]
 	fn zoom_level(&self) -> f64 {
-		unsafe {
-			ffi::webkit_web_view_get_zoom_level(self.as_ref().to_glib_none().0)
-		}
+		unsafe { ffi::webkit_web_view_get_zoom_level(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_web_view_go_back")]
@@ -1353,10 +1179,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "webkit_web_view_go_to_back_forward_list_item")]
-	fn go_to_back_forward_list_item(
-		&self,
-		list_item:&impl IsA<BackForwardListItem>,
-	) {
+	fn go_to_back_forward_list_item(&self, list_item:&impl IsA<BackForwardListItem>) {
 		unsafe {
 			ffi::webkit_web_view_go_to_back_forward_list_item(
 				self.as_ref().to_glib_none().0,
@@ -1380,51 +1203,30 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "webkit_web_view_is_editable")]
 	fn is_editable(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_is_editable(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_is_editable(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[doc(alias = "webkit_web_view_is_ephemeral")]
 	fn is_ephemeral(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_is_ephemeral(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_is_ephemeral(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_is_loading")]
 	fn is_loading(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_is_loading(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_is_loading(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "webkit_web_view_is_playing_audio")]
 	fn is_playing_audio(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_web_view_is_playing_audio(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_web_view_is_playing_audio(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_web_view_load_alternate_html")]
-	fn load_alternate_html(
-		&self,
-		content:&str,
-		content_uri:&str,
-		base_uri:Option<&str>,
-	) {
+	fn load_alternate_html(&self, content:&str, content_uri:&str, base_uri:Option<&str>) {
 		unsafe {
 			ffi::webkit_web_view_load_alternate_html(
 				self.as_ref().to_glib_none().0,
@@ -1490,10 +1292,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_load_uri")]
 	fn load_uri(&self, uri:&str) {
 		unsafe {
-			ffi::webkit_web_view_load_uri(
-				self.as_ref().to_glib_none().0,
-				uri.to_glib_none().0,
-			);
+			ffi::webkit_web_view_load_uri(self.as_ref().to_glib_none().0, uri.to_glib_none().0);
 		}
 	}
 
@@ -1507,9 +1306,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_reload_bypass_cache")]
 	fn reload_bypass_cache(&self) {
 		unsafe {
-			ffi::webkit_web_view_reload_bypass_cache(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_web_view_reload_bypass_cache(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -1540,9 +1337,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
 	#[allow(deprecated)]
 	#[doc(alias = "webkit_web_view_run_javascript")]
-	fn run_javascript<
-		P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static,
-	>(
+	fn run_javascript<P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static>(
 		&self,
 		script:&str,
 		cancellable:Option<&impl IsA<gio::Cancellable>>,
@@ -1550,13 +1345,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -1601,13 +1394,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn run_javascript_future(
 		&self,
 		script:&str,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<
-					Output = Result<JavascriptResult, glib::Error>,
-				> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<JavascriptResult, glib::Error>> + 'static>>
+	{
 		let script = String::from(script);
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.run_javascript(&script, Some(cancellable), move |res| {
@@ -1619,9 +1407,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
 	#[allow(deprecated)]
 	#[doc(alias = "webkit_web_view_run_javascript_from_gresource")]
-	fn run_javascript_from_gresource<
-		P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static,
-	>(
+	fn run_javascript_from_gresource<P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static>(
 		&self,
 		resource:&str,
 		cancellable:Option<&impl IsA<gio::Cancellable>>,
@@ -1629,13 +1415,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -1680,22 +1464,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn run_javascript_from_gresource_future(
 		&self,
 		resource:&str,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<
-					Output = Result<JavascriptResult, glib::Error>,
-				> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<JavascriptResult, glib::Error>> + 'static>>
+	{
 		let resource = String::from(resource);
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
-			obj.run_javascript_from_gresource(
-				&resource,
-				Some(cancellable),
-				move |res| {
-					send.resolve(res);
-				},
-			);
+			obj.run_javascript_from_gresource(&resource, Some(cancellable), move |res| {
+				send.resolve(res);
+			});
 		}))
 	}
 
@@ -1704,9 +1479,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
 	#[allow(deprecated)]
 	#[doc(alias = "webkit_web_view_run_javascript_in_world")]
-	fn run_javascript_in_world<
-		P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static,
-	>(
+	fn run_javascript_in_world<P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static>(
 		&self,
 		script:&str,
 		world_name:&str,
@@ -1715,13 +1488,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -1769,24 +1540,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		&self,
 		script:&str,
 		world_name:&str,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<
-					Output = Result<JavascriptResult, glib::Error>,
-				> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<JavascriptResult, glib::Error>> + 'static>>
+	{
 		let script = String::from(script);
 		let world_name = String::from(world_name);
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
-			obj.run_javascript_in_world(
-				&script,
-				&world_name,
-				Some(cancellable),
-				move |res| {
-					send.resolve(res);
-				},
-			);
+			obj.run_javascript_in_world(&script, &world_name, Some(cancellable), move |res| {
+				send.resolve(res);
+			});
 		}))
 	}
 
@@ -1799,13 +1560,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -1818,11 +1577,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
-			let ret = ffi::webkit_web_view_save_finish(
-				_source_object as *mut _,
-				res,
-				&mut error,
-			);
+			let ret = ffi::webkit_web_view_save_finish(_source_object as *mut _, res, &mut error);
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
@@ -1848,13 +1603,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn save_future(
 		&self,
 		save_mode:SaveMode,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<
-					Output = Result<gio::InputStream, glib::Error>,
-				> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<gio::InputStream, glib::Error>> + 'static>>
+	{
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.save(save_mode, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1872,35 +1622,24 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
-		unsafe extern fn save_to_file_trampoline<
-			P:FnOnce(Result<(), glib::Error>) + 'static,
-		>(
+		unsafe extern fn save_to_file_trampoline<P:FnOnce(Result<(), glib::Error>) + 'static>(
 			_source_object:*mut glib::gobject_ffi::GObject,
 			res:*mut gio::ffi::GAsyncResult,
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
-			let _ = ffi::webkit_web_view_save_to_file_finish(
-				_source_object as *mut _,
-				res,
-				&mut error,
-			);
-			let result = if error.is_null() {
-				Ok(())
-			} else {
-				Err(from_glib_full(error))
-			};
+			let _ =
+				ffi::webkit_web_view_save_to_file_finish(_source_object as *mut _, res, &mut error);
+			let result = if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) };
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
 			let callback:P = callback.into_inner();
@@ -1923,11 +1662,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		&self,
 		file:&(impl IsA<gio::File> + Clone + 'static),
 		save_mode:SaveMode,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<Output = Result<(), glib::Error>> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>> {
 		let file = file.clone();
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.save_to_file(&file, save_mode, Some(cancellable), move |res| {
@@ -1939,9 +1674,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "webkit_web_view_send_message_to_page")]
-	fn send_message_to_page<
-		P:FnOnce(Result<UserMessage, glib::Error>) + 'static,
-	>(
+	fn send_message_to_page<P:FnOnce(Result<UserMessage, glib::Error>) + 'static>(
 		&self,
 		message:&impl IsA<UserMessage>,
 		cancellable:Option<&impl IsA<gio::Cancellable>>,
@@ -1949,13 +1682,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -2000,12 +1731,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn send_message_to_page_future(
 		&self,
 		message:&(impl IsA<UserMessage> + Clone + 'static),
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<Output = Result<UserMessage, glib::Error>>
-				+ 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<UserMessage, glib::Error>> + 'static>> {
 		let message = message.clone();
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.send_message_to_page(&message, Some(cancellable), move |res| {
@@ -2077,20 +1803,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_set_editable")]
 	fn set_editable(&self, editable:bool) {
 		unsafe {
-			ffi::webkit_web_view_set_editable(
-				self.as_ref().to_glib_none().0,
-				editable.into_glib(),
-			);
+			ffi::webkit_web_view_set_editable(self.as_ref().to_glib_none().0, editable.into_glib());
 		}
 	}
 
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "webkit_web_view_set_input_method_context")]
-	fn set_input_method_context(
-		&self,
-		context:Option<&impl IsA<InputMethodContext>>,
-	) {
+	fn set_input_method_context(&self, context:Option<&impl IsA<InputMethodContext>>) {
 		unsafe {
 			ffi::webkit_web_view_set_input_method_context(
 				self.as_ref().to_glib_none().0,
@@ -2104,10 +1824,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_set_is_muted")]
 	fn set_is_muted(&self, muted:bool) {
 		unsafe {
-			ffi::webkit_web_view_set_is_muted(
-				self.as_ref().to_glib_none().0,
-				muted.into_glib(),
-			);
+			ffi::webkit_web_view_set_is_muted(self.as_ref().to_glib_none().0, muted.into_glib());
 		}
 	}
 
@@ -2136,10 +1853,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_set_zoom_level")]
 	fn set_zoom_level(&self, zoom_level:f64) {
 		unsafe {
-			ffi::webkit_web_view_set_zoom_level(
-				self.as_ref().to_glib_none().0,
-				zoom_level,
-			);
+			ffi::webkit_web_view_set_zoom_level(self.as_ref().to_glib_none().0, zoom_level);
 		}
 	}
 
@@ -2155,9 +1869,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_web_view_terminate_web_process")]
 	fn terminate_web_process(&self) {
 		unsafe {
-			ffi::webkit_web_view_terminate_web_process(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_web_view_terminate_web_process(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -2178,9 +1890,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_2")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 	#[doc(alias = "authenticate")]
-	fn connect_authenticate<
-		F:Fn(&Self, &AuthenticationRequest) -> bool + 'static,
-	>(
+	fn connect_authenticate<F:Fn(&Self, &AuthenticationRequest) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2193,11 +1903,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(request),
-			)
-			.into_glib()
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
+				.into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2214,10 +1921,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 	#[doc(alias = "close")]
 	fn connect_close<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn close_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn close_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			f:glib::ffi::gpointer,
 		) {
@@ -2277,14 +1981,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "context-menu-dismissed")]
-	fn connect_context_menu_dismissed<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn context_menu_dismissed_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_context_menu_dismissed<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn context_menu_dismissed_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			f:glib::ffi::gpointer,
 		) {
@@ -2307,9 +2005,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	#[doc(alias = "create")]
-	fn connect_create<
-		F:Fn(&Self, &NavigationAction) -> Option<gtk::Widget> + 'static,
-	>(
+	fn connect_create<F:Fn(&Self, &NavigationAction) -> Option<gtk::Widget> + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2342,9 +2038,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "decide-policy")]
-	fn connect_decide_policy<
-		F:Fn(&Self, &PolicyDecision, PolicyDecisionType) -> bool + 'static,
-	>(
+	fn connect_decide_policy<F:Fn(&Self, &PolicyDecision, PolicyDecisionType) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2379,14 +2073,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enter-fullscreen")]
-	fn connect_enter_fullscreen<F:Fn(&Self) -> bool + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn enter_fullscreen_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) -> bool + 'static,
-		>(
+	fn connect_enter_fullscreen<F:Fn(&Self) -> bool + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn enter_fullscreen_trampoline<P:IsA<WebView>, F:Fn(&P) -> bool + 'static>(
 			this:*mut ffi::WebKitWebView,
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
@@ -2407,9 +2095,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "insecure-content-detected")]
-	fn connect_insecure_content_detected<
-		F:Fn(&Self, InsecureContentEvent) + 'static,
-	>(
+	fn connect_insecure_content_detected<F:Fn(&Self, InsecureContentEvent) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2422,10 +2108,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				from_glib(event),
-			)
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), from_glib(event))
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2433,8 +2116,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"insecure-content-detected\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					insecure_content_detected_trampoline::<Self, F>
-						as *const (),
+					insecure_content_detected_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2442,14 +2124,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "leave-fullscreen")]
-	fn connect_leave_fullscreen<F:Fn(&Self) -> bool + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn leave_fullscreen_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) -> bool + 'static,
-		>(
+	fn connect_leave_fullscreen<F:Fn(&Self) -> bool + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn leave_fullscreen_trampoline<P:IsA<WebView>, F:Fn(&P) -> bool + 'static>(
 			this:*mut ffi::WebKitWebView,
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
@@ -2470,23 +2146,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "load-changed")]
-	fn connect_load_changed<F:Fn(&Self, LoadEvent) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn load_changed_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P, LoadEvent) + 'static,
-		>(
+	fn connect_load_changed<F:Fn(&Self, LoadEvent) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn load_changed_trampoline<P:IsA<WebView>, F:Fn(&P, LoadEvent) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			load_event:ffi::WebKitLoadEvent,
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				from_glib(load_event),
-			)
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), from_glib(load_event))
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2502,9 +2169,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "load-failed")]
-	fn connect_load_failed<
-		F:Fn(&Self, LoadEvent, &str, &glib::Error) -> bool + 'static,
-	>(
+	fn connect_load_failed<F:Fn(&Self, LoadEvent, &str, &glib::Error) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2544,26 +2209,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	#[doc(alias = "load-failed-with-tls-errors")]
 	fn connect_load_failed_with_tls_errors<
-		F:Fn(
-				&Self,
-				&str,
-				&gio::TlsCertificate,
-				gio::TlsCertificateFlags,
-			) -> bool
-			+ 'static,
+		F:Fn(&Self, &str, &gio::TlsCertificate, gio::TlsCertificateFlags) -> bool + 'static,
 	>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
 		unsafe extern fn load_failed_with_tls_errors_trampoline<
 			P:IsA<WebView>,
-			F:Fn(
-					&P,
-					&str,
-					&gio::TlsCertificate,
-					gio::TlsCertificateFlags,
-				) -> bool
-				+ 'static,
+			F:Fn(&P, &str, &gio::TlsCertificate, gio::TlsCertificateFlags) -> bool + 'static,
 		>(
 			this:*mut ffi::WebKitWebView,
 			failing_uri:*mut libc::c_char,
@@ -2586,8 +2239,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"load-failed-with-tls-errors\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					load_failed_with_tls_errors_trampoline::<Self, F>
-						as *const (),
+					load_failed_with_tls_errors_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2595,9 +2247,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "mouse-target-changed")]
-	fn connect_mouse_target_changed<
-		F:Fn(&Self, &HitTestResult, u32) + 'static,
-	>(
+	fn connect_mouse_target_changed<F:Fn(&Self, &HitTestResult, u32) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2631,9 +2281,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "permission-request")]
-	fn connect_permission_request<
-		F:Fn(&Self, &PermissionRequest) -> bool + 'static,
-	>(
+	fn connect_permission_request<F:Fn(&Self, &PermissionRequest) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2646,11 +2294,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(request),
-			)
-			.into_glib()
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
+				.into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2706,14 +2351,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	//}
 
 	#[doc(alias = "ready-to-show")]
-	fn connect_ready_to_show<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn ready_to_show_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_ready_to_show<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn ready_to_show_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			f:glib::ffi::gpointer,
 		) {
@@ -2734,9 +2373,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "resource-load-started")]
-	fn connect_resource_load_started<
-		F:Fn(&Self, &WebResource, &URIRequest) + 'static,
-	>(
+	fn connect_resource_load_started<F:Fn(&Self, &WebResource, &URIRequest) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2770,14 +2407,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "run-as-modal")]
-	fn connect_run_as_modal<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn run_as_modal_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_run_as_modal<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn run_as_modal_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			f:glib::ffi::gpointer,
 		) {
@@ -2800,9 +2431,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "run-color-chooser")]
-	fn connect_run_color_chooser<
-		F:Fn(&Self, &ColorChooserRequest) -> bool + 'static,
-	>(
+	fn connect_run_color_chooser<F:Fn(&Self, &ColorChooserRequest) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2815,11 +2444,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(request),
-			)
-			.into_glib()
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
+				.into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2835,9 +2461,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "run-file-chooser")]
-	fn connect_run_file_chooser<
-		F:Fn(&Self, &FileChooserRequest) -> bool + 'static,
-	>(
+	fn connect_run_file_chooser<F:Fn(&Self, &FileChooserRequest) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2850,11 +2474,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(request),
-			)
-			.into_glib()
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
+				.into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2885,11 +2506,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(dialog),
-			)
-			.into_glib()
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(dialog))
+				.into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -2907,9 +2525,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "show-notification")]
-	fn connect_show_notification<
-		F:Fn(&Self, &Notification) -> bool + 'static,
-	>(
+	fn connect_show_notification<F:Fn(&Self, &Notification) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2996,10 +2612,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(request),
-			)
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -3017,9 +2630,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "user-message-received")]
-	fn connect_user_message_received<
-		F:Fn(&Self, &UserMessage) -> bool + 'static,
-	>(
+	fn connect_user_message_received<F:Fn(&Self, &UserMessage) -> bool + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3032,11 +2643,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				&from_glib_borrow(message),
-			)
-			.into_glib()
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(message))
+				.into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -3053,10 +2661,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 	#[cfg_attr(feature = "v2_20", deprecated = "Since 2.20")]
 	#[doc(alias = "web-process-crashed")]
-	fn connect_web_process_crashed<F:Fn(&Self) -> bool + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_web_process_crashed<F:Fn(&Self) -> bool + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn web_process_crashed_trampoline<
 			P:IsA<WebView>,
 			F:Fn(&P) -> bool + 'static,
@@ -3083,9 +2688,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_20")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 	#[doc(alias = "web-process-terminated")]
-	fn connect_web_process_terminated<
-		F:Fn(&Self, WebProcessTerminationReason) + 'static,
-	>(
+	fn connect_web_process_terminated<F:Fn(&Self, WebProcessTerminationReason) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3098,10 +2701,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
-			f(
-				WebView::from_glib_borrow(this).unsafe_cast_ref(),
-				from_glib(reason),
-			)
+			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), from_glib(reason))
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -3119,10 +2719,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 	#[doc(alias = "camera-capture-state")]
-	fn connect_camera_capture_state_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_camera_capture_state_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_camera_capture_state_trampoline<
 			P:IsA<WebView>,
 			F:Fn(&P) + 'static,
@@ -3140,8 +2737,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::camera-capture-state\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_camera_capture_state_trampoline::<Self, F>
-						as *const (),
+					notify_camera_capture_state_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3151,10 +2747,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 	#[doc(alias = "display-capture-state")]
-	fn connect_display_capture_state_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_display_capture_state_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_display_capture_state_trampoline<
 			P:IsA<WebView>,
 			F:Fn(&P) + 'static,
@@ -3172,8 +2765,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::display-capture-state\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_display_capture_state_trampoline::<Self, F>
-						as *const (),
+					notify_display_capture_state_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3183,14 +2775,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "editable")]
-	fn connect_editable_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_editable_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_editable_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_editable_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3233,8 +2819,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::estimated-load-progress\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_estimated_load_progress_trampoline::<Self, F>
-						as *const (),
+					notify_estimated_load_progress_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3242,14 +2827,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "favicon")]
-	fn connect_favicon_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_favicon_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_favicon_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_favicon_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3271,14 +2850,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "is-loading")]
-	fn connect_is_loading_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_is_loading_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_is_loading_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_is_loading_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3302,14 +2875,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 	#[doc(alias = "is-muted")]
-	fn connect_is_muted_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_is_muted_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_is_muted_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_is_muted_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3333,14 +2900,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "is-playing-audio")]
-	fn connect_is_playing_audio_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_is_playing_audio_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_is_playing_audio_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_is_playing_audio_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3385,8 +2946,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::is-web-process-responsive\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_is_web_process_responsive_trampoline::<Self, F>
-						as *const (),
+					notify_is_web_process_responsive_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3417,8 +2977,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::microphone-capture-state\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_microphone_capture_state_trampoline::<Self, F>
-						as *const (),
+					notify_microphone_capture_state_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3428,14 +2987,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "page-id")]
-	fn connect_page_id_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_page_id_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_page_id_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_page_id_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3459,14 +3012,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	#[doc(alias = "settings")]
-	fn connect_settings_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_settings_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_settings_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_settings_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3488,14 +3035,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "title")]
-	fn connect_title_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_title_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_title_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_title_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3517,14 +3058,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "uri")]
-	fn connect_uri_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_uri_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_uri_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_uri_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3546,14 +3081,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "zoom-level")]
-	fn connect_zoom_level_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_zoom_level_trampoline<
-			P:IsA<WebView>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_zoom_level_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_zoom_level_trampoline<P:IsA<WebView>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitWebView,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,

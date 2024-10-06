@@ -50,26 +50,19 @@ impl ContextMenuItem {
 	pub fn from_stock_action(action:ContextMenuAction) -> ContextMenuItem {
 		assert_initialized_main_thread!();
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_item_new_from_stock_action(
-				action.into_glib(),
-			))
+			from_glib_none(ffi::webkit_context_menu_item_new_from_stock_action(action.into_glib()))
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_item_new_from_stock_action_with_label")]
 	#[doc(alias = "new_from_stock_action_with_label")]
-	pub fn from_stock_action_with_label(
-		action:ContextMenuAction,
-		label:&str,
-	) -> ContextMenuItem {
+	pub fn from_stock_action_with_label(action:ContextMenuAction, label:&str) -> ContextMenuItem {
 		assert_initialized_main_thread!();
 		unsafe {
-			from_glib_none(
-				ffi::webkit_context_menu_item_new_from_stock_action_with_label(
-					action.into_glib(),
-					label.to_glib_none().0,
-				),
-			)
+			from_glib_none(ffi::webkit_context_menu_item_new_from_stock_action_with_label(
+				action.into_glib(),
+				label.to_glib_none().0,
+			))
 		}
 	}
 
@@ -81,10 +74,7 @@ impl ContextMenuItem {
 
 	#[doc(alias = "webkit_context_menu_item_new_with_submenu")]
 	#[doc(alias = "new_with_submenu")]
-	pub fn with_submenu(
-		label:&str,
-		submenu:&impl IsA<ContextMenu>,
-	) -> ContextMenuItem {
+	pub fn with_submenu(label:&str, submenu:&impl IsA<ContextMenu>) -> ContextMenuItem {
 		skip_assert_initialized!();
 		unsafe {
 			from_glib_none(ffi::webkit_context_menu_item_new_with_submenu(
@@ -100,8 +90,7 @@ mod sealed {
 	impl<T:super::IsA<super::ContextMenuItem>> Sealed for T {}
 }
 
-pub trait ContextMenuItemExt:
-	IsA<ContextMenuItem> + sealed::Sealed + 'static {
+pub trait ContextMenuItemExt: IsA<ContextMenuItem> + sealed::Sealed + 'static {
 	//#[cfg_attr(feature = "v2_18", deprecated = "Since 2.18")]
 	//#[allow(deprecated)]
 	//#[doc(alias = "webkit_context_menu_item_get_action")]
@@ -145,9 +134,7 @@ pub trait ContextMenuItemExt:
 	#[doc(alias = "webkit_context_menu_item_is_separator")]
 	fn is_separator(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_context_menu_item_is_separator(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_context_menu_item_is_separator(self.as_ref().to_glib_none().0))
 		}
 	}
 

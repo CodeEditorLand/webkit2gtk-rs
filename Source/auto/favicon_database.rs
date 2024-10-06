@@ -28,8 +28,7 @@ mod sealed {
 	impl<T:super::IsA<super::FaviconDatabase>> Sealed for T {}
 }
 
-pub trait FaviconDatabaseExt:
-	IsA<FaviconDatabase> + sealed::Sealed + 'static {
+pub trait FaviconDatabaseExt: IsA<FaviconDatabase> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_favicon_database_clear")]
 	fn clear(&self) {
 		unsafe {
@@ -47,13 +46,11 @@ pub trait FaviconDatabaseExt:
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
 		let is_main_context_owner = main_context.is_owner();
-		let has_acquired_main_context = (!is_main_context_owner)
-			.then(|| main_context.acquire().ok())
-			.flatten();
+		let has_acquired_main_context =
+			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
-			"Async operations only allowed if the thread is owning the \
-			 MainContext"
+			"Async operations only allowed if the thread is owning the MainContext"
 		);
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
@@ -96,13 +93,8 @@ pub trait FaviconDatabaseExt:
 	fn favicon_future(
 		&self,
 		page_uri:&str,
-	) -> Pin<
-		Box_<
-			dyn std::future::Future<
-					Output = Result<cairo::Surface, glib::Error>,
-				> + 'static,
-		>,
-	> {
+	) -> Pin<Box_<dyn std::future::Future<Output = Result<cairo::Surface, glib::Error>> + 'static>>
+	{
 		let page_uri = String::from(page_uri);
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.favicon(&page_uri, Some(cancellable), move |res| {
@@ -123,10 +115,7 @@ pub trait FaviconDatabaseExt:
 	}
 
 	#[doc(alias = "favicon-changed")]
-	fn connect_favicon_changed<F:Fn(&Self, &str, &str) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_favicon_changed<F:Fn(&Self, &str, &str) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn favicon_changed_trampoline<
 			P:IsA<FaviconDatabase>,
 			F:Fn(&P, &str, &str) + 'static,

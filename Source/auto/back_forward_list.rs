@@ -24,8 +24,7 @@ mod sealed {
 	impl<T:super::IsA<super::BackForwardList>> Sealed for T {}
 }
 
-pub trait BackForwardListExt:
-	IsA<BackForwardList> + sealed::Sealed + 'static {
+pub trait BackForwardListExt: IsA<BackForwardList> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_back_forward_list_get_back_item")]
 	#[doc(alias = "get_back_item")]
 	fn back_item(&self) -> Option<BackForwardListItem> {
@@ -40,11 +39,9 @@ pub trait BackForwardListExt:
 	#[doc(alias = "get_back_list")]
 	fn back_list(&self) -> Vec<BackForwardListItem> {
 		unsafe {
-			FromGlibPtrContainer::from_glib_container(
-				ffi::webkit_back_forward_list_get_back_list(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			FromGlibPtrContainer::from_glib_container(ffi::webkit_back_forward_list_get_back_list(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -86,9 +83,7 @@ pub trait BackForwardListExt:
 	fn forward_list(&self) -> Vec<BackForwardListItem> {
 		unsafe {
 			FromGlibPtrContainer::from_glib_container(
-				ffi::webkit_back_forward_list_get_forward_list(
-					self.as_ref().to_glib_none().0,
-				),
+				ffi::webkit_back_forward_list_get_forward_list(self.as_ref().to_glib_none().0),
 			)
 		}
 	}
@@ -109,11 +104,7 @@ pub trait BackForwardListExt:
 	#[doc(alias = "webkit_back_forward_list_get_length")]
 	#[doc(alias = "get_length")]
 	fn length(&self) -> u32 {
-		unsafe {
-			ffi::webkit_back_forward_list_get_length(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_back_forward_list_get_length(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_back_forward_list_get_nth_item")]

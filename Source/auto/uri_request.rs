@@ -25,9 +25,7 @@ impl URIRequest {
 	#[doc(alias = "webkit_uri_request_new")]
 	pub fn new(uri:&str) -> URIRequest {
 		assert_initialized_main_thread!();
-		unsafe {
-			from_glib_full(ffi::webkit_uri_request_new(uri.to_glib_none().0))
-		}
+		unsafe { from_glib_full(ffi::webkit_uri_request_new(uri.to_glib_none().0)) }
 	}
 
 	// rustdoc-stripper-ignore-next
@@ -62,8 +60,8 @@ impl URIRequestBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`URIRequest`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> URIRequest { self.builder.build() }
 }
 
@@ -77,9 +75,7 @@ pub trait URIRequestExt: IsA<URIRequest> + sealed::Sealed + 'static {
 	#[doc(alias = "get_http_headers")]
 	fn http_headers(&self) -> Option<soup::MessageHeaders> {
 		unsafe {
-			from_glib_none(ffi::webkit_uri_request_get_http_headers(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_uri_request_get_http_headers(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -89,41 +85,26 @@ pub trait URIRequestExt: IsA<URIRequest> + sealed::Sealed + 'static {
 	#[doc(alias = "get_http_method")]
 	fn http_method(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_uri_request_get_http_method(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_uri_request_get_http_method(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_uri_request_get_uri")]
 	#[doc(alias = "get_uri")]
 	fn uri(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_uri_request_get_uri(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_uri_request_get_uri(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_uri_request_set_uri")]
 	fn set_uri(&self, uri:&str) {
 		unsafe {
-			ffi::webkit_uri_request_set_uri(
-				self.as_ref().to_glib_none().0,
-				uri.to_glib_none().0,
-			);
+			ffi::webkit_uri_request_set_uri(self.as_ref().to_glib_none().0, uri.to_glib_none().0);
 		}
 	}
 
 	#[doc(alias = "uri")]
-	fn connect_uri_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_uri_trampoline<
-			P:IsA<URIRequest>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_uri_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_uri_trampoline<P:IsA<URIRequest>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitURIRequest,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,

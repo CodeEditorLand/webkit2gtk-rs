@@ -23,10 +23,6 @@ impl JavascriptResult {
 	#[doc(alias = "webkit_javascript_result_get_js_value")]
 	#[doc(alias = "get_js_value")]
 	pub fn js_value(&self) -> Option<java_script_core::Value> {
-		unsafe {
-			from_glib_none(ffi::webkit_javascript_result_get_js_value(
-				self.to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_javascript_result_get_js_value(self.to_glib_none().0)) }
 	}
 }

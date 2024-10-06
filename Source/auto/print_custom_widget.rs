@@ -43,9 +43,7 @@ impl PrintCustomWidget {
 	/// This method returns an instance of
 	/// [`PrintCustomWidgetBuilder`](crate::builders::PrintCustomWidgetBuilder)
 	/// which can be used to create [`PrintCustomWidget`] objects.
-	pub fn builder() -> PrintCustomWidgetBuilder {
-		PrintCustomWidgetBuilder::new()
-	}
+	pub fn builder() -> PrintCustomWidgetBuilder { PrintCustomWidgetBuilder::new() }
 }
 
 #[cfg(feature = "v2_16")]
@@ -77,15 +75,13 @@ impl PrintCustomWidgetBuilder {
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
 	pub fn widget(self, widget:&impl IsA<gtk::Widget>) -> Self {
-		Self {
-			builder:self.builder.property("widget", widget.clone().upcast()),
-		}
+		Self { builder:self.builder.property("widget", widget.clone().upcast()) }
 	}
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`PrintCustomWidget`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> PrintCustomWidget { self.builder.build() }
 }
 
@@ -94,8 +90,7 @@ mod sealed {
 	impl<T:super::IsA<super::PrintCustomWidget>> Sealed for T {}
 }
 
-pub trait PrintCustomWidgetExt:
-	IsA<PrintCustomWidget> + sealed::Sealed + 'static {
+pub trait PrintCustomWidgetExt: IsA<PrintCustomWidget> + sealed::Sealed + 'static {
 	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
 	#[allow(deprecated)]
 	#[doc(alias = "webkit_print_custom_widget_get_title")]
@@ -125,10 +120,7 @@ pub trait PrintCustomWidgetExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[doc(alias = "apply")]
 	fn connect_apply<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn apply_trampoline<
-			P:IsA<PrintCustomWidget>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn apply_trampoline<P:IsA<PrintCustomWidget>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitPrintCustomWidget,
 			f:glib::ffi::gpointer,
 		) {
@@ -152,9 +144,7 @@ pub trait PrintCustomWidgetExt:
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[doc(alias = "update")]
-	fn connect_update<
-		F:Fn(&Self, &gtk::PageSetup, &gtk::PrintSettings) + 'static,
-	>(
+	fn connect_update<F:Fn(&Self, &gtk::PageSetup, &gtk::PrintSettings) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {

@@ -67,8 +67,8 @@ impl WebsitePoliciesBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`WebsitePolicies`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> WebsitePolicies { self.builder.build() }
 }
 
@@ -77,8 +77,7 @@ mod sealed {
 	impl<T:super::IsA<super::WebsitePolicies>> Sealed for T {}
 }
 
-pub trait WebsitePoliciesExt:
-	IsA<WebsitePolicies> + sealed::Sealed + 'static {
+pub trait WebsitePoliciesExt: IsA<WebsitePolicies> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_website_policies_get_autoplay_policy")]
 	#[doc(alias = "get_autoplay_policy")]
 	fn autoplay_policy(&self) -> AutoplayPolicy {
@@ -91,9 +90,7 @@ pub trait WebsitePoliciesExt:
 
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-	fn autoplay(&self) -> AutoplayPolicy {
-		ObjectExt::property(self.as_ref(), "autoplay")
-	}
+	fn autoplay(&self) -> AutoplayPolicy { ObjectExt::property(self.as_ref(), "autoplay") }
 }
 
 impl<O:IsA<WebsitePolicies>> WebsitePoliciesExt for O {}

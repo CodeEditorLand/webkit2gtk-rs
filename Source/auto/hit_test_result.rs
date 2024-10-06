@@ -64,8 +64,8 @@ impl HitTestResultBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`HitTestResult`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> HitTestResult { self.builder.build() }
 }
 
@@ -74,8 +74,7 @@ mod sealed {
 	impl<T:super::IsA<super::HitTestResult>> Sealed for T {}
 }
 
-pub trait HitTestResultExt:
-	IsA<HitTestResult> + sealed::Sealed + 'static {
+pub trait HitTestResultExt: IsA<HitTestResult> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_hit_test_result_context_is_editable")]
 	fn context_is_editable(&self) -> bool {
 		unsafe {
@@ -88,27 +87,21 @@ pub trait HitTestResultExt:
 	#[doc(alias = "webkit_hit_test_result_context_is_image")]
 	fn context_is_image(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_hit_test_result_context_is_image(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_hit_test_result_context_is_image(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_hit_test_result_context_is_link")]
 	fn context_is_link(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_hit_test_result_context_is_link(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_hit_test_result_context_is_link(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_hit_test_result_context_is_media")]
 	fn context_is_media(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_hit_test_result_context_is_media(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_hit_test_result_context_is_media(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -135,11 +128,7 @@ pub trait HitTestResultExt:
 	#[doc(alias = "webkit_hit_test_result_get_context")]
 	#[doc(alias = "get_context")]
 	fn context(&self) -> u32 {
-		unsafe {
-			ffi::webkit_hit_test_result_get_context(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_hit_test_result_get_context(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_hit_test_result_get_image_uri")]
@@ -176,9 +165,7 @@ pub trait HitTestResultExt:
 	#[doc(alias = "get_link_uri")]
 	fn link_uri(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_hit_test_result_get_link_uri(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_hit_test_result_get_link_uri(self.as_ref().to_glib_none().0))
 		}
 	}
 

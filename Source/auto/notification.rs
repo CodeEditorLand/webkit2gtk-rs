@@ -28,8 +28,7 @@ mod sealed {
 	impl<T:super::IsA<super::Notification>> Sealed for T {}
 }
 
-pub trait NotificationExt:
-	IsA<Notification> + sealed::Sealed + 'static {
+pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_12")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_12")))]
 	#[doc(alias = "webkit_notification_clicked")]
@@ -49,19 +48,13 @@ pub trait NotificationExt:
 	#[doc(alias = "webkit_notification_get_body")]
 	#[doc(alias = "get_body")]
 	fn body(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_notification_get_body(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_notification_get_body(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_notification_get_id")]
 	#[doc(alias = "get_id")]
 	fn id(&self) -> u64 {
-		unsafe {
-			ffi::webkit_notification_get_id(self.as_ref().to_glib_none().0)
-		}
+		unsafe { ffi::webkit_notification_get_id(self.as_ref().to_glib_none().0) }
 	}
 
 	#[cfg(feature = "v2_16")]
@@ -69,20 +62,14 @@ pub trait NotificationExt:
 	#[doc(alias = "webkit_notification_get_tag")]
 	#[doc(alias = "get_tag")]
 	fn tag(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_notification_get_tag(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_notification_get_tag(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_notification_get_title")]
 	#[doc(alias = "get_title")]
 	fn title(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_notification_get_title(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_notification_get_title(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -90,10 +77,7 @@ pub trait NotificationExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_12")))]
 	#[doc(alias = "clicked")]
 	fn connect_clicked<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn clicked_trampoline<
-			P:IsA<Notification>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn clicked_trampoline<P:IsA<Notification>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitNotification,
 			f:glib::ffi::gpointer,
 		) {
@@ -117,10 +101,7 @@ pub trait NotificationExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "closed")]
 	fn connect_closed<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn closed_trampoline<
-			P:IsA<Notification>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn closed_trampoline<P:IsA<Notification>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitNotification,
 			f:glib::ffi::gpointer,
 		) {
@@ -143,14 +124,8 @@ pub trait NotificationExt:
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "body")]
-	fn connect_body_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_body_trampoline<
-			P:IsA<Notification>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_body_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_body_trampoline<P:IsA<Notification>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitNotification,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -175,10 +150,7 @@ pub trait NotificationExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "id")]
 	fn connect_id_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn notify_id_trampoline<
-			P:IsA<Notification>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn notify_id_trampoline<P:IsA<Notification>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitNotification,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -202,14 +174,8 @@ pub trait NotificationExt:
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[doc(alias = "tag")]
-	fn connect_tag_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_tag_trampoline<
-			P:IsA<Notification>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_tag_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_tag_trampoline<P:IsA<Notification>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitNotification,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -233,14 +199,8 @@ pub trait NotificationExt:
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "title")]
-	fn connect_title_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_title_trampoline<
-			P:IsA<Notification>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_title_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_title_trampoline<P:IsA<Notification>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitNotification,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,

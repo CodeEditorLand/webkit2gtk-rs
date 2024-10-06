@@ -22,11 +22,8 @@ mod sealed {
 	impl<T:super::IsA<super::SecurityManager>> Sealed for T {}
 }
 
-pub trait SecurityManagerExt:
-	IsA<SecurityManager> + sealed::Sealed + 'static {
-	#[doc(
-		alias = "webkit_security_manager_register_uri_scheme_as_cors_enabled"
-	)]
+pub trait SecurityManagerExt: IsA<SecurityManager> + sealed::Sealed + 'static {
+	#[doc(alias = "webkit_security_manager_register_uri_scheme_as_cors_enabled")]
 	fn register_uri_scheme_as_cors_enabled(&self, scheme:&str) {
 		unsafe {
 			ffi::webkit_security_manager_register_uri_scheme_as_cors_enabled(
@@ -36,9 +33,7 @@ pub trait SecurityManagerExt:
 		}
 	}
 
-	#[doc(
-		alias = "webkit_security_manager_register_uri_scheme_as_display_isolated"
-	)]
+	#[doc(alias = "webkit_security_manager_register_uri_scheme_as_display_isolated")]
 	fn register_uri_scheme_as_display_isolated(&self, scheme:&str) {
 		unsafe {
 			ffi::webkit_security_manager_register_uri_scheme_as_display_isolated(
@@ -48,9 +43,7 @@ pub trait SecurityManagerExt:
 		}
 	}
 
-	#[doc(
-		alias = "webkit_security_manager_register_uri_scheme_as_empty_document"
-	)]
+	#[doc(alias = "webkit_security_manager_register_uri_scheme_as_empty_document")]
 	fn register_uri_scheme_as_empty_document(&self, scheme:&str) {
 		unsafe {
 			ffi::webkit_security_manager_register_uri_scheme_as_empty_document(
@@ -103,24 +96,20 @@ pub trait SecurityManagerExt:
 	#[doc(alias = "webkit_security_manager_uri_scheme_is_display_isolated")]
 	fn uri_scheme_is_display_isolated(&self, scheme:&str) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_security_manager_uri_scheme_is_display_isolated(
-					self.as_ref().to_glib_none().0,
-					scheme.to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_security_manager_uri_scheme_is_display_isolated(
+				self.as_ref().to_glib_none().0,
+				scheme.to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_security_manager_uri_scheme_is_empty_document")]
 	fn uri_scheme_is_empty_document(&self, scheme:&str) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_security_manager_uri_scheme_is_empty_document(
-					self.as_ref().to_glib_none().0,
-					scheme.to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_security_manager_uri_scheme_is_empty_document(
+				self.as_ref().to_glib_none().0,
+				scheme.to_glib_none().0,
+			))
 		}
 	}
 

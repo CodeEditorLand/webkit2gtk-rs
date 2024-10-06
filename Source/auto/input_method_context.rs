@@ -30,8 +30,7 @@ mod sealed {
 	impl<T:super::IsA<super::InputMethodContext>> Sealed for T {}
 }
 
-pub trait InputMethodContextExt:
-	IsA<InputMethodContext> + sealed::Sealed + 'static {
+pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_input_method_context_filter_key_event")]
 	fn filter_key_event(&self, key_event:&mut gdk::EventKey) -> bool {
 		unsafe {
@@ -85,28 +84,19 @@ pub trait InputMethodContextExt:
 	#[doc(alias = "webkit_input_method_context_notify_focus_in")]
 	fn notify_focus_in(&self) {
 		unsafe {
-			ffi::webkit_input_method_context_notify_focus_in(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_input_method_context_notify_focus_in(self.as_ref().to_glib_none().0);
 		}
 	}
 
 	#[doc(alias = "webkit_input_method_context_notify_focus_out")]
 	fn notify_focus_out(&self) {
 		unsafe {
-			ffi::webkit_input_method_context_notify_focus_out(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_input_method_context_notify_focus_out(self.as_ref().to_glib_none().0);
 		}
 	}
 
 	#[doc(alias = "webkit_input_method_context_notify_surrounding")]
-	fn notify_surrounding(
-		&self,
-		text:&str,
-		cursor_index:u32,
-		selection_index:u32,
-	) {
+	fn notify_surrounding(&self, text:&str, cursor_index:u32, selection_index:u32) {
 		let length = text.len() as _;
 		unsafe {
 			ffi::webkit_input_method_context_notify_surrounding(
@@ -122,9 +112,7 @@ pub trait InputMethodContextExt:
 	#[doc(alias = "webkit_input_method_context_reset")]
 	fn reset(&self) {
 		unsafe {
-			ffi::webkit_input_method_context_reset(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_input_method_context_reset(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -161,10 +149,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "committed")]
-	fn connect_committed<F:Fn(&Self, &str) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_committed<F:Fn(&Self, &str) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn committed_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P, &str) + 'static,
@@ -195,10 +180,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "delete-surrounding")]
-	fn connect_delete_surrounding<F:Fn(&Self, i32, u32) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_delete_surrounding<F:Fn(&Self, i32, u32) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn delete_surrounding_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P, i32, u32) + 'static,
@@ -209,11 +191,7 @@ pub trait InputMethodContextExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
-			f(
-				InputMethodContext::from_glib_borrow(this).unsafe_cast_ref(),
-				offset,
-				n_chars,
-			)
+			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref(), offset, n_chars)
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -231,10 +209,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "preedit-changed")]
-	fn connect_preedit_changed<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_preedit_changed<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn preedit_changed_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P) + 'static,
@@ -261,10 +236,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "preedit-finished")]
-	fn connect_preedit_finished<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_preedit_finished<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn preedit_finished_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P) + 'static,
@@ -291,10 +263,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "preedit-started")]
-	fn connect_preedit_started<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_preedit_started<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn preedit_started_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P) + 'static,
@@ -321,10 +290,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "input-hints")]
-	fn connect_input_hints_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_input_hints_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_input_hints_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P) + 'static,
@@ -352,10 +318,7 @@ pub trait InputMethodContextExt:
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "input-purpose")]
-	fn connect_input_purpose_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_input_purpose_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_input_purpose_trampoline<
 			P:IsA<InputMethodContext>,
 			F:Fn(&P) + 'static,

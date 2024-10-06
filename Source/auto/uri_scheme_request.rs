@@ -27,8 +27,7 @@ mod sealed {
 	impl<T:super::IsA<super::URISchemeRequest>> Sealed for T {}
 }
 
-pub trait URISchemeRequestExt:
-	IsA<URISchemeRequest> + sealed::Sealed + 'static {
+pub trait URISchemeRequestExt: IsA<URISchemeRequest> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_uri_scheme_request_finish")]
 	fn finish(
 		&self,
@@ -110,9 +109,7 @@ pub trait URISchemeRequestExt:
 	#[doc(alias = "get_path")]
 	fn path(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_uri_scheme_request_get_path(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_uri_scheme_request_get_path(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -130,9 +127,7 @@ pub trait URISchemeRequestExt:
 	#[doc(alias = "get_uri")]
 	fn uri(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_uri_scheme_request_get_uri(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_uri_scheme_request_get_uri(self.as_ref().to_glib_none().0))
 		}
 	}
 

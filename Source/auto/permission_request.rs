@@ -22,14 +22,11 @@ mod sealed {
 	impl<T:super::IsA<super::PermissionRequest>> Sealed for T {}
 }
 
-pub trait PermissionRequestExt:
-	IsA<PermissionRequest> + sealed::Sealed + 'static {
+pub trait PermissionRequestExt: IsA<PermissionRequest> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_permission_request_allow")]
 	fn allow(&self) {
 		unsafe {
-			ffi::webkit_permission_request_allow(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_permission_request_allow(self.as_ref().to_glib_none().0);
 		}
 	}
 

@@ -23,9 +23,7 @@ impl WindowProperties {
 	/// This method returns an instance of
 	/// [`WindowPropertiesBuilder`](crate::builders::WindowPropertiesBuilder)
 	/// which can be used to create [`WindowProperties`] objects.
-	pub fn builder() -> WindowPropertiesBuilder {
-		WindowPropertiesBuilder::new()
-	}
+	pub fn builder() -> WindowPropertiesBuilder { WindowPropertiesBuilder::new() }
 }
 
 // rustdoc-stripper-ignore-next
@@ -49,17 +47,11 @@ impl WindowPropertiesBuilder {
 	}
 
 	pub fn locationbar_visible(self, locationbar_visible:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("locationbar-visible", locationbar_visible),
-		}
+		Self { builder:self.builder.property("locationbar-visible", locationbar_visible) }
 	}
 
 	pub fn menubar_visible(self, menubar_visible:bool) -> Self {
-		Self {
-			builder:self.builder.property("menubar-visible", menubar_visible),
-		}
+		Self { builder:self.builder.property("menubar-visible", menubar_visible) }
 	}
 
 	pub fn resizable(self, resizable:bool) -> Self {
@@ -67,31 +59,21 @@ impl WindowPropertiesBuilder {
 	}
 
 	pub fn scrollbars_visible(self, scrollbars_visible:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("scrollbars-visible", scrollbars_visible),
-		}
+		Self { builder:self.builder.property("scrollbars-visible", scrollbars_visible) }
 	}
 
 	pub fn statusbar_visible(self, statusbar_visible:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("statusbar-visible", statusbar_visible),
-		}
+		Self { builder:self.builder.property("statusbar-visible", statusbar_visible) }
 	}
 
 	pub fn toolbar_visible(self, toolbar_visible:bool) -> Self {
-		Self {
-			builder:self.builder.property("toolbar-visible", toolbar_visible),
-		}
+		Self { builder:self.builder.property("toolbar-visible", toolbar_visible) }
 	}
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`WindowProperties`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> WindowProperties { self.builder.build() }
 }
 
@@ -100,15 +82,12 @@ mod sealed {
 	impl<T:super::IsA<super::WindowProperties>> Sealed for T {}
 }
 
-pub trait WindowPropertiesExt:
-	IsA<WindowProperties> + sealed::Sealed + 'static {
+pub trait WindowPropertiesExt: IsA<WindowProperties> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_window_properties_get_fullscreen")]
 	#[doc(alias = "get_fullscreen")]
 	fn is_fullscreen(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_window_properties_get_fullscreen(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_window_properties_get_fullscreen(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -149,9 +128,7 @@ pub trait WindowPropertiesExt:
 	#[doc(alias = "get_resizable")]
 	fn is_resizable(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_window_properties_get_resizable(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_window_properties_get_resizable(self.as_ref().to_glib_none().0))
 		}
 	}
 

@@ -32,11 +32,7 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_editor_state_get_typing_attributes")]
 	#[doc(alias = "get_typing_attributes")]
 	fn typing_attributes(&self) -> u32 {
-		unsafe {
-			ffi::webkit_editor_state_get_typing_attributes(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_editor_state_get_typing_attributes(self.as_ref().to_glib_none().0) }
 	}
 
 	#[cfg(feature = "v2_20")]
@@ -44,9 +40,7 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_editor_state_is_copy_available")]
 	fn is_copy_available(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_editor_state_is_copy_available(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_editor_state_is_copy_available(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -55,9 +49,7 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_editor_state_is_cut_available")]
 	fn is_cut_available(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_editor_state_is_cut_available(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_editor_state_is_cut_available(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -66,9 +58,7 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_editor_state_is_paste_available")]
 	fn is_paste_available(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_editor_state_is_paste_available(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_editor_state_is_paste_available(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -77,9 +67,7 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_editor_state_is_redo_available")]
 	fn is_redo_available(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_editor_state_is_redo_available(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_editor_state_is_redo_available(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -88,19 +76,14 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_editor_state_is_undo_available")]
 	fn is_undo_available(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_editor_state_is_undo_available(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_editor_state_is_undo_available(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[cfg(feature = "v2_10")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 	#[doc(alias = "typing-attributes")]
-	fn connect_typing_attributes_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_typing_attributes_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_typing_attributes_trampoline<
 			P:IsA<EditorState>,
 			F:Fn(&P) + 'static,

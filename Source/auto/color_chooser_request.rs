@@ -33,9 +33,7 @@ impl ColorChooserRequest {
 	/// This method returns an instance of
 	/// [`ColorChooserRequestBuilder`](crate::builders::ColorChooserRequestBuilder)
 	/// which can be used to create [`ColorChooserRequest`] objects.
-	pub fn builder() -> ColorChooserRequestBuilder {
-		ColorChooserRequestBuilder::new()
-	}
+	pub fn builder() -> ColorChooserRequestBuilder { ColorChooserRequestBuilder::new() }
 }
 
 // rustdoc-stripper-ignore-next
@@ -58,8 +56,8 @@ impl ColorChooserRequestBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`ColorChooserRequest`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> ColorChooserRequest { self.builder.build() }
 }
 
@@ -68,16 +66,13 @@ mod sealed {
 	impl<T:super::IsA<super::ColorChooserRequest>> Sealed for T {}
 }
 
-pub trait ColorChooserRequestExt:
-	IsA<ColorChooserRequest> + sealed::Sealed + 'static {
+pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "webkit_color_chooser_request_cancel")]
 	fn cancel(&self) {
 		unsafe {
-			ffi::webkit_color_chooser_request_cancel(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_color_chooser_request_cancel(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -86,9 +81,7 @@ pub trait ColorChooserRequestExt:
 	#[doc(alias = "webkit_color_chooser_request_finish")]
 	fn finish(&self) {
 		unsafe {
-			ffi::webkit_color_chooser_request_finish(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_color_chooser_request_finish(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -138,10 +131,7 @@ pub trait ColorChooserRequestExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "finished")]
 	fn connect_finished<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn finished_trampoline<
-			P:IsA<ColorChooserRequest>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn finished_trampoline<P:IsA<ColorChooserRequest>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitColorChooserRequest,
 			f:glib::ffi::gpointer,
 		) {
@@ -164,14 +154,8 @@ pub trait ColorChooserRequestExt:
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "rgba")]
-	fn connect_rgba_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_rgba_trampoline<
-			P:IsA<ColorChooserRequest>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_rgba_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_rgba_trampoline<P:IsA<ColorChooserRequest>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitColorChooserRequest,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,

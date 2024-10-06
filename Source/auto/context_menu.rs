@@ -28,11 +28,7 @@ impl ContextMenu {
 	#[doc(alias = "new_with_items")]
 	pub fn with_items(items:&[ContextMenuItem]) -> ContextMenu {
 		assert_initialized_main_thread!();
-		unsafe {
-			from_glib_full(ffi::webkit_context_menu_new_with_items(
-				items.to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_full(ffi::webkit_context_menu_new_with_items(items.to_glib_none().0)) }
 	}
 }
 
@@ -58,11 +54,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 
 	#[doc(alias = "webkit_context_menu_first")]
 	fn first(&self) -> Option<ContextMenuItem> {
-		unsafe {
-			from_glib_none(ffi::webkit_context_menu_first(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_context_menu_first(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_40")]
@@ -71,9 +63,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "get_event")]
 	fn event(&self) -> Option<gdk::Event> {
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_get_event(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_context_menu_get_event(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -92,20 +82,16 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "get_items")]
 	fn items(&self) -> Vec<ContextMenuItem> {
 		unsafe {
-			FromGlibPtrContainer::from_glib_none(
-				ffi::webkit_context_menu_get_items(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			FromGlibPtrContainer::from_glib_none(ffi::webkit_context_menu_get_items(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_context_menu_get_n_items")]
 	#[doc(alias = "get_n_items")]
 	fn n_items(&self) -> u32 {
-		unsafe {
-			ffi::webkit_context_menu_get_n_items(self.as_ref().to_glib_none().0)
-		}
+		unsafe { ffi::webkit_context_menu_get_n_items(self.as_ref().to_glib_none().0) }
 	}
 
 	#[cfg(feature = "v2_8")]
@@ -114,9 +100,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "get_user_data")]
 	fn user_data(&self) -> Option<glib::Variant> {
 		unsafe {
-			from_glib_none(ffi::webkit_context_menu_get_user_data(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_context_menu_get_user_data(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -133,11 +117,7 @@ pub trait ContextMenuExt: IsA<ContextMenu> + sealed::Sealed + 'static {
 
 	#[doc(alias = "webkit_context_menu_last")]
 	fn last(&self) -> Option<ContextMenuItem> {
-		unsafe {
-			from_glib_none(ffi::webkit_context_menu_last(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_context_menu_last(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_context_menu_move_item")]

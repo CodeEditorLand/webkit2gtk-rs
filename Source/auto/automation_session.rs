@@ -31,9 +31,7 @@ impl AutomationSession {
 	/// This method returns an instance of
 	/// [`AutomationSessionBuilder`](crate::builders::AutomationSessionBuilder)
 	/// which can be used to create [`AutomationSession`] objects.
-	pub fn builder() -> AutomationSessionBuilder {
-		AutomationSessionBuilder::new()
-	}
+	pub fn builder() -> AutomationSessionBuilder { AutomationSessionBuilder::new() }
 }
 
 // rustdoc-stripper-ignore-next
@@ -56,8 +54,8 @@ impl AutomationSessionBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`AutomationSession`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> AutomationSession { self.builder.build() }
 }
 
@@ -66,8 +64,7 @@ mod sealed {
 	impl<T:super::IsA<super::AutomationSession>> Sealed for T {}
 }
 
-pub trait AutomationSessionExt:
-	IsA<AutomationSession> + sealed::Sealed + 'static {
+pub trait AutomationSessionExt: IsA<AutomationSession> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_automation_session_get_application_info")]
 	#[doc(alias = "get_application_info")]
 	fn application_info(&self) -> Option<ApplicationInfo> {
@@ -82,9 +79,7 @@ pub trait AutomationSessionExt:
 	#[doc(alias = "get_id")]
 	fn id(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_automation_session_get_id(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_automation_session_get_id(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -120,8 +115,7 @@ pub trait AutomationSessionExt:
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
-			let detailed_signal_name =
-				detail.map(|name| format!("create-web-view::{name}\0"));
+			let detailed_signal_name = detail.map(|name| format!("create-web-view::{name}\0"));
 			let signal_name:&[u8] = detailed_signal_name
 				.as_ref()
 				.map_or(&b"create-web-view\0"[..], |n| n.as_bytes());

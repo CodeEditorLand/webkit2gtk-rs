@@ -17,26 +17,19 @@ glib::wrapper! {
 }
 
 impl InstallMissingMediaPluginsPermissionRequest {
-	pub const NONE:Option<
-		&'static InstallMissingMediaPluginsPermissionRequest,
-	> = None;
+	pub const NONE:Option<&'static InstallMissingMediaPluginsPermissionRequest> = None;
 }
 
 mod sealed {
 	pub trait Sealed {}
-	impl<T:super::IsA<super::InstallMissingMediaPluginsPermissionRequest>>
-		Sealed for T
-	{
-	}
+	impl<T:super::IsA<super::InstallMissingMediaPluginsPermissionRequest>> Sealed for T {}
 }
 
 pub trait InstallMissingMediaPluginsPermissionRequestExt:
 	IsA<InstallMissingMediaPluginsPermissionRequest> + sealed::Sealed + 'static {
 	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
 	#[allow(deprecated)]
-	#[doc(
-		alias = "webkit_install_missing_media_plugins_permission_request_get_description"
-	)]
+	#[doc(alias = "webkit_install_missing_media_plugins_permission_request_get_description")]
 	#[doc(alias = "get_description")]
 	fn description(&self) -> Option<glib::GString> {
 		unsafe {

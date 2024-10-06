@@ -22,8 +22,7 @@ mod sealed {
 	impl<T:super::IsA<super::BackForwardListItem>> Sealed for T {}
 }
 
-pub trait BackForwardListItemExt:
-	IsA<BackForwardListItem> + sealed::Sealed + 'static {
+pub trait BackForwardListItemExt: IsA<BackForwardListItem> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_back_forward_list_item_get_original_uri")]
 	#[doc(alias = "get_original_uri")]
 	fn original_uri(&self) -> Option<glib::GString> {

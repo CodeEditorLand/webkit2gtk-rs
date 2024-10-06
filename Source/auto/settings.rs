@@ -84,37 +84,25 @@ impl SettingsBuilder {
 
 	#[cfg(feature = "v2_10")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
-	pub fn allow_file_access_from_file_urls(
-		self,
-		allow_file_access_from_file_urls:bool,
-	) -> Self {
+	pub fn allow_file_access_from_file_urls(self, allow_file_access_from_file_urls:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"allow-file-access-from-file-urls",
-				allow_file_access_from_file_urls,
-			),
+			builder:self
+				.builder
+				.property("allow-file-access-from-file-urls", allow_file_access_from_file_urls),
 		}
 	}
 
 	pub fn allow_modal_dialogs(self, allow_modal_dialogs:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("allow-modal-dialogs", allow_modal_dialogs),
-		}
+		Self { builder:self.builder.property("allow-modal-dialogs", allow_modal_dialogs) }
 	}
 
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
-	pub fn allow_top_navigation_to_data_urls(
-		self,
-		allow_top_navigation_to_data_urls:bool,
-	) -> Self {
+	pub fn allow_top_navigation_to_data_urls(self, allow_top_navigation_to_data_urls:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"allow-top-navigation-to-data-urls",
-				allow_top_navigation_to_data_urls,
-			),
+			builder:self
+				.builder
+				.property("allow-top-navigation-to-data-urls", allow_top_navigation_to_data_urls),
 		}
 	}
 
@@ -133,98 +121,55 @@ impl SettingsBuilder {
 	}
 
 	pub fn auto_load_images(self, auto_load_images:bool) -> Self {
-		Self {
-			builder:self.builder.property("auto-load-images", auto_load_images),
-		}
+		Self { builder:self.builder.property("auto-load-images", auto_load_images) }
 	}
 
-	pub fn cursive_font_family(
-		self,
-		cursive_font_family:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("cursive-font-family", cursive_font_family.into()),
-		}
+	pub fn cursive_font_family(self, cursive_font_family:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("cursive-font-family", cursive_font_family.into()) }
 	}
 
-	pub fn default_charset(
-		self,
-		default_charset:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("default-charset", default_charset.into()),
-		}
+	pub fn default_charset(self, default_charset:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("default-charset", default_charset.into()) }
 	}
 
-	pub fn default_font_family(
-		self,
-		default_font_family:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("default-font-family", default_font_family.into()),
-		}
+	pub fn default_font_family(self, default_font_family:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("default-font-family", default_font_family.into()) }
 	}
 
 	pub fn default_font_size(self, default_font_size:u32) -> Self {
+		Self { builder:self.builder.property("default-font-size", default_font_size) }
+	}
+
+	pub fn default_monospace_font_size(self, default_monospace_font_size:u32) -> Self {
 		Self {
 			builder:self
 				.builder
-				.property("default-font-size", default_font_size),
-		}
-	}
-
-	pub fn default_monospace_font_size(
-		self,
-		default_monospace_font_size:u32,
-	) -> Self {
-		Self {
-			builder:self.builder.property(
-				"default-monospace-font-size",
-				default_monospace_font_size,
-			),
+				.property("default-monospace-font-size", default_monospace_font_size),
 		}
 	}
 
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
 	pub fn disable_web_security(self, disable_web_security:bool) -> Self {
+		Self { builder:self.builder.property("disable-web-security", disable_web_security) }
+	}
+
+	pub fn draw_compositing_indicators(self, draw_compositing_indicators:bool) -> Self {
 		Self {
 			builder:self
 				.builder
-				.property("disable-web-security", disable_web_security),
-		}
-	}
-
-	pub fn draw_compositing_indicators(
-		self,
-		draw_compositing_indicators:bool,
-	) -> Self {
-		Self {
-			builder:self.builder.property(
-				"draw-compositing-indicators",
-				draw_compositing_indicators,
-			),
+				.property("draw-compositing-indicators", draw_compositing_indicators),
 		}
 	}
 
 	#[cfg(feature = "v2_2")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 	#[cfg_attr(feature = "v2_32", deprecated = "Since 2.32")]
-	pub fn enable_accelerated_2d_canvas(
-		self,
-		enable_accelerated_2d_canvas:bool,
-	) -> Self {
+	pub fn enable_accelerated_2d_canvas(self, enable_accelerated_2d_canvas:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"enable-accelerated-2d-canvas",
-				enable_accelerated_2d_canvas,
-			),
+			builder:self
+				.builder
+				.property("enable-accelerated-2d-canvas", enable_accelerated_2d_canvas),
 		}
 	}
 
@@ -243,85 +188,49 @@ impl SettingsBuilder {
 	}
 
 	pub fn enable_caret_browsing(self, enable_caret_browsing:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-caret-browsing", enable_caret_browsing),
-		}
+		Self { builder:self.builder.property("enable-caret-browsing", enable_caret_browsing) }
 	}
 
 	pub fn enable_developer_extras(self, enable_developer_extras:bool) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("enable-developer-extras", enable_developer_extras),
+			builder:self.builder.property("enable-developer-extras", enable_developer_extras),
 		}
 	}
 
 	pub fn enable_dns_prefetching(self, enable_dns_prefetching:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-dns-prefetching", enable_dns_prefetching),
-		}
+		Self { builder:self.builder.property("enable-dns-prefetching", enable_dns_prefetching) }
 	}
 
 	#[cfg(feature = "v2_20")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 	pub fn enable_encrypted_media(self, enable_encrypted_media:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-encrypted-media", enable_encrypted_media),
-		}
+		Self { builder:self.builder.property("enable-encrypted-media", enable_encrypted_media) }
 	}
 
 	#[cfg_attr(feature = "v2_38", deprecated = "Since 2.38")]
 	pub fn enable_frame_flattening(self, enable_frame_flattening:bool) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("enable-frame-flattening", enable_frame_flattening),
+			builder:self.builder.property("enable-frame-flattening", enable_frame_flattening),
 		}
 	}
 
 	pub fn enable_fullscreen(self, enable_fullscreen:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-fullscreen", enable_fullscreen),
-		}
+		Self { builder:self.builder.property("enable-fullscreen", enable_fullscreen) }
 	}
 
 	pub fn enable_html5_database(self, enable_html5_database:bool) -> Self {
+		Self { builder:self.builder.property("enable-html5-database", enable_html5_database) }
+	}
+
+	pub fn enable_html5_local_storage(self, enable_html5_local_storage:bool) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("enable-html5-database", enable_html5_database),
+			builder:self.builder.property("enable-html5-local-storage", enable_html5_local_storage),
 		}
 	}
 
-	pub fn enable_html5_local_storage(
-		self,
-		enable_html5_local_storage:bool,
-	) -> Self {
+	pub fn enable_hyperlink_auditing(self, enable_hyperlink_auditing:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"enable-html5-local-storage",
-				enable_html5_local_storage,
-			),
-		}
-	}
-
-	pub fn enable_hyperlink_auditing(
-		self,
-		enable_hyperlink_auditing:bool,
-	) -> Self {
-		Self {
-			builder:self.builder.property(
-				"enable-hyperlink-auditing",
-				enable_hyperlink_auditing,
-			),
+			builder:self.builder.property("enable-hyperlink-auditing", enable_hyperlink_auditing),
 		}
 	}
 
@@ -331,23 +240,14 @@ impl SettingsBuilder {
 	}
 
 	pub fn enable_javascript(self, enable_javascript:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-javascript", enable_javascript),
-		}
+		Self { builder:self.builder.property("enable-javascript", enable_javascript) }
 	}
 
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
-	pub fn enable_javascript_markup(
-		self,
-		enable_javascript_markup:bool,
-	) -> Self {
+	pub fn enable_javascript_markup(self, enable_javascript_markup:bool) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("enable-javascript-markup", enable_javascript_markup),
+			builder:self.builder.property("enable-javascript-markup", enable_javascript_markup),
 		}
 	}
 
@@ -359,49 +259,31 @@ impl SettingsBuilder {
 
 	#[cfg(feature = "v2_22")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
-	pub fn enable_media_capabilities(
-		self,
-		enable_media_capabilities:bool,
-	) -> Self {
+	pub fn enable_media_capabilities(self, enable_media_capabilities:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"enable-media-capabilities",
-				enable_media_capabilities,
-			),
+			builder:self.builder.property("enable-media-capabilities", enable_media_capabilities),
 		}
 	}
 
 	#[cfg(feature = "v2_4")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
 	pub fn enable_media_stream(self, enable_media_stream:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-media-stream", enable_media_stream),
-		}
+		Self { builder:self.builder.property("enable-media-stream", enable_media_stream) }
 	}
 
 	#[cfg(feature = "v2_4")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
 	pub fn enable_mediasource(self, enable_mediasource:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-mediasource", enable_mediasource),
-		}
+		Self { builder:self.builder.property("enable-mediasource", enable_mediasource) }
 	}
 
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
-	pub fn enable_mock_capture_devices(
-		self,
-		enable_mock_capture_devices:bool,
-	) -> Self {
+	pub fn enable_mock_capture_devices(self, enable_mock_capture_devices:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"enable-mock-capture-devices",
-				enable_mock_capture_devices,
-			),
+			builder:self
+				.builder
+				.property("enable-mock-capture-devices", enable_mock_capture_devices),
 		}
 	}
 
@@ -418,11 +300,7 @@ impl SettingsBuilder {
 	}
 
 	pub fn enable_page_cache(self, enable_page_cache:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-page-cache", enable_page_cache),
-		}
+		Self { builder:self.builder.property("enable-page-cache", enable_page_cache) }
 	}
 
 	#[cfg_attr(feature = "v2_32", deprecated = "Since 2.32")]
@@ -433,70 +311,46 @@ impl SettingsBuilder {
 	#[cfg_attr(feature = "v2_16", deprecated = "Since 2.16")]
 	pub fn enable_private_browsing(self, enable_private_browsing:bool) -> Self {
 		Self {
+			builder:self.builder.property("enable-private-browsing", enable_private_browsing),
+		}
+	}
+
+	pub fn enable_resizable_text_areas(self, enable_resizable_text_areas:bool) -> Self {
+		Self {
 			builder:self
 				.builder
-				.property("enable-private-browsing", enable_private_browsing),
+				.property("enable-resizable-text-areas", enable_resizable_text_areas),
 		}
 	}
 
-	pub fn enable_resizable_text_areas(
-		self,
-		enable_resizable_text_areas:bool,
-	) -> Self {
+	pub fn enable_site_specific_quirks(self, enable_site_specific_quirks:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"enable-resizable-text-areas",
-				enable_resizable_text_areas,
-			),
-		}
-	}
-
-	pub fn enable_site_specific_quirks(
-		self,
-		enable_site_specific_quirks:bool,
-	) -> Self {
-		Self {
-			builder:self.builder.property(
-				"enable-site-specific-quirks",
-				enable_site_specific_quirks,
-			),
+			builder:self
+				.builder
+				.property("enable-site-specific-quirks", enable_site_specific_quirks),
 		}
 	}
 
 	pub fn enable_smooth_scrolling(self, enable_smooth_scrolling:bool) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("enable-smooth-scrolling", enable_smooth_scrolling),
+			builder:self.builder.property("enable-smooth-scrolling", enable_smooth_scrolling),
 		}
 	}
 
 	#[cfg(feature = "v2_4")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
-	pub fn enable_spatial_navigation(
-		self,
-		enable_spatial_navigation:bool,
-	) -> Self {
+	pub fn enable_spatial_navigation(self, enable_spatial_navigation:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"enable-spatial-navigation",
-				enable_spatial_navigation,
-			),
+			builder:self.builder.property("enable-spatial-navigation", enable_spatial_navigation),
 		}
 	}
 
 	pub fn enable_tabs_to_links(self, enable_tabs_to_links:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-tabs-to-links", enable_tabs_to_links),
-		}
+		Self { builder:self.builder.property("enable-tabs-to-links", enable_tabs_to_links) }
 	}
 
 	pub fn enable_webaudio(self, enable_webaudio:bool) -> Self {
-		Self {
-			builder:self.builder.property("enable-webaudio", enable_webaudio),
-		}
+		Self { builder:self.builder.property("enable-webaudio", enable_webaudio) }
 	}
 
 	pub fn enable_webgl(self, enable_webgl:bool) -> Self {
@@ -525,22 +379,11 @@ impl SettingsBuilder {
 
 	#[cfg_attr(feature = "v2_38", deprecated = "Since 2.38")]
 	pub fn enable_xss_auditor(self, enable_xss_auditor:bool) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("enable-xss-auditor", enable_xss_auditor),
-		}
+		Self { builder:self.builder.property("enable-xss-auditor", enable_xss_auditor) }
 	}
 
-	pub fn fantasy_font_family(
-		self,
-		fantasy_font_family:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("fantasy-font-family", fantasy_font_family.into()),
-		}
+	pub fn fantasy_font_family(self, fantasy_font_family:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("fantasy-font-family", fantasy_font_family.into()) }
 	}
 
 	#[cfg(feature = "v2_16")]
@@ -550,22 +393,17 @@ impl SettingsBuilder {
 		hardware_acceleration_policy:HardwareAccelerationPolicy,
 	) -> Self {
 		Self {
-			builder:self.builder.property(
-				"hardware-acceleration-policy",
-				hardware_acceleration_policy,
-			),
+			builder:self
+				.builder
+				.property("hardware-acceleration-policy", hardware_acceleration_policy),
 		}
 	}
 
-	pub fn javascript_can_access_clipboard(
-		self,
-		javascript_can_access_clipboard:bool,
-	) -> Self {
+	pub fn javascript_can_access_clipboard(self, javascript_can_access_clipboard:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"javascript-can-access-clipboard",
-				javascript_can_access_clipboard,
-			),
+			builder:self
+				.builder
+				.property("javascript-can-access-clipboard", javascript_can_access_clipboard),
 		}
 	}
 
@@ -607,15 +445,11 @@ impl SettingsBuilder {
 		}
 	}
 
-	pub fn media_playback_allows_inline(
-		self,
-		media_playback_allows_inline:bool,
-	) -> Self {
+	pub fn media_playback_allows_inline(self, media_playback_allows_inline:bool) -> Self {
 		Self {
-			builder:self.builder.property(
-				"media-playback-allows-inline",
-				media_playback_allows_inline,
-			),
+			builder:self
+				.builder
+				.property("media-playback-allows-inline", media_playback_allows_inline),
 		}
 	}
 
@@ -632,66 +466,33 @@ impl SettingsBuilder {
 	}
 
 	pub fn minimum_font_size(self, minimum_font_size:u32) -> Self {
+		Self { builder:self.builder.property("minimum-font-size", minimum_font_size) }
+	}
+
+	pub fn monospace_font_family(self, monospace_font_family:impl Into<glib::GString>) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("minimum-font-size", minimum_font_size),
+			builder:self.builder.property("monospace-font-family", monospace_font_family.into()),
 		}
 	}
 
-	pub fn monospace_font_family(
-		self,
-		monospace_font_family:impl Into<glib::GString>,
-	) -> Self {
+	pub fn pictograph_font_family(self, pictograph_font_family:impl Into<glib::GString>) -> Self {
 		Self {
-			builder:self.builder.property(
-				"monospace-font-family",
-				monospace_font_family.into(),
-			),
-		}
-	}
-
-	pub fn pictograph_font_family(
-		self,
-		pictograph_font_family:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self.builder.property(
-				"pictograph-font-family",
-				pictograph_font_family.into(),
-			),
+			builder:self.builder.property("pictograph-font-family", pictograph_font_family.into()),
 		}
 	}
 
 	pub fn print_backgrounds(self, print_backgrounds:bool) -> Self {
+		Self { builder:self.builder.property("print-backgrounds", print_backgrounds) }
+	}
+
+	pub fn sans_serif_font_family(self, sans_serif_font_family:impl Into<glib::GString>) -> Self {
 		Self {
-			builder:self
-				.builder
-				.property("print-backgrounds", print_backgrounds),
+			builder:self.builder.property("sans-serif-font-family", sans_serif_font_family.into()),
 		}
 	}
 
-	pub fn sans_serif_font_family(
-		self,
-		sans_serif_font_family:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self.builder.property(
-				"sans-serif-font-family",
-				sans_serif_font_family.into(),
-			),
-		}
-	}
-
-	pub fn serif_font_family(
-		self,
-		serif_font_family:impl Into<glib::GString>,
-	) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("serif-font-family", serif_font_family.into()),
-		}
+	pub fn serif_font_family(self, serif_font_family:impl Into<glib::GString>) -> Self {
+		Self { builder:self.builder.property("serif-font-family", serif_font_family.into()) }
 	}
 
 	pub fn user_agent(self, user_agent:impl Into<glib::GString>) -> Self {
@@ -704,8 +505,8 @@ impl SettingsBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`Settings`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> Settings { self.builder.build() }
 }
 
@@ -721,11 +522,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_allow_file_access_from_file_urls")]
 	fn allows_file_access_from_file_urls(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_settings_get_allow_file_access_from_file_urls(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_settings_get_allow_file_access_from_file_urls(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -733,9 +532,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_allow_modal_dialogs")]
 	fn allows_modal_dialogs(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_allow_modal_dialogs(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_allow_modal_dialogs(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -745,11 +542,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_allow_top_navigation_to_data_urls")]
 	fn allows_top_navigation_to_data_urls(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_settings_get_allow_top_navigation_to_data_urls(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_settings_get_allow_top_navigation_to_data_urls(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -759,11 +554,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_allow_universal_access_from_file_urls")]
 	fn allows_universal_access_from_file_urls(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_settings_get_allow_universal_access_from_file_urls(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_settings_get_allow_universal_access_from_file_urls(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -771,9 +564,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_auto_load_images")]
 	fn is_auto_load_images(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_auto_load_images(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_auto_load_images(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -791,9 +582,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_default_charset")]
 	fn default_charset(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_settings_get_default_charset(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_settings_get_default_charset(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -810,20 +599,14 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_settings_get_default_font_size")]
 	#[doc(alias = "get_default_font_size")]
 	fn default_font_size(&self) -> u32 {
-		unsafe {
-			ffi::webkit_settings_get_default_font_size(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_settings_get_default_font_size(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_settings_get_default_monospace_font_size")]
 	#[doc(alias = "get_default_monospace_font_size")]
 	fn default_monospace_font_size(&self) -> u32 {
 		unsafe {
-			ffi::webkit_settings_get_default_monospace_font_size(
-				self.as_ref().to_glib_none().0,
-			)
+			ffi::webkit_settings_get_default_monospace_font_size(self.as_ref().to_glib_none().0)
 		}
 	}
 
@@ -833,9 +616,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_disable_web_security")]
 	fn is_disable_web_security(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_disable_web_security(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_disable_web_security(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -865,9 +646,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
-	#[doc(
-		alias = "webkit_settings_get_enable_back_forward_navigation_gestures"
-	)]
+	#[doc(alias = "webkit_settings_get_enable_back_forward_navigation_gestures")]
 	#[doc(alias = "get_enable_back_forward_navigation_gestures")]
 	fn enables_back_forward_navigation_gestures(&self) -> bool {
 		unsafe {
@@ -935,9 +714,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_fullscreen")]
 	fn enables_fullscreen(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_fullscreen(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_fullscreen(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -976,20 +753,14 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_settings_get_enable_java")]
 	#[doc(alias = "get_enable_java")]
 	fn enables_java(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_java(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_settings_get_enable_java(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_settings_get_enable_javascript")]
 	#[doc(alias = "get_enable_javascript")]
 	fn enables_javascript(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_javascript(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_javascript(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1010,11 +781,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_settings_get_enable_media")]
 	#[doc(alias = "get_enable_media")]
 	fn enables_media(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_media(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_settings_get_enable_media(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_22")]
@@ -1035,9 +802,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_media_stream")]
 	fn enables_media_stream(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_media_stream(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_media_stream(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1047,9 +812,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_mediasource")]
 	fn enables_mediasource(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_mediasource(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_mediasource(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1069,11 +832,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_offline_web_application_cache")]
 	fn enables_offline_web_application_cache(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_settings_get_enable_offline_web_application_cache(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_settings_get_enable_offline_web_application_cache(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -1081,9 +842,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_page_cache")]
 	fn enables_page_cache(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_page_cache(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_page_cache(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1093,9 +852,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_plugins")]
 	fn enables_plugins(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_plugins(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_plugins(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1157,9 +914,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_tabs_to_links")]
 	fn enables_tabs_to_links(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_tabs_to_links(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_tabs_to_links(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1167,20 +922,14 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_webaudio")]
 	fn enables_webaudio(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_webaudio(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_webaudio(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_settings_get_enable_webgl")]
 	#[doc(alias = "get_enable_webgl")]
 	fn enables_webgl(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_webgl(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_settings_get_enable_webgl(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_38")]
@@ -1188,18 +937,12 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_settings_get_enable_webrtc")]
 	#[doc(alias = "get_enable_webrtc")]
 	fn enables_webrtc(&self) -> bool {
-		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_webrtc(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib(ffi::webkit_settings_get_enable_webrtc(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[cfg(feature = "v2_2")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
-	#[doc(
-		alias = "webkit_settings_get_enable_write_console_messages_to_stdout"
-	)]
+	#[doc(alias = "webkit_settings_get_enable_write_console_messages_to_stdout")]
 	#[doc(alias = "get_enable_write_console_messages_to_stdout")]
 	fn enables_write_console_messages_to_stdout(&self) -> bool {
 		unsafe {
@@ -1215,9 +958,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_enable_xss_auditor")]
 	fn enables_xss_auditor(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_enable_xss_auditor(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_enable_xss_auditor(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1253,9 +994,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 		}
 	}
 
-	#[doc(
-		alias = "webkit_settings_get_javascript_can_open_windows_automatically"
-	)]
+	#[doc(alias = "webkit_settings_get_javascript_can_open_windows_automatically")]
 	#[doc(alias = "get_javascript_can_open_windows_automatically")]
 	fn is_javascript_can_open_windows_automatically(&self) -> bool {
 		unsafe {
@@ -1269,23 +1008,17 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_load_icons_ignoring_image_load_setting")]
 	fn is_load_icons_ignoring_image_load_setting(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_settings_get_load_icons_ignoring_image_load_setting(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_settings_get_load_icons_ignoring_image_load_setting(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-	#[doc(
-		alias = "webkit_settings_get_media_content_types_requiring_hardware_support"
-	)]
+	#[doc(alias = "webkit_settings_get_media_content_types_requiring_hardware_support")]
 	#[doc(alias = "get_media_content_types_requiring_hardware_support")]
-	fn media_content_types_requiring_hardware_support(
-		&self,
-	) -> Option<glib::GString> {
+	fn media_content_types_requiring_hardware_support(&self) -> Option<glib::GString> {
 		unsafe {
 			from_glib_none(ffi::webkit_settings_get_media_content_types_requiring_hardware_support(
 				self.as_ref().to_glib_none().0,
@@ -1307,22 +1040,16 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_media_playback_requires_user_gesture")]
 	fn is_media_playback_requires_user_gesture(&self) -> bool {
 		unsafe {
-			from_glib(
-				ffi::webkit_settings_get_media_playback_requires_user_gesture(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_settings_get_media_playback_requires_user_gesture(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
 	#[doc(alias = "webkit_settings_get_minimum_font_size")]
 	#[doc(alias = "get_minimum_font_size")]
 	fn minimum_font_size(&self) -> u32 {
-		unsafe {
-			ffi::webkit_settings_get_minimum_font_size(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_settings_get_minimum_font_size(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_settings_get_monospace_font_family")]
@@ -1349,9 +1076,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_print_backgrounds")]
 	fn is_print_backgrounds(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_print_backgrounds(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_print_backgrounds(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1379,9 +1104,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_user_agent")]
 	fn user_agent(&self) -> Option<glib::GString> {
 		unsafe {
-			from_glib_none(ffi::webkit_settings_get_user_agent(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_settings_get_user_agent(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1389,9 +1112,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "get_zoom_text_only")]
 	fn is_zoom_text_only(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_settings_get_zoom_text_only(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_settings_get_zoom_text_only(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -1484,10 +1205,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_settings_set_default_font_size")]
 	fn set_default_font_size(&self, font_size:u32) {
 		unsafe {
-			ffi::webkit_settings_set_default_font_size(
-				self.as_ref().to_glib_none().0,
-				font_size,
-			);
+			ffi::webkit_settings_set_default_font_size(self.as_ref().to_glib_none().0, font_size);
 		}
 	}
 
@@ -1539,9 +1257,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
-	#[doc(
-		alias = "webkit_settings_set_enable_back_forward_navigation_gestures"
-	)]
+	#[doc(alias = "webkit_settings_set_enable_back_forward_navigation_gestures")]
 	fn set_enable_back_forward_navigation_gestures(&self, enabled:bool) {
 		unsafe {
 			ffi::webkit_settings_set_enable_back_forward_navigation_gestures(
@@ -1869,9 +1585,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg(feature = "v2_2")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
-	#[doc(
-		alias = "webkit_settings_set_enable_write_console_messages_to_stdout"
-	)]
+	#[doc(alias = "webkit_settings_set_enable_write_console_messages_to_stdout")]
 	fn set_enable_write_console_messages_to_stdout(&self, enabled:bool) {
 		unsafe {
 			ffi::webkit_settings_set_enable_write_console_messages_to_stdout(
@@ -1906,10 +1620,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[doc(alias = "webkit_settings_set_hardware_acceleration_policy")]
-	fn set_hardware_acceleration_policy(
-		&self,
-		policy:HardwareAccelerationPolicy,
-	) {
+	fn set_hardware_acceleration_policy(&self, policy:HardwareAccelerationPolicy) {
 		unsafe {
 			ffi::webkit_settings_set_hardware_acceleration_policy(
 				self.as_ref().to_glib_none().0,
@@ -1928,9 +1639,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 		}
 	}
 
-	#[doc(
-		alias = "webkit_settings_set_javascript_can_open_windows_automatically"
-	)]
+	#[doc(alias = "webkit_settings_set_javascript_can_open_windows_automatically")]
 	fn set_javascript_can_open_windows_automatically(&self, enabled:bool) {
 		unsafe {
 			ffi::webkit_settings_set_javascript_can_open_windows_automatically(
@@ -1952,13 +1661,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
-	#[doc(
-		alias = "webkit_settings_set_media_content_types_requiring_hardware_support"
-	)]
-	fn set_media_content_types_requiring_hardware_support(
-		&self,
-		content_types:Option<&str>,
-	) {
+	#[doc(alias = "webkit_settings_set_media_content_types_requiring_hardware_support")]
+	fn set_media_content_types_requiring_hardware_support(&self, content_types:Option<&str>) {
 		unsafe {
 			ffi::webkit_settings_set_media_content_types_requiring_hardware_support(
 				self.as_ref().to_glib_none().0,
@@ -1990,10 +1694,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_settings_set_minimum_font_size")]
 	fn set_minimum_font_size(&self, font_size:u32) {
 		unsafe {
-			ffi::webkit_settings_set_minimum_font_size(
-				self.as_ref().to_glib_none().0,
-				font_size,
-			);
+			ffi::webkit_settings_set_minimum_font_size(self.as_ref().to_glib_none().0, font_size);
 		}
 	}
 
@@ -2085,9 +1786,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_10")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 	#[doc(alias = "allow-file-access-from-file-urls")]
-	fn connect_allow_file_access_from_file_urls_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_allow_file_access_from_file_urls_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2106,11 +1805,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::allow-file-access-from-file-urls\0".as_ptr()
-					as *const _,
+				b"notify::allow-file-access-from-file-urls\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_allow_file_access_from_file_urls_trampoline::<Self, F>
-						as *const (),
+					notify_allow_file_access_from_file_urls_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2118,10 +1815,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "allow-modal-dialogs")]
-	fn connect_allow_modal_dialogs_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_allow_modal_dialogs_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_allow_modal_dialogs_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2139,8 +1833,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::allow-modal-dialogs\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_allow_modal_dialogs_trampoline::<Self, F>
-						as *const (),
+					notify_allow_modal_dialogs_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2150,9 +1843,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	#[doc(alias = "allow-top-navigation-to-data-urls")]
-	fn connect_allow_top_navigation_to_data_urls_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_allow_top_navigation_to_data_urls_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2171,11 +1862,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::allow-top-navigation-to-data-urls\0".as_ptr()
-					as *const _,
+				b"notify::allow-top-navigation-to-data-urls\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_allow_top_navigation_to_data_urls_trampoline::<Self, F>
-						as *const (),
+					notify_allow_top_navigation_to_data_urls_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2185,9 +1874,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_14")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_14")))]
 	#[doc(alias = "allow-universal-access-from-file-urls")]
-	fn connect_allow_universal_access_from_file_urls_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_allow_universal_access_from_file_urls_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2206,13 +1893,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::allow-universal-access-from-file-urls\0".as_ptr()
-					as *const _,
+				b"notify::allow-universal-access-from-file-urls\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_allow_universal_access_from_file_urls_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_allow_universal_access_from_file_urls_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2220,14 +1903,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "auto-load-images")]
-	fn connect_auto_load_images_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_auto_load_images_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_auto_load_images_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_auto_load_images_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -2249,10 +1926,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "cursive-font-family")]
-	fn connect_cursive_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_cursive_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_cursive_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2270,8 +1944,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::cursive-font-family\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_cursive_font_family_trampoline::<Self, F>
-						as *const (),
+					notify_cursive_font_family_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2279,14 +1952,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "default-charset")]
-	fn connect_default_charset_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_default_charset_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_default_charset_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_default_charset_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -2308,10 +1975,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "default-font-family")]
-	fn connect_default_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_default_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_default_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2329,8 +1993,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::default-font-family\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_default_font_family_trampoline::<Self, F>
-						as *const (),
+					notify_default_font_family_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2338,10 +2001,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "default-font-size")]
-	fn connect_default_font_size_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_default_font_size_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_default_font_size_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2388,8 +2048,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::default-monospace-font-size\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_default_monospace_font_size_trampoline::<Self, F>
-						as *const (),
+					notify_default_monospace_font_size_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2399,10 +2058,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
 	#[doc(alias = "disable-web-security")]
-	fn connect_disable_web_security_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_disable_web_security_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_disable_web_security_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2420,8 +2076,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::disable-web-security\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_disable_web_security_trampoline::<Self, F>
-						as *const (),
+					notify_disable_web_security_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2450,8 +2105,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::draw-compositing-indicators\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_draw_compositing_indicators_trampoline::<Self, F>
-						as *const (),
+					notify_draw_compositing_indicators_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2483,8 +2137,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-accelerated-2d-canvas\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_accelerated_2d_canvas_trampoline::<Self, F>
-						as *const (),
+					notify_enable_accelerated_2d_canvas_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2494,9 +2147,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 	#[doc(alias = "enable-back-forward-navigation-gestures")]
-	fn connect_enable_back_forward_navigation_gestures_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_enable_back_forward_navigation_gestures_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -2515,13 +2166,10 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::enable-back-forward-navigation-gestures\0".as_ptr()
-					as *const _,
+				b"notify::enable-back-forward-navigation-gestures\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_back_forward_navigation_gestures_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_enable_back_forward_navigation_gestures_trampoline::<Self, F>
+						as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2529,10 +2177,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-caret-browsing")]
-	fn connect_enable_caret_browsing_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_caret_browsing_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_caret_browsing_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2550,8 +2195,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-caret-browsing\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_caret_browsing_trampoline::<Self, F>
-						as *const (),
+					notify_enable_caret_browsing_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2580,8 +2224,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-developer-extras\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_developer_extras_trampoline::<Self, F>
-						as *const (),
+					notify_enable_developer_extras_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2589,10 +2232,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-dns-prefetching")]
-	fn connect_enable_dns_prefetching_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_dns_prefetching_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_dns_prefetching_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2610,8 +2250,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-dns-prefetching\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_dns_prefetching_trampoline::<Self, F>
-						as *const (),
+					notify_enable_dns_prefetching_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2621,10 +2260,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_20")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 	#[doc(alias = "enable-encrypted-media")]
-	fn connect_enable_encrypted_media_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_encrypted_media_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_encrypted_media_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2642,8 +2278,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-encrypted-media\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_encrypted_media_trampoline::<Self, F>
-						as *const (),
+					notify_enable_encrypted_media_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2673,8 +2308,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-frame-flattening\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_frame_flattening_trampoline::<Self, F>
-						as *const (),
+					notify_enable_frame_flattening_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2682,10 +2316,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-fullscreen")]
-	fn connect_enable_fullscreen_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_fullscreen_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_fullscreen_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2711,10 +2342,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-html5-database")]
-	fn connect_enable_html5_database_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_html5_database_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_html5_database_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2732,8 +2360,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-html5-database\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_html5_database_trampoline::<Self, F>
-						as *const (),
+					notify_enable_html5_database_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2762,8 +2389,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-html5-local-storage\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_html5_local_storage_trampoline::<Self, F>
-						as *const (),
+					notify_enable_html5_local_storage_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2792,8 +2418,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-hyperlink-auditing\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_hyperlink_auditing_trampoline::<Self, F>
-						as *const (),
+					notify_enable_hyperlink_auditing_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2802,14 +2427,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg_attr(feature = "v2_38", deprecated = "Since 2.38")]
 	#[doc(alias = "enable-java")]
-	fn connect_enable_java_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_enable_java_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_enable_java_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_enable_java_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -2831,10 +2450,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-javascript")]
-	fn connect_enable_javascript_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_javascript_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_javascript_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2883,8 +2499,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-javascript-markup\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_javascript_markup_trampoline::<Self, F>
-						as *const (),
+					notify_enable_javascript_markup_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2894,14 +2509,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	#[doc(alias = "enable-media")]
-	fn connect_enable_media_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_enable_media_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_enable_media_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_enable_media_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -2946,8 +2555,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-media-capabilities\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_media_capabilities_trampoline::<Self, F>
-						as *const (),
+					notify_enable_media_capabilities_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2957,10 +2565,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_4")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
 	#[doc(alias = "enable-media-stream")]
-	fn connect_enable_media_stream_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_media_stream_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_media_stream_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -2978,8 +2583,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-media-stream\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_media_stream_trampoline::<Self, F>
-						as *const (),
+					notify_enable_media_stream_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -2989,10 +2593,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_4")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_4")))]
 	#[doc(alias = "enable-mediasource")]
-	fn connect_enable_mediasource_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_mediasource_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_mediasource_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3010,8 +2611,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-mediasource\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_mediasource_trampoline::<Self, F>
-						as *const (),
+					notify_enable_mediasource_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3042,8 +2642,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-mock-capture-devices\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_mock_capture_devices_trampoline::<Self, F>
-						as *const (),
+					notify_enable_mock_capture_devices_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3051,9 +2650,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-offline-web-application-cache")]
-	fn connect_enable_offline_web_application_cache_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_enable_offline_web_application_cache_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3072,13 +2669,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::enable-offline-web-application-cache\0".as_ptr()
-					as *const _,
+				b"notify::enable-offline-web-application-cache\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_offline_web_application_cache_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_enable_offline_web_application_cache_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3086,10 +2679,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-page-cache")]
-	fn connect_enable_page_cache_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_page_cache_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_page_cache_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3116,14 +2706,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg_attr(feature = "v2_32", deprecated = "Since 2.32")]
 	#[doc(alias = "enable-plugins")]
-	fn connect_enable_plugins_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_enable_plugins_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_enable_plugins_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_enable_plugins_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3167,8 +2751,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-private-browsing\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_private_browsing_trampoline::<Self, F>
-						as *const (),
+					notify_enable_private_browsing_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3197,8 +2780,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-resizable-text-areas\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_resizable_text_areas_trampoline::<Self, F>
-						as *const (),
+					notify_enable_resizable_text_areas_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3227,8 +2809,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-site-specific-quirks\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_site_specific_quirks_trampoline::<Self, F>
-						as *const (),
+					notify_enable_site_specific_quirks_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3257,8 +2838,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-smooth-scrolling\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_smooth_scrolling_trampoline::<Self, F>
-						as *const (),
+					notify_enable_smooth_scrolling_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3289,8 +2869,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-spatial-navigation\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_spatial_navigation_trampoline::<Self, F>
-						as *const (),
+					notify_enable_spatial_navigation_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3298,10 +2877,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-tabs-to-links")]
-	fn connect_enable_tabs_to_links_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_tabs_to_links_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_tabs_to_links_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3319,8 +2895,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-tabs-to-links\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_tabs_to_links_trampoline::<Self, F>
-						as *const (),
+					notify_enable_tabs_to_links_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3328,14 +2903,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-webaudio")]
-	fn connect_enable_webaudio_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_enable_webaudio_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_enable_webaudio_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_enable_webaudio_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3357,14 +2926,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "enable-webgl")]
-	fn connect_enable_webgl_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_enable_webgl_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_enable_webgl_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_enable_webgl_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3388,14 +2951,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_38")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_38")))]
 	#[doc(alias = "enable-webrtc")]
-	fn connect_enable_webrtc_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_enable_webrtc_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_enable_webrtc_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_enable_webrtc_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3419,9 +2976,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_2")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 	#[doc(alias = "enable-write-console-messages-to-stdout")]
-	fn connect_enable_write_console_messages_to_stdout_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_enable_write_console_messages_to_stdout_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3440,13 +2995,10 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::enable-write-console-messages-to-stdout\0".as_ptr()
-					as *const _,
+				b"notify::enable-write-console-messages-to-stdout\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_write_console_messages_to_stdout_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_enable_write_console_messages_to_stdout_trampoline::<Self, F>
+						as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3455,10 +3007,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 
 	#[cfg_attr(feature = "v2_38", deprecated = "Since 2.38")]
 	#[doc(alias = "enable-xss-auditor")]
-	fn connect_enable_xss_auditor_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_xss_auditor_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_xss_auditor_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3476,8 +3025,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::enable-xss-auditor\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_xss_auditor_trampoline::<Self, F>
-						as *const (),
+					notify_enable_xss_auditor_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3485,10 +3033,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "fantasy-font-family")]
-	fn connect_fantasy_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_fantasy_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_fantasy_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3506,8 +3051,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::fantasy-font-family\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_fantasy_font_family_trampoline::<Self, F>
-						as *const (),
+					notify_fantasy_font_family_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3538,8 +3082,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::hardware-acceleration-policy\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_hardware_acceleration_policy_trampoline::<Self, F>
-						as *const (),
+					notify_hardware_acceleration_policy_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3566,11 +3109,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::javascript-can-access-clipboard\0".as_ptr()
-					as *const _,
+				b"notify::javascript-can-access-clipboard\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_javascript_can_access_clipboard_trampoline::<Self, F>
-						as *const (),
+					notify_javascript_can_access_clipboard_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3578,9 +3119,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "javascript-can-open-windows-automatically")]
-	fn connect_javascript_can_open_windows_automatically_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_javascript_can_open_windows_automatically_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3599,13 +3138,10 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::javascript-can-open-windows-automatically\0".as_ptr()
-					as *const _,
+				b"notify::javascript-can-open-windows-automatically\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_javascript_can_open_windows_automatically_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_javascript_can_open_windows_automatically_trampoline::<Self, F>
+						as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3613,9 +3149,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "load-icons-ignoring-image-load-setting")]
-	fn connect_load_icons_ignoring_image_load_setting_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_load_icons_ignoring_image_load_setting_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3634,13 +3168,10 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::load-icons-ignoring-image-load-setting\0".as_ptr()
-					as *const _,
+				b"notify::load-icons-ignoring-image-load-setting\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_load_icons_ignoring_image_load_setting_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_load_icons_ignoring_image_load_setting_trampoline::<Self, F>
+						as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3650,9 +3181,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 	#[doc(alias = "media-content-types-requiring-hardware-support")]
-	fn connect_media_content_types_requiring_hardware_support_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_media_content_types_requiring_hardware_support_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3703,8 +3232,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::media-playback-allows-inline\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_media_playback_allows_inline_trampoline::<Self, F>
-						as *const (),
+					notify_media_playback_allows_inline_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3712,9 +3240,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "media-playback-requires-user-gesture")]
-	fn connect_media_playback_requires_user_gesture_notify<
-		F:Fn(&Self) + 'static,
-	>(
+	fn connect_media_playback_requires_user_gesture_notify<F:Fn(&Self) + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -3733,13 +3259,9 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			let f:Box_<F> = Box_::new(f);
 			connect_raw(
 				self.as_ptr() as *mut _,
-				b"notify::media-playback-requires-user-gesture\0".as_ptr()
-					as *const _,
+				b"notify::media-playback-requires-user-gesture\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_media_playback_requires_user_gesture_trampoline::<
-						Self,
-						F,
-					> as *const (),
+					notify_media_playback_requires_user_gesture_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3747,10 +3269,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "minimum-font-size")]
-	fn connect_minimum_font_size_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_minimum_font_size_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_minimum_font_size_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3776,10 +3295,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "monospace-font-family")]
-	fn connect_monospace_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_monospace_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_monospace_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3797,8 +3313,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::monospace-font-family\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_monospace_font_family_trampoline::<Self, F>
-						as *const (),
+					notify_monospace_font_family_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3806,10 +3321,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "pictograph-font-family")]
-	fn connect_pictograph_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_pictograph_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_pictograph_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3827,8 +3339,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::pictograph-font-family\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_pictograph_font_family_trampoline::<Self, F>
-						as *const (),
+					notify_pictograph_font_family_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3836,10 +3347,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "print-backgrounds")]
-	fn connect_print_backgrounds_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_print_backgrounds_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_print_backgrounds_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3865,10 +3373,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "sans-serif-font-family")]
-	fn connect_sans_serif_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_sans_serif_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_sans_serif_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3886,8 +3391,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 				self.as_ptr() as *mut _,
 				b"notify::sans-serif-font-family\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_sans_serif_font_family_trampoline::<Self, F>
-						as *const (),
+					notify_sans_serif_font_family_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)
@@ -3895,10 +3399,7 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "serif-font-family")]
-	fn connect_serif_font_family_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_serif_font_family_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_serif_font_family_trampoline<
 			P:IsA<Settings>,
 			F:Fn(&P) + 'static,
@@ -3924,14 +3425,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "user-agent")]
-	fn connect_user_agent_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_user_agent_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_user_agent_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_user_agent_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -3953,14 +3448,8 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 	}
 
 	#[doc(alias = "zoom-text-only")]
-	fn connect_zoom_text_only_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_zoom_text_only_trampoline<
-			P:IsA<Settings>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_zoom_text_only_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_zoom_text_only_trampoline<P:IsA<Settings>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitSettings,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,

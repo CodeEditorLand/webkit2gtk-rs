@@ -46,8 +46,7 @@ mod sealed {
 	impl<T:super::IsA<super::UserContentManager>> Sealed for T {}
 }
 
-pub trait UserContentManagerExt:
-	IsA<UserContentManager> + sealed::Sealed + 'static {
+pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'static {
 	//#[cfg(feature = "v2_24")]
 	//#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 	//#[doc(alias = "webkit_user_content_manager_add_filter")]
@@ -77,9 +76,7 @@ pub trait UserContentManagerExt:
 
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-	#[doc(
-		alias = "webkit_user_content_manager_register_script_message_handler"
-	)]
+	#[doc(alias = "webkit_user_content_manager_register_script_message_handler")]
 	fn register_script_message_handler(&self, name:&str) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_user_content_manager_register_script_message_handler(
@@ -91,14 +88,8 @@ pub trait UserContentManagerExt:
 
 	#[cfg(feature = "v2_22")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
-	#[doc(
-		alias = "webkit_user_content_manager_register_script_message_handler_in_world"
-	)]
-	fn register_script_message_handler_in_world(
-		&self,
-		name:&str,
-		world_name:&str,
-	) -> bool {
+	#[doc(alias = "webkit_user_content_manager_register_script_message_handler_in_world")]
+	fn register_script_message_handler_in_world(&self, name:&str, world_name:&str) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_user_content_manager_register_script_message_handler_in_world(
 				self.as_ref().to_glib_none().0,
@@ -110,14 +101,8 @@ pub trait UserContentManagerExt:
 
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
-	#[doc(
-		alias = "webkit_user_content_manager_register_script_message_handler_with_reply"
-	)]
-	fn register_script_message_handler_with_reply(
-		&self,
-		name:&str,
-		world_name:&str,
-	) -> bool {
+	#[doc(alias = "webkit_user_content_manager_register_script_message_handler_with_reply")]
+	fn register_script_message_handler_with_reply(&self, name:&str, world_name:&str) -> bool {
 		unsafe {
 			from_glib(ffi::webkit_user_content_manager_register_script_message_handler_with_reply(
 				self.as_ref().to_glib_none().0,
@@ -132,18 +117,14 @@ pub trait UserContentManagerExt:
 	#[doc(alias = "webkit_user_content_manager_remove_all_filters")]
 	fn remove_all_filters(&self) {
 		unsafe {
-			ffi::webkit_user_content_manager_remove_all_filters(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_user_content_manager_remove_all_filters(self.as_ref().to_glib_none().0);
 		}
 	}
 
 	#[doc(alias = "webkit_user_content_manager_remove_all_scripts")]
 	fn remove_all_scripts(&self) {
 		unsafe {
-			ffi::webkit_user_content_manager_remove_all_scripts(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_user_content_manager_remove_all_scripts(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -201,9 +182,7 @@ pub trait UserContentManagerExt:
 
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
-	#[doc(
-		alias = "webkit_user_content_manager_unregister_script_message_handler"
-	)]
+	#[doc(alias = "webkit_user_content_manager_unregister_script_message_handler")]
 	fn unregister_script_message_handler(&self, name:&str) {
 		unsafe {
 			ffi::webkit_user_content_manager_unregister_script_message_handler(
@@ -215,14 +194,8 @@ pub trait UserContentManagerExt:
 
 	#[cfg(feature = "v2_22")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
-	#[doc(
-		alias = "webkit_user_content_manager_unregister_script_message_handler_in_world"
-	)]
-	fn unregister_script_message_handler_in_world(
-		&self,
-		name:&str,
-		world_name:&str,
-	) {
+	#[doc(alias = "webkit_user_content_manager_unregister_script_message_handler_in_world")]
+	fn unregister_script_message_handler_in_world(&self, name:&str, world_name:&str) {
 		unsafe {
 			ffi::webkit_user_content_manager_unregister_script_message_handler_in_world(
 				self.as_ref().to_glib_none().0,
@@ -235,9 +208,7 @@ pub trait UserContentManagerExt:
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	#[doc(alias = "script-message-received")]
-	fn connect_script_message_received<
-		F:Fn(&Self, &JavascriptResult) + 'static,
-	>(
+	fn connect_script_message_received<F:Fn(&Self, &JavascriptResult) + 'static>(
 		&self,
 		detail:Option<&str>,
 		f:F,

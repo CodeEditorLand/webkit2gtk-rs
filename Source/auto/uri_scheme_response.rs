@@ -22,10 +22,7 @@ impl URISchemeResponse {
 	#[cfg(feature = "v2_36")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_36")))]
 	#[doc(alias = "webkit_uri_scheme_response_new")]
-	pub fn new(
-		input_stream:&impl IsA<gio::InputStream>,
-		stream_length:i64,
-	) -> URISchemeResponse {
+	pub fn new(input_stream:&impl IsA<gio::InputStream>, stream_length:i64) -> URISchemeResponse {
 		assert_initialized_main_thread!();
 		unsafe {
 			from_glib_full(ffi::webkit_uri_scheme_response_new(
@@ -42,9 +39,7 @@ impl URISchemeResponse {
 	/// This method returns an instance of
 	/// [`URISchemeResponseBuilder`](crate::builders::URISchemeResponseBuilder)
 	/// which can be used to create [`URISchemeResponse`] objects.
-	pub fn builder() -> URISchemeResponseBuilder {
-		URISchemeResponseBuilder::new()
-	}
+	pub fn builder() -> URISchemeResponseBuilder { URISchemeResponseBuilder::new() }
 }
 
 #[cfg(feature = "v2_36")]
@@ -68,9 +63,7 @@ impl URISchemeResponseBuilder {
 	#[cfg(feature = "v2_36")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_36")))]
 	pub fn stream(self, stream:&impl IsA<gio::InputStream>) -> Self {
-		Self {
-			builder:self.builder.property("stream", stream.clone().upcast()),
-		}
+		Self { builder:self.builder.property("stream", stream.clone().upcast()) }
 	}
 
 	#[cfg(feature = "v2_36")]
@@ -81,8 +74,8 @@ impl URISchemeResponseBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`URISchemeResponse`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> URISchemeResponse { self.builder.build() }
 }
 
@@ -91,8 +84,7 @@ mod sealed {
 	impl<T:super::IsA<super::URISchemeResponse>> Sealed for T {}
 }
 
-pub trait URISchemeResponseExt:
-	IsA<URISchemeResponse> + sealed::Sealed + 'static {
+pub trait URISchemeResponseExt: IsA<URISchemeResponse> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_36")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_36")))]
 	#[doc(alias = "webkit_uri_scheme_response_set_content_type")]

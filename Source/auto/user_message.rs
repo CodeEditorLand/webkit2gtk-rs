@@ -75,9 +75,7 @@ impl UserMessageBuilder {
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 	pub fn fd_list(self, fd_list:&impl IsA<gio::UnixFDList>) -> Self {
-		Self {
-			builder:self.builder.property("fd-list", fd_list.clone().upcast()),
-		}
+		Self { builder:self.builder.property("fd-list", fd_list.clone().upcast()) }
 	}
 
 	#[cfg(feature = "v2_28")]
@@ -94,8 +92,8 @@ impl UserMessageBuilder {
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`UserMessage`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> UserMessage { self.builder.build() }
 }
 
@@ -109,29 +107,21 @@ pub trait UserMessageExt: IsA<UserMessage> + sealed::Sealed + 'static {
 	#[doc(alias = "get_fd_list")]
 	fn fd_list(&self) -> Option<gio::UnixFDList> {
 		unsafe {
-			from_glib_none(ffi::webkit_user_message_get_fd_list(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_user_message_get_fd_list(self.as_ref().to_glib_none().0))
 		}
 	}
 
 	#[doc(alias = "webkit_user_message_get_name")]
 	#[doc(alias = "get_name")]
 	fn name(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_user_message_get_name(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_user_message_get_name(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_user_message_get_parameters")]
 	#[doc(alias = "get_parameters")]
 	fn parameters(&self) -> Option<glib::Variant> {
 		unsafe {
-			from_glib_none(ffi::webkit_user_message_get_parameters(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib_none(ffi::webkit_user_message_get_parameters(self.as_ref().to_glib_none().0))
 		}
 	}
 

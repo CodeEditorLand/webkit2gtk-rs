@@ -24,13 +24,9 @@ pub enum AuthenticationScheme {
 	Negotiate,
 	#[doc(alias = "WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED")]
 	ClientCertificateRequested,
-	#[doc(
-		alias = "WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED"
-	)]
+	#[doc(alias = "WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED")]
 	ServerTrustEvaluationRequested,
-	#[doc(
-		alias = "WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_PIN_REQUESTED"
-	)]
+	#[doc(alias = "WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_PIN_REQUESTED")]
 	ClientCertificatePinRequested,
 	#[doc(alias = "WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN")]
 	Unknown,
@@ -55,13 +51,13 @@ impl IntoGlib for AuthenticationScheme {
 			Self::Negotiate => ffi::WEBKIT_AUTHENTICATION_SCHEME_NEGOTIATE,
 			Self::ClientCertificateRequested => {
 				ffi::WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED
-			}
+			},
 			Self::ServerTrustEvaluationRequested => {
 				ffi::WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED
-			}
+			},
 			Self::ClientCertificatePinRequested => {
 				ffi::WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_PIN_REQUESTED
-			}
+			},
 			Self::Unknown => ffi::WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN,
 			Self::__Unknown(value) => value,
 		}
@@ -85,13 +81,13 @@ impl FromGlib<ffi::WebKitAuthenticationScheme> for AuthenticationScheme {
 			ffi::WEBKIT_AUTHENTICATION_SCHEME_NEGOTIATE => Self::Negotiate,
 			ffi::WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_REQUESTED => {
 				Self::ClientCertificateRequested
-			}
+			},
 			ffi::WEBKIT_AUTHENTICATION_SCHEME_SERVER_TRUST_EVALUATION_REQUESTED => {
 				Self::ServerTrustEvaluationRequested
-			}
+			},
 			ffi::WEBKIT_AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE_PIN_REQUESTED => {
 				Self::ClientCertificatePinRequested
-			}
+			},
 			ffi::WEBKIT_AUTHENTICATION_SCHEME_UNKNOWN => Self::Unknown,
 			value => Self::__Unknown(value),
 		}
@@ -115,9 +111,7 @@ impl glib::HasParamSpec for AuthenticationScheme {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_2")]
@@ -145,10 +139,7 @@ impl ToValue for AuthenticationScheme {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -190,12 +181,8 @@ impl IntoGlib for AutomationBrowsingContextPresentation {
 	#[inline]
 	fn into_glib(self) -> ffi::WebKitAutomationBrowsingContextPresentation {
 		match self {
-			Self::Window => {
-				ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_WINDOW
-			},
-			Self::Tab => {
-				ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB
-			},
+			Self::Window => ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_WINDOW,
+			Self::Tab => ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -208,18 +195,12 @@ impl FromGlib<ffi::WebKitAutomationBrowsingContextPresentation>
 	for AutomationBrowsingContextPresentation
 {
 	#[inline]
-	unsafe fn from_glib(
-		value:ffi::WebKitAutomationBrowsingContextPresentation,
-	) -> Self {
+	unsafe fn from_glib(value:ffi::WebKitAutomationBrowsingContextPresentation) -> Self {
 		skip_assert_initialized!();
 
 		match value {
-			ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_WINDOW => {
-				Self::Window
-			},
-			ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB => {
-				Self::Tab
-			},
+			ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_WINDOW => Self::Window,
+			ffi::WEBKIT_AUTOMATION_BROWSING_CONTEXT_PRESENTATION_TAB => Self::Tab,
 			value => Self::__Unknown(value),
 		}
 	}
@@ -231,11 +212,7 @@ impl StaticType for AutomationBrowsingContextPresentation {
 	#[inline]
 	#[doc(alias = "webkit_automation_browsing_context_presentation_get_type")]
 	fn static_type() -> glib::Type {
-		unsafe {
-			from_glib(
-				ffi::webkit_automation_browsing_context_presentation_get_type(),
-			)
-		}
+		unsafe { from_glib(ffi::webkit_automation_browsing_context_presentation_get_type()) }
 	}
 }
 
@@ -246,9 +223,7 @@ impl glib::HasParamSpec for AutomationBrowsingContextPresentation {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_28")]
@@ -259,9 +234,7 @@ impl glib::value::ValueType for AutomationBrowsingContextPresentation {
 
 #[cfg(feature = "v2_28")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
-unsafe impl<'a> glib::value::FromValue<'a>
-	for AutomationBrowsingContextPresentation
-{
+unsafe impl<'a> glib::value::FromValue<'a> for AutomationBrowsingContextPresentation {
 	type Checker = glib::value::GenericValueTypeChecker<Self>;
 
 	#[inline]
@@ -278,10 +251,7 @@ impl ToValue for AutomationBrowsingContextPresentation {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -355,9 +325,7 @@ impl FromGlib<ffi::WebKitAutoplayPolicy> for AutoplayPolicy {
 impl StaticType for AutoplayPolicy {
 	#[inline]
 	#[doc(alias = "webkit_autoplay_policy_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_autoplay_policy_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_autoplay_policy_get_type()) } }
 }
 
 #[cfg(feature = "v2_30")]
@@ -367,9 +335,7 @@ impl glib::HasParamSpec for AutoplayPolicy {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_30")]
@@ -397,10 +363,7 @@ impl ToValue for AutoplayPolicy {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -466,9 +429,7 @@ impl FromGlib<ffi::WebKitCacheModel> for CacheModel {
 impl StaticType for CacheModel {
 	#[inline]
 	#[doc(alias = "webkit_cache_model_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_cache_model_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_cache_model_get_type()) } }
 }
 
 impl glib::HasParamSpec for CacheModel {
@@ -476,9 +437,7 @@ impl glib::HasParamSpec for CacheModel {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for CacheModel {
@@ -500,10 +459,7 @@ impl ToValue for CacheModel {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -630,30 +586,16 @@ impl IntoGlib for ContextMenuAction {
 		match self {
 			Self::NoAction => ffi::WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION,
 			Self::OpenLink => ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK,
-			Self::OpenLinkInNewWindow => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW
-			},
-			Self::DownloadLinkToDisk => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_LINK_TO_DISK
-			},
-			Self::CopyLinkToClipboard => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_LINK_TO_CLIPBOARD
-			},
-			Self::OpenImageInNewWindow => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_IMAGE_IN_NEW_WINDOW
-			},
-			Self::DownloadImageToDisk => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_IMAGE_TO_DISK
-			},
-			Self::CopyImageToClipboard => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_TO_CLIPBOARD
-			},
+			Self::OpenLinkInNewWindow => ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW,
+			Self::DownloadLinkToDisk => ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_LINK_TO_DISK,
+			Self::CopyLinkToClipboard => ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_LINK_TO_CLIPBOARD,
+			Self::OpenImageInNewWindow => ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_IMAGE_IN_NEW_WINDOW,
+			Self::DownloadImageToDisk => ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_IMAGE_TO_DISK,
+			Self::CopyImageToClipboard => ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_TO_CLIPBOARD,
 			Self::CopyImageUrlToClipboard => {
 				ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_URL_TO_CLIPBOARD
 			},
-			Self::OpenFrameInNewWindow => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_FRAME_IN_NEW_WINDOW
-			},
+			Self::OpenFrameInNewWindow => ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_FRAME_IN_NEW_WINDOW,
 			Self::GoBack => ffi::WEBKIT_CONTEXT_MENU_ACTION_GO_BACK,
 			Self::GoForward => ffi::WEBKIT_CONTEXT_MENU_ACTION_GO_FORWARD,
 			Self::Stop => ffi::WEBKIT_CONTEXT_MENU_ACTION_STOP,
@@ -665,63 +607,35 @@ impl IntoGlib for ContextMenuAction {
 			Self::SelectAll => ffi::WEBKIT_CONTEXT_MENU_ACTION_SELECT_ALL,
 			Self::InputMethods => ffi::WEBKIT_CONTEXT_MENU_ACTION_INPUT_METHODS,
 			Self::Unicode => ffi::WEBKIT_CONTEXT_MENU_ACTION_UNICODE,
-			Self::SpellingGuess => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_SPELLING_GUESS
-			},
-			Self::NoGuessesFound => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_NO_GUESSES_FOUND
-			},
-			Self::IgnoreSpelling => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_SPELLING
-			},
-			Self::LearnSpelling => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_LEARN_SPELLING
-			},
-			Self::IgnoreGrammar => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_GRAMMAR
-			},
+			Self::SpellingGuess => ffi::WEBKIT_CONTEXT_MENU_ACTION_SPELLING_GUESS,
+			Self::NoGuessesFound => ffi::WEBKIT_CONTEXT_MENU_ACTION_NO_GUESSES_FOUND,
+			Self::IgnoreSpelling => ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_SPELLING,
+			Self::LearnSpelling => ffi::WEBKIT_CONTEXT_MENU_ACTION_LEARN_SPELLING,
+			Self::IgnoreGrammar => ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_GRAMMAR,
 			Self::FontMenu => ffi::WEBKIT_CONTEXT_MENU_ACTION_FONT_MENU,
 			Self::Bold => ffi::WEBKIT_CONTEXT_MENU_ACTION_BOLD,
 			Self::Italic => ffi::WEBKIT_CONTEXT_MENU_ACTION_ITALIC,
 			Self::Underline => ffi::WEBKIT_CONTEXT_MENU_ACTION_UNDERLINE,
 			Self::Outline => ffi::WEBKIT_CONTEXT_MENU_ACTION_OUTLINE,
-			Self::InspectElement => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_INSPECT_ELEMENT
-			},
-			Self::OpenVideoInNewWindow => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_VIDEO_IN_NEW_WINDOW
-			},
-			Self::OpenAudioInNewWindow => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_AUDIO_IN_NEW_WINDOW
-			},
+			Self::InspectElement => ffi::WEBKIT_CONTEXT_MENU_ACTION_INSPECT_ELEMENT,
+			Self::OpenVideoInNewWindow => ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_VIDEO_IN_NEW_WINDOW,
+			Self::OpenAudioInNewWindow => ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_AUDIO_IN_NEW_WINDOW,
 			Self::CopyVideoLinkToClipboard => {
 				ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_VIDEO_LINK_TO_CLIPBOARD
 			},
 			Self::CopyAudioLinkToClipboard => {
 				ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_AUDIO_LINK_TO_CLIPBOARD
 			},
-			Self::ToggleMediaControls => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_CONTROLS
-			},
-			Self::ToggleMediaLoop => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_LOOP
-			},
-			Self::EnterVideoFullscreen => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_ENTER_VIDEO_FULLSCREEN
-			},
+			Self::ToggleMediaControls => ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_CONTROLS,
+			Self::ToggleMediaLoop => ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_LOOP,
+			Self::EnterVideoFullscreen => ffi::WEBKIT_CONTEXT_MENU_ACTION_ENTER_VIDEO_FULLSCREEN,
 			Self::MediaPlay => ffi::WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PLAY,
 			Self::MediaPause => ffi::WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PAUSE,
 			Self::MediaMute => ffi::WEBKIT_CONTEXT_MENU_ACTION_MEDIA_MUTE,
-			Self::DownloadVideoToDisk => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_VIDEO_TO_DISK
-			},
-			Self::DownloadAudioToDisk => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_AUDIO_TO_DISK
-			},
+			Self::DownloadVideoToDisk => ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_VIDEO_TO_DISK,
+			Self::DownloadAudioToDisk => ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_AUDIO_TO_DISK,
 			Self::InsertEmoji => ffi::WEBKIT_CONTEXT_MENU_ACTION_INSERT_EMOJI,
-			Self::PasteAsPlainText => {
-				ffi::WEBKIT_CONTEXT_MENU_ACTION_PASTE_AS_PLAIN_TEXT
-			},
+			Self::PasteAsPlainText => ffi::WEBKIT_CONTEXT_MENU_ACTION_PASTE_AS_PLAIN_TEXT,
 			Self::Custom => ffi::WEBKIT_CONTEXT_MENU_ACTION_CUSTOM,
 			Self::__Unknown(value) => value,
 		}
@@ -736,30 +650,16 @@ impl FromGlib<ffi::WebKitContextMenuAction> for ContextMenuAction {
 		match value {
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION => Self::NoAction,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK => Self::OpenLink,
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW => {
-				Self::OpenLinkInNewWindow
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_LINK_TO_DISK => {
-				Self::DownloadLinkToDisk
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_LINK_TO_CLIPBOARD => {
-				Self::CopyLinkToClipboard
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_IMAGE_IN_NEW_WINDOW => {
-				Self::OpenImageInNewWindow
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_IMAGE_TO_DISK => {
-				Self::DownloadImageToDisk
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_TO_CLIPBOARD => {
-				Self::CopyImageToClipboard
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK_IN_NEW_WINDOW => Self::OpenLinkInNewWindow,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_LINK_TO_DISK => Self::DownloadLinkToDisk,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_LINK_TO_CLIPBOARD => Self::CopyLinkToClipboard,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_IMAGE_IN_NEW_WINDOW => Self::OpenImageInNewWindow,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_IMAGE_TO_DISK => Self::DownloadImageToDisk,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_TO_CLIPBOARD => Self::CopyImageToClipboard,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_IMAGE_URL_TO_CLIPBOARD => {
 				Self::CopyImageUrlToClipboard
 			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_FRAME_IN_NEW_WINDOW => {
-				Self::OpenFrameInNewWindow
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_FRAME_IN_NEW_WINDOW => Self::OpenFrameInNewWindow,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_GO_BACK => Self::GoBack,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_GO_FORWARD => Self::GoForward,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_STOP => Self::Stop,
@@ -771,63 +671,35 @@ impl FromGlib<ffi::WebKitContextMenuAction> for ContextMenuAction {
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_SELECT_ALL => Self::SelectAll,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_INPUT_METHODS => Self::InputMethods,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_UNICODE => Self::Unicode,
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_SPELLING_GUESS => {
-				Self::SpellingGuess
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_NO_GUESSES_FOUND => {
-				Self::NoGuessesFound
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_SPELLING => {
-				Self::IgnoreSpelling
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_LEARN_SPELLING => {
-				Self::LearnSpelling
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_GRAMMAR => {
-				Self::IgnoreGrammar
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_SPELLING_GUESS => Self::SpellingGuess,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_NO_GUESSES_FOUND => Self::NoGuessesFound,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_SPELLING => Self::IgnoreSpelling,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_LEARN_SPELLING => Self::LearnSpelling,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_IGNORE_GRAMMAR => Self::IgnoreGrammar,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_FONT_MENU => Self::FontMenu,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_BOLD => Self::Bold,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_ITALIC => Self::Italic,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_UNDERLINE => Self::Underline,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_OUTLINE => Self::Outline,
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_INSPECT_ELEMENT => {
-				Self::InspectElement
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_VIDEO_IN_NEW_WINDOW => {
-				Self::OpenVideoInNewWindow
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_AUDIO_IN_NEW_WINDOW => {
-				Self::OpenAudioInNewWindow
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_INSPECT_ELEMENT => Self::InspectElement,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_VIDEO_IN_NEW_WINDOW => Self::OpenVideoInNewWindow,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_OPEN_AUDIO_IN_NEW_WINDOW => Self::OpenAudioInNewWindow,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_VIDEO_LINK_TO_CLIPBOARD => {
 				Self::CopyVideoLinkToClipboard
 			},
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_COPY_AUDIO_LINK_TO_CLIPBOARD => {
 				Self::CopyAudioLinkToClipboard
 			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_CONTROLS => {
-				Self::ToggleMediaControls
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_LOOP => {
-				Self::ToggleMediaLoop
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_ENTER_VIDEO_FULLSCREEN => {
-				Self::EnterVideoFullscreen
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_CONTROLS => Self::ToggleMediaControls,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_TOGGLE_MEDIA_LOOP => Self::ToggleMediaLoop,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_ENTER_VIDEO_FULLSCREEN => Self::EnterVideoFullscreen,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PLAY => Self::MediaPlay,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_MEDIA_PAUSE => Self::MediaPause,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_MEDIA_MUTE => Self::MediaMute,
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_VIDEO_TO_DISK => {
-				Self::DownloadVideoToDisk
-			},
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_AUDIO_TO_DISK => {
-				Self::DownloadAudioToDisk
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_VIDEO_TO_DISK => Self::DownloadVideoToDisk,
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_DOWNLOAD_AUDIO_TO_DISK => Self::DownloadAudioToDisk,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_INSERT_EMOJI => Self::InsertEmoji,
-			ffi::WEBKIT_CONTEXT_MENU_ACTION_PASTE_AS_PLAIN_TEXT => {
-				Self::PasteAsPlainText
-			},
+			ffi::WEBKIT_CONTEXT_MENU_ACTION_PASTE_AS_PLAIN_TEXT => Self::PasteAsPlainText,
 			ffi::WEBKIT_CONTEXT_MENU_ACTION_CUSTOM => Self::Custom,
 			value => Self::__Unknown(value),
 		}
@@ -847,9 +719,7 @@ impl glib::HasParamSpec for ContextMenuAction {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for ContextMenuAction {
@@ -871,10 +741,7 @@ impl ToValue for ContextMenuAction {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -914,9 +781,7 @@ impl IntoGlib for CookieAcceptPolicy {
 		match self {
 			Self::Always => ffi::WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS,
 			Self::Never => ffi::WEBKIT_COOKIE_POLICY_ACCEPT_NEVER,
-			Self::NoThirdParty => {
-				ffi::WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY
-			},
+			Self::NoThirdParty => ffi::WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -931,9 +796,7 @@ impl FromGlib<ffi::WebKitCookieAcceptPolicy> for CookieAcceptPolicy {
 		match value {
 			ffi::WEBKIT_COOKIE_POLICY_ACCEPT_ALWAYS => Self::Always,
 			ffi::WEBKIT_COOKIE_POLICY_ACCEPT_NEVER => Self::Never,
-			ffi::WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY => {
-				Self::NoThirdParty
-			},
+			ffi::WEBKIT_COOKIE_POLICY_ACCEPT_NO_THIRD_PARTY => Self::NoThirdParty,
 			value => Self::__Unknown(value),
 		}
 	}
@@ -952,9 +815,7 @@ impl glib::HasParamSpec for CookieAcceptPolicy {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for CookieAcceptPolicy {
@@ -976,10 +837,7 @@ impl ToValue for CookieAcceptPolicy {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1049,9 +907,7 @@ impl glib::HasParamSpec for CookiePersistentStorage {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for CookiePersistentStorage {
@@ -1073,10 +929,7 @@ impl ToValue for CookiePersistentStorage {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1160,9 +1013,7 @@ impl glib::HasParamSpec for CredentialPersistence {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_2")]
@@ -1190,10 +1041,7 @@ impl ToValue for CredentialPersistence {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1242,9 +1090,7 @@ impl IntoGlib for DownloadError {
 	fn into_glib(self) -> ffi::WebKitDownloadError {
 		match self {
 			Self::Network => ffi::WEBKIT_DOWNLOAD_ERROR_NETWORK,
-			Self::CancelledByUser => {
-				ffi::WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER
-			},
+			Self::CancelledByUser => ffi::WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER,
 			Self::Destination => ffi::WEBKIT_DOWNLOAD_ERROR_DESTINATION,
 			Self::__Unknown(value) => value,
 		}
@@ -1259,9 +1105,7 @@ impl FromGlib<ffi::WebKitDownloadError> for DownloadError {
 
 		match value {
 			ffi::WEBKIT_DOWNLOAD_ERROR_NETWORK => Self::Network,
-			ffi::WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER => {
-				Self::CancelledByUser
-			},
+			ffi::WEBKIT_DOWNLOAD_ERROR_CANCELLED_BY_USER => Self::CancelledByUser,
 			ffi::WEBKIT_DOWNLOAD_ERROR_DESTINATION => Self::Destination,
 			value => Self::__Unknown(value),
 		}
@@ -1275,9 +1119,7 @@ impl glib::error::ErrorDomain for DownloadError {
 
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
-				glib::ffi::g_quark_from_static_string(
-					b"WebKitDownloadError\0".as_ptr() as *const _,
-				)
+				glib::ffi::g_quark_from_static_string(b"WebKitDownloadError\0".as_ptr() as *const _)
 			});
 		unsafe { from_glib(*QUARK) }
 	}
@@ -1298,9 +1140,7 @@ impl glib::error::ErrorDomain for DownloadError {
 impl StaticType for DownloadError {
 	#[inline]
 	#[doc(alias = "webkit_download_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_download_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_download_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for DownloadError {
@@ -1308,9 +1148,7 @@ impl glib::HasParamSpec for DownloadError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for DownloadError {
@@ -1332,10 +1170,7 @@ impl ToValue for DownloadError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1381,15 +1216,9 @@ impl IntoGlib for FaviconDatabaseError {
 	#[inline]
 	fn into_glib(self) -> ffi::WebKitFaviconDatabaseError {
 		match self {
-			Self::NotInitialized => {
-				ffi::WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED
-			},
-			Self::FaviconNotFound => {
-				ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND
-			},
-			Self::FaviconUnknown => {
-				ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN
-			},
+			Self::NotInitialized => ffi::WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED,
+			Self::FaviconNotFound => ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND,
+			Self::FaviconUnknown => ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -1402,15 +1231,9 @@ impl FromGlib<ffi::WebKitFaviconDatabaseError> for FaviconDatabaseError {
 		skip_assert_initialized!();
 
 		match value {
-			ffi::WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED => {
-				Self::NotInitialized
-			},
-			ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND => {
-				Self::FaviconNotFound
-			},
-			ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN => {
-				Self::FaviconUnknown
-			},
+			ffi::WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED => Self::NotInitialized,
+			ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND => Self::FaviconNotFound,
+			ffi::WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN => Self::FaviconUnknown,
 			value => Self::__Unknown(value),
 		}
 	}
@@ -1424,7 +1247,7 @@ impl glib::error::ErrorDomain for FaviconDatabaseError {
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(
-					b"WebKitFaviconDatabaseError\0".as_ptr() as *const _,
+					b"WebKitFaviconDatabaseError\0".as_ptr() as *const _
 				)
 			});
 		unsafe { from_glib(*QUARK) }
@@ -1456,9 +1279,7 @@ impl glib::HasParamSpec for FaviconDatabaseError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for FaviconDatabaseError {
@@ -1480,10 +1301,7 @@ impl ToValue for FaviconDatabaseError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1525,9 +1343,7 @@ impl IntoGlib for HardwareAccelerationPolicy {
 	#[inline]
 	fn into_glib(self) -> ffi::WebKitHardwareAccelerationPolicy {
 		match self {
-			Self::OnDemand => {
-				ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND
-			},
+			Self::OnDemand => ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND,
 			Self::Always => ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS,
 			Self::Never => ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER,
 			Self::__Unknown(value) => value,
@@ -1538,17 +1354,13 @@ impl IntoGlib for HardwareAccelerationPolicy {
 #[cfg(feature = "v2_16")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 #[doc(hidden)]
-impl FromGlib<ffi::WebKitHardwareAccelerationPolicy>
-	for HardwareAccelerationPolicy
-{
+impl FromGlib<ffi::WebKitHardwareAccelerationPolicy> for HardwareAccelerationPolicy {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitHardwareAccelerationPolicy) -> Self {
 		skip_assert_initialized!();
 
 		match value {
-			ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND => {
-				Self::OnDemand
-			},
+			ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_ON_DEMAND => Self::OnDemand,
 			ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS => Self::Always,
 			ffi::WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER => Self::Never,
 			value => Self::__Unknown(value),
@@ -1562,9 +1374,7 @@ impl StaticType for HardwareAccelerationPolicy {
 	#[inline]
 	#[doc(alias = "webkit_hardware_acceleration_policy_get_type")]
 	fn static_type() -> glib::Type {
-		unsafe {
-			from_glib(ffi::webkit_hardware_acceleration_policy_get_type())
-		}
+		unsafe { from_glib(ffi::webkit_hardware_acceleration_policy_get_type()) }
 	}
 }
 
@@ -1575,9 +1385,7 @@ impl glib::HasParamSpec for HardwareAccelerationPolicy {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_16")]
@@ -1605,10 +1413,7 @@ impl ToValue for HardwareAccelerationPolicy {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1698,9 +1503,7 @@ impl FromGlib<ffi::WebKitInputPurpose> for InputPurpose {
 impl StaticType for InputPurpose {
 	#[inline]
 	#[doc(alias = "webkit_input_purpose_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_input_purpose_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_input_purpose_get_type()) } }
 }
 
 #[cfg(feature = "v2_28")]
@@ -1710,9 +1513,7 @@ impl glib::HasParamSpec for InputPurpose {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_28")]
@@ -1740,10 +1541,7 @@ impl ToValue for InputPurpose {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1815,9 +1613,7 @@ impl glib::HasParamSpec for InsecureContentEvent {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for InsecureContentEvent {
@@ -1839,10 +1635,7 @@ impl ToValue for InsecureContentEvent {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -1889,9 +1682,7 @@ impl IntoGlib for JavascriptError {
 	fn into_glib(self) -> ffi::WebKitJavascriptError {
 		match self {
 			Self::ScriptFailed => ffi::WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED,
-			Self::InvalidParameter => {
-				ffi::WEBKIT_JAVASCRIPT_ERROR_INVALID_PARAMETER
-			},
+			Self::InvalidParameter => ffi::WEBKIT_JAVASCRIPT_ERROR_INVALID_PARAMETER,
 			Self::InvalidResult => ffi::WEBKIT_JAVASCRIPT_ERROR_INVALID_RESULT,
 			Self::__Unknown(value) => value,
 		}
@@ -1906,9 +1697,7 @@ impl FromGlib<ffi::WebKitJavascriptError> for JavascriptError {
 
 		match value {
 			ffi::WEBKIT_JAVASCRIPT_ERROR_SCRIPT_FAILED => Self::ScriptFailed,
-			ffi::WEBKIT_JAVASCRIPT_ERROR_INVALID_PARAMETER => {
-				Self::InvalidParameter
-			},
+			ffi::WEBKIT_JAVASCRIPT_ERROR_INVALID_PARAMETER => Self::InvalidParameter,
 			ffi::WEBKIT_JAVASCRIPT_ERROR_INVALID_RESULT => Self::InvalidResult,
 			value => Self::__Unknown(value),
 		}
@@ -1923,7 +1712,7 @@ impl glib::error::ErrorDomain for JavascriptError {
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(
-					b"WebKitJavascriptError\0".as_ptr() as *const _,
+					b"WebKitJavascriptError\0".as_ptr() as *const _
 				)
 			});
 		unsafe { from_glib(*QUARK) }
@@ -1945,9 +1734,7 @@ impl glib::error::ErrorDomain for JavascriptError {
 impl StaticType for JavascriptError {
 	#[inline]
 	#[doc(alias = "webkit_javascript_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_javascript_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_javascript_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for JavascriptError {
@@ -1955,9 +1742,7 @@ impl glib::HasParamSpec for JavascriptError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for JavascriptError {
@@ -1979,10 +1764,7 @@ impl ToValue for JavascriptError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2050,9 +1832,7 @@ impl FromGlib<ffi::WebKitLoadEvent> for LoadEvent {
 impl StaticType for LoadEvent {
 	#[inline]
 	#[doc(alias = "webkit_load_event_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_load_event_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_load_event_get_type()) } }
 }
 
 impl glib::HasParamSpec for LoadEvent {
@@ -2060,9 +1840,7 @@ impl glib::HasParamSpec for LoadEvent {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for LoadEvent {
@@ -2084,10 +1862,7 @@ impl ToValue for LoadEvent {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2171,9 +1946,7 @@ impl glib::HasParamSpec for MediaCaptureState {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_34")]
@@ -2201,10 +1974,7 @@ impl ToValue for MediaCaptureState {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2254,9 +2024,7 @@ impl IntoGlib for NavigationType {
 			Self::FormSubmitted => ffi::WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED,
 			Self::BackForward => ffi::WEBKIT_NAVIGATION_TYPE_BACK_FORWARD,
 			Self::Reload => ffi::WEBKIT_NAVIGATION_TYPE_RELOAD,
-			Self::FormResubmitted => {
-				ffi::WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED
-			},
+			Self::FormResubmitted => ffi::WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED,
 			Self::Other => ffi::WEBKIT_NAVIGATION_TYPE_OTHER,
 			Self::__Unknown(value) => value,
 		}
@@ -2274,9 +2042,7 @@ impl FromGlib<ffi::WebKitNavigationType> for NavigationType {
 			ffi::WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED => Self::FormSubmitted,
 			ffi::WEBKIT_NAVIGATION_TYPE_BACK_FORWARD => Self::BackForward,
 			ffi::WEBKIT_NAVIGATION_TYPE_RELOAD => Self::Reload,
-			ffi::WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED => {
-				Self::FormResubmitted
-			},
+			ffi::WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED => Self::FormResubmitted,
 			ffi::WEBKIT_NAVIGATION_TYPE_OTHER => Self::Other,
 			value => Self::__Unknown(value),
 		}
@@ -2286,9 +2052,7 @@ impl FromGlib<ffi::WebKitNavigationType> for NavigationType {
 impl StaticType for NavigationType {
 	#[inline]
 	#[doc(alias = "webkit_navigation_type_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_navigation_type_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_navigation_type_get_type()) } }
 }
 
 impl glib::HasParamSpec for NavigationType {
@@ -2296,9 +2060,7 @@ impl glib::HasParamSpec for NavigationType {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for NavigationType {
@@ -2320,10 +2082,7 @@ impl ToValue for NavigationType {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2377,9 +2136,7 @@ impl IntoGlib for NetworkError {
 			Self::Transport => ffi::WEBKIT_NETWORK_ERROR_TRANSPORT,
 			Self::UnknownProtocol => ffi::WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL,
 			Self::Cancelled => ffi::WEBKIT_NETWORK_ERROR_CANCELLED,
-			Self::FileDoesNotExist => {
-				ffi::WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST
-			},
+			Self::FileDoesNotExist => ffi::WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -2396,9 +2153,7 @@ impl FromGlib<ffi::WebKitNetworkError> for NetworkError {
 			ffi::WEBKIT_NETWORK_ERROR_TRANSPORT => Self::Transport,
 			ffi::WEBKIT_NETWORK_ERROR_UNKNOWN_PROTOCOL => Self::UnknownProtocol,
 			ffi::WEBKIT_NETWORK_ERROR_CANCELLED => Self::Cancelled,
-			ffi::WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST => {
-				Self::FileDoesNotExist
-			},
+			ffi::WEBKIT_NETWORK_ERROR_FILE_DOES_NOT_EXIST => Self::FileDoesNotExist,
 			value => Self::__Unknown(value),
 		}
 	}
@@ -2411,9 +2166,7 @@ impl glib::error::ErrorDomain for NetworkError {
 
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
-				glib::ffi::g_quark_from_static_string(
-					b"WebKitNetworkError\0".as_ptr() as *const _,
-				)
+				glib::ffi::g_quark_from_static_string(b"WebKitNetworkError\0".as_ptr() as *const _)
 			});
 		unsafe { from_glib(*QUARK) }
 	}
@@ -2435,9 +2188,7 @@ impl glib::error::ErrorDomain for NetworkError {
 impl StaticType for NetworkError {
 	#[inline]
 	#[doc(alias = "webkit_network_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_network_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_network_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for NetworkError {
@@ -2445,9 +2196,7 @@ impl glib::HasParamSpec for NetworkError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for NetworkError {
@@ -2469,10 +2218,7 @@ impl ToValue for NetworkError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2556,9 +2302,7 @@ impl glib::HasParamSpec for NetworkProxyMode {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_16")]
@@ -2586,10 +2330,7 @@ impl ToValue for NetworkProxyMode {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2644,16 +2385,10 @@ impl IntoGlib for PluginError {
 	fn into_glib(self) -> ffi::WebKitPluginError {
 		match self {
 			Self::Failed => ffi::WEBKIT_PLUGIN_ERROR_FAILED,
-			Self::CannotFindPlugin => {
-				ffi::WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN
-			},
-			Self::CannotLoadPlugin => {
-				ffi::WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN
-			},
+			Self::CannotFindPlugin => ffi::WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN,
+			Self::CannotLoadPlugin => ffi::WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN,
 			Self::JavaUnavailable => ffi::WEBKIT_PLUGIN_ERROR_JAVA_UNAVAILABLE,
-			Self::ConnectionCancelled => {
-				ffi::WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED
-			},
+			Self::ConnectionCancelled => ffi::WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED,
 			Self::WillHandleLoad => ffi::WEBKIT_PLUGIN_ERROR_WILL_HANDLE_LOAD,
 			Self::__Unknown(value) => value,
 		}
@@ -2668,16 +2403,10 @@ impl FromGlib<ffi::WebKitPluginError> for PluginError {
 
 		match value {
 			ffi::WEBKIT_PLUGIN_ERROR_FAILED => Self::Failed,
-			ffi::WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN => {
-				Self::CannotFindPlugin
-			},
-			ffi::WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN => {
-				Self::CannotLoadPlugin
-			},
+			ffi::WEBKIT_PLUGIN_ERROR_CANNOT_FIND_PLUGIN => Self::CannotFindPlugin,
+			ffi::WEBKIT_PLUGIN_ERROR_CANNOT_LOAD_PLUGIN => Self::CannotLoadPlugin,
 			ffi::WEBKIT_PLUGIN_ERROR_JAVA_UNAVAILABLE => Self::JavaUnavailable,
-			ffi::WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED => {
-				Self::ConnectionCancelled
-			},
+			ffi::WEBKIT_PLUGIN_ERROR_CONNECTION_CANCELLED => Self::ConnectionCancelled,
 			ffi::WEBKIT_PLUGIN_ERROR_WILL_HANDLE_LOAD => Self::WillHandleLoad,
 			value => Self::__Unknown(value),
 		}
@@ -2691,9 +2420,7 @@ impl glib::error::ErrorDomain for PluginError {
 
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
-				glib::ffi::g_quark_from_static_string(
-					b"WebKitPluginError\0".as_ptr() as *const _,
-				)
+				glib::ffi::g_quark_from_static_string(b"WebKitPluginError\0".as_ptr() as *const _)
 			});
 		unsafe { from_glib(*QUARK) }
 	}
@@ -2715,9 +2442,7 @@ impl glib::error::ErrorDomain for PluginError {
 impl StaticType for PluginError {
 	#[inline]
 	#[doc(alias = "webkit_plugin_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_plugin_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_plugin_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for PluginError {
@@ -2725,9 +2450,7 @@ impl glib::HasParamSpec for PluginError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for PluginError {
@@ -2749,10 +2472,7 @@ impl ToValue for PluginError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2790,12 +2510,8 @@ impl IntoGlib for PolicyDecisionType {
 	#[inline]
 	fn into_glib(self) -> ffi::WebKitPolicyDecisionType {
 		match self {
-			Self::NavigationAction => {
-				ffi::WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION
-			},
-			Self::NewWindowAction => {
-				ffi::WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION
-			},
+			Self::NavigationAction => ffi::WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION,
+			Self::NewWindowAction => ffi::WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION,
 			Self::Response => ffi::WEBKIT_POLICY_DECISION_TYPE_RESPONSE,
 			Self::__Unknown(value) => value,
 		}
@@ -2809,12 +2525,8 @@ impl FromGlib<ffi::WebKitPolicyDecisionType> for PolicyDecisionType {
 		skip_assert_initialized!();
 
 		match value {
-			ffi::WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION => {
-				Self::NavigationAction
-			},
-			ffi::WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION => {
-				Self::NewWindowAction
-			},
+			ffi::WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION => Self::NavigationAction,
+			ffi::WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION => Self::NewWindowAction,
 			ffi::WEBKIT_POLICY_DECISION_TYPE_RESPONSE => Self::Response,
 			value => Self::__Unknown(value),
 		}
@@ -2834,9 +2546,7 @@ impl glib::HasParamSpec for PolicyDecisionType {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for PolicyDecisionType {
@@ -2858,10 +2568,7 @@ impl ToValue for PolicyDecisionType {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -2888,9 +2595,7 @@ pub enum PolicyError {
 	CannotShowMimeType,
 	#[doc(alias = "WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI")]
 	CannotShowUri,
-	#[doc(
-		alias = "WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE"
-	)]
+	#[doc(alias = "WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE")]
 	FrameLoadInterruptedByPolicyChange,
 	#[doc(alias = "WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT")]
 	CannotUseRestrictedPort,
@@ -2914,16 +2619,12 @@ impl IntoGlib for PolicyError {
 	fn into_glib(self) -> ffi::WebKitPolicyError {
 		match self {
 			Self::Failed => ffi::WEBKIT_POLICY_ERROR_FAILED,
-			Self::CannotShowMimeType => {
-				ffi::WEBKIT_POLICY_ERROR_CANNOT_SHOW_MIME_TYPE
-			},
+			Self::CannotShowMimeType => ffi::WEBKIT_POLICY_ERROR_CANNOT_SHOW_MIME_TYPE,
 			Self::CannotShowUri => ffi::WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI,
 			Self::FrameLoadInterruptedByPolicyChange => {
 				ffi::WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE
 			},
-			Self::CannotUseRestrictedPort => {
-				ffi::WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT
-			},
+			Self::CannotUseRestrictedPort => ffi::WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -2941,7 +2642,7 @@ impl FromGlib<ffi::WebKitPolicyError> for PolicyError {
 			ffi::WEBKIT_POLICY_ERROR_CANNOT_SHOW_URI => Self::CannotShowUri,
 			ffi::WEBKIT_POLICY_ERROR_FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE => {
 				Self::FrameLoadInterruptedByPolicyChange
-			}
+			},
 			ffi::WEBKIT_POLICY_ERROR_CANNOT_USE_RESTRICTED_PORT => Self::CannotUseRestrictedPort,
 			value => Self::__Unknown(value),
 		}
@@ -2955,9 +2656,7 @@ impl glib::error::ErrorDomain for PolicyError {
 
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
-				glib::ffi::g_quark_from_static_string(
-					b"WebKitPolicyError\0".as_ptr() as *const _,
-				)
+				glib::ffi::g_quark_from_static_string(b"WebKitPolicyError\0".as_ptr() as *const _)
 			});
 		unsafe { from_glib(*QUARK) }
 	}
@@ -2979,9 +2678,7 @@ impl glib::error::ErrorDomain for PolicyError {
 impl StaticType for PolicyError {
 	#[inline]
 	#[doc(alias = "webkit_policy_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_policy_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_policy_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for PolicyError {
@@ -2989,9 +2686,7 @@ impl glib::HasParamSpec for PolicyError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for PolicyError {
@@ -3013,10 +2708,7 @@ impl ToValue for PolicyError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3064,9 +2756,7 @@ impl IntoGlib for PrintError {
 		match self {
 			Self::General => ffi::WEBKIT_PRINT_ERROR_GENERAL,
 			Self::PrinterNotFound => ffi::WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND,
-			Self::InvalidPageRange => {
-				ffi::WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE
-			},
+			Self::InvalidPageRange => ffi::WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -3081,9 +2771,7 @@ impl FromGlib<ffi::WebKitPrintError> for PrintError {
 		match value {
 			ffi::WEBKIT_PRINT_ERROR_GENERAL => Self::General,
 			ffi::WEBKIT_PRINT_ERROR_PRINTER_NOT_FOUND => Self::PrinterNotFound,
-			ffi::WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE => {
-				Self::InvalidPageRange
-			},
+			ffi::WEBKIT_PRINT_ERROR_INVALID_PAGE_RANGE => Self::InvalidPageRange,
 			value => Self::__Unknown(value),
 		}
 	}
@@ -3096,9 +2784,7 @@ impl glib::error::ErrorDomain for PrintError {
 
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
-				glib::ffi::g_quark_from_static_string(
-					b"WebKitPrintError\0".as_ptr() as *const _,
-				)
+				glib::ffi::g_quark_from_static_string(b"WebKitPrintError\0".as_ptr() as *const _)
 			});
 		unsafe { from_glib(*QUARK) }
 	}
@@ -3119,9 +2805,7 @@ impl glib::error::ErrorDomain for PrintError {
 impl StaticType for PrintError {
 	#[inline]
 	#[doc(alias = "webkit_print_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_print_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_print_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for PrintError {
@@ -3129,9 +2813,7 @@ impl glib::HasParamSpec for PrintError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for PrintError {
@@ -3153,10 +2835,7 @@ impl ToValue for PrintError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3226,9 +2905,7 @@ impl glib::HasParamSpec for PrintOperationResponse {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for PrintOperationResponse {
@@ -3250,10 +2927,7 @@ impl ToValue for PrintOperationResponse {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3295,9 +2969,7 @@ impl IntoGlib for ProcessModel {
 	#[inline]
 	fn into_glib(self) -> ffi::WebKitProcessModel {
 		match self {
-			Self::SharedSecondaryProcess => {
-				ffi::WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS
-			},
+			Self::SharedSecondaryProcess => ffi::WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS,
 			Self::MultipleSecondaryProcesses => {
 				ffi::WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES
 			},
@@ -3316,9 +2988,7 @@ impl FromGlib<ffi::WebKitProcessModel> for ProcessModel {
 		skip_assert_initialized!();
 
 		match value {
-			ffi::WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS => {
-				Self::SharedSecondaryProcess
-			},
+			ffi::WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS => Self::SharedSecondaryProcess,
 			ffi::WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES => {
 				Self::MultipleSecondaryProcesses
 			},
@@ -3333,9 +3003,7 @@ impl FromGlib<ffi::WebKitProcessModel> for ProcessModel {
 impl StaticType for ProcessModel {
 	#[inline]
 	#[doc(alias = "webkit_process_model_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_process_model_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_process_model_get_type()) } }
 }
 
 #[cfg(feature = "v2_4")]
@@ -3346,9 +3014,7 @@ impl glib::HasParamSpec for ProcessModel {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_4")]
@@ -3379,10 +3045,7 @@ impl ToValue for ProcessModel {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3441,9 +3104,7 @@ impl FromGlib<ffi::WebKitSaveMode> for SaveMode {
 impl StaticType for SaveMode {
 	#[inline]
 	#[doc(alias = "webkit_save_mode_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_save_mode_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_save_mode_get_type()) } }
 }
 
 impl glib::HasParamSpec for SaveMode {
@@ -3451,9 +3112,7 @@ impl glib::HasParamSpec for SaveMode {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for SaveMode {
@@ -3475,10 +3134,7 @@ impl ToValue for SaveMode {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3521,9 +3177,7 @@ impl IntoGlib for ScriptDialogType {
 			Self::Alert => ffi::WEBKIT_SCRIPT_DIALOG_ALERT,
 			Self::Confirm => ffi::WEBKIT_SCRIPT_DIALOG_CONFIRM,
 			Self::Prompt => ffi::WEBKIT_SCRIPT_DIALOG_PROMPT,
-			Self::BeforeUnloadConfirm => {
-				ffi::WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM
-			},
+			Self::BeforeUnloadConfirm => ffi::WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM,
 			Self::__Unknown(value) => value,
 		}
 	}
@@ -3539,9 +3193,7 @@ impl FromGlib<ffi::WebKitScriptDialogType> for ScriptDialogType {
 			ffi::WEBKIT_SCRIPT_DIALOG_ALERT => Self::Alert,
 			ffi::WEBKIT_SCRIPT_DIALOG_CONFIRM => Self::Confirm,
 			ffi::WEBKIT_SCRIPT_DIALOG_PROMPT => Self::Prompt,
-			ffi::WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM => {
-				Self::BeforeUnloadConfirm
-			},
+			ffi::WEBKIT_SCRIPT_DIALOG_BEFORE_UNLOAD_CONFIRM => Self::BeforeUnloadConfirm,
 			value => Self::__Unknown(value),
 		}
 	}
@@ -3560,9 +3212,7 @@ impl glib::HasParamSpec for ScriptDialogType {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for ScriptDialogType {
@@ -3584,10 +3234,7 @@ impl ToValue for ScriptDialogType {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3655,9 +3302,7 @@ impl glib::error::ErrorDomain for SnapshotError {
 
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
-				glib::ffi::g_quark_from_static_string(
-					b"WebKitSnapshotError\0".as_ptr() as *const _,
-				)
+				glib::ffi::g_quark_from_static_string(b"WebKitSnapshotError\0".as_ptr() as *const _)
 			});
 		unsafe { from_glib(*QUARK) }
 	}
@@ -3678,9 +3323,7 @@ impl glib::error::ErrorDomain for SnapshotError {
 impl StaticType for SnapshotError {
 	#[inline]
 	#[doc(alias = "webkit_snapshot_error_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_snapshot_error_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_snapshot_error_get_type()) } }
 }
 
 impl glib::HasParamSpec for SnapshotError {
@@ -3688,9 +3331,7 @@ impl glib::HasParamSpec for SnapshotError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for SnapshotError {
@@ -3712,10 +3353,7 @@ impl ToValue for SnapshotError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3775,9 +3413,7 @@ impl FromGlib<ffi::WebKitSnapshotRegion> for SnapshotRegion {
 impl StaticType for SnapshotRegion {
 	#[inline]
 	#[doc(alias = "webkit_snapshot_region_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_snapshot_region_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_snapshot_region_get_type()) } }
 }
 
 impl glib::HasParamSpec for SnapshotRegion {
@@ -3785,9 +3421,7 @@ impl glib::HasParamSpec for SnapshotRegion {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for SnapshotRegion {
@@ -3809,10 +3443,7 @@ impl ToValue for SnapshotRegion {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3882,9 +3513,7 @@ impl glib::HasParamSpec for TLSErrorsPolicy {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 impl glib::value::ValueType for TLSErrorsPolicy {
@@ -3906,10 +3535,7 @@ impl ToValue for TLSErrorsPolicy {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -3959,9 +3585,7 @@ impl IntoGlib for UserContentFilterError {
 	#[inline]
 	fn into_glib(self) -> ffi::WebKitUserContentFilterError {
 		match self {
-			Self::InvalidSource => {
-				ffi::WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE
-			},
+			Self::InvalidSource => ffi::WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE,
 			Self::NotFound => ffi::WEBKIT_USER_CONTENT_FILTER_ERROR_NOT_FOUND,
 			Self::__Unknown(value) => value,
 		}
@@ -3977,9 +3601,7 @@ impl FromGlib<ffi::WebKitUserContentFilterError> for UserContentFilterError {
 		skip_assert_initialized!();
 
 		match value {
-			ffi::WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE => {
-				Self::InvalidSource
-			},
+			ffi::WEBKIT_USER_CONTENT_FILTER_ERROR_INVALID_SOURCE => Self::InvalidSource,
 			ffi::WEBKIT_USER_CONTENT_FILTER_ERROR_NOT_FOUND => Self::NotFound,
 			value => Self::__Unknown(value),
 		}
@@ -3996,7 +3618,7 @@ impl glib::error::ErrorDomain for UserContentFilterError {
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(
-					b"WebKitUserContentFilterError\0".as_ptr() as *const _,
+					b"WebKitUserContentFilterError\0".as_ptr() as *const _
 				)
 			});
 		unsafe { from_glib(*QUARK) }
@@ -4032,9 +3654,7 @@ impl glib::HasParamSpec for UserContentFilterError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_24")]
@@ -4062,10 +3682,7 @@ impl ToValue for UserContentFilterError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -4117,9 +3734,7 @@ impl IntoGlib for UserContentInjectedFrames {
 #[cfg(feature = "v2_6")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 #[doc(hidden)]
-impl FromGlib<ffi::WebKitUserContentInjectedFrames>
-	for UserContentInjectedFrames
-{
+impl FromGlib<ffi::WebKitUserContentInjectedFrames> for UserContentInjectedFrames {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitUserContentInjectedFrames) -> Self {
 		skip_assert_initialized!();
@@ -4138,9 +3753,7 @@ impl StaticType for UserContentInjectedFrames {
 	#[inline]
 	#[doc(alias = "webkit_user_content_injected_frames_get_type")]
 	fn static_type() -> glib::Type {
-		unsafe {
-			from_glib(ffi::webkit_user_content_injected_frames_get_type())
-		}
+		unsafe { from_glib(ffi::webkit_user_content_injected_frames_get_type()) }
 	}
 }
 
@@ -4151,9 +3764,7 @@ impl glib::HasParamSpec for UserContentInjectedFrames {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_6")]
@@ -4181,10 +3792,7 @@ impl ToValue for UserContentInjectedFrames {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -4265,7 +3873,7 @@ impl glib::error::ErrorDomain for UserMessageError {
 		static QUARK:once_cell::sync::Lazy<glib::ffi::GQuark> =
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(
-					b"WebKitUserMessageError\0".as_ptr() as *const _,
+					b"WebKitUserMessageError\0".as_ptr() as *const _
 				)
 			});
 		unsafe { from_glib(*QUARK) }
@@ -4301,9 +3909,7 @@ impl glib::HasParamSpec for UserMessageError {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_28")]
@@ -4331,10 +3937,7 @@ impl ToValue for UserMessageError {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -4416,9 +4019,7 @@ impl glib::HasParamSpec for UserScriptInjectionTime {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_6")]
@@ -4446,10 +4047,7 @@ impl ToValue for UserScriptInjectionTime {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -4519,9 +4117,7 @@ impl FromGlib<ffi::WebKitUserStyleLevel> for UserStyleLevel {
 impl StaticType for UserStyleLevel {
 	#[inline]
 	#[doc(alias = "webkit_user_style_level_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_user_style_level_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_user_style_level_get_type()) } }
 }
 
 #[cfg(feature = "v2_6")]
@@ -4531,9 +4127,7 @@ impl glib::HasParamSpec for UserStyleLevel {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_6")]
@@ -4561,10 +4155,7 @@ impl ToValue for UserStyleLevel {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -4609,9 +4200,7 @@ impl IntoGlib for WebProcessTerminationReason {
 	fn into_glib(self) -> ffi::WebKitWebProcessTerminationReason {
 		match self {
 			Self::Crashed => ffi::WEBKIT_WEB_PROCESS_CRASHED,
-			Self::ExceededMemoryLimit => {
-				ffi::WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT
-			},
+			Self::ExceededMemoryLimit => ffi::WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT,
 			Self::TerminatedByApi => ffi::WEBKIT_WEB_PROCESS_TERMINATED_BY_API,
 			Self::__Unknown(value) => value,
 		}
@@ -4621,18 +4210,14 @@ impl IntoGlib for WebProcessTerminationReason {
 #[cfg(feature = "v2_20")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 #[doc(hidden)]
-impl FromGlib<ffi::WebKitWebProcessTerminationReason>
-	for WebProcessTerminationReason
-{
+impl FromGlib<ffi::WebKitWebProcessTerminationReason> for WebProcessTerminationReason {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitWebProcessTerminationReason) -> Self {
 		skip_assert_initialized!();
 
 		match value {
 			ffi::WEBKIT_WEB_PROCESS_CRASHED => Self::Crashed,
-			ffi::WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT => {
-				Self::ExceededMemoryLimit
-			},
+			ffi::WEBKIT_WEB_PROCESS_EXCEEDED_MEMORY_LIMIT => Self::ExceededMemoryLimit,
 			ffi::WEBKIT_WEB_PROCESS_TERMINATED_BY_API => Self::TerminatedByApi,
 			value => Self::__Unknown(value),
 		}
@@ -4645,9 +4230,7 @@ impl StaticType for WebProcessTerminationReason {
 	#[inline]
 	#[doc(alias = "webkit_web_process_termination_reason_get_type")]
 	fn static_type() -> glib::Type {
-		unsafe {
-			from_glib(ffi::webkit_web_process_termination_reason_get_type())
-		}
+		unsafe { from_glib(ffi::webkit_web_process_termination_reason_get_type()) }
 	}
 }
 
@@ -4658,9 +4241,7 @@ impl glib::HasParamSpec for WebProcessTerminationReason {
 	type ParamSpec = glib::ParamSpecEnum;
 	type SetValue = Self;
 
-	fn param_spec_builder() -> Self::BuilderFn {
-		Self::ParamSpec::builder_with_default
-	}
+	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
 }
 
 #[cfg(feature = "v2_20")]
@@ -4688,10 +4269,7 @@ impl ToValue for WebProcessTerminationReason {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_enum(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}

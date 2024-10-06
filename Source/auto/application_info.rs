@@ -25,11 +25,7 @@ impl ApplicationInfo {
 	#[doc(alias = "webkit_application_info_get_name")]
 	#[doc(alias = "get_name")]
 	pub fn name(&self) -> Option<glib::GString> {
-		unsafe {
-			from_glib_none(ffi::webkit_application_info_get_name(
-				self.to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_application_info_get_name(self.to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_application_info_get_version")]
@@ -52,22 +48,14 @@ impl ApplicationInfo {
 	#[doc(alias = "webkit_application_info_set_name")]
 	pub fn set_name(&self, name:&str) {
 		unsafe {
-			ffi::webkit_application_info_set_name(
-				self.to_glib_none().0,
-				name.to_glib_none().0,
-			);
+			ffi::webkit_application_info_set_name(self.to_glib_none().0, name.to_glib_none().0);
 		}
 	}
 
 	#[doc(alias = "webkit_application_info_set_version")]
 	pub fn set_version(&self, major:u64, minor:u64, micro:u64) {
 		unsafe {
-			ffi::webkit_application_info_set_version(
-				self.to_glib_none().0,
-				major,
-				minor,
-				micro,
-			);
+			ffi::webkit_application_info_set_version(self.to_glib_none().0, major, minor, micro);
 		}
 	}
 }

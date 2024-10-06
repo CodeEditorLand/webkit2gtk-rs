@@ -34,10 +34,7 @@ pub trait OptionMenuExt: IsA<OptionMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_option_menu_activate_item")]
 	fn activate_item(&self, index:u32) {
 		unsafe {
-			ffi::webkit_option_menu_activate_item(
-				self.as_ref().to_glib_none().0,
-				index,
-			);
+			ffi::webkit_option_menu_activate_item(self.as_ref().to_glib_none().0, index);
 		}
 	}
 
@@ -53,39 +50,27 @@ pub trait OptionMenuExt: IsA<OptionMenu> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_option_menu_get_event")]
 	#[doc(alias = "get_event")]
 	fn event(&self) -> Option<gdk::Event> {
-		unsafe {
-			from_glib_none(ffi::webkit_option_menu_get_event(
-				self.as_ref().to_glib_none().0,
-			))
-		}
+		unsafe { from_glib_none(ffi::webkit_option_menu_get_event(self.as_ref().to_glib_none().0)) }
 	}
 
 	#[doc(alias = "webkit_option_menu_get_item")]
 	#[doc(alias = "get_item")]
 	fn item(&self, index:u32) -> Option<OptionMenuItem> {
 		unsafe {
-			from_glib_none(ffi::webkit_option_menu_get_item(
-				self.as_ref().to_glib_none().0,
-				index,
-			))
+			from_glib_none(ffi::webkit_option_menu_get_item(self.as_ref().to_glib_none().0, index))
 		}
 	}
 
 	#[doc(alias = "webkit_option_menu_get_n_items")]
 	#[doc(alias = "get_n_items")]
 	fn n_items(&self) -> u32 {
-		unsafe {
-			ffi::webkit_option_menu_get_n_items(self.as_ref().to_glib_none().0)
-		}
+		unsafe { ffi::webkit_option_menu_get_n_items(self.as_ref().to_glib_none().0) }
 	}
 
 	#[doc(alias = "webkit_option_menu_select_item")]
 	fn select_item(&self, index:u32) {
 		unsafe {
-			ffi::webkit_option_menu_select_item(
-				self.as_ref().to_glib_none().0,
-				index,
-			);
+			ffi::webkit_option_menu_select_item(self.as_ref().to_glib_none().0, index);
 		}
 	}
 
@@ -93,10 +78,7 @@ pub trait OptionMenuExt: IsA<OptionMenu> + sealed::Sealed + 'static {
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
 	#[doc(alias = "close")]
 	fn connect_close<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn close_trampoline<
-			P:IsA<OptionMenu>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn close_trampoline<P:IsA<OptionMenu>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitOptionMenu,
 			f:glib::ffi::gpointer,
 		) {

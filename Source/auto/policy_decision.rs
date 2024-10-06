@@ -26,14 +26,11 @@ mod sealed {
 	impl<T:super::IsA<super::PolicyDecision>> Sealed for T {}
 }
 
-pub trait PolicyDecisionExt:
-	IsA<PolicyDecision> + sealed::Sealed + 'static {
+pub trait PolicyDecisionExt: IsA<PolicyDecision> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_policy_decision_download")]
 	fn download(&self) {
 		unsafe {
-			ffi::webkit_policy_decision_download(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_policy_decision_download(self.as_ref().to_glib_none().0);
 		}
 	}
 

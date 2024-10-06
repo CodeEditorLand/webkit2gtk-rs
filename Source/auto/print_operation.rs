@@ -31,9 +31,7 @@ impl PrintOperation {
 	pub fn new(web_view:&impl IsA<WebView>) -> PrintOperation {
 		skip_assert_initialized!();
 		unsafe {
-			from_glib_full(ffi::webkit_print_operation_new(
-				web_view.as_ref().to_glib_none().0,
-			))
+			from_glib_full(ffi::webkit_print_operation_new(web_view.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -68,25 +66,17 @@ impl PrintOperationBuilder {
 	}
 
 	pub fn print_settings(self, print_settings:&gtk::PrintSettings) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("print-settings", print_settings.clone()),
-		}
+		Self { builder:self.builder.property("print-settings", print_settings.clone()) }
 	}
 
 	pub fn web_view(self, web_view:&impl IsA<WebView>) -> Self {
-		Self {
-			builder:self
-				.builder
-				.property("web-view", web_view.clone().upcast()),
-		}
+		Self { builder:self.builder.property("web-view", web_view.clone().upcast()) }
 	}
 
 	// rustdoc-stripper-ignore-next
 	/// Build the [`PrintOperation`].
-	#[must_use = "Building the object from the builder is usually expensive \
-	              and is not expected to have side effects"]
+	#[must_use = "Building the object from the builder is usually expensive and is not expected to \
+	              have side effects"]
 	pub fn build(self) -> PrintOperation { self.builder.build() }
 }
 
@@ -95,8 +85,7 @@ mod sealed {
 	impl<T:super::IsA<super::PrintOperation>> Sealed for T {}
 }
 
-pub trait PrintOperationExt:
-	IsA<PrintOperation> + sealed::Sealed + 'static {
+pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_print_operation_get_page_setup")]
 	#[doc(alias = "get_page_setup")]
 	fn page_setup(&self) -> Option<gtk::PageSetup> {
@@ -125,10 +114,7 @@ pub trait PrintOperationExt:
 	}
 
 	#[doc(alias = "webkit_print_operation_run_dialog")]
-	fn run_dialog(
-		&self,
-		parent:Option<&impl IsA<gtk::Window>>,
-	) -> PrintOperationResponse {
+	fn run_dialog(&self, parent:Option<&impl IsA<gtk::Window>>) -> PrintOperationResponse {
 		unsafe {
 			from_glib(ffi::webkit_print_operation_run_dialog(
 				self.as_ref().to_glib_none().0,
@@ -158,17 +144,13 @@ pub trait PrintOperationExt:
 	}
 
 	#[doc(alias = "web-view")]
-	fn web_view(&self) -> Option<WebView> {
-		ObjectExt::property(self.as_ref(), "web-view")
-	}
+	fn web_view(&self) -> Option<WebView> { ObjectExt::property(self.as_ref(), "web-view") }
 
 	#[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	#[doc(alias = "create-custom-widget")]
-	fn connect_create_custom_widget<
-		F:Fn(&Self) -> PrintCustomWidget + 'static,
-	>(
+	fn connect_create_custom_widget<F:Fn(&Self) -> PrintCustomWidget + 'static>(
 		&self,
 		f:F,
 	) -> SignalHandlerId {
@@ -180,8 +162,7 @@ pub trait PrintOperationExt:
 			f:glib::ffi::gpointer,
 		) -> *mut ffi::WebKitPrintCustomWidget {
 			let f:&F = &*(f as *const F);
-			f(PrintOperation::from_glib_borrow(this).unsafe_cast_ref())
-				.to_glib_full()
+			f(PrintOperation::from_glib_borrow(this).unsafe_cast_ref()).to_glib_full()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -197,10 +178,7 @@ pub trait PrintOperationExt:
 	}
 
 	#[doc(alias = "failed")]
-	fn connect_failed<F:Fn(&Self, &glib::Error) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_failed<F:Fn(&Self, &glib::Error) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn failed_trampoline<
 			P:IsA<PrintOperation>,
 			F:Fn(&P, &glib::Error) + 'static,
@@ -230,10 +208,7 @@ pub trait PrintOperationExt:
 
 	#[doc(alias = "finished")]
 	fn connect_finished<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn finished_trampoline<
-			P:IsA<PrintOperation>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn finished_trampoline<P:IsA<PrintOperation>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitPrintOperation,
 			f:glib::ffi::gpointer,
 		) {
@@ -254,14 +229,8 @@ pub trait PrintOperationExt:
 	}
 
 	#[doc(alias = "page-setup")]
-	fn connect_page_setup_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn notify_page_setup_trampoline<
-			P:IsA<PrintOperation>,
-			F:Fn(&P) + 'static,
-		>(
+	fn connect_page_setup_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn notify_page_setup_trampoline<P:IsA<PrintOperation>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitPrintOperation,
 			_param_spec:glib::ffi::gpointer,
 			f:glib::ffi::gpointer,
@@ -283,10 +252,7 @@ pub trait PrintOperationExt:
 	}
 
 	#[doc(alias = "print-settings")]
-	fn connect_print_settings_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_print_settings_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_print_settings_trampoline<
 			P:IsA<PrintOperation>,
 			F:Fn(&P) + 'static,

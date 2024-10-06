@@ -30,8 +30,7 @@ mod sealed {
 	impl<T:super::IsA<super::GeolocationManager>> Sealed for T {}
 }
 
-pub trait GeolocationManagerExt:
-	IsA<GeolocationManager> + sealed::Sealed + 'static {
+pub trait GeolocationManagerExt: IsA<GeolocationManager> + sealed::Sealed + 'static {
 	#[doc(alias = "webkit_geolocation_manager_failed")]
 	fn failed(&self, error_message:&str) {
 		unsafe {
@@ -65,20 +64,13 @@ pub trait GeolocationManagerExt:
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	#[doc(alias = "start")]
-	fn connect_start<F:Fn(&Self) -> bool + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
-		unsafe extern fn start_trampoline<
-			P:IsA<GeolocationManager>,
-			F:Fn(&P) -> bool + 'static,
-		>(
+	fn connect_start<F:Fn(&Self) -> bool + 'static>(&self, f:F) -> SignalHandlerId {
+		unsafe extern fn start_trampoline<P:IsA<GeolocationManager>, F:Fn(&P) -> bool + 'static>(
 			this:*mut ffi::WebKitGeolocationManager,
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
-			f(GeolocationManager::from_glib_borrow(this).unsafe_cast_ref())
-				.into_glib()
+			f(GeolocationManager::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
@@ -97,10 +89,7 @@ pub trait GeolocationManagerExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	#[doc(alias = "stop")]
 	fn connect_stop<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn stop_trampoline<
-			P:IsA<GeolocationManager>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn stop_trampoline<P:IsA<GeolocationManager>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitGeolocationManager,
 			f:glib::ffi::gpointer,
 		) {
@@ -123,10 +112,7 @@ pub trait GeolocationManagerExt:
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	#[doc(alias = "enable-high-accuracy")]
-	fn connect_enable_high_accuracy_notify<F:Fn(&Self) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_enable_high_accuracy_notify<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn notify_enable_high_accuracy_trampoline<
 			P:IsA<GeolocationManager>,
 			F:Fn(&P) + 'static,
@@ -144,8 +130,7 @@ pub trait GeolocationManagerExt:
 				self.as_ptr() as *mut _,
 				b"notify::enable-high-accuracy\0".as_ptr() as *const _,
 				Some(std::mem::transmute::<_, unsafe extern fn()>(
-					notify_enable_high_accuracy_trampoline::<Self, F>
-						as *const (),
+					notify_enable_high_accuracy_trampoline::<Self, F> as *const (),
 				)),
 				Box_::into_raw(f),
 			)

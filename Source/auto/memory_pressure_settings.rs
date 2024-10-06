@@ -36,39 +36,27 @@ impl MemoryPressureSettings {
 	#[doc(alias = "get_kill_threshold")]
 	pub fn kill_threshold(&mut self) -> f64 {
 		unsafe {
-			ffi::webkit_memory_pressure_settings_get_kill_threshold(
-				self.to_glib_none_mut().0,
-			)
+			ffi::webkit_memory_pressure_settings_get_kill_threshold(self.to_glib_none_mut().0)
 		}
 	}
 
 	#[doc(alias = "webkit_memory_pressure_settings_get_memory_limit")]
 	#[doc(alias = "get_memory_limit")]
 	pub fn memory_limit(&mut self) -> u32 {
-		unsafe {
-			ffi::webkit_memory_pressure_settings_get_memory_limit(
-				self.to_glib_none_mut().0,
-			)
-		}
+		unsafe { ffi::webkit_memory_pressure_settings_get_memory_limit(self.to_glib_none_mut().0) }
 	}
 
 	#[doc(alias = "webkit_memory_pressure_settings_get_poll_interval")]
 	#[doc(alias = "get_poll_interval")]
 	pub fn poll_interval(&mut self) -> f64 {
-		unsafe {
-			ffi::webkit_memory_pressure_settings_get_poll_interval(
-				self.to_glib_none_mut().0,
-			)
-		}
+		unsafe { ffi::webkit_memory_pressure_settings_get_poll_interval(self.to_glib_none_mut().0) }
 	}
 
 	#[doc(alias = "webkit_memory_pressure_settings_get_strict_threshold")]
 	#[doc(alias = "get_strict_threshold")]
 	pub fn strict_threshold(&mut self) -> f64 {
 		unsafe {
-			ffi::webkit_memory_pressure_settings_get_strict_threshold(
-				self.to_glib_none_mut().0,
-			)
+			ffi::webkit_memory_pressure_settings_get_strict_threshold(self.to_glib_none_mut().0)
 		}
 	}
 

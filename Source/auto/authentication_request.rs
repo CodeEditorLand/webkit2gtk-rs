@@ -39,8 +39,7 @@ mod sealed {
 	impl<T:super::IsA<super::AuthenticationRequest>> Sealed for T {}
 }
 
-pub trait AuthenticationRequestExt:
-	IsA<AuthenticationRequest> + sealed::Sealed + 'static {
+pub trait AuthenticationRequestExt: IsA<AuthenticationRequest> + sealed::Sealed + 'static {
 	#[cfg(feature = "v2_2")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 	#[doc(alias = "webkit_authentication_request_can_save_credentials")]
@@ -57,9 +56,7 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "webkit_authentication_request_cancel")]
 	fn cancel(&self) {
 		unsafe {
-			ffi::webkit_authentication_request_cancel(
-				self.as_ref().to_glib_none().0,
-			);
+			ffi::webkit_authentication_request_cancel(self.as_ref().to_glib_none().0);
 		}
 	}
 
@@ -69,11 +66,9 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "get_certificate_pin_flags")]
 	fn certificate_pin_flags(&self) -> gio::TlsPasswordFlags {
 		unsafe {
-			from_glib(
-				ffi::webkit_authentication_request_get_certificate_pin_flags(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib(ffi::webkit_authentication_request_get_certificate_pin_flags(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -94,11 +89,7 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "webkit_authentication_request_get_port")]
 	#[doc(alias = "get_port")]
 	fn port(&self) -> u32 {
-		unsafe {
-			ffi::webkit_authentication_request_get_port(
-				self.as_ref().to_glib_none().0,
-			)
-		}
+		unsafe { ffi::webkit_authentication_request_get_port(self.as_ref().to_glib_none().0) }
 	}
 
 	#[cfg(feature = "v2_2")]
@@ -107,11 +98,9 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "get_proposed_credential")]
 	fn proposed_credential(&self) -> Option<Credential> {
 		unsafe {
-			from_glib_full(
-				ffi::webkit_authentication_request_get_proposed_credential(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib_full(ffi::webkit_authentication_request_get_proposed_credential(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -133,9 +122,7 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "get_scheme")]
 	fn scheme(&self) -> AuthenticationScheme {
 		unsafe {
-			from_glib(ffi::webkit_authentication_request_get_scheme(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_authentication_request_get_scheme(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -145,11 +132,9 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "get_security_origin")]
 	fn security_origin(&self) -> Option<SecurityOrigin> {
 		unsafe {
-			from_glib_full(
-				ffi::webkit_authentication_request_get_security_origin(
-					self.as_ref().to_glib_none().0,
-				),
-			)
+			from_glib_full(ffi::webkit_authentication_request_get_security_origin(
+				self.as_ref().to_glib_none().0,
+			))
 		}
 	}
 
@@ -169,9 +154,7 @@ pub trait AuthenticationRequestExt:
 	#[doc(alias = "webkit_authentication_request_is_retry")]
 	fn is_retry(&self) -> bool {
 		unsafe {
-			from_glib(ffi::webkit_authentication_request_is_retry(
-				self.as_ref().to_glib_none().0,
-			))
+			from_glib(ffi::webkit_authentication_request_is_retry(self.as_ref().to_glib_none().0))
 		}
 	}
 
@@ -202,10 +185,7 @@ pub trait AuthenticationRequestExt:
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 	#[doc(alias = "authenticated")]
-	fn connect_authenticated<F:Fn(&Self, &Credential) + 'static>(
-		&self,
-		f:F,
-	) -> SignalHandlerId {
+	fn connect_authenticated<F:Fn(&Self, &Credential) + 'static>(&self, f:F) -> SignalHandlerId {
 		unsafe extern fn authenticated_trampoline<
 			P:IsA<AuthenticationRequest>,
 			F:Fn(&P, &Credential) + 'static,
@@ -237,10 +217,7 @@ pub trait AuthenticationRequestExt:
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 	#[doc(alias = "cancelled")]
 	fn connect_cancelled<F:Fn(&Self) + 'static>(&self, f:F) -> SignalHandlerId {
-		unsafe extern fn cancelled_trampoline<
-			P:IsA<AuthenticationRequest>,
-			F:Fn(&P) + 'static,
-		>(
+		unsafe extern fn cancelled_trampoline<P:IsA<AuthenticationRequest>, F:Fn(&P) + 'static>(
 			this:*mut ffi::WebKitAuthenticationRequest,
 			f:glib::ffi::gpointer,
 		) {

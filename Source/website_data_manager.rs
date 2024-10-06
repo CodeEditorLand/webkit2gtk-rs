@@ -48,9 +48,7 @@ impl<O:IsA<WebsiteDataManager>> WebsiteDataManagerExtManual for O {
 		callback:P,
 	) {
 		let user_data:Box_<P> = Box_::new(callback);
-		unsafe extern fn clear_trampoline<
-			P:FnOnce(Result<(), glib::Error>) + Send + 'static,
-		>(
+		unsafe extern fn clear_trampoline<P:FnOnce(Result<(), glib::Error>) + Send + 'static>(
 			_source_object:*mut glib::gobject_ffi::GObject,
 			res:*mut gio::ffi::GAsyncResult,
 			user_data:glib::ffi::gpointer,
@@ -61,11 +59,7 @@ impl<O:IsA<WebsiteDataManager>> WebsiteDataManagerExtManual for O {
 				res,
 				&mut error,
 			);
-			let result = if error.is_null() {
-				Ok(())
-			} else {
-				Err(from_glib_full(error))
-			};
+			let result = if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) };
 			let callback:Box_<P> = Box_::from_raw(user_data as *mut _);
 			callback(result);
 		}
@@ -92,9 +86,7 @@ impl<O:IsA<WebsiteDataManager>> WebsiteDataManagerExtManual for O {
 		callback:P,
 	) {
 		let user_data:Box_<P> = Box_::new(callback);
-		unsafe extern fn remove_trampoline<
-			P:FnOnce(Result<(), glib::Error>) + Send + 'static,
-		>(
+		unsafe extern fn remove_trampoline<P:FnOnce(Result<(), glib::Error>) + Send + 'static>(
 			_source_object:*mut glib::gobject_ffi::GObject,
 			res:*mut gio::ffi::GAsyncResult,
 			user_data:glib::ffi::gpointer,
@@ -105,11 +97,7 @@ impl<O:IsA<WebsiteDataManager>> WebsiteDataManagerExtManual for O {
 				res,
 				&mut error,
 			);
-			let result = if error.is_null() {
-				Ok(())
-			} else {
-				Err(from_glib_full(error))
-			};
+			let result = if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) };
 			let callback:Box_<P> = Box_::from_raw(user_data as *mut _);
 			callback(result);
 		}

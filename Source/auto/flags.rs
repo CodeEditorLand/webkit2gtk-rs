@@ -89,10 +89,7 @@ impl ToValue for EditorTypingAttributes {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_flags(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -150,9 +147,7 @@ impl FromGlib<ffi::WebKitFindOptions> for FindOptions {
 impl StaticType for FindOptions {
 	#[inline]
 	#[doc(alias = "webkit_find_options_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_find_options_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_find_options_get_type()) } }
 }
 
 impl glib::HasParamSpec for FindOptions {
@@ -182,10 +177,7 @@ impl ToValue for FindOptions {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_flags(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -275,10 +267,7 @@ impl ToValue for HitTestResultContext {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_flags(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -344,9 +333,7 @@ impl FromGlib<ffi::WebKitInputHints> for InputHints {
 impl StaticType for InputHints {
 	#[inline]
 	#[doc(alias = "webkit_input_hints_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_input_hints_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_input_hints_get_type()) } }
 }
 
 #[cfg(feature = "v2_28")]
@@ -384,10 +371,7 @@ impl ToValue for InputHints {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_flags(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -439,9 +423,7 @@ impl FromGlib<ffi::WebKitSnapshotOptions> for SnapshotOptions {
 impl StaticType for SnapshotOptions {
 	#[inline]
 	#[doc(alias = "webkit_snapshot_options_get_type")]
-	fn static_type() -> glib::Type {
-		unsafe { from_glib(ffi::webkit_snapshot_options_get_type()) }
-	}
+	fn static_type() -> glib::Type { unsafe { from_glib(ffi::webkit_snapshot_options_get_type()) } }
 }
 
 impl glib::HasParamSpec for SnapshotOptions {
@@ -471,10 +453,7 @@ impl ToValue for SnapshotOptions {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_flags(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
@@ -596,10 +575,7 @@ impl ToValue for WebsiteDataTypes {
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
 		unsafe {
-			glib::gobject_ffi::g_value_set_flags(
-				value.to_glib_none_mut().0,
-				self.into_glib(),
-			);
+			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
 		value
 	}
