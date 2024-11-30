@@ -108,7 +108,9 @@ impl StaticType for AuthenticationScheme {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 impl glib::HasParamSpec for AuthenticationScheme {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -128,6 +130,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AuthenticationScheme {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -138,9 +141,11 @@ impl ToValue for AuthenticationScheme {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -154,6 +159,7 @@ impl From<AuthenticationScheme> for glib::Value {
 	#[inline]
 	fn from(v:AuthenticationScheme) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -220,7 +226,9 @@ impl StaticType for AutomationBrowsingContextPresentation {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for AutomationBrowsingContextPresentation {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -240,6 +248,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AutomationBrowsingContextPresenta
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -250,9 +259,11 @@ impl ToValue for AutomationBrowsingContextPresentation {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -266,6 +277,7 @@ impl From<AutomationBrowsingContextPresentation> for glib::Value {
 	#[inline]
 	fn from(v:AutomationBrowsingContextPresentation) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -332,7 +344,9 @@ impl StaticType for AutoplayPolicy {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 impl glib::HasParamSpec for AutoplayPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -352,6 +366,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for AutoplayPolicy {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -362,9 +377,11 @@ impl ToValue for AutoplayPolicy {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -378,6 +395,7 @@ impl From<AutoplayPolicy> for glib::Value {
 	#[inline]
 	fn from(v:AutoplayPolicy) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -434,7 +452,9 @@ impl StaticType for CacheModel {
 
 impl glib::HasParamSpec for CacheModel {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -450,6 +470,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for CacheModel {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -458,9 +479,11 @@ impl ToValue for CacheModel {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -472,6 +495,7 @@ impl From<CacheModel> for glib::Value {
 	#[inline]
 	fn from(v:CacheModel) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -716,7 +740,9 @@ impl StaticType for ContextMenuAction {
 
 impl glib::HasParamSpec for ContextMenuAction {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -732,6 +758,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for ContextMenuAction {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -740,9 +767,11 @@ impl ToValue for ContextMenuAction {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -754,6 +783,7 @@ impl From<ContextMenuAction> for glib::Value {
 	#[inline]
 	fn from(v:ContextMenuAction) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -812,7 +842,9 @@ impl StaticType for CookieAcceptPolicy {
 
 impl glib::HasParamSpec for CookieAcceptPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -828,6 +860,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for CookieAcceptPolicy {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -836,9 +869,11 @@ impl ToValue for CookieAcceptPolicy {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -850,6 +885,7 @@ impl From<CookieAcceptPolicy> for glib::Value {
 	#[inline]
 	fn from(v:CookieAcceptPolicy) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -904,7 +940,9 @@ impl StaticType for CookiePersistentStorage {
 
 impl glib::HasParamSpec for CookiePersistentStorage {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -920,6 +958,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for CookiePersistentStorage {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -928,9 +967,11 @@ impl ToValue for CookiePersistentStorage {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -942,6 +983,7 @@ impl From<CookiePersistentStorage> for glib::Value {
 	#[inline]
 	fn from(v:CookiePersistentStorage) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1010,7 +1052,9 @@ impl StaticType for CredentialPersistence {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 impl glib::HasParamSpec for CredentialPersistence {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1030,6 +1074,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for CredentialPersistence {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1040,9 +1085,11 @@ impl ToValue for CredentialPersistence {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1056,6 +1103,7 @@ impl From<CredentialPersistence> for glib::Value {
 	#[inline]
 	fn from(v:CredentialPersistence) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1078,6 +1126,7 @@ impl DownloadError {
 	#[doc(alias = "webkit_download_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_download_error_quark()) }
 	}
 }
@@ -1121,6 +1170,7 @@ impl glib::error::ErrorDomain for DownloadError {
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(b"WebKitDownloadError\0".as_ptr() as *const _)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -1131,6 +1181,7 @@ impl glib::error::ErrorDomain for DownloadError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -1145,7 +1196,9 @@ impl StaticType for DownloadError {
 
 impl glib::HasParamSpec for DownloadError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1161,6 +1214,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for DownloadError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1169,9 +1223,11 @@ impl ToValue for DownloadError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1183,6 +1239,7 @@ impl From<DownloadError> for glib::Value {
 	#[inline]
 	fn from(v:DownloadError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1205,6 +1262,7 @@ impl FaviconDatabaseError {
 	#[doc(alias = "webkit_favicon_database_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_favicon_database_error_quark()) }
 	}
 }
@@ -1250,6 +1308,7 @@ impl glib::error::ErrorDomain for FaviconDatabaseError {
 					b"WebKitFaviconDatabaseError\0".as_ptr() as *const _
 				)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -1260,6 +1319,7 @@ impl glib::error::ErrorDomain for FaviconDatabaseError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -1276,7 +1336,9 @@ impl StaticType for FaviconDatabaseError {
 
 impl glib::HasParamSpec for FaviconDatabaseError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1292,6 +1354,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for FaviconDatabaseError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1300,9 +1363,11 @@ impl ToValue for FaviconDatabaseError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1314,6 +1379,7 @@ impl From<FaviconDatabaseError> for glib::Value {
 	#[inline]
 	fn from(v:FaviconDatabaseError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1382,7 +1448,9 @@ impl StaticType for HardwareAccelerationPolicy {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 impl glib::HasParamSpec for HardwareAccelerationPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1402,6 +1470,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for HardwareAccelerationPolicy {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1412,9 +1481,11 @@ impl ToValue for HardwareAccelerationPolicy {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1428,6 +1499,7 @@ impl From<HardwareAccelerationPolicy> for glib::Value {
 	#[inline]
 	fn from(v:HardwareAccelerationPolicy) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1510,7 +1582,9 @@ impl StaticType for InputPurpose {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for InputPurpose {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1530,6 +1604,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for InputPurpose {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1540,9 +1615,11 @@ impl ToValue for InputPurpose {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1556,6 +1633,7 @@ impl From<InputPurpose> for glib::Value {
 	#[inline]
 	fn from(v:InputPurpose) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1610,7 +1688,9 @@ impl StaticType for InsecureContentEvent {
 
 impl glib::HasParamSpec for InsecureContentEvent {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1626,6 +1706,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for InsecureContentEvent {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1634,9 +1715,11 @@ impl ToValue for InsecureContentEvent {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1648,6 +1731,7 @@ impl From<InsecureContentEvent> for glib::Value {
 	#[inline]
 	fn from(v:InsecureContentEvent) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1670,6 +1754,7 @@ impl JavascriptError {
 	#[doc(alias = "webkit_javascript_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_javascript_error_quark()) }
 	}
 }
@@ -1715,6 +1800,7 @@ impl glib::error::ErrorDomain for JavascriptError {
 					b"WebKitJavascriptError\0".as_ptr() as *const _
 				)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -1725,6 +1811,7 @@ impl glib::error::ErrorDomain for JavascriptError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -1739,7 +1826,9 @@ impl StaticType for JavascriptError {
 
 impl glib::HasParamSpec for JavascriptError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1755,6 +1844,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for JavascriptError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1763,9 +1853,11 @@ impl ToValue for JavascriptError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1777,6 +1869,7 @@ impl From<JavascriptError> for glib::Value {
 	#[inline]
 	fn from(v:JavascriptError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1837,7 +1930,9 @@ impl StaticType for LoadEvent {
 
 impl glib::HasParamSpec for LoadEvent {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1853,6 +1948,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for LoadEvent {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1861,9 +1957,11 @@ impl ToValue for LoadEvent {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1875,6 +1973,7 @@ impl From<LoadEvent> for glib::Value {
 	#[inline]
 	fn from(v:LoadEvent) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -1943,7 +2042,9 @@ impl StaticType for MediaCaptureState {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 impl glib::HasParamSpec for MediaCaptureState {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1963,6 +2064,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for MediaCaptureState {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -1973,9 +2075,11 @@ impl ToValue for MediaCaptureState {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -1989,6 +2093,7 @@ impl From<MediaCaptureState> for glib::Value {
 	#[inline]
 	fn from(v:MediaCaptureState) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2057,7 +2162,9 @@ impl StaticType for NavigationType {
 
 impl glib::HasParamSpec for NavigationType {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2073,6 +2180,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for NavigationType {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2081,9 +2189,11 @@ impl ToValue for NavigationType {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2095,6 +2205,7 @@ impl From<NavigationType> for glib::Value {
 	#[inline]
 	fn from(v:NavigationType) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2121,6 +2232,7 @@ impl NetworkError {
 	#[doc(alias = "webkit_network_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_network_error_quark()) }
 	}
 }
@@ -2168,6 +2280,7 @@ impl glib::error::ErrorDomain for NetworkError {
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(b"WebKitNetworkError\0".as_ptr() as *const _)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -2178,6 +2291,7 @@ impl glib::error::ErrorDomain for NetworkError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			Self::__Unknown(_) => Some(Self::Failed),
 			value => Some(value),
@@ -2193,7 +2307,9 @@ impl StaticType for NetworkError {
 
 impl glib::HasParamSpec for NetworkError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2209,6 +2325,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for NetworkError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2217,9 +2334,11 @@ impl ToValue for NetworkError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2231,6 +2350,7 @@ impl From<NetworkError> for glib::Value {
 	#[inline]
 	fn from(v:NetworkError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2299,7 +2419,9 @@ impl StaticType for NetworkProxyMode {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 impl glib::HasParamSpec for NetworkProxyMode {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2319,6 +2441,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for NetworkProxyMode {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2329,9 +2452,11 @@ impl ToValue for NetworkProxyMode {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2345,6 +2470,7 @@ impl From<NetworkProxyMode> for glib::Value {
 	#[inline]
 	fn from(v:NetworkProxyMode) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2373,6 +2499,7 @@ impl PluginError {
 	#[doc(alias = "webkit_plugin_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_plugin_error_quark()) }
 	}
 }
@@ -2422,6 +2549,7 @@ impl glib::error::ErrorDomain for PluginError {
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(b"WebKitPluginError\0".as_ptr() as *const _)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -2432,6 +2560,7 @@ impl glib::error::ErrorDomain for PluginError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			Self::__Unknown(_) => Some(Self::Failed),
 			value => Some(value),
@@ -2447,7 +2576,9 @@ impl StaticType for PluginError {
 
 impl glib::HasParamSpec for PluginError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2463,6 +2594,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for PluginError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2471,9 +2603,11 @@ impl ToValue for PluginError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2485,6 +2619,7 @@ impl From<PluginError> for glib::Value {
 	#[inline]
 	fn from(v:PluginError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2543,7 +2678,9 @@ impl StaticType for PolicyDecisionType {
 
 impl glib::HasParamSpec for PolicyDecisionType {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2559,6 +2696,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for PolicyDecisionType {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2567,9 +2705,11 @@ impl ToValue for PolicyDecisionType {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2581,6 +2721,7 @@ impl From<PolicyDecisionType> for glib::Value {
 	#[inline]
 	fn from(v:PolicyDecisionType) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2607,6 +2748,7 @@ impl PolicyError {
 	#[doc(alias = "webkit_policy_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_policy_error_quark()) }
 	}
 }
@@ -2658,6 +2800,7 @@ impl glib::error::ErrorDomain for PolicyError {
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(b"WebKitPolicyError\0".as_ptr() as *const _)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -2668,6 +2811,7 @@ impl glib::error::ErrorDomain for PolicyError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			Self::__Unknown(_) => Some(Self::Failed),
 			value => Some(value),
@@ -2683,7 +2827,9 @@ impl StaticType for PolicyError {
 
 impl glib::HasParamSpec for PolicyError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2699,6 +2845,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for PolicyError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2707,9 +2854,11 @@ impl ToValue for PolicyError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2721,6 +2870,7 @@ impl From<PolicyError> for glib::Value {
 	#[inline]
 	fn from(v:PolicyError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2743,6 +2893,7 @@ impl PrintError {
 	#[doc(alias = "webkit_print_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_print_error_quark()) }
 	}
 }
@@ -2786,6 +2937,7 @@ impl glib::error::ErrorDomain for PrintError {
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(b"WebKitPrintError\0".as_ptr() as *const _)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -2796,6 +2948,7 @@ impl glib::error::ErrorDomain for PrintError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -2810,7 +2963,9 @@ impl StaticType for PrintError {
 
 impl glib::HasParamSpec for PrintError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2826,6 +2981,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for PrintError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2834,9 +2990,11 @@ impl ToValue for PrintError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2848,6 +3006,7 @@ impl From<PrintError> for glib::Value {
 	#[inline]
 	fn from(v:PrintError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -2902,7 +3061,9 @@ impl StaticType for PrintOperationResponse {
 
 impl glib::HasParamSpec for PrintOperationResponse {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2918,6 +3079,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for PrintOperationResponse {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -2926,9 +3088,11 @@ impl ToValue for PrintOperationResponse {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -2940,6 +3104,7 @@ impl From<PrintOperationResponse> for glib::Value {
 	#[inline]
 	fn from(v:PrintOperationResponse) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3011,7 +3176,9 @@ impl StaticType for ProcessModel {
 #[allow(deprecated)]
 impl glib::HasParamSpec for ProcessModel {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3033,6 +3200,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for ProcessModel {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3044,9 +3212,11 @@ impl ToValue for ProcessModel {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3061,6 +3231,7 @@ impl From<ProcessModel> for glib::Value {
 	#[inline]
 	fn from(v:ProcessModel) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3109,7 +3280,9 @@ impl StaticType for SaveMode {
 
 impl glib::HasParamSpec for SaveMode {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3125,6 +3298,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SaveMode {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3133,9 +3307,11 @@ impl ToValue for SaveMode {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3147,6 +3323,7 @@ impl From<SaveMode> for glib::Value {
 	#[inline]
 	fn from(v:SaveMode) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3209,7 +3386,9 @@ impl StaticType for ScriptDialogType {
 
 impl glib::HasParamSpec for ScriptDialogType {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3225,6 +3404,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for ScriptDialogType {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3233,9 +3413,11 @@ impl ToValue for ScriptDialogType {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3247,6 +3429,7 @@ impl From<ScriptDialogType> for glib::Value {
 	#[inline]
 	fn from(v:ScriptDialogType) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3265,6 +3448,7 @@ impl SnapshotError {
 	#[doc(alias = "webkit_snapshot_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_snapshot_error_quark()) }
 	}
 }
@@ -3304,6 +3488,7 @@ impl glib::error::ErrorDomain for SnapshotError {
 			once_cell::sync::Lazy::new(|| unsafe {
 				glib::ffi::g_quark_from_static_string(b"WebKitSnapshotError\0".as_ptr() as *const _)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -3314,6 +3499,7 @@ impl glib::error::ErrorDomain for SnapshotError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -3328,7 +3514,9 @@ impl StaticType for SnapshotError {
 
 impl glib::HasParamSpec for SnapshotError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3344,6 +3532,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SnapshotError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3352,9 +3541,11 @@ impl ToValue for SnapshotError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3366,6 +3557,7 @@ impl From<SnapshotError> for glib::Value {
 	#[inline]
 	fn from(v:SnapshotError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3418,7 +3610,9 @@ impl StaticType for SnapshotRegion {
 
 impl glib::HasParamSpec for SnapshotRegion {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3434,6 +3628,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SnapshotRegion {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3442,9 +3637,11 @@ impl ToValue for SnapshotRegion {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3456,6 +3653,7 @@ impl From<SnapshotRegion> for glib::Value {
 	#[inline]
 	fn from(v:SnapshotRegion) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3510,7 +3708,9 @@ impl StaticType for TLSErrorsPolicy {
 
 impl glib::HasParamSpec for TLSErrorsPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3526,6 +3726,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for TLSErrorsPolicy {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3534,9 +3735,11 @@ impl ToValue for TLSErrorsPolicy {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3548,6 +3751,7 @@ impl From<TLSErrorsPolicy> for glib::Value {
 	#[inline]
 	fn from(v:TLSErrorsPolicy) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3572,6 +3776,7 @@ impl UserContentFilterError {
 	#[doc(alias = "webkit_user_content_filter_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_user_content_filter_error_quark()) }
 	}
 }
@@ -3621,6 +3826,7 @@ impl glib::error::ErrorDomain for UserContentFilterError {
 					b"WebKitUserContentFilterError\0".as_ptr() as *const _
 				)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -3631,6 +3837,7 @@ impl glib::error::ErrorDomain for UserContentFilterError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -3651,7 +3858,9 @@ impl StaticType for UserContentFilterError {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 impl glib::HasParamSpec for UserContentFilterError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3671,6 +3880,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for UserContentFilterError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3681,9 +3891,11 @@ impl ToValue for UserContentFilterError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3697,6 +3909,7 @@ impl From<UserContentFilterError> for glib::Value {
 	#[inline]
 	fn from(v:UserContentFilterError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3761,7 +3974,9 @@ impl StaticType for UserContentInjectedFrames {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl glib::HasParamSpec for UserContentInjectedFrames {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3781,6 +3996,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for UserContentInjectedFrames {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3791,9 +4007,11 @@ impl ToValue for UserContentInjectedFrames {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3807,6 +4025,7 @@ impl From<UserContentInjectedFrames> for glib::Value {
 	#[inline]
 	fn from(v:UserContentInjectedFrames) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -3829,6 +4048,7 @@ impl UserMessageError {
 	#[doc(alias = "webkit_user_message_error_quark")]
 	pub fn quark() -> glib::Quark {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib(ffi::webkit_user_message_error_quark()) }
 	}
 }
@@ -3876,6 +4096,7 @@ impl glib::error::ErrorDomain for UserMessageError {
 					b"WebKitUserMessageError\0".as_ptr() as *const _
 				)
 			});
+
 		unsafe { from_glib(*QUARK) }
 	}
 
@@ -3886,6 +4107,7 @@ impl glib::error::ErrorDomain for UserMessageError {
 	#[allow(clippy::match_single_binding)]
 	fn from(code:i32) -> Option<Self> {
 		skip_assert_initialized!();
+
 		match unsafe { from_glib(code) } {
 			value => Some(value),
 		}
@@ -3906,7 +4128,9 @@ impl StaticType for UserMessageError {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for UserMessageError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3926,6 +4150,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for UserMessageError {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -3936,9 +4161,11 @@ impl ToValue for UserMessageError {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -3952,6 +4179,7 @@ impl From<UserMessageError> for glib::Value {
 	#[inline]
 	fn from(v:UserMessageError) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -4016,7 +4244,9 @@ impl StaticType for UserScriptInjectionTime {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl glib::HasParamSpec for UserScriptInjectionTime {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4036,6 +4266,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for UserScriptInjectionTime {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -4046,9 +4277,11 @@ impl ToValue for UserScriptInjectionTime {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -4062,6 +4295,7 @@ impl From<UserScriptInjectionTime> for glib::Value {
 	#[inline]
 	fn from(v:UserScriptInjectionTime) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -4124,7 +4358,9 @@ impl StaticType for UserStyleLevel {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl glib::HasParamSpec for UserStyleLevel {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4144,6 +4380,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for UserStyleLevel {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -4154,9 +4391,11 @@ impl ToValue for UserStyleLevel {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -4170,6 +4409,7 @@ impl From<UserStyleLevel> for glib::Value {
 	#[inline]
 	fn from(v:UserStyleLevel) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -4238,7 +4478,9 @@ impl StaticType for WebProcessTerminationReason {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 impl glib::HasParamSpec for WebProcessTerminationReason {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecEnum;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4258,6 +4500,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for WebProcessTerminationReason {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
 	}
 }
@@ -4268,9 +4511,11 @@ impl ToValue for WebProcessTerminationReason {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -4284,6 +4529,7 @@ impl From<WebProcessTerminationReason> for glib::Value {
 	#[inline]
 	fn from(v:WebProcessTerminationReason) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }

@@ -36,6 +36,7 @@ impl AuthenticationRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::AuthenticationRequest>> Sealed for T {}
 }
 
@@ -195,13 +196,16 @@ pub trait AuthenticationRequestExt: IsA<AuthenticationRequest> + sealed::Sealed 
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				AuthenticationRequest::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(credential),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"authenticated\0".as_ptr() as *const _,
@@ -222,10 +226,13 @@ pub trait AuthenticationRequestExt: IsA<AuthenticationRequest> + sealed::Sealed 
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(AuthenticationRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"cancelled\0".as_ptr() as *const _,

@@ -63,6 +63,7 @@ impl ColorChooserRequestBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::ColorChooserRequest>> Sealed for T {}
 }
 
@@ -92,10 +93,12 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	fn element_rectangle(&self) -> gdk::Rectangle {
 		unsafe {
 			let mut rect = gdk::Rectangle::uninitialized();
+
 			ffi::webkit_color_chooser_request_get_element_rectangle(
 				self.as_ref().to_glib_none().0,
 				rect.to_glib_none_mut().0,
 			);
+
 			rect
 		}
 	}
@@ -107,10 +110,12 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 	fn rgba(&self) -> gdk::RGBA {
 		unsafe {
 			let mut rgba = gdk::RGBA::uninitialized();
+
 			ffi::webkit_color_chooser_request_get_rgba(
 				self.as_ref().to_glib_none().0,
 				rgba.to_glib_none_mut().0,
 			);
+
 			rgba
 		}
 	}
@@ -136,10 +141,13 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(ColorChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"finished\0".as_ptr() as *const _,
@@ -161,10 +169,13 @@ pub trait ColorChooserRequestExt: IsA<ColorChooserRequest> + sealed::Sealed + 's
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(ColorChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::rgba\0".as_ptr() as *const _,

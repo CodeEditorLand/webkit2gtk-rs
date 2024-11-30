@@ -474,6 +474,7 @@ pub(crate) mod traits {
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 	pub use super::website_policies::WebsitePoliciesExt;
+
 	pub use super::{
 		authentication_request::AuthenticationRequestExt,
 		back_forward_list::BackForwardListExt,
@@ -523,6 +524,7 @@ pub(crate) mod builders {
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 	pub use super::website_policies::WebsitePoliciesBuilder;
+
 	pub use super::{
 		color_chooser_request::ColorChooserRequestBuilder,
 		download::DownloadBuilder,

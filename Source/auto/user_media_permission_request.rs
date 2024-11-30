@@ -27,6 +27,7 @@ impl UserMediaPermissionRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::UserMediaPermissionRequest>> Sealed for T {}
 }
 
@@ -59,10 +60,13 @@ pub trait UserMediaPermissionRequestExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(UserMediaPermissionRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-for-audio-device\0".as_ptr() as *const _,
@@ -87,10 +91,13 @@ pub trait UserMediaPermissionRequestExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(UserMediaPermissionRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-for-video-device\0".as_ptr() as *const _,

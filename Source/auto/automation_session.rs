@@ -61,6 +61,7 @@ impl AutomationSessionBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::AutomationSession>> Sealed for T {}
 }
 
@@ -109,16 +110,21 @@ pub trait AutomationSessionExt: IsA<AutomationSession> + sealed::Sealed + 'stati
 			f:glib::ffi::gpointer,
 		) -> *mut ffi::WebKitWebView {
 			let f:&F = &*(f as *const F);
+
 			f(AutomationSession::from_glib_borrow(this).unsafe_cast_ref()) // Not checked
 				.to_glib_none()
 				.0
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			let detailed_signal_name = detail.map(|name| format!("create-web-view::{name}\0"));
+
 			let signal_name:&[u8] = detailed_signal_name
 				.as_ref()
 				.map_or(&b"create-web-view\0"[..], |n| n.as_bytes());
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				signal_name.as_ptr() as *const _,

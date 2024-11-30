@@ -19,6 +19,7 @@ impl UserMessage {
 	#[doc(alias = "webkit_user_message_new")]
 	pub fn new(name:&str, parameters:Option<&glib::Variant>) -> UserMessage {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_none(ffi::webkit_user_message_new(
 				name.to_glib_none().0,
@@ -35,6 +36,7 @@ impl UserMessage {
 		fd_list:Option<&impl IsA<gio::UnixFDList>>,
 	) -> UserMessage {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_none(ffi::webkit_user_message_new_with_fd_list(
 				name.to_glib_none().0,
@@ -99,6 +101,7 @@ impl UserMessageBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::UserMessage>> Sealed for T {}
 }
 

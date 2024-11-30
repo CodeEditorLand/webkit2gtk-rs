@@ -25,6 +25,7 @@ impl URIResponse {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::URIResponse>> Sealed for T {}
 }
 
@@ -88,10 +89,13 @@ pub trait URIResponseExt: IsA<URIResponse> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIResponse::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::content-length\0".as_ptr() as *const _,
@@ -113,10 +117,13 @@ pub trait URIResponseExt: IsA<URIResponse> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIResponse::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::http-headers\0".as_ptr() as *const _,
@@ -136,10 +143,13 @@ pub trait URIResponseExt: IsA<URIResponse> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIResponse::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::mime-type\0".as_ptr() as *const _,
@@ -159,10 +169,13 @@ pub trait URIResponseExt: IsA<URIResponse> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIResponse::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::status-code\0".as_ptr() as *const _,
@@ -185,10 +198,13 @@ pub trait URIResponseExt: IsA<URIResponse> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIResponse::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::suggested-filename\0".as_ptr() as *const _,
@@ -208,10 +224,13 @@ pub trait URIResponseExt: IsA<URIResponse> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIResponse::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::uri\0".as_ptr() as *const _,

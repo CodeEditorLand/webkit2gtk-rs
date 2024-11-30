@@ -27,6 +27,7 @@ impl WebInspector {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WebInspector>> Sealed for T {}
 }
 
@@ -105,10 +106,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"attach\0".as_ptr() as *const _,
@@ -130,10 +134,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"bring-to-front\0".as_ptr() as *const _,
@@ -152,10 +159,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"closed\0".as_ptr() as *const _,
@@ -174,10 +184,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"detach\0".as_ptr() as *const _,
@@ -196,10 +209,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"open-window\0".as_ptr() as *const _,
@@ -222,10 +238,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::attached-height\0".as_ptr() as *const _,
@@ -247,10 +266,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::can-attach\0".as_ptr() as *const _,
@@ -273,10 +295,13 @@ pub trait WebInspectorExt: IsA<WebInspector> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebInspector::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::inspected-uri\0".as_ptr() as *const _,

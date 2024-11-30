@@ -22,6 +22,7 @@ impl Plugin {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::Plugin>> Sealed for T {}
 }
 

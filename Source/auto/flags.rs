@@ -40,6 +40,7 @@ impl FromGlib<ffi::WebKitEditorTypingAttributes> for EditorTypingAttributes {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitEditorTypingAttributes) -> Self {
 		skip_assert_initialized!();
+
 		Self::from_bits_truncate(value)
 	}
 }
@@ -58,7 +59,9 @@ impl StaticType for EditorTypingAttributes {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 impl glib::HasParamSpec for EditorTypingAttributes {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecFlags;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -78,6 +81,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for EditorTypingAttributes {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
 	}
 }
@@ -88,9 +92,11 @@ impl ToValue for EditorTypingAttributes {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -104,6 +110,7 @@ impl From<EditorTypingAttributes> for glib::Value {
 	#[inline]
 	fn from(v:EditorTypingAttributes) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -140,6 +147,7 @@ impl FromGlib<ffi::WebKitFindOptions> for FindOptions {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitFindOptions) -> Self {
 		skip_assert_initialized!();
+
 		Self::from_bits_truncate(value)
 	}
 }
@@ -152,7 +160,9 @@ impl StaticType for FindOptions {
 
 impl glib::HasParamSpec for FindOptions {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecFlags;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -168,6 +178,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for FindOptions {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
 	}
 }
@@ -176,9 +187,11 @@ impl ToValue for FindOptions {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -190,6 +203,7 @@ impl From<FindOptions> for glib::Value {
 	#[inline]
 	fn from(v:FindOptions) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -228,6 +242,7 @@ impl FromGlib<ffi::WebKitHitTestResultContext> for HitTestResultContext {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitHitTestResultContext) -> Self {
 		skip_assert_initialized!();
+
 		Self::from_bits_truncate(value)
 	}
 }
@@ -242,7 +257,9 @@ impl StaticType for HitTestResultContext {
 
 impl glib::HasParamSpec for HitTestResultContext {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecFlags;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -258,6 +275,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for HitTestResultContext {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
 	}
 }
@@ -266,9 +284,11 @@ impl ToValue for HitTestResultContext {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -280,6 +300,7 @@ impl From<HitTestResultContext> for glib::Value {
 	#[inline]
 	fn from(v:HitTestResultContext) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -324,6 +345,7 @@ impl FromGlib<ffi::WebKitInputHints> for InputHints {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitInputHints) -> Self {
 		skip_assert_initialized!();
+
 		Self::from_bits_truncate(value)
 	}
 }
@@ -340,7 +362,9 @@ impl StaticType for InputHints {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for InputHints {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecFlags;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -360,6 +384,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for InputHints {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
 	}
 }
@@ -370,9 +395,11 @@ impl ToValue for InputHints {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -386,6 +413,7 @@ impl From<InputHints> for glib::Value {
 	#[inline]
 	fn from(v:InputHints) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -416,6 +444,7 @@ impl FromGlib<ffi::WebKitSnapshotOptions> for SnapshotOptions {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitSnapshotOptions) -> Self {
 		skip_assert_initialized!();
+
 		Self::from_bits_truncate(value)
 	}
 }
@@ -428,7 +457,9 @@ impl StaticType for SnapshotOptions {
 
 impl glib::HasParamSpec for SnapshotOptions {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecFlags;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -444,6 +475,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for SnapshotOptions {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
 	}
 }
@@ -452,9 +484,11 @@ impl ToValue for SnapshotOptions {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -466,6 +500,7 @@ impl From<SnapshotOptions> for glib::Value {
 	#[inline]
 	fn from(v:SnapshotOptions) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }
@@ -526,6 +561,7 @@ impl FromGlib<ffi::WebKitWebsiteDataTypes> for WebsiteDataTypes {
 	#[inline]
 	unsafe fn from_glib(value:ffi::WebKitWebsiteDataTypes) -> Self {
 		skip_assert_initialized!();
+
 		Self::from_bits_truncate(value)
 	}
 }
@@ -544,7 +580,9 @@ impl StaticType for WebsiteDataTypes {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 impl glib::HasParamSpec for WebsiteDataTypes {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
+
 	type ParamSpec = glib::ParamSpecFlags;
+
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -564,6 +602,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for WebsiteDataTypes {
 	#[inline]
 	unsafe fn from_value(value:&'a glib::Value) -> Self {
 		skip_assert_initialized!();
+
 		from_glib(glib::gobject_ffi::g_value_get_flags(value.to_glib_none().0))
 	}
 }
@@ -574,9 +613,11 @@ impl ToValue for WebsiteDataTypes {
 	#[inline]
 	fn to_value(&self) -> glib::Value {
 		let mut value = glib::Value::for_value_type::<Self>();
+
 		unsafe {
 			glib::gobject_ffi::g_value_set_flags(value.to_glib_none_mut().0, self.into_glib());
 		}
+
 		value
 	}
 
@@ -590,6 +631,7 @@ impl From<WebsiteDataTypes> for glib::Value {
 	#[inline]
 	fn from(v:WebsiteDataTypes) -> Self {
 		skip_assert_initialized!();
+
 		ToValue::to_value(&v)
 	}
 }

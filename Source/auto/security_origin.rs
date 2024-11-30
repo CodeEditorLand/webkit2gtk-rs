@@ -19,6 +19,7 @@ impl SecurityOrigin {
 	#[doc(alias = "webkit_security_origin_new")]
 	pub fn new(protocol:&str, host:&str, port:u16) -> SecurityOrigin {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_security_origin_new(
 				protocol.to_glib_none().0,
@@ -32,6 +33,7 @@ impl SecurityOrigin {
 	#[doc(alias = "new_for_uri")]
 	pub fn for_uri(uri:&str) -> SecurityOrigin {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_security_origin_new_for_uri(uri.to_glib_none().0)) }
 	}
 

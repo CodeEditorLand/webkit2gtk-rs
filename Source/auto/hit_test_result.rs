@@ -71,6 +71,7 @@ impl HitTestResultBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::HitTestResult>> Sealed for T {}
 }
 

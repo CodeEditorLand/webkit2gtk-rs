@@ -27,6 +27,7 @@ impl InputMethodContext {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::InputMethodContext>> Sealed for T {}
 }
 
@@ -98,6 +99,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 	#[doc(alias = "webkit_input_method_context_notify_surrounding")]
 	fn notify_surrounding(&self, text:&str, cursor_index:u32, selection_index:u32) {
 		let length = text.len() as _;
+
 		unsafe {
 			ffi::webkit_input_method_context_notify_surrounding(
 				self.as_ref().to_glib_none().0,
@@ -159,13 +161,16 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				InputMethodContext::from_glib_borrow(this).unsafe_cast_ref(),
 				&glib::GString::from_glib_borrow(text),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"committed\0".as_ptr() as *const _,
@@ -191,10 +196,13 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref(), offset, n_chars)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"delete-surrounding\0".as_ptr() as *const _,
@@ -218,10 +226,13 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"preedit-changed\0".as_ptr() as *const _,
@@ -245,10 +256,13 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"preedit-finished\0".as_ptr() as *const _,
@@ -272,10 +286,13 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"preedit-started\0".as_ptr() as *const _,
@@ -300,10 +317,13 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::input-hints\0".as_ptr() as *const _,
@@ -328,10 +348,13 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(InputMethodContext::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::input-purpose\0".as_ptr() as *const _,

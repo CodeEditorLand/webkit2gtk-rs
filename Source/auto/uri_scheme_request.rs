@@ -24,6 +24,7 @@ impl URISchemeRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::URISchemeRequest>> Sealed for T {}
 }
 

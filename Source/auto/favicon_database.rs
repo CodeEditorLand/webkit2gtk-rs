@@ -25,6 +25,7 @@ impl FaviconDatabase {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::FaviconDatabase>> Sealed for T {}
 }
 
@@ -45,9 +46,12 @@ pub trait FaviconDatabaseExt: IsA<FaviconDatabase> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -55,6 +59,7 @@ pub trait FaviconDatabaseExt: IsA<FaviconDatabase> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn favicon_trampoline<
 			P:FnOnce(Result<cairo::Surface, glib::Error>) + 'static,
 		>(
@@ -63,22 +68,29 @@ pub trait FaviconDatabaseExt: IsA<FaviconDatabase> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_favicon_database_get_favicon_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = favicon_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_favicon_database_get_favicon(
 				self.as_ref().to_glib_none().0,
@@ -96,6 +108,7 @@ pub trait FaviconDatabaseExt: IsA<FaviconDatabase> + sealed::Sealed + 'static {
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<cairo::Surface, glib::Error>> + 'static>>
 	{
 		let page_uri = String::from(page_uri);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.favicon(&page_uri, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -126,14 +139,17 @@ pub trait FaviconDatabaseExt: IsA<FaviconDatabase> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				FaviconDatabase::from_glib_borrow(this).unsafe_cast_ref(),
 				&glib::GString::from_glib_borrow(page_uri),
 				&glib::GString::from_glib_borrow(favicon_uri),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"favicon-changed\0".as_ptr() as *const _,

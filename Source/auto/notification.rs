@@ -25,6 +25,7 @@ impl Notification {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::Notification>> Sealed for T {}
 }
 
@@ -82,10 +83,13 @@ pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Notification::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"clicked\0".as_ptr() as *const _,
@@ -106,10 +110,13 @@ pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Notification::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"closed\0".as_ptr() as *const _,
@@ -131,10 +138,13 @@ pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Notification::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::body\0".as_ptr() as *const _,
@@ -156,10 +166,13 @@ pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Notification::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::id\0".as_ptr() as *const _,
@@ -181,10 +194,13 @@ pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Notification::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::tag\0".as_ptr() as *const _,
@@ -206,10 +222,13 @@ pub trait NotificationExt: IsA<Notification> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Notification::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::title\0".as_ptr() as *const _,

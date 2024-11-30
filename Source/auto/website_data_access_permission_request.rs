@@ -21,6 +21,7 @@ impl WebsiteDataAccessPermissionRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WebsiteDataAccessPermissionRequest>> Sealed for T {}
 }
 

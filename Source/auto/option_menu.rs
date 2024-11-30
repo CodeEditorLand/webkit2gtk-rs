@@ -27,6 +27,7 @@ impl OptionMenu {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::OptionMenu>> Sealed for T {}
 }
 
@@ -83,10 +84,13 @@ pub trait OptionMenuExt: IsA<OptionMenu> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(OptionMenu::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"close\0".as_ptr() as *const _,

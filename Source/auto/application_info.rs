@@ -19,6 +19,7 @@ impl ApplicationInfo {
 	#[doc(alias = "webkit_application_info_new")]
 	pub fn new() -> ApplicationInfo {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_application_info_new()) }
 	}
 
@@ -33,8 +34,11 @@ impl ApplicationInfo {
 	pub fn version(&self) -> (u64, u64, u64) {
 		unsafe {
 			let mut major = std::mem::MaybeUninit::uninit();
+
 			let mut minor = std::mem::MaybeUninit::uninit();
+
 			let mut micro = std::mem::MaybeUninit::uninit();
+
 			ffi::webkit_application_info_get_version(
 				self.to_glib_none().0,
 				major.as_mut_ptr(),

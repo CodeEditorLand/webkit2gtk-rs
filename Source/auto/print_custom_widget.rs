@@ -28,6 +28,7 @@ impl PrintCustomWidget {
 	#[doc(alias = "webkit_print_custom_widget_new")]
 	pub fn new(widget:&impl IsA<gtk::Widget>, title:&str) -> PrintCustomWidget {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_print_custom_widget_new(
 				widget.as_ref().to_glib_none().0,
@@ -87,6 +88,7 @@ impl PrintCustomWidgetBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::PrintCustomWidget>> Sealed for T {}
 }
 
@@ -125,10 +127,13 @@ pub trait PrintCustomWidgetExt: IsA<PrintCustomWidget> + sealed::Sealed + 'stati
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(PrintCustomWidget::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"apply\0".as_ptr() as *const _,
@@ -158,14 +163,17 @@ pub trait PrintCustomWidgetExt: IsA<PrintCustomWidget> + sealed::Sealed + 'stati
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				PrintCustomWidget::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(page_setup),
 				&from_glib_borrow(print_settings),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"update\0".as_ptr() as *const _,

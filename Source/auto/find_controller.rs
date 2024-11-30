@@ -59,6 +59,7 @@ impl FindControllerBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::FindController>> Sealed for T {}
 }
 
@@ -151,10 +152,13 @@ pub trait FindControllerExt: IsA<FindController> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FindController::from_glib_borrow(this).unsafe_cast_ref(), match_count)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"counted-matches\0".as_ptr() as *const _,
@@ -176,10 +180,13 @@ pub trait FindControllerExt: IsA<FindController> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FindController::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"failed-to-find-text\0".as_ptr() as *const _,
@@ -199,10 +206,13 @@ pub trait FindControllerExt: IsA<FindController> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FindController::from_glib_borrow(this).unsafe_cast_ref(), match_count)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"found-text\0".as_ptr() as *const _,
@@ -225,10 +235,13 @@ pub trait FindControllerExt: IsA<FindController> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FindController::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::max-match-count\0".as_ptr() as *const _,
@@ -248,10 +261,13 @@ pub trait FindControllerExt: IsA<FindController> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FindController::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::options\0".as_ptr() as *const _,
@@ -271,10 +287,13 @@ pub trait FindControllerExt: IsA<FindController> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FindController::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::text\0".as_ptr() as *const _,

@@ -31,6 +31,7 @@ impl UserContentManager {
 	#[doc(alias = "webkit_user_content_manager_new")]
 	pub fn new() -> UserContentManager {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_user_content_manager_new()) }
 	}
 }
@@ -43,6 +44,7 @@ impl Default for UserContentManager {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::UserContentManager>> Sealed for T {}
 }
 
@@ -222,18 +224,23 @@ pub trait UserContentManagerExt: IsA<UserContentManager> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				UserContentManager::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(value),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			let detailed_signal_name =
 				detail.map(|name| format!("script-message-received::{name}\0"));
+
 			let signal_name:&[u8] = detailed_signal_name
 				.as_ref()
 				.map_or(&b"script-message-received\0"[..], |n| n.as_bytes());
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				signal_name.as_ptr() as *const _,

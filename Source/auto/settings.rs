@@ -30,6 +30,7 @@ impl Settings {
 	#[doc(alias = "webkit_settings_new")]
 	pub fn new() -> Settings {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_settings_new()) }
 	}
 
@@ -54,6 +55,7 @@ impl Settings {
 	#[doc(alias = "webkit_settings_font_size_to_pixels")]
 	pub fn font_size_to_pixels(points:u32) -> u32 {
 		assert_initialized_main_thread!();
+
 		unsafe { ffi::webkit_settings_font_size_to_pixels(points) }
 	}
 
@@ -62,6 +64,7 @@ impl Settings {
 	#[doc(alias = "webkit_settings_font_size_to_points")]
 	pub fn font_size_to_points(pixels:u32) -> u32 {
 		assert_initialized_main_thread!();
+
 		unsafe { ffi::webkit_settings_font_size_to_points(pixels) }
 	}
 }
@@ -512,6 +515,7 @@ impl SettingsBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::Settings>> Sealed for T {}
 }
 
@@ -1799,10 +1803,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::allow-file-access-from-file-urls\0".as_ptr() as *const _,
@@ -1825,10 +1832,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::allow-modal-dialogs\0".as_ptr() as *const _,
@@ -1856,10 +1866,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::allow-top-navigation-to-data-urls\0".as_ptr() as *const _,
@@ -1887,10 +1900,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::allow-universal-access-from-file-urls\0".as_ptr() as *const _,
@@ -1910,10 +1926,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::auto-load-images\0".as_ptr() as *const _,
@@ -1936,10 +1955,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::cursive-font-family\0".as_ptr() as *const _,
@@ -1959,10 +1981,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::default-charset\0".as_ptr() as *const _,
@@ -1985,10 +2010,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::default-font-family\0".as_ptr() as *const _,
@@ -2011,10 +2039,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::default-font-size\0".as_ptr() as *const _,
@@ -2040,10 +2071,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::default-monospace-font-size\0".as_ptr() as *const _,
@@ -2068,10 +2102,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::disable-web-security\0".as_ptr() as *const _,
@@ -2097,10 +2134,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::draw-compositing-indicators\0".as_ptr() as *const _,
@@ -2129,10 +2169,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-accelerated-2d-canvas\0".as_ptr() as *const _,
@@ -2160,10 +2203,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-back-forward-navigation-gestures\0".as_ptr() as *const _,
@@ -2187,10 +2233,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-caret-browsing\0".as_ptr() as *const _,
@@ -2216,10 +2265,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-developer-extras\0".as_ptr() as *const _,
@@ -2242,10 +2294,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-dns-prefetching\0".as_ptr() as *const _,
@@ -2270,10 +2325,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-encrypted-media\0".as_ptr() as *const _,
@@ -2300,10 +2358,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-frame-flattening\0".as_ptr() as *const _,
@@ -2326,10 +2387,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-fullscreen\0".as_ptr() as *const _,
@@ -2352,10 +2416,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-html5-database\0".as_ptr() as *const _,
@@ -2381,10 +2448,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-html5-local-storage\0".as_ptr() as *const _,
@@ -2410,10 +2480,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-hyperlink-auditing\0".as_ptr() as *const _,
@@ -2434,10 +2507,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-java\0".as_ptr() as *const _,
@@ -2460,10 +2536,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-javascript\0".as_ptr() as *const _,
@@ -2491,10 +2570,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-javascript-markup\0".as_ptr() as *const _,
@@ -2516,10 +2598,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-media\0".as_ptr() as *const _,
@@ -2547,10 +2632,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-media-capabilities\0".as_ptr() as *const _,
@@ -2575,10 +2663,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-media-stream\0".as_ptr() as *const _,
@@ -2603,10 +2694,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-mediasource\0".as_ptr() as *const _,
@@ -2634,10 +2728,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-mock-capture-devices\0".as_ptr() as *const _,
@@ -2663,10 +2760,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-offline-web-application-cache\0".as_ptr() as *const _,
@@ -2689,10 +2789,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-page-cache\0".as_ptr() as *const _,
@@ -2713,10 +2816,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-plugins\0".as_ptr() as *const _,
@@ -2743,10 +2849,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-private-browsing\0".as_ptr() as *const _,
@@ -2772,10 +2881,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-resizable-text-areas\0".as_ptr() as *const _,
@@ -2801,10 +2913,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-site-specific-quirks\0".as_ptr() as *const _,
@@ -2830,10 +2945,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-smooth-scrolling\0".as_ptr() as *const _,
@@ -2861,10 +2979,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-spatial-navigation\0".as_ptr() as *const _,
@@ -2887,10 +3008,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-tabs-to-links\0".as_ptr() as *const _,
@@ -2910,10 +3034,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-webaudio\0".as_ptr() as *const _,
@@ -2933,10 +3060,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-webgl\0".as_ptr() as *const _,
@@ -2958,10 +3088,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-webrtc\0".as_ptr() as *const _,
@@ -2989,10 +3122,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-write-console-messages-to-stdout\0".as_ptr() as *const _,
@@ -3017,10 +3153,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::enable-xss-auditor\0".as_ptr() as *const _,
@@ -3043,10 +3182,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::fantasy-font-family\0".as_ptr() as *const _,
@@ -3074,10 +3216,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::hardware-acceleration-policy\0".as_ptr() as *const _,
@@ -3103,10 +3248,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::javascript-can-access-clipboard\0".as_ptr() as *const _,
@@ -3132,10 +3280,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::javascript-can-open-windows-automatically\0".as_ptr() as *const _,
@@ -3162,10 +3313,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::load-icons-ignoring-image-load-setting\0".as_ptr() as *const _,
@@ -3194,10 +3348,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::media-content-types-requiring-hardware-support\0".as_ptr() as *const _,
@@ -3224,10 +3381,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::media-playback-allows-inline\0".as_ptr() as *const _,
@@ -3253,10 +3413,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::media-playback-requires-user-gesture\0".as_ptr() as *const _,
@@ -3279,10 +3442,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::minimum-font-size\0".as_ptr() as *const _,
@@ -3305,10 +3471,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::monospace-font-family\0".as_ptr() as *const _,
@@ -3331,10 +3500,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::pictograph-font-family\0".as_ptr() as *const _,
@@ -3357,10 +3529,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::print-backgrounds\0".as_ptr() as *const _,
@@ -3383,10 +3558,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::sans-serif-font-family\0".as_ptr() as *const _,
@@ -3409,10 +3587,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::serif-font-family\0".as_ptr() as *const _,
@@ -3432,10 +3613,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::user-agent\0".as_ptr() as *const _,
@@ -3455,10 +3639,13 @@ pub trait SettingsExt: IsA<Settings> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Settings::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::zoom-text-only\0".as_ptr() as *const _,

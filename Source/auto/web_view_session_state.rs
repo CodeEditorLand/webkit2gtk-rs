@@ -19,6 +19,7 @@ impl WebViewSessionState {
 	#[doc(alias = "webkit_web_view_session_state_new")]
 	pub fn new(data:&glib::Bytes) -> WebViewSessionState {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_web_view_session_state_new(data.to_glib_none().0)) }
 	}
 

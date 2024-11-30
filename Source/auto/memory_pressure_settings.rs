@@ -19,6 +19,7 @@ impl MemoryPressureSettings {
 	#[doc(alias = "webkit_memory_pressure_settings_new")]
 	pub fn new() -> MemoryPressureSettings {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_memory_pressure_settings_new()) }
 	}
 

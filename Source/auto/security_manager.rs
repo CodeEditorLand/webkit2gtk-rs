@@ -19,6 +19,7 @@ impl SecurityManager {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::SecurityManager>> Sealed for T {}
 }
 

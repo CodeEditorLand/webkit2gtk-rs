@@ -25,6 +25,7 @@ impl FileChooserRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::FileChooserRequest>> Sealed for T {}
 }
 
@@ -96,10 +97,13 @@ pub trait FileChooserRequestExt: IsA<FileChooserRequest> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FileChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::filter\0".as_ptr() as *const _,
@@ -122,10 +126,13 @@ pub trait FileChooserRequestExt: IsA<FileChooserRequest> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FileChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::mime-types\0".as_ptr() as *const _,
@@ -148,10 +155,13 @@ pub trait FileChooserRequestExt: IsA<FileChooserRequest> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FileChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::select-multiple\0".as_ptr() as *const _,
@@ -174,10 +184,13 @@ pub trait FileChooserRequestExt: IsA<FileChooserRequest> + sealed::Sealed + 'sta
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(FileChooserRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::selected-files\0".as_ptr() as *const _,

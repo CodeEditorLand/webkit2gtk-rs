@@ -27,6 +27,7 @@ impl ResponsePolicyDecision {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::ResponsePolicyDecision>> Sealed for T {}
 }
 
@@ -85,10 +86,13 @@ pub trait ResponsePolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(ResponsePolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::request\0".as_ptr() as *const _,
@@ -111,10 +115,13 @@ pub trait ResponsePolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(ResponsePolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::response\0".as_ptr() as *const _,

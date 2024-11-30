@@ -21,6 +21,7 @@ impl WebsitePolicies {
 	#[doc(alias = "webkit_website_policies_new")]
 	pub fn new() -> WebsitePolicies {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_website_policies_new()) }
 	}
 
@@ -74,6 +75,7 @@ impl WebsitePoliciesBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WebsitePolicies>> Sealed for T {}
 }
 

@@ -24,6 +24,7 @@ impl URISchemeResponse {
 	#[doc(alias = "webkit_uri_scheme_response_new")]
 	pub fn new(input_stream:&impl IsA<gio::InputStream>, stream_length:i64) -> URISchemeResponse {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_uri_scheme_response_new(
 				input_stream.as_ref().to_glib_none().0,
@@ -81,6 +82,7 @@ impl URISchemeResponseBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::URISchemeResponse>> Sealed for T {}
 }
 

@@ -22,6 +22,7 @@ impl InstallMissingMediaPluginsPermissionRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::InstallMissingMediaPluginsPermissionRequest>> Sealed for T {}
 }
 

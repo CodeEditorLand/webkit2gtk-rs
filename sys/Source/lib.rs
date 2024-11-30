@@ -3146,12 +3146,14 @@ extern {
 	// WebKitDownloadError
 	//=========================================================================
 	pub fn webkit_download_error_get_type() -> GType;
+
 	pub fn webkit_download_error_quark() -> glib::GQuark;
 
 	//=========================================================================
 	// WebKitFaviconDatabaseError
 	//=========================================================================
 	pub fn webkit_favicon_database_error_get_type() -> GType;
+
 	pub fn webkit_favicon_database_error_quark() -> glib::GQuark;
 
 	//=========================================================================
@@ -3177,6 +3179,7 @@ extern {
 	// WebKitJavascriptError
 	//=========================================================================
 	pub fn webkit_javascript_error_get_type() -> GType;
+
 	pub fn webkit_javascript_error_quark() -> glib::GQuark;
 
 	//=========================================================================
@@ -3200,6 +3203,7 @@ extern {
 	// WebKitNetworkError
 	//=========================================================================
 	pub fn webkit_network_error_get_type() -> GType;
+
 	pub fn webkit_network_error_quark() -> glib::GQuark;
 
 	//=========================================================================
@@ -3220,6 +3224,7 @@ extern {
 	// WebKitPluginError
 	//=========================================================================
 	pub fn webkit_plugin_error_get_type() -> GType;
+
 	pub fn webkit_plugin_error_quark() -> glib::GQuark;
 
 	//=========================================================================
@@ -3231,12 +3236,14 @@ extern {
 	// WebKitPolicyError
 	//=========================================================================
 	pub fn webkit_policy_error_get_type() -> GType;
+
 	pub fn webkit_policy_error_quark() -> glib::GQuark;
 
 	//=========================================================================
 	// WebKitPrintError
 	//=========================================================================
 	pub fn webkit_print_error_get_type() -> GType;
+
 	pub fn webkit_print_error_quark() -> glib::GQuark;
 
 	//=========================================================================
@@ -3263,6 +3270,7 @@ extern {
 	// WebKitSnapshotError
 	//=========================================================================
 	pub fn webkit_snapshot_error_get_type() -> GType;
+
 	pub fn webkit_snapshot_error_quark() -> glib::GQuark;
 
 	//=========================================================================
@@ -3408,6 +3416,7 @@ extern {
 	// WebKitCredential
 	//=========================================================================
 	pub fn webkit_credential_get_type() -> GType;
+
 	pub fn webkit_credential_new(
 		username:*const c_char,
 		password:*const c_char,
@@ -3425,18 +3434,24 @@ extern {
 		pin:*const c_char,
 		persistence:WebKitCredentialPersistence,
 	) -> *mut WebKitCredential;
+
 	pub fn webkit_credential_copy(credential:*mut WebKitCredential) -> *mut WebKitCredential;
+
 	pub fn webkit_credential_free(credential:*mut WebKitCredential);
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 	pub fn webkit_credential_get_certificate(
 		credential:*mut WebKitCredential,
 	) -> *mut gio::GTlsCertificate;
+
 	pub fn webkit_credential_get_password(credential:*mut WebKitCredential) -> *const c_char;
+
 	pub fn webkit_credential_get_persistence(
 		credential:*mut WebKitCredential,
 	) -> WebKitCredentialPersistence;
+
 	pub fn webkit_credential_get_username(credential:*mut WebKitCredential) -> *const c_char;
+
 	pub fn webkit_credential_has_password(credential:*mut WebKitCredential) -> gboolean;
 
 	//=========================================================================
@@ -3582,9 +3597,11 @@ extern {
 	pub fn webkit_javascript_result_get_js_value(
 		js_result:*mut WebKitJavascriptResult,
 	) -> *mut java_script_core::JSCValue;
+
 	pub fn webkit_javascript_result_ref(
 		js_result:*mut WebKitJavascriptResult,
 	) -> *mut WebKitJavascriptResult;
+
 	pub fn webkit_javascript_result_unref(js_result:*mut WebKitJavascriptResult);
 
 	//=========================================================================
@@ -3664,10 +3681,15 @@ extern {
 	// WebKitMimeInfo
 	//=========================================================================
 	pub fn webkit_mime_info_get_type() -> GType;
+
 	pub fn webkit_mime_info_get_description(info:*mut WebKitMimeInfo) -> *const c_char;
+
 	pub fn webkit_mime_info_get_extensions(info:*mut WebKitMimeInfo) -> *const *const c_char;
+
 	pub fn webkit_mime_info_get_mime_type(info:*mut WebKitMimeInfo) -> *const c_char;
+
 	pub fn webkit_mime_info_ref(info:*mut WebKitMimeInfo) -> *mut WebKitMimeInfo;
+
 	pub fn webkit_mime_info_unref(info:*mut WebKitMimeInfo);
 
 	//=========================================================================
@@ -3813,17 +3835,22 @@ extern {
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 	pub fn webkit_script_dialog_close(dialog:*mut WebKitScriptDialog);
+
 	pub fn webkit_script_dialog_confirm_set_confirmed(
 		dialog:*mut WebKitScriptDialog,
 		confirmed:gboolean,
 	);
+
 	pub fn webkit_script_dialog_get_dialog_type(
 		dialog:*mut WebKitScriptDialog,
 	) -> WebKitScriptDialogType;
+
 	pub fn webkit_script_dialog_get_message(dialog:*mut WebKitScriptDialog) -> *const c_char;
+
 	pub fn webkit_script_dialog_prompt_get_default_text(
 		dialog:*mut WebKitScriptDialog,
 	) -> *const c_char;
+
 	pub fn webkit_script_dialog_prompt_set_text(dialog:*mut WebKitScriptDialog, text:*const c_char);
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
@@ -4041,31 +4068,39 @@ extern {
 	// WebKitAuthenticationRequest
 	//=========================================================================
 	pub fn webkit_authentication_request_get_type() -> GType;
+
 	pub fn webkit_authentication_request_authenticate(
 		request:*mut WebKitAuthenticationRequest,
 		credential:*mut WebKitCredential,
 	);
+
 	pub fn webkit_authentication_request_can_save_credentials(
 		request:*mut WebKitAuthenticationRequest,
 	) -> gboolean;
+
 	pub fn webkit_authentication_request_cancel(request:*mut WebKitAuthenticationRequest);
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 	pub fn webkit_authentication_request_get_certificate_pin_flags(
 		request:*mut WebKitAuthenticationRequest,
 	) -> gio::GTlsPasswordFlags;
+
 	pub fn webkit_authentication_request_get_host(
 		request:*mut WebKitAuthenticationRequest,
 	) -> *const c_char;
+
 	pub fn webkit_authentication_request_get_port(
 		request:*mut WebKitAuthenticationRequest,
 	) -> c_uint;
+
 	pub fn webkit_authentication_request_get_proposed_credential(
 		request:*mut WebKitAuthenticationRequest,
 	) -> *mut WebKitCredential;
+
 	pub fn webkit_authentication_request_get_realm(
 		request:*mut WebKitAuthenticationRequest,
 	) -> *const c_char;
+
 	pub fn webkit_authentication_request_get_scheme(
 		request:*mut WebKitAuthenticationRequest,
 	) -> WebKitAuthenticationScheme;
@@ -4074,9 +4109,11 @@ extern {
 	pub fn webkit_authentication_request_get_security_origin(
 		request:*mut WebKitAuthenticationRequest,
 	) -> *mut WebKitSecurityOrigin;
+
 	pub fn webkit_authentication_request_is_for_proxy(
 		request:*mut WebKitAuthenticationRequest,
 	) -> gboolean;
+
 	pub fn webkit_authentication_request_is_retry(
 		request:*mut WebKitAuthenticationRequest,
 	) -> gboolean;
@@ -4118,32 +4155,41 @@ extern {
 	// WebKitBackForwardList
 	//=========================================================================
 	pub fn webkit_back_forward_list_get_type() -> GType;
+
 	pub fn webkit_back_forward_list_get_back_item(
 		back_forward_list:*mut WebKitBackForwardList,
 	) -> *mut WebKitBackForwardListItem;
+
 	pub fn webkit_back_forward_list_get_back_list(
 		back_forward_list:*mut WebKitBackForwardList,
 	) -> *mut glib::GList;
+
 	pub fn webkit_back_forward_list_get_back_list_with_limit(
 		back_forward_list:*mut WebKitBackForwardList,
 		limit:c_uint,
 	) -> *mut glib::GList;
+
 	pub fn webkit_back_forward_list_get_current_item(
 		back_forward_list:*mut WebKitBackForwardList,
 	) -> *mut WebKitBackForwardListItem;
+
 	pub fn webkit_back_forward_list_get_forward_item(
 		back_forward_list:*mut WebKitBackForwardList,
 	) -> *mut WebKitBackForwardListItem;
+
 	pub fn webkit_back_forward_list_get_forward_list(
 		back_forward_list:*mut WebKitBackForwardList,
 	) -> *mut glib::GList;
+
 	pub fn webkit_back_forward_list_get_forward_list_with_limit(
 		back_forward_list:*mut WebKitBackForwardList,
 		limit:c_uint,
 	) -> *mut glib::GList;
+
 	pub fn webkit_back_forward_list_get_length(
 		back_forward_list:*mut WebKitBackForwardList,
 	) -> c_uint;
+
 	pub fn webkit_back_forward_list_get_nth_item(
 		back_forward_list:*mut WebKitBackForwardList,
 		index:c_int,
@@ -4153,12 +4199,15 @@ extern {
 	// WebKitBackForwardListItem
 	//=========================================================================
 	pub fn webkit_back_forward_list_item_get_type() -> GType;
+
 	pub fn webkit_back_forward_list_item_get_original_uri(
 		list_item:*mut WebKitBackForwardListItem,
 	) -> *const c_char;
+
 	pub fn webkit_back_forward_list_item_get_title(
 		list_item:*mut WebKitBackForwardListItem,
 	) -> *const c_char;
+
 	pub fn webkit_back_forward_list_item_get_uri(
 		list_item:*mut WebKitBackForwardListItem,
 	) -> *const c_char;
@@ -4196,38 +4245,51 @@ extern {
 	// WebKitContextMenu
 	//=========================================================================
 	pub fn webkit_context_menu_get_type() -> GType;
+
 	pub fn webkit_context_menu_new() -> *mut WebKitContextMenu;
+
 	pub fn webkit_context_menu_new_with_items(items:*mut glib::GList) -> *mut WebKitContextMenu;
+
 	pub fn webkit_context_menu_append(menu:*mut WebKitContextMenu, item:*mut WebKitContextMenuItem);
+
 	pub fn webkit_context_menu_first(menu:*mut WebKitContextMenu) -> *mut WebKitContextMenuItem;
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
 	pub fn webkit_context_menu_get_event(menu:*mut WebKitContextMenu) -> *mut gdk::GdkEvent;
+
 	pub fn webkit_context_menu_get_item_at_position(
 		menu:*mut WebKitContextMenu,
 		position:c_uint,
 	) -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_get_items(menu:*mut WebKitContextMenu) -> *mut glib::GList;
+
 	pub fn webkit_context_menu_get_n_items(menu:*mut WebKitContextMenu) -> c_uint;
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	pub fn webkit_context_menu_get_user_data(menu:*mut WebKitContextMenu) -> *mut glib::GVariant;
+
 	pub fn webkit_context_menu_insert(
 		menu:*mut WebKitContextMenu,
 		item:*mut WebKitContextMenuItem,
 		position:c_int,
 	);
+
 	pub fn webkit_context_menu_last(menu:*mut WebKitContextMenu) -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_move_item(
 		menu:*mut WebKitContextMenu,
 		item:*mut WebKitContextMenuItem,
 		position:c_int,
 	);
+
 	pub fn webkit_context_menu_prepend(
 		menu:*mut WebKitContextMenu,
 		item:*mut WebKitContextMenuItem,
 	);
+
 	pub fn webkit_context_menu_remove(menu:*mut WebKitContextMenu, item:*mut WebKitContextMenuItem);
+
 	pub fn webkit_context_menu_remove_all(menu:*mut WebKitContextMenu);
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
@@ -4240,6 +4302,7 @@ extern {
 	// WebKitContextMenuItem
 	//=========================================================================
 	pub fn webkit_context_menu_item_get_type() -> GType;
+
 	pub fn webkit_context_menu_item_new(action:*mut gtk::GtkAction) -> *mut WebKitContextMenuItem;
 	#[cfg(feature = "v2_18")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
@@ -4248,18 +4311,23 @@ extern {
 		label:*const c_char,
 		target:*mut glib::GVariant,
 	) -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_item_new_from_stock_action(
 		action:WebKitContextMenuAction,
 	) -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_item_new_from_stock_action_with_label(
 		action:WebKitContextMenuAction,
 		label:*const c_char,
 	) -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_item_new_separator() -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_item_new_with_submenu(
 		label:*const c_char,
 		submenu:*mut WebKitContextMenu,
 	) -> *mut WebKitContextMenuItem;
+
 	pub fn webkit_context_menu_item_get_action(
 		item:*mut WebKitContextMenuItem,
 	) -> *mut gtk::GtkAction;
@@ -4268,13 +4336,17 @@ extern {
 	pub fn webkit_context_menu_item_get_gaction(
 		item:*mut WebKitContextMenuItem,
 	) -> *mut gio::GAction;
+
 	pub fn webkit_context_menu_item_get_stock_action(
 		item:*mut WebKitContextMenuItem,
 	) -> WebKitContextMenuAction;
+
 	pub fn webkit_context_menu_item_get_submenu(
 		item:*mut WebKitContextMenuItem,
 	) -> *mut WebKitContextMenu;
+
 	pub fn webkit_context_menu_item_is_separator(item:*mut WebKitContextMenuItem) -> gboolean;
+
 	pub fn webkit_context_menu_item_set_submenu(
 		item:*mut WebKitContextMenuItem,
 		submenu:*mut WebKitContextMenu,
@@ -4300,6 +4372,7 @@ extern {
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> gboolean;
+
 	pub fn webkit_cookie_manager_delete_all_cookies(cookie_manager:*mut WebKitCookieManager);
 	#[cfg(feature = "v2_20")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
@@ -4317,16 +4390,19 @@ extern {
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> gboolean;
+
 	pub fn webkit_cookie_manager_delete_cookies_for_domain(
 		cookie_manager:*mut WebKitCookieManager,
 		domain:*const c_char,
 	);
+
 	pub fn webkit_cookie_manager_get_accept_policy(
 		cookie_manager:*mut WebKitCookieManager,
 		cancellable:*mut gio::GCancellable,
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_cookie_manager_get_accept_policy_finish(
 		cookie_manager:*mut WebKitCookieManager,
 		result:*mut gio::GAsyncResult,
@@ -4348,21 +4424,25 @@ extern {
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut glib::GList;
+
 	pub fn webkit_cookie_manager_get_domains_with_cookies(
 		cookie_manager:*mut WebKitCookieManager,
 		cancellable:*mut gio::GCancellable,
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_cookie_manager_get_domains_with_cookies_finish(
 		cookie_manager:*mut WebKitCookieManager,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut *mut c_char;
+
 	pub fn webkit_cookie_manager_set_accept_policy(
 		cookie_manager:*mut WebKitCookieManager,
 		policy:WebKitCookieAcceptPolicy,
 	);
+
 	pub fn webkit_cookie_manager_set_persistent_storage(
 		cookie_manager:*mut WebKitCookieManager,
 		filename:*const c_char,
@@ -4380,20 +4460,29 @@ extern {
 	// WebKitDownload
 	//=========================================================================
 	pub fn webkit_download_get_type() -> GType;
+
 	pub fn webkit_download_cancel(download:*mut WebKitDownload);
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	pub fn webkit_download_get_allow_overwrite(download:*mut WebKitDownload) -> gboolean;
+
 	pub fn webkit_download_get_destination(download:*mut WebKitDownload) -> *const c_char;
+
 	pub fn webkit_download_get_elapsed_time(download:*mut WebKitDownload) -> c_double;
+
 	pub fn webkit_download_get_estimated_progress(download:*mut WebKitDownload) -> c_double;
+
 	pub fn webkit_download_get_received_data_length(download:*mut WebKitDownload) -> u64;
+
 	pub fn webkit_download_get_request(download:*mut WebKitDownload) -> *mut WebKitURIRequest;
+
 	pub fn webkit_download_get_response(download:*mut WebKitDownload) -> *mut WebKitURIResponse;
+
 	pub fn webkit_download_get_web_view(download:*mut WebKitDownload) -> *mut WebKitWebView;
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	pub fn webkit_download_set_allow_overwrite(download:*mut WebKitDownload, allowed:gboolean);
+
 	pub fn webkit_download_set_destination(download:*mut WebKitDownload, destination:*const c_char);
 
 	//=========================================================================
@@ -4426,7 +4515,9 @@ extern {
 	// WebKitFaviconDatabase
 	//=========================================================================
 	pub fn webkit_favicon_database_get_type() -> GType;
+
 	pub fn webkit_favicon_database_clear(database:*mut WebKitFaviconDatabase);
+
 	pub fn webkit_favicon_database_get_favicon(
 		database:*mut WebKitFaviconDatabase,
 		page_uri:*const c_char,
@@ -4434,11 +4525,13 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_favicon_database_get_favicon_finish(
 		database:*mut WebKitFaviconDatabase,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut cairo::cairo_surface_t;
+
 	pub fn webkit_favicon_database_get_favicon_uri(
 		database:*mut WebKitFaviconDatabase,
 		page_uri:*const c_char,
@@ -4448,19 +4541,25 @@ extern {
 	// WebKitFileChooserRequest
 	//=========================================================================
 	pub fn webkit_file_chooser_request_get_type() -> GType;
+
 	pub fn webkit_file_chooser_request_cancel(request:*mut WebKitFileChooserRequest);
+
 	pub fn webkit_file_chooser_request_get_mime_types(
 		request:*mut WebKitFileChooserRequest,
 	) -> *const *const c_char;
+
 	pub fn webkit_file_chooser_request_get_mime_types_filter(
 		request:*mut WebKitFileChooserRequest,
 	) -> *mut gtk::GtkFileFilter;
+
 	pub fn webkit_file_chooser_request_get_select_multiple(
 		request:*mut WebKitFileChooserRequest,
 	) -> gboolean;
+
 	pub fn webkit_file_chooser_request_get_selected_files(
 		request:*mut WebKitFileChooserRequest,
 	) -> *const *const c_char;
+
 	pub fn webkit_file_chooser_request_select_files(
 		request:*mut WebKitFileChooserRequest,
 		files:*const *const c_char,
@@ -4470,36 +4569,46 @@ extern {
 	// WebKitFindController
 	//=========================================================================
 	pub fn webkit_find_controller_get_type() -> GType;
+
 	pub fn webkit_find_controller_count_matches(
 		find_controller:*mut WebKitFindController,
 		search_text:*const c_char,
 		find_options:u32,
 		max_match_count:c_uint,
 	);
+
 	pub fn webkit_find_controller_get_max_match_count(
 		find_controller:*mut WebKitFindController,
 	) -> c_uint;
+
 	pub fn webkit_find_controller_get_options(find_controller:*mut WebKitFindController) -> u32;
+
 	pub fn webkit_find_controller_get_search_text(
 		find_controller:*mut WebKitFindController,
 	) -> *const c_char;
+
 	pub fn webkit_find_controller_get_web_view(
 		find_controller:*mut WebKitFindController,
 	) -> *mut WebKitWebView;
+
 	pub fn webkit_find_controller_search(
 		find_controller:*mut WebKitFindController,
 		search_text:*const c_char,
 		find_options:u32,
 		max_match_count:c_uint,
 	);
+
 	pub fn webkit_find_controller_search_finish(find_controller:*mut WebKitFindController);
+
 	pub fn webkit_find_controller_search_next(find_controller:*mut WebKitFindController);
+
 	pub fn webkit_find_controller_search_previous(find_controller:*mut WebKitFindController);
 
 	//=========================================================================
 	// WebKitFormSubmissionRequest
 	//=========================================================================
 	pub fn webkit_form_submission_request_get_type() -> GType;
+
 	pub fn webkit_form_submission_request_get_text_fields(
 		request:*mut WebKitFormSubmissionRequest,
 	) -> *mut glib::GHashTable;
@@ -4510,6 +4619,7 @@ extern {
 		field_names:*mut *mut glib::GPtrArray,
 		field_values:*mut *mut glib::GPtrArray,
 	) -> gboolean;
+
 	pub fn webkit_form_submission_request_submit(request:*mut WebKitFormSubmissionRequest);
 
 	//=========================================================================
@@ -4545,18 +4655,23 @@ extern {
 	// WebKitHitTestResult
 	//=========================================================================
 	pub fn webkit_hit_test_result_get_type() -> GType;
+
 	pub fn webkit_hit_test_result_context_is_editable(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> gboolean;
+
 	pub fn webkit_hit_test_result_context_is_image(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> gboolean;
+
 	pub fn webkit_hit_test_result_context_is_link(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> gboolean;
+
 	pub fn webkit_hit_test_result_context_is_media(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> gboolean;
+
 	pub fn webkit_hit_test_result_context_is_scrollbar(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> gboolean;
@@ -4565,19 +4680,25 @@ extern {
 	pub fn webkit_hit_test_result_context_is_selection(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> gboolean;
+
 	pub fn webkit_hit_test_result_get_context(hit_test_result:*mut WebKitHitTestResult) -> c_uint;
+
 	pub fn webkit_hit_test_result_get_image_uri(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> *const c_char;
+
 	pub fn webkit_hit_test_result_get_link_label(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> *const c_char;
+
 	pub fn webkit_hit_test_result_get_link_title(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> *const c_char;
+
 	pub fn webkit_hit_test_result_get_link_uri(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> *const c_char;
+
 	pub fn webkit_hit_test_result_get_media_uri(
 		hit_test_result:*mut WebKitHitTestResult,
 	) -> *const c_char;
@@ -4679,12 +4800,15 @@ extern {
 	// WebKitNavigationPolicyDecision
 	//=========================================================================
 	pub fn webkit_navigation_policy_decision_get_type() -> GType;
+
 	pub fn webkit_navigation_policy_decision_get_frame_name(
 		decision:*mut WebKitNavigationPolicyDecision,
 	) -> *const c_char;
+
 	pub fn webkit_navigation_policy_decision_get_modifiers(
 		decision:*mut WebKitNavigationPolicyDecision,
 	) -> c_uint;
+
 	pub fn webkit_navigation_policy_decision_get_mouse_button(
 		decision:*mut WebKitNavigationPolicyDecision,
 	) -> c_uint;
@@ -4693,9 +4817,11 @@ extern {
 	pub fn webkit_navigation_policy_decision_get_navigation_action(
 		decision:*mut WebKitNavigationPolicyDecision,
 	) -> *mut WebKitNavigationAction;
+
 	pub fn webkit_navigation_policy_decision_get_navigation_type(
 		decision:*mut WebKitNavigationPolicyDecision,
 	) -> WebKitNavigationType;
+
 	pub fn webkit_navigation_policy_decision_get_request(
 		decision:*mut WebKitNavigationPolicyDecision,
 	) -> *mut WebKitURIRequest;
@@ -4764,9 +4890,13 @@ extern {
 	// WebKitPlugin
 	//=========================================================================
 	pub fn webkit_plugin_get_type() -> GType;
+
 	pub fn webkit_plugin_get_description(plugin:*mut WebKitPlugin) -> *const c_char;
+
 	pub fn webkit_plugin_get_mime_info_list(plugin:*mut WebKitPlugin) -> *mut glib::GList;
+
 	pub fn webkit_plugin_get_name(plugin:*mut WebKitPlugin) -> *const c_char;
+
 	pub fn webkit_plugin_get_path(plugin:*mut WebKitPlugin) -> *const c_char;
 
 	//=========================================================================
@@ -4780,8 +4910,11 @@ extern {
 	// WebKitPolicyDecision
 	//=========================================================================
 	pub fn webkit_policy_decision_get_type() -> GType;
+
 	pub fn webkit_policy_decision_download(decision:*mut WebKitPolicyDecision);
+
 	pub fn webkit_policy_decision_ignore(decision:*mut WebKitPolicyDecision);
+
 	pub fn webkit_policy_decision_use(decision:*mut WebKitPolicyDecision);
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
@@ -4817,22 +4950,29 @@ extern {
 	// WebKitPrintOperation
 	//=========================================================================
 	pub fn webkit_print_operation_get_type() -> GType;
+
 	pub fn webkit_print_operation_new(web_view:*mut WebKitWebView) -> *mut WebKitPrintOperation;
+
 	pub fn webkit_print_operation_get_page_setup(
 		print_operation:*mut WebKitPrintOperation,
 	) -> *mut gtk::GtkPageSetup;
+
 	pub fn webkit_print_operation_get_print_settings(
 		print_operation:*mut WebKitPrintOperation,
 	) -> *mut gtk::GtkPrintSettings;
+
 	pub fn webkit_print_operation_print(print_operation:*mut WebKitPrintOperation);
+
 	pub fn webkit_print_operation_run_dialog(
 		print_operation:*mut WebKitPrintOperation,
 		parent:*mut gtk::GtkWindow,
 	) -> WebKitPrintOperationResponse;
+
 	pub fn webkit_print_operation_set_page_setup(
 		print_operation:*mut WebKitPrintOperation,
 		page_setup:*mut gtk::GtkPageSetup,
 	);
+
 	pub fn webkit_print_operation_set_print_settings(
 		print_operation:*mut WebKitPrintOperation,
 		print_settings:*mut gtk::GtkPrintSettings,
@@ -4842,9 +4982,11 @@ extern {
 	// WebKitResponsePolicyDecision
 	//=========================================================================
 	pub fn webkit_response_policy_decision_get_type() -> GType;
+
 	pub fn webkit_response_policy_decision_get_request(
 		decision:*mut WebKitResponsePolicyDecision,
 	) -> *mut WebKitURIRequest;
+
 	pub fn webkit_response_policy_decision_get_response(
 		decision:*mut WebKitResponsePolicyDecision,
 	) -> *mut WebKitURIResponse;
@@ -4853,6 +4995,7 @@ extern {
 	pub fn webkit_response_policy_decision_is_main_frame_main_resource(
 		decision:*mut WebKitResponsePolicyDecision,
 	) -> gboolean;
+
 	pub fn webkit_response_policy_decision_is_mime_type_supported(
 		decision:*mut WebKitResponsePolicyDecision,
 	) -> gboolean;
@@ -4861,50 +5004,62 @@ extern {
 	// WebKitSecurityManager
 	//=========================================================================
 	pub fn webkit_security_manager_get_type() -> GType;
+
 	pub fn webkit_security_manager_register_uri_scheme_as_cors_enabled(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	);
+
 	pub fn webkit_security_manager_register_uri_scheme_as_display_isolated(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	);
+
 	pub fn webkit_security_manager_register_uri_scheme_as_empty_document(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	);
+
 	pub fn webkit_security_manager_register_uri_scheme_as_local(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	);
+
 	pub fn webkit_security_manager_register_uri_scheme_as_no_access(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	);
+
 	pub fn webkit_security_manager_register_uri_scheme_as_secure(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	);
+
 	pub fn webkit_security_manager_uri_scheme_is_cors_enabled(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	) -> gboolean;
+
 	pub fn webkit_security_manager_uri_scheme_is_display_isolated(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	) -> gboolean;
+
 	pub fn webkit_security_manager_uri_scheme_is_empty_document(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	) -> gboolean;
+
 	pub fn webkit_security_manager_uri_scheme_is_local(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	) -> gboolean;
+
 	pub fn webkit_security_manager_uri_scheme_is_no_access(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
 	) -> gboolean;
+
 	pub fn webkit_security_manager_uri_scheme_is_secure(
 		security_manager:*mut WebKitSecurityManager,
 		scheme:*const c_char,
@@ -4914,7 +5069,9 @@ extern {
 	// WebKitSettings
 	//=========================================================================
 	pub fn webkit_settings_get_type() -> GType;
+
 	pub fn webkit_settings_new() -> *mut WebKitSettings;
+
 	pub fn webkit_settings_new_with_settings(
 		first_setting_name:*const c_char,
 		...
@@ -4930,6 +5087,7 @@ extern {
 	pub fn webkit_settings_get_allow_file_access_from_file_urls(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_allow_modal_dialogs(settings:*mut WebKitSettings) -> gboolean;
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
@@ -4941,18 +5099,26 @@ extern {
 	pub fn webkit_settings_get_allow_universal_access_from_file_urls(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_auto_load_images(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_cursive_font_family(settings:*mut WebKitSettings) -> *const c_char;
+
 	pub fn webkit_settings_get_default_charset(settings:*mut WebKitSettings) -> *const c_char;
+
 	pub fn webkit_settings_get_default_font_family(settings:*mut WebKitSettings) -> *const c_char;
+
 	pub fn webkit_settings_get_default_font_size(settings:*mut WebKitSettings) -> u32;
+
 	pub fn webkit_settings_get_default_monospace_font_size(settings:*mut WebKitSettings) -> u32;
 	#[cfg(feature = "v2_40")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
 	pub fn webkit_settings_get_disable_web_security(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_draw_compositing_indicators(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_accelerated_2d_canvas(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
@@ -4961,19 +5127,29 @@ extern {
 	pub fn webkit_settings_get_enable_back_forward_navigation_gestures(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_caret_browsing(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_developer_extras(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_dns_prefetching(settings:*mut WebKitSettings) -> gboolean;
 	#[cfg(feature = "v2_20")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 	pub fn webkit_settings_get_enable_encrypted_media(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_frame_flattening(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_fullscreen(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_html5_database(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_html5_local_storage(settings:*mut WebKitSettings)
 	-> gboolean;
+
 	pub fn webkit_settings_get_enable_hyperlink_auditing(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_java(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_javascript(settings:*mut WebKitSettings) -> gboolean;
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
@@ -4984,49 +5160,68 @@ extern {
 	#[cfg(feature = "v2_22")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_22")))]
 	pub fn webkit_settings_get_enable_media_capabilities(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_media_stream(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_mediasource(settings:*mut WebKitSettings) -> gboolean;
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 	pub fn webkit_settings_get_enable_mock_capture_devices(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_offline_web_application_cache(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_page_cache(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_plugins(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_private_browsing(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_resizable_text_areas(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_site_specific_quirks(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_smooth_scrolling(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_spatial_navigation(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_tabs_to_links(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_webaudio(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_webgl(settings:*mut WebKitSettings) -> gboolean;
 	#[cfg(feature = "v2_38")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_38")))]
 	pub fn webkit_settings_get_enable_webrtc(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_enable_write_console_messages_to_stdout(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_enable_xss_auditor(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_fantasy_font_family(settings:*mut WebKitSettings) -> *const c_char;
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	pub fn webkit_settings_get_hardware_acceleration_policy(
 		settings:*mut WebKitSettings,
 	) -> WebKitHardwareAccelerationPolicy;
+
 	pub fn webkit_settings_get_javascript_can_access_clipboard(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_javascript_can_open_windows_automatically(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_load_icons_ignoring_image_load_setting(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
@@ -5035,24 +5230,34 @@ extern {
 	pub fn webkit_settings_get_media_content_types_requiring_hardware_support(
 		settings:*mut WebKitSettings,
 	) -> *const c_char;
+
 	pub fn webkit_settings_get_media_playback_allows_inline(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_media_playback_requires_user_gesture(
 		settings:*mut WebKitSettings,
 	) -> gboolean;
+
 	pub fn webkit_settings_get_minimum_font_size(settings:*mut WebKitSettings) -> u32;
+
 	pub fn webkit_settings_get_monospace_font_family(settings:*mut WebKitSettings)
 	-> *const c_char;
+
 	pub fn webkit_settings_get_pictograph_font_family(
 		settings:*mut WebKitSettings,
 	) -> *const c_char;
+
 	pub fn webkit_settings_get_print_backgrounds(settings:*mut WebKitSettings) -> gboolean;
+
 	pub fn webkit_settings_get_sans_serif_font_family(
 		settings:*mut WebKitSettings,
 	) -> *const c_char;
+
 	pub fn webkit_settings_get_serif_font_family(settings:*mut WebKitSettings) -> *const c_char;
+
 	pub fn webkit_settings_get_user_agent(settings:*mut WebKitSettings) -> *const c_char;
+
 	pub fn webkit_settings_get_zoom_text_only(settings:*mut WebKitSettings) -> gboolean;
 	#[cfg(feature = "v2_10")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
@@ -5060,6 +5265,7 @@ extern {
 		settings:*mut WebKitSettings,
 		allowed:gboolean,
 	);
+
 	pub fn webkit_settings_set_allow_modal_dialogs(settings:*mut WebKitSettings, allowed:gboolean);
 	#[cfg(feature = "v2_28")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
@@ -5073,20 +5279,26 @@ extern {
 		settings:*mut WebKitSettings,
 		allowed:gboolean,
 	);
+
 	pub fn webkit_settings_set_auto_load_images(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_cursive_font_family(
 		settings:*mut WebKitSettings,
 		cursive_font_family:*const c_char,
 	);
+
 	pub fn webkit_settings_set_default_charset(
 		settings:*mut WebKitSettings,
 		default_charset:*const c_char,
 	);
+
 	pub fn webkit_settings_set_default_font_family(
 		settings:*mut WebKitSettings,
 		default_font_family:*const c_char,
 	);
+
 	pub fn webkit_settings_set_default_font_size(settings:*mut WebKitSettings, font_size:u32);
+
 	pub fn webkit_settings_set_default_monospace_font_size(
 		settings:*mut WebKitSettings,
 		font_size:u32,
@@ -5097,10 +5309,12 @@ extern {
 		settings:*mut WebKitSettings,
 		disabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_draw_compositing_indicators(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_accelerated_2d_canvas(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
@@ -5111,14 +5325,17 @@ extern {
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_caret_browsing(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_developer_extras(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_dns_prefetching(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
@@ -5129,24 +5346,31 @@ extern {
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_frame_flattening(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_fullscreen(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_html5_database(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_html5_local_storage(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_hyperlink_auditing(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_java(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_javascript(settings:*mut WebKitSettings, enabled:gboolean);
 	#[cfg(feature = "v2_24")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
@@ -5163,49 +5387,66 @@ extern {
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_media_stream(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_mediasource(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_mock_capture_devices(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_offline_web_application_cache(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_page_cache(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_plugins(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_private_browsing(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_resizable_text_areas(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_site_specific_quirks(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_smooth_scrolling(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_spatial_navigation(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_tabs_to_links(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_webaudio(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_webgl(settings:*mut WebKitSettings, enabled:gboolean);
 	#[cfg(feature = "v2_38")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_38")))]
 	pub fn webkit_settings_set_enable_webrtc(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_enable_write_console_messages_to_stdout(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_enable_xss_auditor(settings:*mut WebKitSettings, enabled:gboolean);
+
 	pub fn webkit_settings_set_fantasy_font_family(
 		settings:*mut WebKitSettings,
 		fantasy_font_family:*const c_char,
@@ -5216,14 +5457,17 @@ extern {
 		settings:*mut WebKitSettings,
 		policy:WebKitHardwareAccelerationPolicy,
 	);
+
 	pub fn webkit_settings_set_javascript_can_access_clipboard(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_javascript_can_open_windows_automatically(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_load_icons_ignoring_image_load_setting(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
@@ -5234,41 +5478,52 @@ extern {
 		settings:*mut WebKitSettings,
 		content_types:*const c_char,
 	);
+
 	pub fn webkit_settings_set_media_playback_allows_inline(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_media_playback_requires_user_gesture(
 		settings:*mut WebKitSettings,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_settings_set_minimum_font_size(settings:*mut WebKitSettings, font_size:u32);
+
 	pub fn webkit_settings_set_monospace_font_family(
 		settings:*mut WebKitSettings,
 		monospace_font_family:*const c_char,
 	);
+
 	pub fn webkit_settings_set_pictograph_font_family(
 		settings:*mut WebKitSettings,
 		pictograph_font_family:*const c_char,
 	);
+
 	pub fn webkit_settings_set_print_backgrounds(
 		settings:*mut WebKitSettings,
 		print_backgrounds:gboolean,
 	);
+
 	pub fn webkit_settings_set_sans_serif_font_family(
 		settings:*mut WebKitSettings,
 		sans_serif_font_family:*const c_char,
 	);
+
 	pub fn webkit_settings_set_serif_font_family(
 		settings:*mut WebKitSettings,
 		serif_font_family:*const c_char,
 	);
+
 	pub fn webkit_settings_set_user_agent(settings:*mut WebKitSettings, user_agent:*const c_char);
+
 	pub fn webkit_settings_set_user_agent_with_application_details(
 		settings:*mut WebKitSettings,
 		application_name:*const c_char,
 		application_version:*const c_char,
 	);
+
 	pub fn webkit_settings_set_zoom_text_only(
 		settings:*mut WebKitSettings,
 		zoom_text_only:gboolean,
@@ -5278,43 +5533,54 @@ extern {
 	// WebKitURIRequest
 	//=========================================================================
 	pub fn webkit_uri_request_get_type() -> GType;
+
 	pub fn webkit_uri_request_new(uri:*const c_char) -> *mut WebKitURIRequest;
+
 	pub fn webkit_uri_request_get_http_headers(
 		request:*mut WebKitURIRequest,
 	) -> *mut soup::SoupMessageHeaders;
 	#[cfg(feature = "v2_12")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_12")))]
 	pub fn webkit_uri_request_get_http_method(request:*mut WebKitURIRequest) -> *const c_char;
+
 	pub fn webkit_uri_request_get_uri(request:*mut WebKitURIRequest) -> *const c_char;
+
 	pub fn webkit_uri_request_set_uri(request:*mut WebKitURIRequest, uri:*const c_char);
 
 	//=========================================================================
 	// WebKitURIResponse
 	//=========================================================================
 	pub fn webkit_uri_response_get_type() -> GType;
+
 	pub fn webkit_uri_response_get_content_length(response:*mut WebKitURIResponse) -> u64;
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 	pub fn webkit_uri_response_get_http_headers(
 		response:*mut WebKitURIResponse,
 	) -> *mut soup::SoupMessageHeaders;
+
 	pub fn webkit_uri_response_get_mime_type(response:*mut WebKitURIResponse) -> *const c_char;
+
 	pub fn webkit_uri_response_get_status_code(response:*mut WebKitURIResponse) -> c_uint;
+
 	pub fn webkit_uri_response_get_suggested_filename(
 		response:*mut WebKitURIResponse,
 	) -> *const c_char;
+
 	pub fn webkit_uri_response_get_uri(response:*mut WebKitURIResponse) -> *const c_char;
 
 	//=========================================================================
 	// WebKitURISchemeRequest
 	//=========================================================================
 	pub fn webkit_uri_scheme_request_get_type() -> GType;
+
 	pub fn webkit_uri_scheme_request_finish(
 		request:*mut WebKitURISchemeRequest,
 		stream:*mut gio::GInputStream,
 		stream_length:i64,
 		content_type:*const c_char,
 	);
+
 	pub fn webkit_uri_scheme_request_finish_error(
 		request:*mut WebKitURISchemeRequest,
 		error:*mut glib::GError,
@@ -5340,12 +5606,16 @@ extern {
 	pub fn webkit_uri_scheme_request_get_http_method(
 		request:*mut WebKitURISchemeRequest,
 	) -> *const c_char;
+
 	pub fn webkit_uri_scheme_request_get_path(request:*mut WebKitURISchemeRequest)
 	-> *const c_char;
+
 	pub fn webkit_uri_scheme_request_get_scheme(
 		request:*mut WebKitURISchemeRequest,
 	) -> *const c_char;
+
 	pub fn webkit_uri_scheme_request_get_uri(request:*mut WebKitURISchemeRequest) -> *const c_char;
+
 	pub fn webkit_uri_scheme_request_get_web_view(
 		request:*mut WebKitURISchemeRequest,
 	) -> *mut WebKitWebView;
@@ -5633,6 +5903,7 @@ extern {
 	pub fn webkit_web_context_new_with_website_data_manager(
 		manager:*mut WebKitWebsiteDataManager,
 	) -> *mut WebKitWebContext;
+
 	pub fn webkit_web_context_get_default() -> *mut WebKitWebContext;
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
@@ -5648,18 +5919,24 @@ extern {
 		certificate:*mut gio::GTlsCertificate,
 		host:*const c_char,
 	);
+
 	pub fn webkit_web_context_clear_cache(context:*mut WebKitWebContext);
+
 	pub fn webkit_web_context_download_uri(
 		context:*mut WebKitWebContext,
 		uri:*const c_char,
 	) -> *mut WebKitDownload;
+
 	pub fn webkit_web_context_get_cache_model(context:*mut WebKitWebContext) -> WebKitCacheModel;
+
 	pub fn webkit_web_context_get_cookie_manager(
 		context:*mut WebKitWebContext,
 	) -> *mut WebKitCookieManager;
+
 	pub fn webkit_web_context_get_favicon_database(
 		context:*mut WebKitWebContext,
 	) -> *mut WebKitFaviconDatabase;
+
 	pub fn webkit_web_context_get_favicon_database_directory(
 		context:*mut WebKitWebContext,
 	) -> *const c_char;
@@ -5668,28 +5945,34 @@ extern {
 	pub fn webkit_web_context_get_geolocation_manager(
 		context:*mut WebKitWebContext,
 	) -> *mut WebKitGeolocationManager;
+
 	pub fn webkit_web_context_get_plugins(
 		context:*mut WebKitWebContext,
 		cancellable:*mut gio::GCancellable,
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_context_get_plugins_finish(
 		context:*mut WebKitWebContext,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut glib::GList;
+
 	pub fn webkit_web_context_get_process_model(
 		context:*mut WebKitWebContext,
 	) -> WebKitProcessModel;
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	pub fn webkit_web_context_get_sandbox_enabled(context:*mut WebKitWebContext) -> gboolean;
+
 	pub fn webkit_web_context_get_security_manager(
 		context:*mut WebKitWebContext,
 	) -> *mut WebKitSecurityManager;
+
 	pub fn webkit_web_context_get_spell_checking_enabled(context:*mut WebKitWebContext)
 	-> gboolean;
+
 	pub fn webkit_web_context_get_spell_checking_languages(
 		context:*mut WebKitWebContext,
 	) -> *const *const c_char;
@@ -5698,6 +5981,7 @@ extern {
 	pub fn webkit_web_context_get_time_zone_override(
 		context:*mut WebKitWebContext,
 	) -> *const c_char;
+
 	pub fn webkit_web_context_get_tls_errors_policy(
 		context:*mut WebKitWebContext,
 	) -> WebKitTLSErrorsPolicy;
@@ -5727,7 +6011,9 @@ extern {
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	pub fn webkit_web_context_is_ephemeral(context:*mut WebKitWebContext) -> gboolean;
+
 	pub fn webkit_web_context_prefetch_dns(context:*mut WebKitWebContext, hostname:*const c_char);
+
 	pub fn webkit_web_context_register_uri_scheme(
 		context:*mut WebKitWebContext,
 		scheme:*const c_char,
@@ -5741,6 +6027,7 @@ extern {
 		context:*mut WebKitWebContext,
 		message:*mut WebKitUserMessage,
 	);
+
 	pub fn webkit_web_context_set_additional_plugins_directory(
 		context:*mut WebKitWebContext,
 		directory:*const c_char,
@@ -5751,14 +6038,17 @@ extern {
 		context:*mut WebKitWebContext,
 		allowed:gboolean,
 	);
+
 	pub fn webkit_web_context_set_cache_model(
 		context:*mut WebKitWebContext,
 		cache_model:WebKitCacheModel,
 	);
+
 	pub fn webkit_web_context_set_disk_cache_directory(
 		context:*mut WebKitWebContext,
 		directory:*const c_char,
 	);
+
 	pub fn webkit_web_context_set_favicon_database_directory(
 		context:*mut WebKitWebContext,
 		path:*const c_char,
@@ -5770,10 +6060,12 @@ extern {
 		proxy_mode:WebKitNetworkProxyMode,
 		proxy_settings:*mut WebKitNetworkProxySettings,
 	);
+
 	pub fn webkit_web_context_set_preferred_languages(
 		context:*mut WebKitWebContext,
 		languages:*const *const c_char,
 	);
+
 	pub fn webkit_web_context_set_process_model(
 		context:*mut WebKitWebContext,
 		process_model:WebKitProcessModel,
@@ -5781,14 +6073,17 @@ extern {
 	#[cfg(feature = "v2_26")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_26")))]
 	pub fn webkit_web_context_set_sandbox_enabled(context:*mut WebKitWebContext, enabled:gboolean);
+
 	pub fn webkit_web_context_set_spell_checking_enabled(
 		context:*mut WebKitWebContext,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_web_context_set_spell_checking_languages(
 		context:*mut WebKitWebContext,
 		languages:*const *const c_char,
 	);
+
 	pub fn webkit_web_context_set_tls_errors_policy(
 		context:*mut WebKitWebContext,
 		policy:WebKitTLSErrorsPolicy,
@@ -5799,10 +6094,12 @@ extern {
 		context:*mut WebKitWebContext,
 		enabled:gboolean,
 	);
+
 	pub fn webkit_web_context_set_web_extensions_directory(
 		context:*mut WebKitWebContext,
 		directory:*const c_char,
 	);
+
 	pub fn webkit_web_context_set_web_extensions_initialization_user_data(
 		context:*mut WebKitWebContext,
 		user_data:*mut glib::GVariant,
@@ -5818,49 +6115,64 @@ extern {
 	// WebKitWebInspector
 	//=========================================================================
 	pub fn webkit_web_inspector_get_type() -> GType;
+
 	pub fn webkit_web_inspector_attach(inspector:*mut WebKitWebInspector);
+
 	pub fn webkit_web_inspector_close(inspector:*mut WebKitWebInspector);
+
 	pub fn webkit_web_inspector_detach(inspector:*mut WebKitWebInspector);
+
 	pub fn webkit_web_inspector_get_attached_height(inspector:*mut WebKitWebInspector) -> c_uint;
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	pub fn webkit_web_inspector_get_can_attach(inspector:*mut WebKitWebInspector) -> gboolean;
+
 	pub fn webkit_web_inspector_get_inspected_uri(
 		inspector:*mut WebKitWebInspector,
 	) -> *const c_char;
+
 	pub fn webkit_web_inspector_get_web_view(
 		inspector:*mut WebKitWebInspector,
 	) -> *mut WebKitWebViewBase;
+
 	pub fn webkit_web_inspector_is_attached(inspector:*mut WebKitWebInspector) -> gboolean;
+
 	pub fn webkit_web_inspector_show(inspector:*mut WebKitWebInspector);
 
 	//=========================================================================
 	// WebKitWebResource
 	//=========================================================================
 	pub fn webkit_web_resource_get_type() -> GType;
+
 	pub fn webkit_web_resource_get_data(
 		resource:*mut WebKitWebResource,
 		cancellable:*mut gio::GCancellable,
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_resource_get_data_finish(
 		resource:*mut WebKitWebResource,
 		result:*mut gio::GAsyncResult,
 		length:*mut size_t,
 		error:*mut *mut glib::GError,
 	) -> *mut u8;
+
 	pub fn webkit_web_resource_get_response(
 		resource:*mut WebKitWebResource,
 	) -> *mut WebKitURIResponse;
+
 	pub fn webkit_web_resource_get_uri(resource:*mut WebKitWebResource) -> *const c_char;
 
 	//=========================================================================
 	// WebKitWebView
 	//=========================================================================
 	pub fn webkit_web_view_get_type() -> GType;
+
 	pub fn webkit_web_view_new() -> *mut gtk::GtkWidget;
+
 	pub fn webkit_web_view_new_with_context(context:*mut WebKitWebContext) -> *mut gtk::GtkWidget;
+
 	pub fn webkit_web_view_new_with_related_view(
 		web_view:*mut WebKitWebView,
 	) -> *mut gtk::GtkWidget;
@@ -5892,6 +6204,7 @@ extern {
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut java_script_core::JSCValue;
+
 	pub fn webkit_web_view_can_execute_editing_command(
 		web_view:*mut WebKitWebView,
 		command:*const c_char,
@@ -5899,17 +6212,22 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_can_execute_editing_command_finish(
 		web_view:*mut WebKitWebView,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> gboolean;
+
 	pub fn webkit_web_view_can_go_back(web_view:*mut WebKitWebView) -> gboolean;
+
 	pub fn webkit_web_view_can_go_forward(web_view:*mut WebKitWebView) -> gboolean;
+
 	pub fn webkit_web_view_can_show_mime_type(
 		web_view:*mut WebKitWebView,
 		mime_type:*const c_char,
 	) -> gboolean;
+
 	pub fn webkit_web_view_download_uri(
 		web_view:*mut WebKitWebView,
 		uri:*const c_char,
@@ -5933,6 +6251,7 @@ extern {
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut java_script_core::JSCValue;
+
 	pub fn webkit_web_view_execute_editing_command(
 		web_view:*mut WebKitWebView,
 		command:*const c_char,
@@ -5949,6 +6268,7 @@ extern {
 	pub fn webkit_web_view_get_automation_presentation_type(
 		web_view:*mut WebKitWebView,
 	) -> WebKitAutomationBrowsingContextPresentation;
+
 	pub fn webkit_web_view_get_back_forward_list(
 		web_view:*mut WebKitWebView,
 	) -> *mut WebKitBackForwardList;
@@ -5963,7 +6283,9 @@ extern {
 	pub fn webkit_web_view_get_camera_capture_state(
 		web_view:*mut WebKitWebView,
 	) -> WebKitMediaCaptureState;
+
 	pub fn webkit_web_view_get_context(web_view:*mut WebKitWebView) -> *mut WebKitWebContext;
+
 	pub fn webkit_web_view_get_custom_charset(web_view:*mut WebKitWebView) -> *const c_char;
 	#[cfg(feature = "v2_38")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_38")))]
@@ -5978,8 +6300,11 @@ extern {
 	#[cfg(feature = "v2_10")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 	pub fn webkit_web_view_get_editor_state(web_view:*mut WebKitWebView) -> *mut WebKitEditorState;
+
 	pub fn webkit_web_view_get_estimated_load_progress(web_view:*mut WebKitWebView) -> c_double;
+
 	pub fn webkit_web_view_get_favicon(web_view:*mut WebKitWebView) -> *mut cairo::cairo_surface_t;
+
 	pub fn webkit_web_view_get_find_controller(
 		web_view:*mut WebKitWebView,
 	) -> *mut WebKitFindController;
@@ -5988,6 +6313,7 @@ extern {
 	pub fn webkit_web_view_get_input_method_context(
 		web_view:*mut WebKitWebView,
 	) -> *mut WebKitInputMethodContext;
+
 	pub fn webkit_web_view_get_inspector(web_view:*mut WebKitWebView) -> *mut WebKitWebInspector;
 	#[cfg(feature = "v2_30")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
@@ -5995,6 +6321,7 @@ extern {
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 	pub fn webkit_web_view_get_is_web_process_responsive(web_view:*mut WebKitWebView) -> gboolean;
+
 	pub fn webkit_web_view_get_main_resource(web_view:*mut WebKitWebView)
 	-> *mut WebKitWebResource;
 	#[cfg(feature = "v2_34")]
@@ -6002,13 +6329,16 @@ extern {
 	pub fn webkit_web_view_get_microphone_capture_state(
 		web_view:*mut WebKitWebView,
 	) -> WebKitMediaCaptureState;
+
 	pub fn webkit_web_view_get_page_id(web_view:*mut WebKitWebView) -> u64;
 	#[cfg(feature = "v2_12")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_12")))]
 	pub fn webkit_web_view_get_session_state(
 		web_view:*mut WebKitWebView,
 	) -> *mut WebKitWebViewSessionState;
+
 	pub fn webkit_web_view_get_settings(web_view:*mut WebKitWebView) -> *mut WebKitSettings;
+
 	pub fn webkit_web_view_get_snapshot(
 		web_view:*mut WebKitWebView,
 		region:WebKitSnapshotRegion,
@@ -6017,17 +6347,21 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_get_snapshot_finish(
 		web_view:*mut WebKitWebView,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut cairo::cairo_surface_t;
+
 	pub fn webkit_web_view_get_title(web_view:*mut WebKitWebView) -> *const c_char;
+
 	pub fn webkit_web_view_get_tls_info(
 		web_view:*mut WebKitWebView,
 		certificate:*mut *mut gio::GTlsCertificate,
 		errors:*mut gio::GTlsCertificateFlags,
 	) -> gboolean;
+
 	pub fn webkit_web_view_get_uri(web_view:*mut WebKitWebView) -> *const c_char;
 	#[cfg(feature = "v2_6")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
@@ -6049,12 +6383,17 @@ extern {
 	pub fn webkit_web_view_get_website_policies(
 		web_view:*mut WebKitWebView,
 	) -> *mut WebKitWebsitePolicies;
+
 	pub fn webkit_web_view_get_window_properties(
 		web_view:*mut WebKitWebView,
 	) -> *mut WebKitWindowProperties;
+
 	pub fn webkit_web_view_get_zoom_level(web_view:*mut WebKitWebView) -> c_double;
+
 	pub fn webkit_web_view_go_back(web_view:*mut WebKitWebView);
+
 	pub fn webkit_web_view_go_forward(web_view:*mut WebKitWebView);
+
 	pub fn webkit_web_view_go_to_back_forward_list_item(
 		web_view:*mut WebKitWebView,
 		list_item:*mut WebKitBackForwardListItem,
@@ -6068,10 +6407,12 @@ extern {
 	#[cfg(feature = "v2_16")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 	pub fn webkit_web_view_is_ephemeral(web_view:*mut WebKitWebView) -> gboolean;
+
 	pub fn webkit_web_view_is_loading(web_view:*mut WebKitWebView) -> gboolean;
 	#[cfg(feature = "v2_8")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 	pub fn webkit_web_view_is_playing_audio(web_view:*mut WebKitWebView) -> gboolean;
+
 	pub fn webkit_web_view_load_alternate_html(
 		web_view:*mut WebKitWebView,
 		content:*const c_char,
@@ -6087,15 +6428,21 @@ extern {
 		encoding:*const c_char,
 		base_uri:*const c_char,
 	);
+
 	pub fn webkit_web_view_load_html(
 		web_view:*mut WebKitWebView,
 		content:*const c_char,
 		base_uri:*const c_char,
 	);
+
 	pub fn webkit_web_view_load_plain_text(web_view:*mut WebKitWebView, plain_text:*const c_char);
+
 	pub fn webkit_web_view_load_request(web_view:*mut WebKitWebView, request:*mut WebKitURIRequest);
+
 	pub fn webkit_web_view_load_uri(web_view:*mut WebKitWebView, uri:*const c_char);
+
 	pub fn webkit_web_view_reload(web_view:*mut WebKitWebView);
+
 	pub fn webkit_web_view_reload_bypass_cache(web_view:*mut WebKitWebView);
 	#[cfg(feature = "v2_12")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_12")))]
@@ -6114,6 +6461,7 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_run_javascript(
 		web_view:*mut WebKitWebView,
 		script:*const c_char,
@@ -6121,11 +6469,13 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_run_javascript_finish(
 		web_view:*mut WebKitWebView,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut WebKitJavascriptResult;
+
 	pub fn webkit_web_view_run_javascript_from_gresource(
 		web_view:*mut WebKitWebView,
 		resource:*const c_char,
@@ -6133,6 +6483,7 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_run_javascript_from_gresource_finish(
 		web_view:*mut WebKitWebView,
 		result:*mut gio::GAsyncResult,
@@ -6155,6 +6506,7 @@ extern {
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut WebKitJavascriptResult;
+
 	pub fn webkit_web_view_save(
 		web_view:*mut WebKitWebView,
 		save_mode:WebKitSaveMode,
@@ -6162,11 +6514,13 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_save_finish(
 		web_view:*mut WebKitWebView,
 		result:*mut gio::GAsyncResult,
 		error:*mut *mut glib::GError,
 	) -> *mut gio::GInputStream;
+
 	pub fn webkit_web_view_save_to_file(
 		web_view:*mut WebKitWebView,
 		file:*mut gio::GFile,
@@ -6175,6 +6529,7 @@ extern {
 		callback:gio::GAsyncReadyCallback,
 		user_data:gpointer,
 	);
+
 	pub fn webkit_web_view_save_to_file_finish(
 		web_view:*mut WebKitWebView,
 		result:*mut gio::GAsyncResult,
@@ -6214,6 +6569,7 @@ extern {
 		web_view:*mut WebKitWebView,
 		allowlist:*const *const c_char,
 	);
+
 	pub fn webkit_web_view_set_custom_charset(web_view:*mut WebKitWebView, charset:*const c_char);
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
@@ -6239,8 +6595,11 @@ extern {
 		web_view:*mut WebKitWebView,
 		state:WebKitMediaCaptureState,
 	);
+
 	pub fn webkit_web_view_set_settings(web_view:*mut WebKitWebView, settings:*mut WebKitSettings);
+
 	pub fn webkit_web_view_set_zoom_level(web_view:*mut WebKitWebView, zoom_level:c_double);
+
 	pub fn webkit_web_view_stop_loading(web_view:*mut WebKitWebView);
 	#[cfg(feature = "v2_34")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
@@ -6487,28 +6846,36 @@ extern {
 	// WebKitWindowProperties
 	//=========================================================================
 	pub fn webkit_window_properties_get_type() -> GType;
+
 	pub fn webkit_window_properties_get_fullscreen(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
+
 	pub fn webkit_window_properties_get_geometry(
 		window_properties:*mut WebKitWindowProperties,
 		geometry:*mut gdk::GdkRectangle,
 	);
+
 	pub fn webkit_window_properties_get_locationbar_visible(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
+
 	pub fn webkit_window_properties_get_menubar_visible(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
+
 	pub fn webkit_window_properties_get_resizable(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
+
 	pub fn webkit_window_properties_get_scrollbars_visible(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
+
 	pub fn webkit_window_properties_get_statusbar_visible(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
+
 	pub fn webkit_window_properties_get_toolbar_visible(
 		window_properties:*mut WebKitWindowProperties,
 	) -> gboolean;
@@ -6517,14 +6884,18 @@ extern {
 	// WebKitPermissionRequest
 	//=========================================================================
 	pub fn webkit_permission_request_get_type() -> GType;
+
 	pub fn webkit_permission_request_allow(request:*mut WebKitPermissionRequest);
+
 	pub fn webkit_permission_request_deny(request:*mut WebKitPermissionRequest);
 
 	//=========================================================================
 	// Other functions
 	//=========================================================================
 	pub fn webkit_get_major_version() -> c_uint;
+
 	pub fn webkit_get_micro_version() -> c_uint;
+
 	pub fn webkit_get_minor_version() -> c_uint;
 	#[cfg(feature = "v2_32")]
 	#[cfg_attr(docsrs, doc(cfg(feature = "v2_32")))]

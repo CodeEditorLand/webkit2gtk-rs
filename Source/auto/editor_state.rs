@@ -25,6 +25,7 @@ impl EditorState {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::EditorState>> Sealed for T {}
 }
 
@@ -93,10 +94,13 @@ pub trait EditorStateExt: IsA<EditorState> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(EditorState::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::typing-attributes\0".as_ptr() as *const _,

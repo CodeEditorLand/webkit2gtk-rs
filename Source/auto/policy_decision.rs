@@ -23,6 +23,7 @@ impl PolicyDecision {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::PolicyDecision>> Sealed for T {}
 }
 

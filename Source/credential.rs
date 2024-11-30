@@ -31,6 +31,7 @@ impl Credential {
 	#[doc(alias = "webkit_credential_new")]
 	pub fn new(username:&str, password:&str, persistence:CredentialPersistence) -> Credential {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_credential_new(
 				username.to_glib_none().0,
@@ -49,6 +50,7 @@ impl Credential {
 		persistence:CredentialPersistence,
 	) -> Credential {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_credential_new_for_certificate(
 				certificate.map(|p| p.as_ref()).to_glib_none().0,
@@ -63,6 +65,7 @@ impl Credential {
 	#[doc(alias = "new_for_certificate_pin")]
 	pub fn for_certificate_pin(pin:&str, persistence:CredentialPersistence) -> Credential {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_credential_new_for_certificate_pin(
 				pin.to_glib_none().0,

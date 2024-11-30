@@ -19,6 +19,7 @@ impl InputMethodUnderline {
 	#[doc(alias = "webkit_input_method_underline_new")]
 	pub fn new(start_offset:u32, end_offset:u32) -> InputMethodUnderline {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_input_method_underline_new(start_offset, end_offset)) }
 	}
 

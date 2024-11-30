@@ -90,6 +90,7 @@ impl WebView {
 	#[doc(alias = "webkit_web_view_new")]
 	pub fn new() -> WebView {
 		assert_initialized_main_thread!();
+
 		unsafe { gtk::Widget::from_glib_none(ffi::webkit_web_view_new()).unsafe_cast() }
 	}
 
@@ -97,6 +98,7 @@ impl WebView {
 	#[doc(alias = "new_with_context")]
 	pub fn with_context(context:&impl IsA<WebContext>) -> WebView {
 		skip_assert_initialized!();
+
 		unsafe {
 			gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_context(
 				context.as_ref().to_glib_none().0,
@@ -111,6 +113,7 @@ impl WebView {
 	#[doc(alias = "new_with_related_view")]
 	pub fn with_related_view(web_view:&impl IsA<WebView>) -> WebView {
 		skip_assert_initialized!();
+
 		unsafe {
 			gtk::Widget::from_glib_full(ffi::webkit_web_view_new_with_related_view(
 				web_view.as_ref().to_glib_none().0,
@@ -125,6 +128,7 @@ impl WebView {
 	#[doc(alias = "new_with_settings")]
 	pub fn with_settings(settings:&impl IsA<Settings>) -> WebView {
 		skip_assert_initialized!();
+
 		unsafe {
 			gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_settings(
 				settings.as_ref().to_glib_none().0,
@@ -141,6 +145,7 @@ impl WebView {
 		user_content_manager:&impl IsA<UserContentManager>,
 	) -> WebView {
 		skip_assert_initialized!();
+
 		unsafe {
 			gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_user_content_manager(
 				user_content_manager.as_ref().to_glib_none().0,
@@ -503,6 +508,7 @@ impl WebViewBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WebView>> Sealed for T {}
 }
 
@@ -524,9 +530,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		let length = body.len() as _;
 
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -534,6 +543,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn call_async_javascript_function_trampoline<
 			P:FnOnce(Result<java_script_core::Value, glib::Error>) + 'static,
 		>(
@@ -542,22 +552,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_call_async_javascript_function_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = call_async_javascript_function_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_call_async_javascript_function(
 				self.as_ref().to_glib_none().0,
@@ -588,9 +605,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		>,
 	> {
 		let body = String::from(body);
+
 		let arguments = arguments.map(ToOwned::to_owned);
+
 		let world_name = world_name.map(ToOwned::to_owned);
+
 		let source_uri = source_uri.map(ToOwned::to_owned);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.call_async_javascript_function(
 				&body,
@@ -613,9 +634,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -623,6 +647,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn can_execute_editing_command_trampoline<
 			P:FnOnce(Result<(), glib::Error>) + 'static,
 		>(
@@ -631,18 +656,25 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let _ = ffi::webkit_web_view_can_execute_editing_command_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) };
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = can_execute_editing_command_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_can_execute_editing_command(
 				self.as_ref().to_glib_none().0,
@@ -659,6 +691,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		command:&str,
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>> {
 		let command = String::from(command);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.can_execute_editing_command(&command, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -710,9 +743,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		let length = script.len() as _;
 
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -720,6 +756,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn evaluate_javascript_trampoline<
 			P:FnOnce(Result<java_script_core::Value, glib::Error>) + 'static,
 		>(
@@ -728,22 +765,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_evaluate_javascript_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = evaluate_javascript_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_evaluate_javascript(
 				self.as_ref().to_glib_none().0,
@@ -772,8 +816,11 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		>,
 	> {
 		let script = String::from(script);
+
 		let world_name = world_name.map(ToOwned::to_owned);
+
 		let source_uri = source_uri.map(ToOwned::to_owned);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.evaluate_javascript(
 				&script,
@@ -839,10 +886,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn background_color(&self) -> gdk::RGBA {
 		unsafe {
 			let mut rgba = gdk::RGBA::uninitialized();
+
 			ffi::webkit_web_view_get_background_color(
 				self.as_ref().to_glib_none().0,
 				rgba.to_glib_none_mut().0,
 			);
+
 			rgba
 		}
 	}
@@ -1017,9 +1066,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1027,6 +1079,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn snapshot_trampoline<
 			P:FnOnce(Result<cairo::Surface, glib::Error>) + 'static,
 		>(
@@ -1035,19 +1088,26 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret =
 				ffi::webkit_web_view_get_snapshot_finish(_source_object as *mut _, res, &mut error);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = snapshot_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_get_snapshot(
 				self.as_ref().to_glib_none().0,
@@ -1084,12 +1144,15 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	fn tls_info(&self) -> Option<(gio::TlsCertificate, gio::TlsCertificateFlags)> {
 		unsafe {
 			let mut certificate = std::ptr::null_mut();
+
 			let mut errors = std::mem::MaybeUninit::uninit();
+
 			let ret = from_glib(ffi::webkit_web_view_get_tls_info(
 				self.as_ref().to_glib_none().0,
 				&mut certificate,
 				errors.as_mut_ptr(),
 			));
+
 			if ret {
 				Some((from_glib_none(certificate), from_glib(errors.assume_init())))
 			} else {
@@ -1344,9 +1407,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1354,6 +1420,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn run_javascript_trampoline<
 			P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static,
 		>(
@@ -1362,22 +1429,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_run_javascript_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = run_javascript_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_run_javascript(
 				self.as_ref().to_glib_none().0,
@@ -1397,6 +1471,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<JavascriptResult, glib::Error>> + 'static>>
 	{
 		let script = String::from(script);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.run_javascript(&script, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1414,9 +1489,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1424,6 +1502,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn run_javascript_from_gresource_trampoline<
 			P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static,
 		>(
@@ -1432,22 +1511,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_run_javascript_from_gresource_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = run_javascript_from_gresource_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_run_javascript_from_gresource(
 				self.as_ref().to_glib_none().0,
@@ -1467,6 +1553,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<JavascriptResult, glib::Error>> + 'static>>
 	{
 		let resource = String::from(resource);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.run_javascript_from_gresource(&resource, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1487,9 +1574,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1497,6 +1587,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn run_javascript_in_world_trampoline<
 			P:FnOnce(Result<JavascriptResult, glib::Error>) + 'static,
 		>(
@@ -1505,22 +1596,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_run_javascript_in_world_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = run_javascript_in_world_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_run_javascript_in_world(
 				self.as_ref().to_glib_none().0,
@@ -1543,7 +1641,9 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<JavascriptResult, glib::Error>> + 'static>>
 	{
 		let script = String::from(script);
+
 		let world_name = String::from(world_name);
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.run_javascript_in_world(&script, &world_name, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1559,9 +1659,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1569,6 +1672,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn save_trampoline<
 			P:FnOnce(Result<gio::InputStream, glib::Error>) + 'static,
 		>(
@@ -1577,18 +1681,25 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_save_finish(_source_object as *mut _, res, &mut error);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = save_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_save(
 				self.as_ref().to_glib_none().0,
@@ -1621,9 +1732,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1631,21 +1745,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn save_to_file_trampoline<P:FnOnce(Result<(), glib::Error>) + 'static>(
 			_source_object:*mut glib::gobject_ffi::GObject,
 			res:*mut gio::ffi::GAsyncResult,
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let _ =
 				ffi::webkit_web_view_save_to_file_finish(_source_object as *mut _, res, &mut error);
+
 			let result = if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) };
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = save_to_file_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_save_to_file(
 				self.as_ref().to_glib_none().0,
@@ -1664,6 +1786,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		save_mode:SaveMode,
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>> {
 		let file = file.clone();
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.save_to_file(&file, save_mode, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1681,9 +1804,12 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -1691,6 +1817,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn send_message_to_page_trampoline<
 			P:FnOnce(Result<UserMessage, glib::Error>) + 'static,
 		>(
@@ -1699,22 +1826,29 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_web_view_send_message_to_page_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = send_message_to_page_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_view_send_message_to_page(
 				self.as_ref().to_glib_none().0,
@@ -1733,6 +1867,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 		message:&(impl IsA<UserMessage> + Clone + 'static),
 	) -> Pin<Box_<dyn std::future::Future<Output = Result<UserMessage, glib::Error>> + 'static>> {
 		let message = message.clone();
+
 		Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
 			obj.send_message_to_page(&message, Some(cancellable), move |res| {
 				send.resolve(res);
@@ -1903,11 +2038,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
 				.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"authenticate\0".as_ptr() as *const _,
@@ -1926,10 +2064,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"close\0".as_ptr() as *const _,
@@ -1959,6 +2100,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(context_menu),
@@ -1967,8 +2109,10 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"context-menu\0".as_ptr() as *const _,
@@ -1987,10 +2131,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"context-menu-dismissed\0".as_ptr() as *const _,
@@ -2018,14 +2165,17 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> *mut gtk::ffi::GtkWidget {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(navigation_action),
 			)
 			.to_glib_full()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"create\0".as_ptr() as *const _,
@@ -2052,6 +2202,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(decision),
@@ -2059,8 +2210,10 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"decide-policy\0".as_ptr() as *const _,
@@ -2079,10 +2232,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"enter-fullscreen\0".as_ptr() as *const _,
@@ -2108,10 +2264,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), from_glib(event))
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"insecure-content-detected\0".as_ptr() as *const _,
@@ -2130,10 +2289,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"leave-fullscreen\0".as_ptr() as *const _,
@@ -2153,10 +2315,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), from_glib(load_event))
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"load-changed\0".as_ptr() as *const _,
@@ -2184,6 +2349,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				from_glib(load_event),
@@ -2192,8 +2358,10 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"load-failed\0".as_ptr() as *const _,
@@ -2225,6 +2393,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&glib::GString::from_glib_borrow(failing_uri),
@@ -2233,8 +2402,10 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"load-failed-with-tls-errors\0".as_ptr() as *const _,
@@ -2261,14 +2432,17 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(hit_test_result),
 				modifiers,
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"mouse-target-changed\0".as_ptr() as *const _,
@@ -2294,11 +2468,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
 				.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"permission-request\0".as_ptr() as *const _,
@@ -2324,14 +2501,17 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(print_operation),
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"print\0".as_ptr() as *const _,
@@ -2357,10 +2537,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"ready-to-show\0".as_ptr() as *const _,
@@ -2387,14 +2570,17 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(resource),
 				&from_glib_borrow(request),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"resource-load-started\0".as_ptr() as *const _,
@@ -2413,10 +2599,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"run-as-modal\0".as_ptr() as *const _,
@@ -2444,11 +2633,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
 				.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"run-color-chooser\0".as_ptr() as *const _,
@@ -2474,11 +2666,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
 				.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"run-file-chooser\0".as_ptr() as *const _,
@@ -2506,11 +2701,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(dialog))
 				.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"script-dialog\0".as_ptr() as *const _,
@@ -2538,14 +2736,17 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(notification),
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"show-notification\0".as_ptr() as *const _,
@@ -2577,6 +2778,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebView::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(menu),
@@ -2585,8 +2787,10 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"show-option-menu\0".as_ptr() as *const _,
@@ -2612,10 +2816,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(request))
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"submit-form\0".as_ptr() as *const _,
@@ -2643,11 +2850,14 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(message))
 				.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"user-message-received\0".as_ptr() as *const _,
@@ -2670,10 +2880,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref()).into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"web-process-crashed\0".as_ptr() as *const _,
@@ -2701,10 +2914,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref(), from_glib(reason))
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"web-process-terminated\0".as_ptr() as *const _,
@@ -2729,10 +2945,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::camera-capture-state\0".as_ptr() as *const _,
@@ -2757,10 +2976,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::display-capture-state\0".as_ptr() as *const _,
@@ -2782,10 +3004,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::editable\0".as_ptr() as *const _,
@@ -2811,10 +3036,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::estimated-load-progress\0".as_ptr() as *const _,
@@ -2834,10 +3062,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::favicon\0".as_ptr() as *const _,
@@ -2857,10 +3088,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-loading\0".as_ptr() as *const _,
@@ -2882,10 +3116,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-muted\0".as_ptr() as *const _,
@@ -2907,10 +3144,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-playing-audio\0".as_ptr() as *const _,
@@ -2938,10 +3178,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::is-web-process-responsive\0".as_ptr() as *const _,
@@ -2969,10 +3212,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::microphone-capture-state\0".as_ptr() as *const _,
@@ -2994,10 +3240,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::page-id\0".as_ptr() as *const _,
@@ -3019,10 +3268,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::settings\0".as_ptr() as *const _,
@@ -3042,10 +3294,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::title\0".as_ptr() as *const _,
@@ -3065,10 +3320,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::uri\0".as_ptr() as *const _,
@@ -3088,10 +3346,13 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebView::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::zoom-level\0".as_ptr() as *const _,

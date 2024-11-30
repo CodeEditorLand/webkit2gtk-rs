@@ -27,6 +27,7 @@ impl WebResource {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WebResource>> Sealed for T {}
 }
 
@@ -39,9 +40,12 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -49,30 +53,39 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn data_trampoline<P:FnOnce(Result<Vec<u8>, glib::Error>) + 'static>(
 			_source_object:*mut glib::gobject_ffi::GObject,
 			res:*mut gio::ffi::GAsyncResult,
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let mut length = std::mem::MaybeUninit::uninit();
+
 			let ret = ffi::webkit_web_resource_get_data_finish(
 				_source_object as *mut _,
 				res,
 				length.as_mut_ptr(),
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(FromGlibContainer::from_glib_full_num(ret, length.assume_init() as _))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = data_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_web_resource_get_data(
 				self.as_ref().to_glib_none().0,
@@ -115,10 +128,13 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebResource::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(error))
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"failed\0".as_ptr() as *const _,
@@ -149,14 +165,17 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebResource::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(certificate),
 				from_glib(errors),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"failed-with-tls-errors\0".as_ptr() as *const _,
@@ -175,10 +194,13 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebResource::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"finished\0".as_ptr() as *const _,
@@ -199,10 +221,13 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebResource::from_glib_borrow(this).unsafe_cast_ref(), data_length)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"received-data\0".as_ptr() as *const _,
@@ -229,14 +254,17 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				WebResource::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(request),
 				&from_glib_borrow(redirected_response),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"sent-request\0".as_ptr() as *const _,
@@ -256,10 +284,13 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebResource::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::response\0".as_ptr() as *const _,
@@ -279,10 +310,13 @@ pub trait WebResourceExt: IsA<WebResource> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(WebResource::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::uri\0".as_ptr() as *const _,

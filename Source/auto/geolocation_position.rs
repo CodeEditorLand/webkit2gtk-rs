@@ -19,6 +19,7 @@ impl GeolocationPosition {
 	#[doc(alias = "webkit_geolocation_position_new")]
 	pub fn new(latitude:f64, longitude:f64, accuracy:f64) -> GeolocationPosition {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_geolocation_position_new(latitude, longitude, accuracy))
 		}

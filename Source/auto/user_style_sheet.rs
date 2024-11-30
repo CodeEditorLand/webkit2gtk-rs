@@ -27,6 +27,7 @@ impl UserStyleSheet {
 		block_list:&[&str],
 	) -> UserStyleSheet {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_user_style_sheet_new(
 				source.to_glib_none().0,
@@ -51,6 +52,7 @@ impl UserStyleSheet {
 		block_list:&[&str],
 	) -> UserStyleSheet {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_user_style_sheet_new_for_world(
 				source.to_glib_none().0,

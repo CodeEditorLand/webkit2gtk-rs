@@ -30,6 +30,7 @@ impl PrintOperation {
 	#[doc(alias = "webkit_print_operation_new")]
 	pub fn new(web_view:&impl IsA<WebView>) -> PrintOperation {
 		skip_assert_initialized!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_print_operation_new(web_view.as_ref().to_glib_none().0))
 		}
@@ -82,6 +83,7 @@ impl PrintOperationBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::PrintOperation>> Sealed for T {}
 }
 
@@ -162,10 +164,13 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> *mut ffi::WebKitPrintCustomWidget {
 			let f:&F = &*(f as *const F);
+
 			f(PrintOperation::from_glib_borrow(this).unsafe_cast_ref()).to_glib_full()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"create-custom-widget\0".as_ptr() as *const _,
@@ -188,13 +193,16 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				PrintOperation::from_glib_borrow(this).unsafe_cast_ref(),
 				&from_glib_borrow(error),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"failed\0".as_ptr() as *const _,
@@ -213,10 +221,13 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(PrintOperation::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"finished\0".as_ptr() as *const _,
@@ -236,10 +247,13 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(PrintOperation::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::page-setup\0".as_ptr() as *const _,
@@ -262,10 +276,13 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(PrintOperation::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::print-settings\0".as_ptr() as *const _,

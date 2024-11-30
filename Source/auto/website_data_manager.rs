@@ -45,6 +45,7 @@ impl WebsiteDataManager {
 	#[doc(alias = "webkit_website_data_manager_new_ephemeral")]
 	pub fn new_ephemeral() -> WebsiteDataManager {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_website_data_manager_new_ephemeral()) }
 	}
 
@@ -62,6 +63,7 @@ impl WebsiteDataManager {
 	#[doc(alias = "webkit_website_data_manager_set_memory_pressure_settings")]
 	pub fn set_memory_pressure_settings(settings:&mut MemoryPressureSettings) {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			ffi::webkit_website_data_manager_set_memory_pressure_settings(
 				settings.to_glib_none_mut().0,
@@ -204,6 +206,7 @@ impl WebsiteDataManagerBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WebsiteDataManager>> Sealed for T {}
 }
 
@@ -218,9 +221,12 @@ pub trait WebsiteDataManagerExt: IsA<WebsiteDataManager> + sealed::Sealed + 'sta
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -228,6 +234,7 @@ pub trait WebsiteDataManagerExt: IsA<WebsiteDataManager> + sealed::Sealed + 'sta
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn fetch_trampoline<
 			P:FnOnce(Result<Vec<WebsiteData>, glib::Error>) + 'static,
 		>(
@@ -236,22 +243,29 @@ pub trait WebsiteDataManagerExt: IsA<WebsiteDataManager> + sealed::Sealed + 'sta
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_website_data_manager_fetch_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(FromGlibPtrContainer::from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = fetch_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_website_data_manager_fetch(
 				self.as_ref().to_glib_none().0,
@@ -397,9 +411,12 @@ pub trait WebsiteDataManagerExt: IsA<WebsiteDataManager> + sealed::Sealed + 'sta
 		callback:P,
 	) {
 		let main_context = glib::MainContext::ref_thread_default();
+
 		let is_main_context_owner = main_context.is_owner();
+
 		let has_acquired_main_context =
 			(!is_main_context_owner).then(|| main_context.acquire().ok()).flatten();
+
 		assert!(
 			is_main_context_owner || has_acquired_main_context.is_some(),
 			"Async operations only allowed if the thread is owning the MainContext"
@@ -407,6 +424,7 @@ pub trait WebsiteDataManagerExt: IsA<WebsiteDataManager> + sealed::Sealed + 'sta
 
 		let user_data:Box_<glib::thread_guard::ThreadGuard<P>> =
 			Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+
 		unsafe extern fn itp_summary_trampoline<
 			P:FnOnce(Result<Vec<ITPThirdParty>, glib::Error>) + 'static,
 		>(
@@ -415,22 +433,29 @@ pub trait WebsiteDataManagerExt: IsA<WebsiteDataManager> + sealed::Sealed + 'sta
 			user_data:glib::ffi::gpointer,
 		) {
 			let mut error = std::ptr::null_mut();
+
 			let ret = ffi::webkit_website_data_manager_get_itp_summary_finish(
 				_source_object as *mut _,
 				res,
 				&mut error,
 			);
+
 			let result = if error.is_null() {
 				Ok(FromGlibPtrContainer::from_glib_full(ret))
 			} else {
 				Err(from_glib_full(error))
 			};
+
 			let callback:Box_<glib::thread_guard::ThreadGuard<P>> =
 				Box_::from_raw(user_data as *mut _);
+
 			let callback:P = callback.into_inner();
+
 			callback(result);
 		}
+
 		let callback = itp_summary_trampoline::<P>;
+
 		unsafe {
 			ffi::webkit_website_data_manager_get_itp_summary(
 				self.as_ref().to_glib_none().0,

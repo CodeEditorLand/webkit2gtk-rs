@@ -31,6 +31,7 @@ impl NavigationPolicyDecision {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::NavigationPolicyDecision>> Sealed for T {}
 }
 
@@ -116,10 +117,13 @@ pub trait NavigationPolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(NavigationPolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::frame-name\0".as_ptr() as *const _,
@@ -143,10 +147,13 @@ pub trait NavigationPolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(NavigationPolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::modifiers\0".as_ptr() as *const _,
@@ -170,10 +177,13 @@ pub trait NavigationPolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(NavigationPolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::mouse-button\0".as_ptr() as *const _,
@@ -198,10 +208,13 @@ pub trait NavigationPolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(NavigationPolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::navigation-action\0".as_ptr() as *const _,
@@ -225,10 +238,13 @@ pub trait NavigationPolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(NavigationPolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::navigation-type\0".as_ptr() as *const _,
@@ -252,10 +268,13 @@ pub trait NavigationPolicyDecisionExt:
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(NavigationPolicyDecision::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::request\0".as_ptr() as *const _,

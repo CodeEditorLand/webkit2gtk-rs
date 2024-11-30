@@ -20,6 +20,7 @@ impl FormSubmissionRequest {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::FormSubmissionRequest>> Sealed for T {}
 }
 

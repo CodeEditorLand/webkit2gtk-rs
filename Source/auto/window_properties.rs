@@ -79,6 +79,7 @@ impl WindowPropertiesBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::WindowProperties>> Sealed for T {}
 }
 
@@ -96,10 +97,12 @@ pub trait WindowPropertiesExt: IsA<WindowProperties> + sealed::Sealed + 'static 
 	fn geometry(&self) -> gdk::Rectangle {
 		unsafe {
 			let mut geometry = gdk::Rectangle::uninitialized();
+
 			ffi::webkit_window_properties_get_geometry(
 				self.as_ref().to_glib_none().0,
 				geometry.to_glib_none_mut().0,
 			);
+
 			geometry
 		}
 	}

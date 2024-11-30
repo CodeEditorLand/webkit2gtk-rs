@@ -25,6 +25,7 @@ impl URIRequest {
 	#[doc(alias = "webkit_uri_request_new")]
 	pub fn new(uri:&str) -> URIRequest {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_uri_request_new(uri.to_glib_none().0)) }
 	}
 
@@ -67,6 +68,7 @@ impl URIRequestBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::URIRequest>> Sealed for T {}
 }
 
@@ -110,10 +112,13 @@ pub trait URIRequestExt: IsA<URIRequest> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(URIRequest::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::uri\0".as_ptr() as *const _,

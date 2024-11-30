@@ -19,6 +19,7 @@ impl NetworkProxySettings {
 	#[doc(alias = "webkit_network_proxy_settings_new")]
 	pub fn new(default_proxy_uri:Option<&str>, ignore_hosts:&[&str]) -> NetworkProxySettings {
 		assert_initialized_main_thread!();
+
 		unsafe {
 			from_glib_full(ffi::webkit_network_proxy_settings_new(
 				default_proxy_uri.to_glib_none().0,

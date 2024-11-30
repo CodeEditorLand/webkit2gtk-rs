@@ -21,6 +21,7 @@ impl ContextMenu {
 	#[doc(alias = "webkit_context_menu_new")]
 	pub fn new() -> ContextMenu {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_context_menu_new()) }
 	}
 
@@ -28,6 +29,7 @@ impl ContextMenu {
 	#[doc(alias = "new_with_items")]
 	pub fn with_items(items:&[ContextMenuItem]) -> ContextMenu {
 		assert_initialized_main_thread!();
+
 		unsafe { from_glib_full(ffi::webkit_context_menu_new_with_items(items.to_glib_none().0)) }
 	}
 }
@@ -38,6 +40,7 @@ impl Default for ContextMenu {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::ContextMenu>> Sealed for T {}
 }
 

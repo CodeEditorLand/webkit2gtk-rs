@@ -61,6 +61,7 @@ impl DownloadBuilder {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::Download>> Sealed for T {}
 }
 
@@ -159,13 +160,16 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(
 				Download::from_glib_borrow(this).unsafe_cast_ref(),
 				&glib::GString::from_glib_borrow(destination),
 			)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"created-destination\0".as_ptr() as *const _,
@@ -191,14 +195,17 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) -> glib::ffi::gboolean {
 			let f:&F = &*(f as *const F);
+
 			f(
 				Download::from_glib_borrow(this).unsafe_cast_ref(),
 				&glib::GString::from_glib_borrow(suggested_filename),
 			)
 			.into_glib()
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"decide-destination\0".as_ptr() as *const _,
@@ -218,10 +225,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref(), &from_glib_borrow(error))
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"failed\0".as_ptr() as *const _,
@@ -240,10 +250,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"finished\0".as_ptr() as *const _,
@@ -263,10 +276,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref(), data_length)
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"received-data\0".as_ptr() as *const _,
@@ -288,10 +304,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::allow-overwrite\0".as_ptr() as *const _,
@@ -311,10 +330,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::destination\0".as_ptr() as *const _,
@@ -337,10 +359,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::estimated-progress\0".as_ptr() as *const _,
@@ -360,10 +385,13 @@ pub trait DownloadExt: IsA<Download> + sealed::Sealed + 'static {
 			f:glib::ffi::gpointer,
 		) {
 			let f:&F = &*(f as *const F);
+
 			f(Download::from_glib_borrow(this).unsafe_cast_ref())
 		}
+
 		unsafe {
 			let f:Box_<F> = Box_::new(f);
+
 			connect_raw(
 				self.as_ptr() as *mut _,
 				b"notify::response\0".as_ptr() as *const _,

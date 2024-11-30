@@ -21,6 +21,7 @@ impl BackForwardList {
 
 mod sealed {
 	pub trait Sealed {}
+
 	impl<T:super::IsA<super::BackForwardList>> Sealed for T {}
 }
 
