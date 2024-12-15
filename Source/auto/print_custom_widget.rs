@@ -7,7 +7,7 @@ use std::boxed::Box as Box_;
 
 use glib::{
 	prelude::*,
-	signal::{connect_raw, SignalHandlerId},
+	signal::{SignalHandlerId, connect_raw},
 	translate::*,
 };
 

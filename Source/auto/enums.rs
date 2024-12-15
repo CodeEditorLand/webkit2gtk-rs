@@ -108,9 +108,7 @@ impl StaticType for AuthenticationScheme {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 impl glib::HasParamSpec for AuthenticationScheme {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -226,9 +224,7 @@ impl StaticType for AutomationBrowsingContextPresentation {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for AutomationBrowsingContextPresentation {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -344,9 +340,7 @@ impl StaticType for AutoplayPolicy {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_30")))]
 impl glib::HasParamSpec for AutoplayPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -452,9 +446,7 @@ impl StaticType for CacheModel {
 
 impl glib::HasParamSpec for CacheModel {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -740,9 +732,7 @@ impl StaticType for ContextMenuAction {
 
 impl glib::HasParamSpec for ContextMenuAction {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -842,9 +832,7 @@ impl StaticType for CookieAcceptPolicy {
 
 impl glib::HasParamSpec for CookieAcceptPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -940,9 +928,7 @@ impl StaticType for CookiePersistentStorage {
 
 impl glib::HasParamSpec for CookiePersistentStorage {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1052,9 +1038,7 @@ impl StaticType for CredentialPersistence {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_2")))]
 impl glib::HasParamSpec for CredentialPersistence {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1196,9 +1180,7 @@ impl StaticType for DownloadError {
 
 impl glib::HasParamSpec for DownloadError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1336,9 +1318,7 @@ impl StaticType for FaviconDatabaseError {
 
 impl glib::HasParamSpec for FaviconDatabaseError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1448,9 +1428,7 @@ impl StaticType for HardwareAccelerationPolicy {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 impl glib::HasParamSpec for HardwareAccelerationPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1582,9 +1560,7 @@ impl StaticType for InputPurpose {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for InputPurpose {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1688,9 +1664,7 @@ impl StaticType for InsecureContentEvent {
 
 impl glib::HasParamSpec for InsecureContentEvent {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1826,9 +1800,7 @@ impl StaticType for JavascriptError {
 
 impl glib::HasParamSpec for JavascriptError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -1930,9 +1902,7 @@ impl StaticType for LoadEvent {
 
 impl glib::HasParamSpec for LoadEvent {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2042,9 +2012,7 @@ impl StaticType for MediaCaptureState {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_34")))]
 impl glib::HasParamSpec for MediaCaptureState {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2162,9 +2130,7 @@ impl StaticType for NavigationType {
 
 impl glib::HasParamSpec for NavigationType {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2307,9 +2273,7 @@ impl StaticType for NetworkError {
 
 impl glib::HasParamSpec for NetworkError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2419,9 +2383,7 @@ impl StaticType for NetworkProxyMode {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 impl glib::HasParamSpec for NetworkProxyMode {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2576,9 +2538,7 @@ impl StaticType for PluginError {
 
 impl glib::HasParamSpec for PluginError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2678,9 +2638,7 @@ impl StaticType for PolicyDecisionType {
 
 impl glib::HasParamSpec for PolicyDecisionType {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2827,9 +2785,7 @@ impl StaticType for PolicyError {
 
 impl glib::HasParamSpec for PolicyError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -2963,9 +2919,7 @@ impl StaticType for PrintError {
 
 impl glib::HasParamSpec for PrintError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3061,9 +3015,7 @@ impl StaticType for PrintOperationResponse {
 
 impl glib::HasParamSpec for PrintOperationResponse {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3176,9 +3128,7 @@ impl StaticType for ProcessModel {
 #[allow(deprecated)]
 impl glib::HasParamSpec for ProcessModel {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3280,9 +3230,7 @@ impl StaticType for SaveMode {
 
 impl glib::HasParamSpec for SaveMode {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3386,9 +3334,7 @@ impl StaticType for ScriptDialogType {
 
 impl glib::HasParamSpec for ScriptDialogType {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3514,9 +3460,7 @@ impl StaticType for SnapshotError {
 
 impl glib::HasParamSpec for SnapshotError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3610,9 +3554,7 @@ impl StaticType for SnapshotRegion {
 
 impl glib::HasParamSpec for SnapshotRegion {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3708,9 +3650,7 @@ impl StaticType for TLSErrorsPolicy {
 
 impl glib::HasParamSpec for TLSErrorsPolicy {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3858,9 +3798,7 @@ impl StaticType for UserContentFilterError {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_24")))]
 impl glib::HasParamSpec for UserContentFilterError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -3974,9 +3912,7 @@ impl StaticType for UserContentInjectedFrames {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl glib::HasParamSpec for UserContentInjectedFrames {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4128,9 +4064,7 @@ impl StaticType for UserMessageError {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for UserMessageError {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4244,9 +4178,7 @@ impl StaticType for UserScriptInjectionTime {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl glib::HasParamSpec for UserScriptInjectionTime {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4358,9 +4290,7 @@ impl StaticType for UserStyleLevel {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
 impl glib::HasParamSpec for UserStyleLevel {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }
@@ -4478,9 +4408,7 @@ impl StaticType for WebProcessTerminationReason {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_20")))]
 impl glib::HasParamSpec for WebProcessTerminationReason {
 	type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecEnum;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder_with_default }

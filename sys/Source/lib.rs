@@ -12,9 +12,10 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[allow(unused_imports)]
-use glib::{gboolean, gconstpointer, gpointer, GType};
+use glib::{GType, gboolean, gconstpointer, gpointer};
 #[allow(unused_imports)]
 use libc::{
+	FILE,
 	c_char,
 	c_double,
 	c_float,
@@ -30,7 +31,6 @@ use libc::{
 	size_t,
 	ssize_t,
 	uintptr_t,
-	FILE,
 };
 
 // Enums

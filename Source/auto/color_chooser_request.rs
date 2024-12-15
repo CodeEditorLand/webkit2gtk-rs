@@ -10,7 +10,7 @@ use glib::prelude::*;
 #[cfg(feature = "v2_8")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_8")))]
 use glib::{
-	signal::{connect_raw, SignalHandlerId},
+	signal::{SignalHandlerId, connect_raw},
 	translate::*,
 };
 

@@ -1,8 +1,8 @@
 // Take a look at the license at the top of the repository in the LICENSE file.
 
+use glib::IsA;
 #[cfg(feature = "v2_6")]
 use glib::translate::{FromGlibPtrNone, IntoGlib, ToGlibPtr, ToGlibPtrMut};
-use glib::IsA;
 
 use super::WebContext;
 #[cfg(feature = "v2_16")]

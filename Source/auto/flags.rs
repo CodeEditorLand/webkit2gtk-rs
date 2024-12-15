@@ -59,9 +59,7 @@ impl StaticType for EditorTypingAttributes {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_10")))]
 impl glib::HasParamSpec for EditorTypingAttributes {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecFlags;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -160,9 +158,7 @@ impl StaticType for FindOptions {
 
 impl glib::HasParamSpec for FindOptions {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecFlags;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -257,9 +253,7 @@ impl StaticType for HitTestResultContext {
 
 impl glib::HasParamSpec for HitTestResultContext {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecFlags;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -362,9 +356,7 @@ impl StaticType for InputHints {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_28")))]
 impl glib::HasParamSpec for InputHints {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecFlags;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -457,9 +449,7 @@ impl StaticType for SnapshotOptions {
 
 impl glib::HasParamSpec for SnapshotOptions {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecFlags;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }
@@ -580,9 +570,7 @@ impl StaticType for WebsiteDataTypes {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
 impl glib::HasParamSpec for WebsiteDataTypes {
 	type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
-
 	type ParamSpec = glib::ParamSpecFlags;
-
 	type SetValue = Self;
 
 	fn param_spec_builder() -> Self::BuilderFn { Self::ParamSpec::builder }

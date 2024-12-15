@@ -28,9 +28,9 @@ where
 		use std::{ffi::CString, ptr};
 
 		use glib::{
+			StaticType,
 			object::Cast,
 			translate::{FromGlibPtrNone, IntoGlib, ToGlibPtr},
-			StaticType,
 		};
 
 		assert_initialized_main_thread!();
