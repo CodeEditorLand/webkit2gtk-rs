@@ -1,9 +1,9 @@
 [build-dependencies]
-pkg-config = "0.3.7"
-system-deps = "6"
+pkg-config = "0.3.31"
+system-deps = "7"
 
 [dependencies]
-bitflags = "1.0"
+bitflags = "2.8"
 libc = { version = "0.2" }
 
 [dependencies.cairo]
@@ -39,7 +39,7 @@ package = "soup3-sys"
 version = "0.5"
 
 [dev-dependencies]
-shell-words = "1.0.0"
+shell-words = "1.1.0"
 tempfile = { version = "3" }
 
 [features]
